@@ -2,21 +2,24 @@
     display: none;
 }
 
-main {
-    margin-left: 10%;
-    height: 400px;
-    width: 80%;
-    overflow: scroll;
-}
-
 body {
-    margin-top: 15%;
+    margin-top: 10%;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 10%;
+    width: 100%;
+    height: 80%;
     background-image: url(https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025&q=80);
     background-position: center;
-    background-size:cover;
+    background-size: cover;
+
+}
+
+main {
+    margin-left: 10%;
+    height: 560px;
+    width: 80%;
+    overflow: scroll;
 }
 
 body p, h2 {
@@ -39,16 +42,21 @@ header {
 
 header nav {
     position: fixed;
+    width: 40%;
     padding: 1%;
+    right: 0;
 }
 
 nav a {
+    margin: 1%;
     text-decoration: none;
     color: inherit;
+    font-weight: bold;
+    font-size: 200%;
 }
 
 nav a:hover {
-    color: #7dbf63;
+    color: #83d8dd;
 }
 
 footer {
@@ -77,6 +85,16 @@ main img {
 }
 
 main button {
-    color: red;
-    /*non funziona dican qualcuno sa perché?*/
+    background-color: #7dbf63;
+    border: transparent;
+    color: white;
+    border-radius: 10%;
+    width: 10%;
+    height: 6%;
+    margin-top: 6%;
+    margin-left: 45%;
+}
+
+main button:hover {
+    background-color: #83d8dd;
 }
