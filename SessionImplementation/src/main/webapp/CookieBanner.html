@@ -1,7 +1,18 @@
-<form method="POST" action="SessionManager">
-    <!-- Se si utilizza lo stesso name per tutti i campi di una form essi diventanto esclusivi -->
-    <label><input type="radio" name="opzione" value="opzione1">Disattivati</label><br>
-    <label><input type="radio" name="opzione" value="opzione2">Tecnici</label><br>
-    <label><input type="radio" name="opzione" value="opzione3">Essenziali</label><br>
-    <button type="submit">Invia</button>
-</form>
+<head>
+    <title>Pizzeria</title>
+    <link rel="stylesheet" href="./static/CookieBanner.css">
+</head>
+
+<div class="CookieBanner">
+    <img src="./static/Cookie.svg">
+    <div class="RectangularBanner">
+        <h2> Cookies</h2>
+        <form method="POST" action="SessionManager">
+            <!-- Se si utilizza lo stesso name per tutti i campi di una form essi diventanto esclusivi -->
+            <label><input type="radio" name="opzione" value="Disattivati">Disattivati</label><br>
+            <label><input type="radio" name="opzione" value="Tecnici">Tecnici</label><br>
+            <label><input type="radio" name="opzione" value="Tutti">Tutti</label><br>
+            <button type="submit">Invia</button>
+        </form>
+    </div>
+</div>

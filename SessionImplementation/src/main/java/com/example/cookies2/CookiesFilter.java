@@ -17,13 +17,13 @@ public class CookiesFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        System.out.println("Filtering");
+        //System.out.println("Filtering");
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
 
         if (session == null) {
-            System.out.println("Sessione non presente, adding the form");
+            //System.out.println("Sessione non presente, adding the form");
             request.setAttribute("formNeeded",true);
         }
 

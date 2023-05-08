@@ -1,0 +1,67 @@
+
+h2{
+    font-family: "Lucida Handwriting", serif;
+    font-size: 120%;
+}
+
+img {
+    position: relative;
+    width:12%;
+    margin-right:5%;
+    margin-top: 3%;
+    height:auto;
+}
+.CookieBanner{
+    font-family: "Lucida", "Lucida Sans Unicode", "Lucida",sans-serif;
+    font-size: 60%;
+    position:fixed;
+    width: auto;
+    margin: 20% 0 0 70%;
+    display: flex;
+    align-items: center;
+
+
+}
+/* Siamo il gruppo 17-> dispari --> in basso a destra*/
+.RectangularBanner {
+    position: relative;
+    width: auto;
+    height: auto;
+    background-color: #f9c66b;
+    border-radius: 10px;
+    padding: 2%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+}
+
+form button {
+    margin-top: 2em;
+    font-size: 80%;
+    color:white;
+    background-color: #ea9d55;
+    width: 60%;
+    height: 80%;
+    border: 0.1em solid #c26f22;
+    border-radius:10%;
+}
+
+
+.RectangularBanner:after {
+    /* Creo il triangolo con uno pseudo elemento: */
+    content: ""; /* Contenuto dell'elemnto è vuoto*/
+    position: absolute;
+    /* Voglio mettere la freccia ain centro a sx*/
+    top: 50%;
+    right: 100%;
+    margin-top: -10px;
+    /* Disegno con i bordi->
+       Un quadrato ha 4 bordi a forma di triangolo
+       con le punte verso l'esterno, se ne cancello due mettendoli
+       trasparenti ottengo un triangolo
+    */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid #ea9d55;
+    border-bottom: 10px solid transparent;
+}
