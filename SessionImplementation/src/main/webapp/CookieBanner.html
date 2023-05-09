@@ -4,15 +4,20 @@
 </head>
 
 <div class="CookieBanner">
-    <img src="./static/Cookie.svg">
     <div class="RectangularBanner">
         <h2> Cookies</h2>
+        <p>Our website uses cookies to improve your browsing experience.
+        These small text files are stored on your device and help us remember your preferences and settings,
+        making your visit more efficient and personalized.
+        By continuing to browse, you consent to our use of cookies. For more information,
+        please see our privacy policy.</p>
+        <a href="./CookiePrivacy.html">Cookie Policy</a>
         <form method="POST" action="SessionManager">
             <!-- Se si utilizza lo stesso name per tutti i campi di una form essi diventanto esclusivi -->
-            <label><input type="radio" name="opzione" value="Disattivati">Disattivati</label><br>
-            <label><input type="radio" name="opzione" value="Tecnici">Tecnici</label><br>
-            <label><input type="radio" name="opzione" value="Tutti">Tutti</label><br>
-            <button type="submit">Invia</button>
+            <button type="submit" name="opzione" value="Disattivati">Disattivati</button>
+            <button type="submit" name="opzione" value="Tecnici">Tecnici</button>
+            <button type="submit" name="opzione" value="Tutti" >Tutti</button>
         </form>
     </div>
+    <img src="./static/Cookie.svg">
 </div>
