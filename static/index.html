@@ -11,6 +11,25 @@
 
 <link rel="stylesheet" href="styles/home.css">
 
+<script>    //MOVE TO OTHER PLACE when possible
+    window.onscroll = function () {
+        let header = document.getElementsByTagName('header')[0];
+
+        let ref = document.getElementById('index').offsetTop - header.clientHeight;
+        //calcolo come punto di riferimento il punto in cui termina l'header
+
+        let pos = window.scrollY;
+        //quanto ho scrollato la pagina per ora
+
+        if (ref > pos)
+            header.setAttribute('style', 'background-color:transparent;');
+        else
+            //ho scrollato fino a che il testo arriva all'header, quindi devo renderlo opaco
+            header.setAttribute('style', 'background-color:#7dbf63;');
+    };
+
+</script>
+
 <header>
     <h1>Tum4World</h1>
     <nav>
@@ -24,7 +43,7 @@
 </header>
 
 <main>
-    <h2>Benvenuto a Tum4World</h2>
+    <h2 id="index">Benvenuto a Tum4World</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.</p>
     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
