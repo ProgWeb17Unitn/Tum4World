@@ -7,6 +7,7 @@
 <body>
 <h1>Hello World!</h1>
 <br/>
+<!-- Aggiunta condizionale del Cookie Banner-->
 <% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="/CookieBanner.html" %>
 <% } %>

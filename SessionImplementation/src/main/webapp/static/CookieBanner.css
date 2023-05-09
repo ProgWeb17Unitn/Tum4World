@@ -1,0 +1,87 @@
+
+h2{
+    font-family: "Lucida Handwriting", serif;
+    font-size: 120%;
+}
+p, a{
+    font-size: 100%;
+}
+
+img {
+    position: relative;
+    width:10%;
+    margin: 3% 0 0 92%;
+    height:auto;
+    /*Creo un animazione chiamata spin dalla durata di 2 secondi ripetuta due volte*/
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: 2;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.CookieBanner{
+    font-family: "Lucida", "Lucida Sans Unicode", "Lucida",sans-serif;
+    font-size: 60%;
+    position:fixed;
+    width: auto;
+    max-width: 30%;
+    margin: 20% 0 0 65%;
+}
+/* Siamo il gruppo 17-> dispari --> in basso a destra*/
+.RectangularBanner {
+    position: relative;
+    width: auto;
+    height: auto;
+    background-color: #f9c66b;
+    border-radius: 10px;
+    padding: 2%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 2%;
+}
+form{
+    margin-top:2%;
+    display: flex;
+}
+
+form button{
+    margin-right: 2%;
+    font-size: 100%;
+    color:white;
+    background-color: #ea9d55;
+    width: 100%;
+    height: 300%;
+    border: 0.1em solid #c26f22;
+    border-radius: 3%;
+}
+form button:hover{
+    background-color: #c26f22;
+    cursor: pointer;
+}
+
+
+.RectangularBanner:after {
+    /* Creo il triangolo con uno pseudo elemento: */
+    content: ""; /* Contenuto dell'elemnto è vuoto*/
+    position: absolute;
+    /* Voglio mettere la freccia sotto a dx*/
+    top: 100%;
+    left: 100%;
+    margin-left: -5%;
+    /* Disegno con i bordi->
+       Un quadrato ha 4 bordi a forma di triangolo
+       con le punte verso l'esterno, se ne cancello due mettendoli
+       trasparenti ottengo un triangolo
+    */
+    width: 0;
+    height: 0;
+    border-left: 1em solid transparent;
+    border-top: 1em solid #ea9d55;
+    border-right: 1em solid transparent;
+}
