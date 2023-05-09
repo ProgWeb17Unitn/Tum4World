@@ -5,30 +5,12 @@
     <meta charset="utf-8">
     <title>Tum4World</title>
     <link rel="icon" type="image/x-icon" href="assets/tmp_logo.svg">
+    <link rel="stylesheet" href="styles/home.css">
+    <script src="tmp.js"></script>
+    <style></style>
 </head>
 
 <body>
-
-<link rel="stylesheet" href="styles/home.css">
-
-<script>    //MOVE TO OTHER PLACE when possible
-    window.onscroll = function () {
-        let header = document.getElementsByTagName('header')[0];
-
-        let ref = document.getElementById('index').offsetTop - header.clientHeight;
-        //calcolo come punto di riferimento il punto in cui termina l'header
-
-        let pos = window.scrollY;
-        //quanto ho scrollato la pagina per ora
-
-        if (ref > pos)
-            header.setAttribute('style', 'background-color:transparent;');
-        else
-            //ho scrollato fino a che il testo arriva all'header, quindi devo renderlo opaco
-            header.setAttribute('style', 'background-color:#7dbf63;');
-    };
-
-</script>
 
 <header>
     <h1>Tum4World</h1>
@@ -43,6 +25,7 @@
 </header>
 
 <main>
+
     <h2 id="index">Benvenuto a Tum4World</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.</p>
@@ -51,7 +34,7 @@
     <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
         laborum</p>
 
-    <img src="assets/tmp_logo.svg" alt="">
+    <img id="logo" src="assets/tmp_logo.svg" alt="">
 
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.</p>
@@ -64,6 +47,13 @@
 
 </main>
 
+<div id="tmp_styles">
+    <button onclick="switch_style(1)">Elephant</button>
+    <button onclick="switch_style(2)">Dolphin</button>
+    <button onclick="switch_style(3)">Parrot</button>
+    <button onclick="switch_style(4)">Kangaroo</button>
+</div>
+
 <footer>
     <div>
         <p>Tum4World</p>
@@ -73,5 +63,4 @@
 </footer>
 
 </body>
-
 </html>
