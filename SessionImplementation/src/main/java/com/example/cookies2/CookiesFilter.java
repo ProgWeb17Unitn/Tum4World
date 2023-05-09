@@ -17,17 +17,17 @@ public class CookiesFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        //System.out.println("Filtering");
+
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
+        // l'attributo false impedisce di creare la session se non
 
         if (session == null) {
-            //System.out.println("Sessione non presente, adding the form");
             request.setAttribute("formNeeded",true);
+            // il parametro formNeeded fa si che nel file JSP venga aggiunto il cookie Banner
         }
 
-        // Continue processing the request
         chain.doFilter(request, response);
     }
 }
