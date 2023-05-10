@@ -5,30 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tum4World</title>
-    <link rel="icon" type="image/x-icon" href="assets/tmp_logo.svg">
-    <link rel="stylesheet" href="styles/home.css">
-    <script src="tmp.js"></script>
-    <style></style>
+    <link rel="icon" type="image/x-icon" href="">
 </head>
 
 <body>
 
-<header class="colored_text">
-    <h1>Tum4World</h1>
+<link rel="stylesheet" href="styles/home.css">
+<script src="tmp.js"></script>
+<style></style>
+
+<header>
+    <h1 class="coloredText">Tum4World</h1>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="chi_siamo.html">Chi siamo</a>
-        <a href="attivita.html">Attività</a>
-        <a href="contatti.html">Contatti</a>
-        <a href="sign_in.html">Signin</a>
-        <a href="log_in.html">Login</a>
+        <a class="coloredText" href="index.html">Home</a>
+        <a class="coloredText" href="chi_siamo.html">Chi siamo</a>
+        <a class="coloredText" href="attivita.html">Attività</a>
+        <a class="coloredText" href="contatti.html">Contatti</a>
+        <a class="coloredText" href="sign_in.html">Sign in</a>
+        <a class="coloredText" href="log_in.html">Log in</a>
     </nav>
+    <button id="hamburger">☰</button>
 </header>
 
 <main>
 
-    <h2 class="colored_text" id="index">Benvenuto a Tum4World</h2>
-    <p class="colored_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    <h2 class="coloredText" id="index">Benvenuto a Tum4World</h2>
+    <p class="coloredText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore
         magna aliqua. <br><br>
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -36,9 +38,9 @@
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
         laborum</p>
 
-    <img id="logo" src="assets/tmp_logo.svg" alt="">
+    <img id="logo" src="" alt="logo">
 
-    <p class="colored_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    <p class="coloredText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore
         magna aliqua. <br><br>
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -46,24 +48,25 @@
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
         laborum</p>
 
-    <button class="colored_text" type="button">Scarica volantino</button>
+    <button class="coloredText" id="download" type="button">Scarica volantino</button>
 
 </main>
 
 <div id="tmp_styles">
-    <button onclick="switch_style(1)">Elephant</button>
-    <button onclick="switch_style(2)">Dolphin</button>
-    <button onclick="switch_style(3)">Parrot</button>
-    <button onclick="switch_style(4)">Kangaroo</button>
+    <button onclick="switchStyle(1)">Elephant</button>
+    <button onclick="switchStyle(2)">Dolphin</button>
+    <button onclick="switchStyle(3)">Parrot</button>
+    <button onclick="switchStyle(4)">Kangaroo</button>
 </div>
 
-<footer class="colored_text">
-    <div>
-        <p>Tum4World</p>
-        <p>Via temporanea, 156</p>
-        <p>Trento (17000), Italia</p>
-    </div>
+<footer class="coloredText">
+    <p>Tum4World<br>
+    Via temporanea, 156<br>
+    Trento (17000), Italia</p>
 </footer>
 
 </body>
+
+<script>page.load();</script>
+
 </html>
