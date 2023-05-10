@@ -34,6 +34,7 @@ function switch_style(n) {
     const icon = document.getElementsByTagName('link')[0];
     const logo = document.getElementById('logo');
     const background = document.getElementsByTagName('body')[0];
+    const texts = document.getElementsByClassName('colored_text');
 
 
     icon.setAttribute('href', 'assets/option' + n + '/logo.svg');
@@ -45,7 +46,8 @@ function switch_style(n) {
     document.getElementsByTagName('button')[0].setAttribute('style', 'background-color:'+palette[N].secondary_d+';');
 
     style.innerText = 'main button:hover{background-color:' + palette[N].primary_l + ';}\n'
-        + 'nav a:hover {color:'+palette[n].secondary_l+'}';
+        + 'nav a:hover {color:'+palette[n].secondary_l+'}\n'
+        + '.colored_text {color:'+palette[n].tertiary+';}';
 }
 
 window.onscroll = function () {
