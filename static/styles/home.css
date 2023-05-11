@@ -1,15 +1,11 @@
-/*tmp: DELETE AFTER*/
-#tmp_styles {
-    position: fixed;
-    right: 0;
-    top: 100px;
-    color: white;
+/*TEMPORARY FIX: may result in problems later*/
+html {
+    overflow-x: hidden;
 }
 
-/* UN-COMMENT WHEN ISSUE FIXED
-::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
+::-webkit-scrollbar {
+    display: none;
+}
 
 body {
     margin-top: 10vh;
@@ -18,7 +14,6 @@ body {
     margin-bottom: 10vh;
     width: 100vw;
     height: 80vh;
-    /*temporary image*/
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;

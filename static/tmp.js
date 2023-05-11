@@ -37,6 +37,10 @@ page.load = function () {
             menu.close();
     });
 
+    document.getElementById('helper').addEventListener('click', function (){
+        document.getElementById('quotes').getElementsByTagName('audio')[0].play();
+    });
+
     page.switchStyle(1);
 }
 page.switchStyle = function (n) {
@@ -59,9 +63,9 @@ page.switchStyle = function (n) {
     const texts = document.getElementsByClassName('coloredText');
     const quote = document.getElementById('quotes').getElementsByTagName('p')[0];
 
-    icon.setAttribute('href', 'assets/' + activePath + '/logo.svg');
+    icon.setAttribute('href', 'assets/' + activePath + '/icon.svg');
     logo.setAttribute('src', 'assets/' + activePath + '/logo.svg');
-    helper.setAttribute('src', 'assets/' + activePath + '/logo.svg');
+    helper.setAttribute('src', 'assets/' + activePath + '/icon.svg');
     background.style.backgroundImage = 'url(assets/' + activePath + '/background.jpg)';
 
     quote.style.backgroundColor = palette[activePalette].tertiary;
