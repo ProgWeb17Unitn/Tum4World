@@ -150,6 +150,7 @@ footer>p {
     height: 10vh;
     width: 10vh;
     transform: scaleX(-1);
+    transition: margin-left 0.2s;
  }
 
 #quotes>p {

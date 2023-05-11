@@ -4,6 +4,7 @@ palette = {};
 page = {};
 menu = {};
 quotes = {};
+quotes.interval = 0;
 
 page.load = function () {
     menu.status = 'closed';
@@ -37,8 +38,16 @@ page.load = function () {
             menu.close();
     });
 
-    document.getElementById('helper').addEventListener('click', function (){
+    const helper = document.getElementById('helper');
+    helper.addEventListener('click', function (){
         document.getElementById('quotes').getElementsByTagName('audio')[0].play();
+        clearInterval(quotes.interval);
+        quotes.generate();
+        quotes.interval = setInterval(quotes.generate, 20000);
+        helper.style.marginLeft = '-0.5vw';
+        setTimeout(function (){
+            helper.style.marginLeft = '0';
+        }, 200)
     });
 
     page.switchStyle(1);
@@ -166,7 +175,7 @@ quotes.init = function (){
     quotes[2] = 'qualcuno potrebbe disegnarmi degli occhi?';
     quotes[3] = 'non fa ridere';
     quotes[4] = 'Crispo è il mio migliore amico';
-    setInterval(quotes.generate, 20000);
+    quotes.interval = setInterval(quotes.generate, 20000);
 }
 
 quotes.generate = function (){
