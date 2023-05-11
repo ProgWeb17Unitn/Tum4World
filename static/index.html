@@ -53,20 +53,24 @@
 </main>
 
 <div id="tmp_styles">
-    <button onclick="switchStyle(1)">Elephant</button>
-    <button onclick="switchStyle(2)">Dolphin</button>
-    <button onclick="switchStyle(3)">Parrot</button>
-    <button onclick="switchStyle(4)">Kangaroo</button>
+    <button onclick="page.toggleStyle(1)">Theme</button>
 </div>
 
 <footer class="coloredText">
     <p>Tum4World<br>
     Via temporanea, 156<br>
     Trento (17000), Italia</p>
+    <div id="quotes">
+        <p>This is a quote!</p>
+        <img id="helper" alt="helper">
+    </div>
 </footer>
 
 </body>
 
-<script>page.load();</script>
+<script>
+    page.load();
+    quotes.init();
+</script>
 
 </html>
