@@ -148,26 +148,42 @@ window.onscroll = function () {
     // chiamata ogni volta che la pagina viene scrollata
     // utilizzata per rendere l'header opaco quando necessario
     const header = document.getElementsByTagName('header')[0];
+    const logo = document.getElementById('logo');
 
     // quando il menu è aperto, l'header è sempre opaco
     // quindi ritorna senza fare niente
     if (menu.status === 'open')
         return;
 
-    // utilizza ref come punto di riferimento, ovvero il punto che, se sovrapposto
-    // all'header, quest'ultimo dev'essere reso opaco
-    let ref = document.getElementById('index').offsetTop - header.clientHeight;
+    // utilizza ref come punto di riferimento, ovvero il punto che, se raggiunto
+
+    // rende l'header opaco
+    let ref1 = document.getElementById('index').offsetTop - header.clientHeight;
+    // rende il logo visibile
+    let ref2 = logo.offsetTop - logo.clientHeight;
     // per fare ciò, utilizzo anche la posizione attuale nella pagina
     let pos = window.scrollY;
 
-    // scalo ed imposto la trasparenza in base alla posizione dello scroll
-    // rispetto a ref
-    if (ref > pos) {
+    // scalo ed imposto la trasparenza dell'header in base alla posizione dello scroll
+    // rispetto a ref1
+    if (ref1 > pos) {
         header.style.backgroundColor = 'transparent';
         header.style.height = '6vh';
     } else {
         header.style.backgroundColor = palette[activePalette].primary_d;
         header.style.height = '4vh';
+    }
+
+    // rendo visibile e sposto il logo 10vh più in alto, se pos >=
+    // rispetto a ref2
+    if (pos < ref2) {
+        logo.style.opacity = '0';
+        logo.style.marginTop = '20vh';
+        logo.style.marginBottom = '10vh';
+    } else {
+        logo.style.opacity = '100%';
+        logo.style.marginTop = '10vh';
+        logo.style.marginBottom = '20vh';
     }
 };
 
