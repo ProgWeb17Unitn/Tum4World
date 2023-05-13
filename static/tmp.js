@@ -109,17 +109,17 @@ page.switchStyle = function (n) {
     const quote = document.getElementById('quotes').getElementsByTagName('p')[0];
 
     // cambia logo, icone ed immagine di sfondo
-    icon.setAttribute('href', 'assets/' + activePath + '/icon.svg');
-    logo.setAttribute('src', 'assets/' + activePath + '/logo.svg');
-    helper.setAttribute('src', 'assets/' + activePath + '/icon.svg');
-    background.style.backgroundImage = 'url(assets/' + activePath + '/background.jpg)';
+    icon.setAttribute('href', `assets/${activePath}/icon.svg`);
+    logo.setAttribute('src', `assets/${activePath}/logo.svg`);
+    helper.setAttribute('src', `assets/${activePath}/icon.svg`);
+    background.style.backgroundImage = `url(assets/${activePath}/background.jpg)`;
 
     // cambia il box delle citazioni
     quote.style.backgroundColor = palette[activePalette].tertiary;
     quote.style.color = palette[activePalette].secondary_l;
 
     // cambia sfondo del footer e dei pulsanti
-    document.getElementsByTagName('footer')[0].style.backgroundColor = palette[activePalette].primary_d;
+    document.getElementsByTagName('footer')[0].style.backgroundImage = `linear-gradient(${palette[activePalette].primary_l}, ${palette[activePalette].primary_d}`;
     download.style.backgroundColor = palette[activePalette].secondary_d;
 
     // cambia il colore di ogni testo nel sito
@@ -149,6 +149,7 @@ window.onscroll = function () {
     // utilizzata per rendere l'header opaco quando necessario
     const header = document.getElementsByTagName('header')[0];
     const logo = document.getElementById('logo');
+    const image = document.getElementById('mainImg');
 
     // quando il menu è aperto, l'header è sempre opaco
     // quindi ritorna senza fare niente
@@ -161,22 +162,24 @@ window.onscroll = function () {
     let ref1 = document.getElementById('index').offsetTop - header.clientHeight;
     // rende il logo visibile
     let ref2 = logo.offsetTop - logo.clientHeight;
+    // rende l'immagine visibile
+    let ref3 = image.offsetTop - image.clientHeight;
     // per fare ciò, utilizzo anche la posizione attuale nella pagina
     let pos = window.scrollY;
 
     // scalo ed imposto la trasparenza dell'header in base alla posizione dello scroll
     // rispetto a ref1
-    if (ref1 > pos) {
-        header.style.backgroundColor = 'transparent';
+    if (pos < ref1) {
+        header.style.backgroundImage = 'none';
         header.style.height = '6vh';
     } else {
-        header.style.backgroundColor = palette[activePalette].primary_d;
+        header.style.backgroundImage = `linear-gradient(${palette[activePalette].primary_l} , ${palette[activePalette].primary_d})`;
         header.style.height = '4vh';
     }
 
     // rendo visibile e sposto il logo 10vh più in alto, se pos >=
     // rispetto a ref2
-    if (pos < ref2) {
+    if (pos < ref2 && page.status !== 'portrait') {
         logo.style.opacity = '0';
         logo.style.marginTop = '20vh';
         logo.style.marginBottom = '10vh';
@@ -184,6 +187,18 @@ window.onscroll = function () {
         logo.style.opacity = '100%';
         logo.style.marginTop = '10vh';
         logo.style.marginBottom = '20vh';
+    }
+
+    // rendo visibile e sposto il logo 10vh più in alto, se pos >=
+    // rispetto a ref3
+    if (pos < ref3 && page.status !== 'portrait') {
+        image.style.opacity = '0';
+        image.style.marginTop = '20vh';
+        image.style.marginBottom = '10vh';
+    } else {
+        image.style.opacity = '100%';
+        image.style.marginTop = '10vh';
+        image.style.marginBottom = '20vh';
     }
 };
 
@@ -264,7 +279,7 @@ page.toggleView = function (mode) {
         hamburger.style.display = 'block';
         nav.style.display = 'none';
     }
-    self.status = mode;
+    page.status = mode;
 }
 
 quotes.init = function (){

@@ -83,7 +83,7 @@ footer {
     height: 10vh;
     padding: 1%;
     text-align: center;
-    top: 240vh;
+    top: 360vh;
     left: 0;
 }
 
@@ -98,6 +98,15 @@ footer>p {
     margin-top: 10vh;
     margin-bottom: 10vh;
     margin-left: 30%;
+    transition: all 0.5s ease-out;
+}
+
+#mainImg {
+    opacity: 0;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     transition: all 0.5s ease-out;
 }
 
