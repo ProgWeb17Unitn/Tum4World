@@ -104,6 +104,7 @@ page.switchStyle = function (n) {
     const helper = document.getElementById('helper');
     const background = document.getElementsByTagName('body')[0];
     const download = document.getElementById('download');
+    const hamburger = document.getElementById('hamburger');
     const links = document.getElementsByTagName('a');
     const texts = document.getElementsByClassName('coloredText');
     const quote = document.getElementById('quotes').getElementsByTagName('p')[0];
@@ -112,11 +113,12 @@ page.switchStyle = function (n) {
     icon.setAttribute('href', `assets/${activePath}/icon.svg`);
     logo.setAttribute('src', `assets/${activePath}/logo.svg`);
     helper.setAttribute('src', `assets/${activePath}/icon.svg`);
+    hamburger.setAttribute('src', `assets/${activePath}/hamburger.svg`);
     background.style.backgroundImage = `url(assets/${activePath}/background.jpg)`;
 
     // cambia il box delle citazioni
     quote.style.backgroundColor = palette[activePalette].tertiary;
-    quote.style.color = palette[activePalette].secondary_l;
+    quote.style.color = palette[activePalette].secondary_d;
 
     // cambia sfondo del footer e dei pulsanti
     document.getElementsByTagName('footer')[0].style.backgroundColor = palette[activePalette].primary_d;
@@ -150,6 +152,7 @@ window.onscroll = function () {
     const header = document.getElementsByTagName('header')[0];
     const logo = document.getElementById('logo');
     const image = document.getElementById('mainImg');
+    const hamburger = document.getElementById('hamburger');
 
     // quando il menu è aperto, l'header è sempre opaco
     // quindi ritorna senza fare niente
@@ -170,9 +173,11 @@ window.onscroll = function () {
     // scalo ed imposto la trasparenza dell'header in base alla posizione dello scroll
     // rispetto a ref1
     if (pos < ref1) {
+        hamburger.style.top = '2%';
         header.style.backgroundColor = 'transparent';
         header.style.height = '6vh';
     } else {
+        hamburger.style.top = '1%';
         header.style.backgroundColor = palette[activePalette].primary_d;
         header.style.height = '4vh';
     }
@@ -224,21 +229,21 @@ menu.open = function () {
     const title = document.getElementsByTagName('h1')[0];
 
     // modifica lo stile degli elementi per far apparire il menu nav sotto all'header
-    header.style.padding = '0';
-    nav.style.color = 'transparent';
-    header.style.height = '15vh';
-    setTimeout(function (){
-        // aspetto che finisca la transition, poi mostro di nuovo le scritte
-        nav.style.color = palette[activePalette].tertiary;
-    }, 600);
-    header.style.backgroundColor = palette[activePalette].primary_d; // rendo sempre opaco l'header
     header.style.flexDirection = 'column';
-    nav.style.display = 'block';
-    nav.style.alignSelf = 'flex-start';
-    nav.style.fontSize = '150%';
-    nav.getElementsByTagName('a')[0].style.marginLeft = '0';
+    header.style.padding = '0';
+    header.style.height = '15vh';
+
+    header.style.backgroundColor = palette[activePalette].primary_d; // rendo sempre opaco l'header
+
+    title.style.alignSelf = 'start';
+
+    setTimeout(function () {
+        nav.style.display = 'block';
+    }, 400);
+
+    nav.style.alignSelf = 'end';
     title.style.marginLeft = '2%';
-    title.style.alignSelf = 'flex-start';
+
     menu.status = 'open';
 }
 
@@ -249,19 +254,26 @@ menu.close = function () {
     const header = document.getElementsByTagName('header')[0];
     const title = document.getElementsByTagName('h1')[0];
 
+    header.style.transition = 'none';
+    title.style.alignSelf = 'center';
+    setTimeout(function () {
+        header.style.transition = 'ease-in-out background-color 0.6s, ease-out height 0.4s';
+    }, 400);
+
     // modifica lo stile degli elementi per nascondere il menu nav
-    header.style.flexDirection = 'row';
     header.style.padding = '2%';
     header.style.height = '6vh';
-    setTimeout(function () {
-        title.style.alignSelf = 'center';
-    }, 400);
-    nav.style.alignSelf = 'center';
+
+    // per evitare comportamenti strani con la trasparenza
+    // resetta la trasparenza dell'header
+    window.scrollTo(window.scrollX, window.scrollY - 1);
+
+    header.style.flexDirection = 'row';
     nav.style.display = 'none';
-    nav.style.fontSize = '200%';
-    nav.getElementsByTagName('a')[0].style.marginLeft = '1%';
+
+    nav.style.alignSelf = 'center';
     title.style.marginLeft = '0';
-    window.scrollTo(window.scrollX, window.scrollY - 1); // per evitare comportamenti strani con la trasparenza
+
     menu.status = 'closed';
 }
 
