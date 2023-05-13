@@ -119,7 +119,7 @@ page.switchStyle = function (n) {
     quote.style.color = palette[activePalette].secondary_l;
 
     // cambia sfondo del footer e dei pulsanti
-    document.getElementsByTagName('footer')[0].style.backgroundImage = `linear-gradient(${palette[activePalette].primary_l}, ${palette[activePalette].primary_d}`;
+    document.getElementsByTagName('footer')[0].style.backgroundColor = palette[activePalette].primary_d;
     download.style.backgroundColor = palette[activePalette].secondary_d;
 
     // cambia il colore di ogni testo nel sito
@@ -170,10 +170,10 @@ window.onscroll = function () {
     // scalo ed imposto la trasparenza dell'header in base alla posizione dello scroll
     // rispetto a ref1
     if (pos < ref1) {
-        header.style.backgroundImage = 'none';
+        header.style.backgroundColor = 'transparent';
         header.style.height = '6vh';
     } else {
-        header.style.backgroundImage = `linear-gradient(${palette[activePalette].primary_l} , ${palette[activePalette].primary_d})`;
+        header.style.backgroundColor = palette[activePalette].primary_d;
         header.style.height = '4vh';
     }
 
