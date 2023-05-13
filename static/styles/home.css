@@ -83,7 +83,8 @@ footer {
     height: 10vh;
     padding: 1%;
     text-align: center;
-    top: 360vh;
+    margin-top: 20vh;
+    top: auto;
     left: 0;
 }
 
