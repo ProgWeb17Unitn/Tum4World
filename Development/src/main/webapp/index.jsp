@@ -1,3 +1,6 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page session="false"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,11 +9,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tum4World</title>
     <link rel="icon" type="image/x-icon" href="">
-    <link rel="stylesheet" href="styles/home.css">
-    <script src="tmp.js"></script>
+    <link rel="stylesheet" href="static/styles/home.css">
+    <script src="static/scripts/tmp.js"></script>
     <style></style>
 </head>
 
+<!-- Aggiunta condizionale del Cookie Banner-->
+<% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
+<%@ include file="static/assets/cookies/CookieBanner.html" %>
+<% } %>
 <body>
 
 <header>
@@ -46,7 +53,7 @@
         Il logo rappresenta dunque l'anima della nostra associazione, fondata sulla collaborazione, la dedizione e l'amore per gli animali che da sempre l'hanno accompagnata
     </p>
 
-    <img id="mainImg" src="assets/images/homepage.png" alt="image">
+    <img id="mainImg" src="static/assets/images/homepage.png" alt="image">
 
     <h2 class="coloredText">I nostri clienti</h2>
     <p class="coloredText">
@@ -68,8 +75,8 @@
         <p>This is a quote!</p>
         <img id="helper" alt="helper">
         <audio>
-            <source src="assets/sounds/parrot.ogg">
-            <source src="assets/sounds/parrot.mp3">
+            <source src="static/assets/sounds/parrot.ogg">
+            <source src="static/assets/sounds/parrot.mp3">
         </audio>
     </div>
     <img src="" alt="switch theme" id="themeSwitcher">

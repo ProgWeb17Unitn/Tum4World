@@ -76,7 +76,7 @@ page.load = function () {
 //    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
 //        page.switchStyle(2);
 //    else
-        page.switchStyle(1);
+    page.switchStyle(1);
 }
 
 // controlla se viene aggiornato il tema predefinito del browser
@@ -114,12 +114,12 @@ page.switchStyle = function (n) {
     const quote = document.getElementById('quotes').getElementsByTagName('p')[0];
 
     // cambia logo, icone ed immagine di sfondo
-    icon.setAttribute('href', `assets/${palette.path}/icon.svg`);
-    logo.setAttribute('src', `assets/${palette.path}/logo.svg`);
-    helper.setAttribute('src', `assets/${palette.path}/icon.svg`);
-    hamburger.setAttribute('src', `assets/${palette.path}/hamburger.svg`);
-    themeSwitcher.setAttribute('src', `assets/${palette.path}/themeSwitcher.svg`);
-    background.style.backgroundImage = `url(assets/${palette.path}/background.jpg)`;
+    icon.setAttribute('href', `static/assets/${palette.path}/icon.svg`);
+    logo.setAttribute('src', `static/assets/${palette.path}/logo.svg`);
+    helper.setAttribute('src', `static/assets/${palette.path}/icon.svg`);
+    hamburger.setAttribute('src', `static/assets/${palette.path}/hamburger.svg`);
+    themeSwitcher.setAttribute('src', `static/assets/${palette.path}/themeSwitcher.svg`);
+    background.style.backgroundImage = `url(static/assets/${palette.path}/background.jpg)`;
 
     // cambia il box delle citazioni
     quote.style.backgroundColor = palette[palette.active].tertiary;

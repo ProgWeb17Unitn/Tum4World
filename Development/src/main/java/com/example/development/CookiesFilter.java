@@ -1,4 +1,4 @@
-package com.example.cookies2;
+package com.example.development;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
@@ -17,15 +17,15 @@ public class CookiesFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
-        // l'attributo false impedisce di creare la session se non
-
+        // l'attributo false impedisce di creare la session se non esiste
+        //System.out.println("Filtering");
         if (session == null) {
             request.setAttribute("formNeeded",true);
             // il parametro formNeeded fa si che nel file JSP venga aggiunto il cookie Banner
+            //System.out.println("Session Creation");
         }
 
         chain.doFilter(request, response);

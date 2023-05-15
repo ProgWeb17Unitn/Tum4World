@@ -1,4 +1,4 @@
-package com.example.cookies2;
+package com.example.development;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +22,8 @@ public class SessionManager extends HttpServlet {
         3)Tecnici
         4)Tutti (JSESSION ID salvato automaticamente dal browser)
          */
+        //System.out.println("Managing Sessions");
         String scelta = request.getParameter("opzione");
-        System.out.println(scelta);
 
         HttpSession session = request.getSession();
         String origin = request.getHeader("referer");
@@ -48,7 +48,6 @@ public class SessionManager extends HttpServlet {
                -Aggiungo il session ID "manualmente" all'URL
                -Rimuovo i cookies creati di default settando il l'expire a -1
              */
-            System.out.println("Disattivati");
 
             // controllo che la rescrizione dell'URL non sia già avvenuta a causa della
             // disattivazione nel browser

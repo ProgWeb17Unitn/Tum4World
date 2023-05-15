@@ -5,7 +5,7 @@
          version="4.0">
     <filter>
         <filter-name>MyFilter</filter-name>
-        <filter-class>com.example.cookies2.CookiesFilter</filter-class>
+        <filter-class>com.example.development.CookiesFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>MyFilter</filter-name>

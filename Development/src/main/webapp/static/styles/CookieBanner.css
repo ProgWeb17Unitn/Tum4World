@@ -1,13 +1,12 @@
 
-h2{
-    font-family: "Lucida Handwriting", serif;
+.CookieTitle{
     font-size: 120%;
 }
-p, a{
+.RectangularBanner > p,a{
     font-size: 100%;
 }
 
-img {
+.CookieIcon {
     position: relative;
     width:10%;
     margin: 3% 0 0 92%;
@@ -44,13 +43,13 @@ img {
     padding: 2%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     margin-top: 2%;
+    z-index: 9999;
 }
-form{
+.CookieForm{
     margin-top:2%;
     display: flex;
 }
-
-form button{
+.CookieForm button{
     margin-right: 2%;
     font-size: 100%;
     color:white;
@@ -60,13 +59,13 @@ form button{
     border: 0.1em solid #c26f22;
     border-radius: 3%;
 }
-form button:hover{
+.CookieForm button:hover{
     background-color: #c26f22;
     cursor: pointer;
 }
 
 
-.RectangularBanner:after {
+.CookieForm button:after {
     /* Creo il triangolo con uno pseudo elemento: */
     content: ""; /* Contenuto dell'elemnto è vuoto*/
     position: absolute;
