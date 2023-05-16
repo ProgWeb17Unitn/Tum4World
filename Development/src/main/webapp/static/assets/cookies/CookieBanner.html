@@ -1,23 +1,22 @@
-    <head>
-    <title>Pizzeria</title>
-        <link rel="stylesheet" type="text/css" href="static/styles/CookieBanner.css">
+<head>
+    <link rel="stylesheet" href="static/assets/cookies/CookieBanner.css">
 </head>
 
 <div class="CookieBanner">
     <div class="RectangularBanner">
-        <h2 class="CookieTitle"> Cookies</h2>
+        <h2> Cookies</h2>
         <p>Our website uses cookies to improve your browsing experience.
-        These small text files are stored on your device and help us remember your preferences and settings,
-        making your visit more efficient and personalized.
-        By continuing to browse, you consent to our use of cookies. For more information,
-        please see our privacy policy.</p>
-        <a href="CookiePrivacy.html">Cookie Policy</a>
-        <form class="CookieForm" method="POST" action="SessionManager">
+            These small text files are stored on your device and help us remember your preferences and settings,
+            making your visit more efficient and personalized.
+            By continuing to browse, you consent to our use of cookies. For more information,
+            please see our privacy policy.</p>
+        <a href="./CookiePrivacy.html">Cookie Policy</a>
+        <form method="POST" action="SessionManager">
             <!-- Se si utilizza lo stesso name per tutti i campi di una form essi diventanto esclusivi -->
             <button type="submit" name="opzione" value="Disattivati">Disattivati</button>
             <button type="submit" name="opzione" value="Tecnici">Tecnici</button>
             <button type="submit" name="opzione" value="Tutti" >Tutti</button>
         </form>
     </div>
-    <img src="static/assets/images/Cookie.svg" class="CookieIcon">;
+    <img src="static/assets/cookies/CookieOLD.svg">
 </div>

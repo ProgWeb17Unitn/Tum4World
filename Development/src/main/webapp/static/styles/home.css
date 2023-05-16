@@ -157,10 +157,10 @@ footer>p {
 }
 
 #themeSwitcher {
-    height: 5%;
-    position: fixed;
-    bottom: 3vh;
-    right: 20px;
+    height: 35%;
+    position: relative;
+    bottom: 15%;
+    left: 47%;
 }
 
 #themeSwitcher:hover {

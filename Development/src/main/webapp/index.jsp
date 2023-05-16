@@ -31,10 +31,6 @@
     <img src="" alt="☰" id="hamburger">
 </header>
 
-<!-- Aggiunta condizionale del Cookie Banner-->
-<% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
-<%@ include file="static/assets/cookies/CookieBanner.html" %>
-<% } %>
 
 <main>
 
@@ -72,6 +68,10 @@
 </main>
 
 <footer class="coloredText">
+    <!-- Aggiunta condizionale del Cookie Banner-->
+    <% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
+    <%@ include file="static/assets/cookies/CookieBanner.html" %>
+    <% } %>
     <p>Tum4World<br>
         Via temporanea, 156<br>
         Trento (17000), Italia</p>
