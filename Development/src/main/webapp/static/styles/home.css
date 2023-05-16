@@ -114,6 +114,9 @@ nav a {
 }
 
 footer {
+    display:flex;
+    flex-direction:column;
+    bottom:0;
     height: 15vh;
     width: 100%;
     text-align: center;
