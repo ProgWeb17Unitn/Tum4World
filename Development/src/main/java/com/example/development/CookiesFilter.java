@@ -27,7 +27,6 @@ public class CookiesFilter implements Filter {
             // il parametro formNeeded fa si che nel file JSP venga aggiunto il cookie Banner
             //System.out.println("Session Creation");
         }
-
         chain.doFilter(request, response);
     }
 }

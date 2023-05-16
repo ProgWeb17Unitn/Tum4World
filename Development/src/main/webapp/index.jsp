@@ -14,10 +14,7 @@
     <style></style>
 </head>
 
-<!-- Aggiunta condizionale del Cookie Banner-->
-<% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
-<%@ include file="static/assets/cookies/CookieBanner.html" %>
-<% } %>
+
 <body>
 
 <header>
@@ -34,7 +31,14 @@
     <img src="" alt="☰" id="hamburger">
 </header>
 
+<!-- Aggiunta condizionale del Cookie Banner-->
+<% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
+<%@ include file="static/assets/cookies/CookieBanner.html" %>
+<% } %>
+
 <main>
+
+
     <h2 class="coloredText" id="index">Benvenuto a Tum4World</h2>
     <p class="coloredText">
         Tum4World è un'organizzazione senza scopo di lucro impegnata nella conservazione e nella protezione di diverse specie di pappagalli osservabili attraverso tutto il globo<br><br>
@@ -83,6 +87,7 @@
 </footer>
 
 </body>
+
 
 <script>
     page.load();
