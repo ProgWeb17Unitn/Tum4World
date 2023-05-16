@@ -1,6 +1,6 @@
-/*::-webkit-scrollbar {*/
-/*    display: none;*/
-/*}*/
+::-webkit-scrollbar {
+    display: none;
+}
 
 body {
     margin: 20vh 0 0;
