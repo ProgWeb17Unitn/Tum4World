@@ -34,4 +34,6 @@ window.onscroll = function () {
         image.style.marginTop = '10vh';
         image.style.marginBottom = '20vh';
     }
+
+    baseOnscroll();
 };

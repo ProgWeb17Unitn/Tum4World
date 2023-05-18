@@ -65,7 +65,7 @@
 
 <!-- Aggiunta condizionale del Cookie Banner-->
     <% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
-    <%@ include file="static/assets/cookies/CookieBanner.html" %>
+    <%@ include file="static/cookieBanner.html" %>
     <% } %>
 
 <%@ include file="static/footer.html" %>
@@ -74,7 +74,6 @@
 
 <script>
     page.load();
-    quotes.init();
 </script>
 
 </html>

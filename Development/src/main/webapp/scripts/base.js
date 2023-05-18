@@ -1,5 +1,5 @@
 page = {};
-theme = {}
+theme = {};
 theme.backgroundColor = '#2D728F';
 menu = {};
 menu.status = 'closed';
@@ -34,9 +34,9 @@ theme.switch = function (n) {
 
     // cambia logo, icone ed immagine di sfondo
     if (hamburger)
-        hamburger.setAttribute('src', `../assets/themes/${theme.active}/hamburger.svg`);
+        hamburger.setAttribute('src', `assets/themes/${theme.active}/hamburger.svg`);
     if (themeSwitcher)
-        themeSwitcher.setAttribute('src', `../assets/themes/${theme.active}/themeSwitcher.svg`);
+        themeSwitcher.setAttribute('src', `assets/themes/${theme.active}/themeSwitcher.svg`);
 }
 
 
@@ -158,7 +158,7 @@ menu.close = function () {
     menu.status = 'closed';
 }
 
-window.onscroll = function () {
+baseOnscroll = function () {
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
 
@@ -187,11 +187,13 @@ window.onscroll = function () {
 }
 
 // aggiunge funzionalità al pulsante hamburger in modalità portrait
-document.getElementById('hamburger').addEventListener('click', function () {
-    // quando viene cliccato, viene aperto il menu se chiuso
-    // e viene chiuso se aperto
-    if (menu.status === 'closed')
-        menu.open();
-    else
-        menu.close();
-});
+const hamburger = document.getElementById('hamburger');
+if (hamburger)
+    hamburger.addEventListener('click', function () {
+        // quando viene cliccato, viene aperto il menu se chiuso
+        // e viene chiuso se aperto
+        if (menu.status === 'closed')
+            menu.open();
+        else
+            menu.close();
+    });
