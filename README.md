@@ -23,9 +23,9 @@ Tomcat Web application:
 All'interno della cartella src/main vi sono due catelle principali:
 * java -> contiene la parte di Back-End puro quali i filtri e la gestione delle servlets
 * web-app -> contiene a sua volta:
-    * static ->
-        * assets ->  immagini/suoni
-        * scripts -> JavaScript
-        * syles -> CSS
-    * WEB-INF -> conteien il file web.xml
+    * static -> documenti html
+    * assets -> immagini/suoni
+    * scripts -> script JavaScript
+    * syles -> file CSS
+    * WEB-INF -> contiene il file web.xml
     * index.jsp
