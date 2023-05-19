@@ -2,14 +2,14 @@
 <%@ page session="false"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tum4World</title>
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
     <link rel="stylesheet" href="styles/layouts/homepage.css">
     <link id="theme" rel="stylesheet" href="styles/themes/dark/homepage.css">
+    <link rel="stylesheet" href="styles/layouts/base.css">
     <script src="scripts/base.js"></script>
     <script src="scripts/homepage.js"></script>
 </head>

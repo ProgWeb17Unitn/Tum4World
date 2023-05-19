@@ -1,6 +1,6 @@
 quotes = {};
 quotes.interval = 0;
-
+//DEBUG console.log("footer.js called");
 // aggiunge funzionalità al pappagallo in basso a sinistra
 const helper = document.getElementById('helper');
 helper.addEventListener('click', function () {
@@ -26,7 +26,7 @@ helper.addEventListener('click', function () {
 });
 
 quotes.init = function (){
-
+    //DEBUGconsole.log("Quotes init called");
     // inizializza le quotes
     // sarà aggiornata
     quotes[0] = 'questa frase è una frase';
@@ -51,3 +51,4 @@ quotes.generate = function (){
         box.style.marginBottom = '1vh';
     }, 1000);
 }
+document.addEventListener("DOMContentLoaded", quotes.init());

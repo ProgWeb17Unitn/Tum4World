@@ -2,17 +2,6 @@
     display: none;
 }
 
-body {
-    margin: 20vh 0 0;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 main {
     display: flex;
