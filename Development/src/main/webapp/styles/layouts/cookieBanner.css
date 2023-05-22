@@ -14,11 +14,11 @@
 .CookieBanner img {
     position: relative;
     width:8%;
-    margin: 4% 0 0 92%;
     height:auto;
+    margin-top: 10px;
     /*Creo un animazione chiamata spin dalla durata di 2 secondi ripetuta due volte*/
     animation-name: spin;
-    animation-duration: 2000ms;
+    animation-duration: 3000ms;
     animation-iteration-count: 5;
 }
 
@@ -31,8 +31,12 @@
     }
 }
 .CookieBanner{
+    /* Uso grid per allineare il rettangolo, il triangolo e l'immagine su un unica colonna*/
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: end;
     position: fixed;
-    bottom: 2%;
+    bottom: 1%;
     right: 1%;
     font-size: 60%;
     width: 30vw;
@@ -77,7 +81,6 @@
     width: 0;
     height: 0;
     position: relative;
-    left: 93%;
     border-left: 1.5em solid transparent;
     border-top: 1.5em solid #39728F;
     border-right: 1.5em solid transparent;
