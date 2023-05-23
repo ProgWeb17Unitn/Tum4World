@@ -26,7 +26,7 @@ theme.switch = function (n) {
     else
         theme.backgroundColor = '#2D728F'; //todo admin colors
 
-    document.getElementById('theme').setAttribute('href', `styles/themes/${theme.active}/homepage.css`);
+    //document.getElementById('theme').setAttribute('href', `styles/themes/${theme.active}/homepage.css`);
 
     // elementi da modificare
     const hamburger = document.getElementById('hamburger');
@@ -159,6 +159,7 @@ menu.close = function () {
 }
 
 baseOnscroll = function () {
+    console.log('HERE');
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
 
@@ -188,7 +189,7 @@ baseOnscroll = function () {
 
 // aggiunge funzionalità al pulsante hamburger in modalità portrait
 const hamburger = document.getElementById('hamburger');
-if (hamburger)
+if (hamburger) {
     hamburger.addEventListener('click', function () {
         // quando viene cliccato, viene aperto il menu se chiuso
         // e viene chiuso se aperto
@@ -197,3 +198,4 @@ if (hamburger)
         else
             menu.close();
     });
+}

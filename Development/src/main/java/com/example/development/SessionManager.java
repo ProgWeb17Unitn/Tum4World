@@ -52,6 +52,7 @@ public class SessionManager extends HttpServlet {
             // controllo che la rescrizione dell'URL non sia già avvenuta a causa della
             // disattivazione nel browser
             if(Objects.equals(encodedURL, origin)){
+                System.out.println("HERE");
                 String JSESSIONID=session.getId();
                 encodedURL =encodedURL +"JSESSIONID="+JSESSIONID;
 
