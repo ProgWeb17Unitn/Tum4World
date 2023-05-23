@@ -24,7 +24,7 @@ quotes.animation = function() {
         // ripristina l'attributo originale
         setTimeout(function () {
             helper.style.marginLeft = '0';
-        }, 20000)
+        }, 500)
     });
 };
 
@@ -52,7 +52,7 @@ quotes.generate = function (){
     box.style.marginBottom = '2vh';
     setTimeout(function (){
         box.style.marginBottom = '1vh';
-    }, 200);
+    }, 1000);
 };
 document.addEventListener("DOMContentLoaded", function() {
     quotes.init();
