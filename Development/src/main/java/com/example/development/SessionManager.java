@@ -17,7 +17,7 @@ public class SessionManager extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /*
         Il Banner è stato inviato, ho 4 opzioni:
-        1)Scelta qualsiasi ma cookies disattivati dal browser --> utilizzo URL Rewritinf
+        1)Scelta qualsiasi ma cookies disattivati dal browser --> utilizzo URL Rewriting
         2)Disattivati ma cookies abilitati nel browser
         3)Tecnici
         4)Tutti (JSESSION ID salvato automaticamente dal browser)

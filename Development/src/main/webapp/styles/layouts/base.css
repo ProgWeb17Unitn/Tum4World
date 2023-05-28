@@ -10,5 +10,6 @@ body {
     justify-content: center;
     align-items: center;
     color: #F5EE9E;
+    scrollbar-width: none;
 }
 
