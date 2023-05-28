@@ -27,6 +27,17 @@ public class CookiesFilter implements Filter {
             // il parametro formNeeded fa si che nel file JSP venga aggiunto il cookie Banner
             //System.out.println("Session Creation");
         }
+        else{
+            /*
+                Per capire meglio questa sezione guardare prima SessionManager.
+                Con i cookies disattivati vi è il problema dell'avere il jsessionid nell'URL. A lezione
+                abbiamo visto la soluzione per le servlet in cui utilizzavamo encodeURL e poi tramite il meccanismo di include/forward
+                il jsession id "rimaneva" parte dell'URL. Se però il passaggio avviene "direttamente" come nella maggior parte dei casi
+                cliccando su un anchor per raggiungere su un altra pagina allora il jsession id verrebbe perso.
+                Perciò quando è necessario il filtro lo aggiunge "manualmente"
+             */
+            //String origin = httpRequest.getHeader("referer");
+        }
         chain.doFilter(request, response);
     }
 }
