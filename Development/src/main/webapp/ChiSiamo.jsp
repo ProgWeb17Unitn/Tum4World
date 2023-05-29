@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="styles/layouts/base.css">
     <link rel="stylesheet" href="styles/layouts/ChiSiamo.css">
     <script src="scripts/base.js"></script>
-    <!--- Inserisci qui i tuoi file css e i tuoi file jsp--->
+    <script src="scripts/ChiSiamo.js"></script>
 
 </head>
 
 <body>
 <%@ include file="static/header.html" %>
-<!--- Inserisci qui il tuo codice HTML--->
 
     <div class="vertical-line"></div>
+    <div class="cerchio"></div>
 
     <div class="flexbox-container">
 

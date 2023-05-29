@@ -46,14 +46,6 @@
     flex: 0 0 33%; /*They need to occupy the same space (30%)*/
 }
 
-.vertical-line {
-    position: absolute;
-    top: 20vh; /* stessa posizione del flexbox container */
-    right: 50%;
-    border: 8px solid white;
-    border-radius: 8px;
-    height: 100%;
-}
 .images{
     height: auto;
     max-width:100%;
@@ -83,4 +75,26 @@
     border-radius: 3px;
     background-color: #a23327;
     font-size: larger;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 20vh; /* stessa posizione del flexbox container */
+    right: 50%;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    border-radius: 8px;
+    height: 100%;
+}
+.cerchio{
+    position:fixed;
+    top: 20vh;
+    height: 30px;
+    width: 30px;
+    background-color: #2D728F;
+    border: 2px solid #F5EE9E;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 -3px 3px #376683; /*box-shadow: h-offset v-offset blur  color */
+    transition: all 0.1s ease-in-out; /* tran*/
 }
