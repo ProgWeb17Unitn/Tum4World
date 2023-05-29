@@ -19,26 +19,53 @@
 <%@ include file="static/header.html" %>
 <!--- Inserisci qui il tuo codice HTML--->
 
-<div class="flexbox-container">
-    <div class="colonna" id="colonnaSX">
-        <img src="assets/images/ChiSiamo/imgSX1.png" class="images" id="imgSX1">
-    </div>
-
     <div class="vertical-line"></div>
 
-    <div class="colonna" id="colonnaDX">
-        <div class="cartoon" id="cartoonDX1">
-            <div class="Triangle"></div>
-            <div class="Rectangle">
-                <p>La nostra storia inizia nel 2001, con 2 protagonisti ed 1 città: Betty Powell, John e Manaus.
-                    Betty, una vivace signora di 84 anni, si trasferisce nel 1990 a Manaus, città alle porte della
-                    maestosa Foresta Amazzonica. Il suo amore per la natura e le escursioni l'ha fatta incontrare con
-                    John, un esemplare maestoso di Ara Scarlatta ferito ad un'ala. Decise così di portarlo a casa e costruire
-                    un recinto per curarlo. Da lì in poi il numero di amici che hanno trovato un rifugio è sempre aumentato... </p> </div>
+    <div class="flexbox-container">
+
+        <div class="flex-Container-element" id="flex-element1">
+
+            <div class="elementoSX" id="elementoSX1">
+                <img src="assets/images/ChiSiamo/imgSX1.png" class="images" id="imgSX1">
+            </div>
+
+            <div class="elementoDX" id="colonnaDX1">
+                <div class="cartoon" id="cartoonDX1">
+                    <div class="Triangle"></div>
+                    <div class="Rectangle">
+                        <p>La nostra storia inizia nel 2001, con 2 protagonisti ed 1 città: Betty Powell, John e Manaus.
+                            Betty, una vivace signora di 84 anni, si trasferisce nel 1990 a Manaus, città alle porte della
+                            maestosa Foresta Amazzonica. Il suo amore per la natura e le escursioni l'ha fatta incontrare con
+                            John, un esemplare maestoso di Ara Scarlatta ferito ad un'ala. Decise così di portarlo a casa e costruire
+                            un recinto per curarlo. Da lì in poi il numero di amici che hanno trovato un rifugio è sempre aumentato... </p> </div>
+                </div>
+            </div>
+
         </div>
+
+        <div class="flex-Container-element" id="flex-element2">
+
+            <div class="elementoSX" id="elementoSX2">
+                <img src="assets/images/ChiSiamo/imgSX1.png" class="images" id="imgSX2">
+            </div>
+
+            <div class="elementoDX" id="colonnaDX2">
+                <div class="cartoon" id="cartoonDX2">
+                    <div class="Triangle"></div>
+                    <div class="Rectangle">
+                        <p>La nostra storia inizia nel 2001, con 2 protagonisti ed 1 città: Betty Powell, John e Manaus.
+                            Betty, una vivace signora di 84 anni, si trasferisce nel 1990 a Manaus, città alle porte della
+                            maestosa Foresta Amazzonica. Il suo amore per la natura e le escursioni l'ha fatta incontrare con
+                            John, un esemplare maestoso di Ara Scarlatta ferito ad un'ala. Decise così di portarlo a casa e costruire
+                            un recinto per curarlo. Da lì in poi il numero di amici che hanno trovato un rifugio è sempre aumentato... </p> </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-</div>
+
 
 
 
