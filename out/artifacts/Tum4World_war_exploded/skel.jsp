@@ -16,13 +16,17 @@
 </head>
 
 <body>
-    <%@ include file="static/header.html" %>
+<%@ include file="static/header.html" %>
+<!--- Inserisci qui il tuo codice HTML
+      NOTA BEME: il div esterno deve avere un id="index"--->
 
-    <h3>Grazie di averci contatto!<br>
-    Riceverà il prima possibile una risposta al suo indirizzo email</h3>
 
 
-    <%@ include file="static/footer.html" %>
+
+
+
+
+<%@ include file="static/footer.html" %>
 </body>
 
 <!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSARIO-->

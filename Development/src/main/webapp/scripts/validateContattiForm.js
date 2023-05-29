@@ -1,135 +1,54 @@
 function validateData(){
-    let form = document.forms.namedItem("formSignUp");
 
+    let form = document.forms.namedItem("formContatti");
     let valido = true;
+    let stringaRitorno = "";
 
     if(form["nome"].value === ""){
-        alert("nome vuoto");
+        stringaRitorno += "Specificare nome e cognome\n";
         valido = false;
-    }
-
-    if(form["cognome"].value === ""){
-        alert("cognome vuoto");
-        valido = false;
-    }
-
-    if(form["dataNascita"].value === ""){
-        alert("data di nascita vuoto");
-        valido = false;
-    }
-    else{
-        let dataOggi = new Date();
-        let dataNascita = Date.parse(form["dataNascita"].value);
-        let msAnno = 1000 * 60 * 60 * 24 * 365.24; // ms in un anno (un anno = 365.24 giorni per calcolare anni bisestili)
-        let anni = Math.floor(dataOggi - dataNascita) / msAnno;
-
-        if(anni < 18){
-            alert("minorenne: " + anni);
-        }
     }
 
     if(form["email"].value === ""){
-        alert("email vuoto");
+        stringaRitorno += "Specificare indirizzo email\n";
+        valido = false;
+    }else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form["email"].value))){
+        stringaRitorno += "Indirizzo email non valido\n";
         valido = false;
     }
 
-    if(form["telefono"].value === ""){
-        alert("telefono vuoto");
+    if(form["motivo"].value === ""){
+        stringaRitorno += "Specificare motivazione\n";
         valido = false;
     }
 
-    if(form["tipo"].value === ""){
-        alert("tipo vuoto");
+    if(form["dettagli"].value === ""){
+        stringaRitorno += "Specificare ulteriori dettagli\n";
         valido = false;
     }
 
-    if(form["username"].value === ""){
-        alert("username vuoto");
-        valido = false;
+    if(valido){
+        //Invio email con protocollo SMTP
+        //L'oggetto della mail è il motivo ed il contenuto sono i dettagli
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username : "tum4world@nessunonoluogonoesiste.com",
+            Password : "12345678",  //Password della mail tum4world
+            To : 'form[\"email\"].value',
+            From : "tum4world@nessunonoluogonoesiste.com",
+            Subject : "form[\"motivo\"].value",
+            Body : "form[\"dettagli\"].value",
+        });
+
+        //Reindirizzamento a pagina Invio Confermato
+        window.location.replace("./invioConfermato.jsp");
+    }else{
+        alert(stringaRitorno);
     }
 
-    // da sistemare, con tutti questi nested if non si capisce molto il flow del controllo password
-    if(form["password"].value === ""){
-        alert("password vuoto");
-        valido = false;
-    }
-    else if(form["passwordConferma"].value === ""){
-        alert("conferma password vuoto");
-        valido = false;
-    }
-    else{ // password e passwordConferma sono fillati
-
-        if(form["password"].value === form["passwordConferma"].value){
-            // controllo requisiti password
-            // array di caratteri che la password deve contenere
-            let requisiti = ["mM", "rR", "0123456789", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "$!?"];
-
-            let password = Array.from(form["password"].value) // converte la password in char array
-
-            // questo si potrebbe fare meglio e dare un errrore specifico per ogni requisito non rispettato
-            // per ogni requisito
-            let valida = requisiti.every(requisito => {
-                // almeno un elemento del requisito
-                return Array.from(requisito).some(elemento => {
-                    // deve essere contenuto nella password
-                    return password.includes(elemento);
-                })
-            });
-
-            if(!valida){
-                alert("password non rispetta i requisiti");
-                valido = false;
-            }
-
-            if(form["password"].value.length < 8){
-                alert("password deve essere lunga almeno 8 caretteri");
-            }
-
-
-        }
-        else{ // password e password conferma sono diverse
-            alert("password conferma diversa da password inserita");
-            valido = false;
-        }
-
-        if(valido){
-            makeQuery();
-        }
-    }
 }
 
-function makeQuery(){
-    let form = document.forms.namedItem("formSignUp");
 
-    let xhttp = new XMLHttpRequest();
-    let url = "elaboraSignUp";
-    let params =
-        "nome=" + form["nome"].value + "&" +
-        "cognome=" + form["cognome"].value + "&" +
-        "dataNascita=" + form["dataNascita"].value + "&" +
-        "email=" + form["email"].value + "&" +
-        "telefono=" + form["telefono"].value + "&" +
-        "tipo=" + form["tipo"].value + "&" +
-        "username=" + form["username"].value + "&" +
-        "password=" + form["password"].value;
-
-    console.log(url+"?"+params)
-
-
-    xhttp.open("GET", url + "?" + params, true);
-
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4){
-            if(this.status == 200){
-
-            }
-            else if(this.status == 409){
-                // gestisci errori
-                alert("utente esiste gia");
-            }
-
-        }
-    }
-
-    xhttp.send();
+function resetData(){
+    document.getElementById("formContatti").reset();
 }

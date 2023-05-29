@@ -1,0 +1,16 @@
+body {
+    background-image: url("../../../assets/themes/dark/background.jpg");
+}
+
+.coloredText {
+    color: #F5EE9E;
+}
+
+#download {
+    background-color: #AB3428;
+}
+
+#download:hover {
+    background-color: #F49E4C;
+}
+

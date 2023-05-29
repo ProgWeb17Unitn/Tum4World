@@ -1,0 +1,44 @@
+footer {
+    height: 15vh;
+    width: 100%;
+    text-align: center;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer>p {
+    margin: 2vh;
+    font-size: smaller;
+}
+
+#quotes {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 20vh;
+    height: min-content;
+    padding: 1%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+#helper {
+    flex-grow: 0;
+    height: 10vh;
+    width: 10vh;
+    transform: scaleX(-1);
+    transition: margin-left 0.2s;
+}
+
+#quotes>p {
+    border-radius: 10px;
+    padding: 5%;
+    text-align: left;
+    height: inherit;
+    width: inherit;
+    flex-grow: 10;
+    margin-bottom: 1vh;
+    transition: ease-in-out margin-bottom 1000ms;
+}

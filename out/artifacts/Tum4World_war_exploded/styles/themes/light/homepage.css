@@ -1,0 +1,16 @@
+body {
+    background-image: url("../../../assets/themes/light/background.jpg");
+}
+
+.coloredText {
+    color: #063042;
+}
+
+#download {
+    background-color: #F5EE9E;
+}
+
+#download:hover {
+    background-color: #3B8EA5;
+}
+
