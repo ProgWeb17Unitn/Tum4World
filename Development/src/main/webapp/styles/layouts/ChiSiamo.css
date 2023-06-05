@@ -16,15 +16,14 @@
     - La vignetta è un flexbox semplice per riga composto da triangolo + rettangolo
  */
 .flexbox-container {
+    position: relative;
     flex: 1; /* Utilizzo tutto lo spazio del body */
     display: flex; /* Uso il flex disposition così da allineare colonnaSx linea, colonnaDX. NB: di default è orizzontale */
     flex-direction: column;
     justify-content: center; /* In questo modo sono centrati (rispetto al cross axis X e la linea risulta perfettamente al centro dello schermo */
     align-items: center;  /* Il default è stratch, centro gli elementi verticalmente */
-    top: 20vh;
-    left: 5%; /* Lascio un margina a Sx e DX */
     width:90%; /* Così 90+5+5 è centrato */
-    /* border: 10px solid black; */
+    /*border: 10px solid black;*/
 }
 .flex-Container-element{
     /*Elemento= Foto o Cartoon, disposti verticalmente all'interno del flexbox-container */
@@ -32,8 +31,11 @@
     justify-content: center; /* Elementi al centro (asse X) */
     align-items: center; /* Elementi al centro (asse Y) */
     display: flex;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
     /* border: 3px solid #834242; */
+}
+#flex-element4{
+    margin-bottom: 5%;
 }
 .elementoSX{
     margin-right: 5%;
@@ -51,15 +53,20 @@
     max-width:100%;
 }
 
+#imgSX2{
+    width:80%;
+    height:auto;
+}
 
 .cartoon{
     /* Container del rettangolo + triangolo*/
-    Height: auto;
+    height: auto;
     display: flex;
     /* border: 4px solid yellow; */
 }
 
-.Triangle{
+
+.TriangleSX{
     /* Stesse impostazioni presenti nel CookieBanner, un po' riviste */
     margin-top:50%; /*Così da averlo in mezzo*/
     bottom: 0;
@@ -69,6 +76,19 @@
     border-top: 1em solid transparent;
     border-bottom: 1em solid transparent;
 }
+
+
+.TriangleDX{
+    /* Stesse impostazioni presenti nel CookieBanner, un po' riviste */
+    margin-top:50%; /*Così da averlo in mezzo*/
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 1em solid #a23327;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+}
+
 .Rectangle{
     padding: 5px;
     border: 3px solid #a23327;
@@ -77,24 +97,43 @@
     font-size: larger;
 }
 
-.vertical-line {
-    position: absolute;
-    top: 20vh; /* stessa posizione del flexbox container */
-    right: 50%;
+
+.lineaVerticale {
+    position: absolute; /* Gli elementi dell'elemento centrale sono uno sopra l'altro e centrati*/
+    left: 50%;
+    transform: translate(-50%, 0); /* Centro rispetto alla sua dimensione*/
     border-left: 10px solid white;
     border-right: 10px solid white;
     border-radius: 8px;
     height: 100%;
 }
 .cerchio{
-    position:fixed;
-    top: 20vh;
+    position: absolute; /* Gli elementi dell'elemento centrale sono uno sopra l'altro e centrati*/
+    left: 50%;
+    top: 10vh;
+    transform: translate(-50%, 0); /* Centro rispetto alla su dimensione*/
     height: 30px;
     width: 30px;
     background-color: #2D728F;
     border: 2px solid #F5EE9E;
     border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 -3px 3px #376683; /*box-shadow: h-offset v-offset blur  color */
-    transition: all 0.1s ease-in-out; /* tran*/
+    box-shadow: 0 -3px 3px #376683; /*box-shadow: h-offset v-offset blur  color *//
+}
+
+
+.personaggi{
+    font-style: italic;
+    color: white;
+}
+.parole{
+    color: white;
+}
+.anni{
+    font-size: x-large;
+    font-weight: bold;
+    color: #96CBD9;
+}
+.numeri{
+    font-weight: bold;
+    color: #5bd529;
 }

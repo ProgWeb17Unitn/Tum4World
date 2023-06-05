@@ -18,6 +18,7 @@ function handleScroll() {
         circle.style.border = "2px solid #F5EE9E";
     }, 200);
     var scrollPosition = window.scrollY;
-    circle.style.transform = "translate(0, calc(50% + " + scrollPosition + "px))";
+    console.log("window.scrollY = " + scrollPosition);
+    circle.style.transform = "translate(-50%, calc(50% + " + scrollPosition + "px))";
 }
 window.addEventListener("scroll", handleScroll);
