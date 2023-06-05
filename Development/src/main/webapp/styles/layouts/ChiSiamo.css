@@ -31,11 +31,11 @@
     justify-content: center; /* Elementi al centro (asse X) */
     align-items: center; /* Elementi al centro (asse Y) */
     display: flex;
-    margin-bottom: 10%;
+    padding-bottom: 10%;
     /* border: 3px solid #834242; */
 }
 #flex-element4{
-    margin-bottom: 5%;
+    padding-bottom: 5%;
 }
 .elementoSX{
     margin-right: 5%;
@@ -62,14 +62,13 @@
     /* Container del rettangolo + triangolo*/
     height: auto;
     display: flex;
+    align-items:center;
     /* border: 4px solid yellow; */
 }
 
 
 .TriangleSX{
     /* Stesse impostazioni presenti nel CookieBanner, un po' riviste */
-    margin-top:50%; /*Così da averlo in mezzo*/
-    bottom: 0;
     width: 0;
     height: 0;
     border-right: 1em solid #a23327;
@@ -80,8 +79,6 @@
 
 .TriangleDX{
     /* Stesse impostazioni presenti nel CookieBanner, un po' riviste */
-    margin-top:50%; /*Così da averlo in mezzo*/
-    bottom: 0;
     width: 0;
     height: 0;
     border-left: 1em solid #a23327;
@@ -90,7 +87,9 @@
 }
 
 .Rectangle{
-    padding: 5px;
+    margin: auto;
+    padding-right: 10px;
+    padding-left: 10px;
     border: 3px solid #a23327;
     border-radius: 3px;
     background-color: #a23327;
@@ -118,6 +117,7 @@
     border: 2px solid #F5EE9E;
     border-radius: 50%;
     box-shadow: 0 -3px 3px #376683; /*box-shadow: h-offset v-offset blur  color *//
+    transition: all 0.5s ease-in-out;
 }
 
 
