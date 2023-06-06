@@ -1,6 +1,7 @@
 var scrollingTimer;
 
 function handleScroll() {
+    baseOnscroll();
     /*
         Durante lo scroll eseguo 2 operazioni:
             1) Cambio lo stile:

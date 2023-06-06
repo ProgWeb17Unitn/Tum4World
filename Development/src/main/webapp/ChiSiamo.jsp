@@ -18,9 +18,7 @@
 <body>
 <%@ include file="static/header.html" %>
 
-
-
-    <div class="flexbox-container">
+    <div class="flexbox-container" id="index">
         <div class="lineaVerticale"></div>
         <div class="cerchio"></div>
 
