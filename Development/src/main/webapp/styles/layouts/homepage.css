@@ -41,12 +41,15 @@ main p {
 
 #download {
     font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
     border: transparent;
     border-radius: 10px;
-    width: 20%;
-    height: 40px;
+    width: max-content;
+    height: max-content;
     margin-top: 20vh;
-    padding: 4px;
+    padding: 6px;
     transition: all 0.4s ease-in-out;
 }
 
