@@ -59,7 +59,7 @@
         Grazie per il tuo sostegno!
     </p>
 
-    <button class="coloredText" id="download" type="button">Scarica volantino</button>
+    <a href="assets/download.pdf" download="volantino" class="coloredText" id="download">Scarica volantino</a>
 
 </main>
 
