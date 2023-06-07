@@ -159,7 +159,6 @@ menu.close = function () {
 }
 
 baseOnscroll = function () {
-    console.log('HERE');
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
 
