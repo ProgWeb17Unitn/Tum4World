@@ -150,9 +150,20 @@ menu.close = function () {
 
     header.style.transition = 'none';
     title.style.alignSelf = 'center';
+
+    /*
     setTimeout(function () {
         header.style.transition = 'ease-in-out background-color 0.6s, ease-out height 0.4s';
     }, 400);
+    */
+
+    // opzione 1
+    header.style.transition = 'ease-in-out background-color 0.4s, ease-out height 0.4s, ease-out padding 0.4s';
+
+
+    /* opzione 2:
+    header.style.transition = 'ease-in-out all 0.4s';
+     */
 
     // modifica lo stile degli elementi per nascondere il menu nav
     header.style.padding = '2%';
