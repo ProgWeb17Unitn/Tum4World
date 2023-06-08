@@ -1,8 +1,8 @@
-page = {};
 theme = {};
 theme.backgroundColor = '#2D728F';
 menu = {};
 menu.status = 'closed';
+page = {};
 
 // controlla se viene aggiornato il tema predefinito del browser
 // e cambia il tema di conseguenza
@@ -52,9 +52,23 @@ page.load = function () {
 
     // aggiunge funzionalità al pulsante per cambiare tema
     const themeSwitcher = document.getElementById('themeSwitcher');
-    if (themeSwitcher)
+    if (themeSwitcher) {
+        console.log('theme switcher found')
         themeSwitcher.addEventListener('click', page.toggleTheme);
-
+    }
+    // aggiunge funzionalità al pulsante hamburger in modalità portrait
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+        console.log('hamburger found')
+        hamburger.addEventListener('click', function () {
+            // quando viene cliccato, viene aperto il menu se chiuso
+            // e viene chiuso se aperto
+            if (menu.status === 'closed')
+                menu.open();
+            else
+                menu.close();
+        });
+    }
 
     // utilizzo lo stile predefinito dal browser
 //    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
@@ -65,7 +79,6 @@ page.load = function () {
 
 window.onresize = function () {
     // chiamata ogni volta che la pagina viene resizata
-
     // chiudo il menu, per evitare comportamenti strani
     menu.close();
 
@@ -173,7 +186,7 @@ baseOnscroll = function () {
     // per fare ciò, utilizzo anche la posizione attuale nella pagina
     let pos = window.scrollY;
 
-    // scalo ed imposto la trasparenza dell'header in base alla posizione dello scroll
+    // scalo ed imposto la  trasparenza dell'header in base alla posizione dello scroll
     // rispetto a ref1
     if (pos < ref) {
         hamburger.style.top = '16px';
@@ -184,17 +197,4 @@ baseOnscroll = function () {
         header.style.backgroundColor = theme.backgroundColor;
         header.style.height = '4vh';
     }
-}
-
-// aggiunge funzionalità al pulsante hamburger in modalità portrait
-const hamburger = document.getElementById('hamburger');
-if (hamburger) {
-    hamburger.addEventListener('click', function () {
-        // quando viene cliccato, viene aperto il menu se chiuso
-        // e viene chiuso se aperto
-        if (menu.status === 'closed')
-            menu.open();
-        else
-            menu.close();
-    });
 }
