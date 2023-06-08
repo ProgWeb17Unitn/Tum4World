@@ -9,7 +9,7 @@
   <title>Tum4World</title>
   <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
   <link rel="stylesheet" href="styles/layouts/base.css">
-  <link rel="stylesheet" href="styles/layouts/ChiSiamo.css">
+  <link rel="stylesheet" href="styles/layouts/Attivita1.css">
   <script src="scripts/base.js"></script>
   <script src="scripts/ChiSiamo.js"></script>
 
@@ -18,6 +18,17 @@
 <body>
 <%@ include file="static/header.html" %>
 
+<div class="galleria">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+  <img class="img-element" src="assets/images/Attivita/Attivita1.jpg">
+</div>
 </body>
 
 <!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSARIO-->

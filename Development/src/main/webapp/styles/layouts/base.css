@@ -11,5 +11,10 @@ body {
     align-items: center;
     color: #F5EE9E;
     scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+}
+/* Nascondo the scrollbar */
+::-webkit-scrollbar {
+    display: none; /* For Chrome and Safari */
 }
 

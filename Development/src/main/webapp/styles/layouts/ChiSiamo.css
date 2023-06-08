@@ -1,9 +1,3 @@
-::-webkit-scrollbar {
-    display: none;
-    /* Rimuovo la scroll-Bar della pagina, per i browser che non supportano questa opzione viene utilizzata
-     scrollbar-width: none; in base.css*/
-}
-
 /*
     La struttura è fatta in questo modo:
     - Il body è flex

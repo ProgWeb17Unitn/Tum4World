@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
         window.location.href = './Attivita2.jsp';
     });
     var immagine3 = document.getElementById('Attivita-img3');
-    immagine1.addEventListener('click', function() {
+    immagine3.addEventListener('click', function() {
         window.location.href = './Attivita3.jsp';
     });
 });
