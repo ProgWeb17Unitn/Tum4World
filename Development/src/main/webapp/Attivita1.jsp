@@ -21,29 +21,54 @@
   <div class="flexbox-container" id="index">
 
     <div class="title"><p>Salvataggio e Riabilitazione</p></div>
-    <div class="descrizione">
-      <p> Testo 1 ejfnsajkdjkdwasjksnafkjnsfdakjn</p>
-    </div>
-    <div class="galleria">
-      <img class="img-element" src="assets/images/Attivita1/1.png" id="img1">
-      <img class="img-element" src="assets/images/Attivita1/2.png">
-      <img class="img-element" src="assets/images/Attivita1/3.png">
-      <img class="img-element" src="assets/images/Attivita1/4.png">
-      <img class="img-element" src="assets/images/Attivita1/5.png">
-      <img class="img-element" src="assets/images/Attivita1/6.png">
-      <img class="img-element" src="assets/images/Attivita1/7.png">
-      <img class="img-element" src="assets/images/Attivita1/1.png">
-      <img class="img-element" src="assets/images/Attivita1/2.png">
-      <img class="img-element" src="assets/images/Attivita1/3.png">
-      <img class="img-element" src="assets/images/Attivita1/4.png">
-      <img class="img-element" src="assets/images/Attivita1/5.png">
-      <img class="img-element" src="assets/images/Attivita1/6.png">
-      <img class="img-element" src="assets/images/Attivita1/7.png">
+
+    <div class="descrizione" id="introduzione">
+        <span class="titoletto">Obbiettivo:</span>
+      <p>
+        La nostra associazione è nata con un obiettivo chiaro: aiutare i pappagalli in difficoltà.
+        Con entusiasmo e determinazione, collaboriamo con i cittadini locali e monitoriamo attentamente gli habitat
+        naturali per individuare e salvare i nostri amici piumati.
+
+      </p>
     </div>
 
-    <div class="descrizione">
-      <p> Testo 2 ejfnsajkdjkdwasjksnafkjnsfdakjn</p>
+    <div class="descrizione" id="salvataggio">
+      <span class="titoletto">Salvataggio:</span>
+      <p>
+        Equipaggiati con furgoni e gabbie, ci dirigiamo tempestivamente verso le zone segnalate per salvare i
+        pappagalli bisognosi. Muniti di retini appositi e di attenzione estrema,
+        li prendiamo con noi e li portiamo al sicuro nel rifugio più vicino.
+      </p>
     </div>
+
+
+    <div class="galleria">
+      <img class="img-element" src="assets/images/Attivita1/attivita1_1.jpg">
+      <img class="img-element" src="assets/images/Attivita1/attivita1_2.jpg">
+      <img class="img-element" src="assets/images/Attivita1/attivita1_3.jpg">
+      <img class="img-element" src="assets/images/Attivita1/attivita1_4.jpg">
+      <img class="img-element" src="assets/images/Attivita1/attivita1_5.jpg">
+    </div>
+
+    <div class="descrizione" id="cura">
+      <span class="titoletto">Riabilitazione:</span>
+      <p>
+        Al nostro rifugio, offriamo cure veterinarie specializzate e vaccinazioni preventive ai pappagalli appena
+        arrivati. Ogni paziente riceve un microchip per monitorare i loro progressi e garantire il loro benessere.
+        Inoltre, promuoviamo la convivenza tra diverse specie, creando un ambiente stimolante che accelera il processo
+        di riabilitazione.
+      </p>
+    </div>
+
+    <div class="descrizione" id="liberazione">
+      <span class="titoletto">Liberazione:</span>
+      <p>
+        Quando i pappagalli sono pronti per affrontare nuovamente il volo, sperimentiamo la gioia più intensa:
+        la liberazione! Grazie alla loro incredibile intelligenza e al forte senso dell'orientamento, se li rilasciamo
+        nel loro habitat originale, sono in grado di riconoscerlo e reintegrarsi rapidamente nella natura.
+      </p>
+    </div>
+
   </div>
 </body>
 

@@ -54,7 +54,7 @@ function scrollGalleriaLoader() {
         });
     }
 
-    setInterval(scrollGalleria, 4000);
+    setInterval(scrollGalleria, 6000);
 
 }
 

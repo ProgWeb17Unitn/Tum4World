@@ -1,4 +1,4 @@
-/* Parte del Layout è preso da Attivita.css */
+/* Parte del Layout è preso da Attivita.css  come il flexbox container e il title*/
 
 .flexbox-container{
     flex: 1;
@@ -26,7 +26,7 @@
 
 .img-element{
     padding-right: 5%;
-    max-width: 28.4%; /*100%-(5%*3)=85% 85/3= 28.3, arrotondo a quello superiore per evitare di avere una porzione di immagine successiva*/
+    width: 28.4%; /*100%-(5%*3)=85% 85/3= 28.3, arrotondo a quello superiore per evitare di avere una porzione di immagine successiva*/
     height: 40vh;
 }
 
@@ -47,10 +47,23 @@
 }
 
 .descrizione{
-    align-self: stretch; /*Testo occupa tutta la lunghezza del flexbox*/
-    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
     background-color: #aa3c46;
 }
 .descrizione p{
     color: white;
+    width: 80%;
 }
+
+
+.titoletto{
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    color: #56E2FF;
+    width: 20%;
+    text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.3);
+}
+
