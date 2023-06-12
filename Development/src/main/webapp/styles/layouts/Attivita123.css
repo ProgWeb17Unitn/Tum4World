@@ -45,6 +45,8 @@
 .img-element{
     padding-right: 5%;
     width: 28.4%; /*100%-(5%*3)=85% 85/3= 28.3, arrotondo a quello superiore per evitare di avere una porzione di immagine successiva*/
+    min-width: 28.4%; /* Firefox ha bisogno delle dimensioni min e max su un flexbox */
+    max-width: 28.4%;
     height: 40vh;
 }
 
