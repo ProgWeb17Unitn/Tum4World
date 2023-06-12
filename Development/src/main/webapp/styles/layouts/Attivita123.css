@@ -76,7 +76,7 @@
     font-size: larger;
     font-weight: bold;
     width: 20%;
-    text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.3);
+    text-shadow: 1px 2px 1px rgba(255, 255, 255, 0.3);
 }
 
 .prossimaAttivita{
@@ -100,7 +100,21 @@
     max-width: 100%;
     height: auto;
 }
+
 #freccia:hover{
     cursor: pointer;
     transform: scale(110%);
+}
+
+.title p{
+    color: #F5EE9E;
+}
+
+.evidenziato{
+    font-weight: bold;
+    color: #F5EE9E;
+}
+
+.descrizione p{
+    color: white;
 }
