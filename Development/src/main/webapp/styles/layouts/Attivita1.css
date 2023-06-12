@@ -1,44 +1,5 @@
-/* Parte del Layout è preso da Attivita.css  come il flexbox container e il title*/
-
-.flexbox-container{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-}
-.galleria {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow-x: auto; /* le immagini possono scrollare orizzonatalmente ma solo per la lunghezza del flexbox */
-    /*nascondo la barra di scroll*/
-    scrollbar-width: none; /* Firefox */
-    scroll-behavior: smooth;
-    -ms-overflow-style: none; /* Internet Explorer e Edge */
-    left: 20%;
-    width: 90%;
-}
-.galleria::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, e Opera */
-}
-
-.img-element{
-    padding-right: 5%;
-    width: 28.4%; /*100%-(5%*3)=85% 85/3= 28.3, arrotondo a quello superiore per evitare di avere una porzione di immagine successiva*/
-    height: 40vh;
-}
-
 .title{
-    align-self: stretch; /*Testo occupa tutta la lunghezza del flexbox*/
-    text-align: center;
     background-color: #aa3c46;
-    border-radius: 3px 3px 0 0; /*smusso solo gli angoli in alto*/
-    padding: 1%;
-    font-size: xx-large;
-    font-weight: bold;
-    text-shadow: 3px 2px 4px rgba(0,0,0,0.3);
     border: 3px solid #F49E4C;
 }
 
@@ -47,23 +8,19 @@
 }
 
 .descrizione{
-    display: flex;
-    align-items: center;
-    width: 100%;
     background-color: #aa3c46;
 }
+
 .descrizione p{
     color: white;
-    width: 80%;
 }
 
 
 .titoletto{
-    text-align: center;
-    font-size: larger;
-    font-weight: bold;
     color: #56E2FF;
-    width: 20%;
-    text-shadow: 2px 2px 1px rgba(255, 255, 255, 0.3);
 }
 
+.evidenziato{
+    font-weight: bold;
+    color: #F5EE9E;
+}

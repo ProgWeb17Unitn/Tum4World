@@ -22,6 +22,8 @@ footer>p {
     position: fixed;
     left: 0;
     bottom: 0;
+    z-index: 9999;
+    /*MB: garantisce che a prescindere dall'implementazioni delle varie pagine non venga sovrapposto*/
 }
 
 #helper {
