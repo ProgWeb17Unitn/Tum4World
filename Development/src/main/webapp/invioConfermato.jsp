@@ -1,6 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page session="false"%>
-<!-- Le sessioni sono gestite tramite filtri e servlets --->
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +13,7 @@
 </head>
 
 <body>
-    <%@ include file="static/header.html" %>
+    <%@ include file="static/header.jsp" %>
 
     <h3>Grazie di averci contatto!<br>
     Riceverà il prima possibile una risposta al suo indirizzo email</h3>
@@ -25,7 +22,7 @@
     <%@ include file="static/footer.html" %>
 </body>
 
-<!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSARIO-->
+<!-- Aggiunta condizionale del Cookie Banner VA SPOSTATO DA QUI-->
 <% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="static/cookieBanner.html" %>
 <% } %>

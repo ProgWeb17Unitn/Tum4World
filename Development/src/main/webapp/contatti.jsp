@@ -1,6 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page session="false"%>
-<!-- Le sessioni sono gestite tramite filtri e servlets --->
 <!DOCTYPE html>
 
 <html>
@@ -17,7 +14,7 @@
     </head>
 
     <body>
-        <%@ include file="static/header.html" %>
+        <%@ include file="static/header.jsp" %>
 
         <h3>I nostri contatti:</h3>
         <p><b>Indirizzo:</b> Via temporanea 156, Trento (17000), Italia<br>
@@ -49,11 +46,6 @@
 
         </form>
 
-
-        <!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSATIO-->
-        <% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
-        <%@ include file="static/cookieBanner.html" %>
-        <% } %>
 
         <%@ include file="static/footer.html" %>
     </body>

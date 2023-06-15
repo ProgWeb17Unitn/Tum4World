@@ -1,5 +1,3 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +14,7 @@
 
 <body>
 
-<%@ include file="static/header.html" %>
+<%@ include file="static/header.jsp" %>
 
 <main>
     <h2 class="coloredText" id="index">Benvenuto a Tum4World</h2>
@@ -66,11 +64,6 @@
 <%@ include file="static/footer.html" %>
 
 </body>
-
-<!-- Aggiunta condizionale del Cookie Banner-->
-<% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
-<%@ include file="static/cookieBanner.html" %>
-<% } %>
 
 <script>
     page.load();

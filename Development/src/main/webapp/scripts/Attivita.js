@@ -15,14 +15,14 @@ window.addEventListener('load', function() {
      */
     var immagine1 = document.getElementById('Attivita-img1');
     immagine1.addEventListener('click', function() {
-        window.location.href = './Attivita1.jsp';
+        window.location.href = './Attivita1';
     });
     var immagine2 = document.getElementById('Attivita-img2');
     immagine2.addEventListener('click', function() {
-        window.location.href = './Attivita2.jsp';
+        window.location.href = './Attivita2';
     });
     var immagine3 = document.getElementById('Attivita-img3');
     immagine3.addEventListener('click', function() {
-        window.location.href = './Attivita3.jsp';
+        window.location.href = './Attivita3';
     });
 });

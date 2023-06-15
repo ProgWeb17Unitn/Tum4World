@@ -1,6 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page session="false"%>
-<!-- Le sessioni sono gestite tramite filtri e servlets --->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +14,7 @@
 </head>
 
 <body>
-<%@ include file="static/header.html" %>
+<%@ include file="static/header.jsp" %>
 
   <div class="flexbox-container" id="index">
 
@@ -91,17 +88,13 @@
 
     <div class="prossimaAttivita">
       <p>Prossima Attività</p>
-      <a href="./Attivita2.jsp"><img src="assets/images/Attivita1/frecciaDestra.svg" alt="Prossima Attività" id="freccia"></a>
+      <a href="<%= response.encodeURL("./Attivita2") %>"><img src="assets/images/Attivita1/frecciaDestra.svg" alt="Prossima Attività" id="freccia"></a>
     </div>
 
   </div>
   <%@ include file="static/footer.html" %>
 </body>
 
-<!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSARIO-->
-<% if ( (request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
-<%@ include file="static/cookieBanner.html" %>
-<% } %>
 
 <script>
   page.load();

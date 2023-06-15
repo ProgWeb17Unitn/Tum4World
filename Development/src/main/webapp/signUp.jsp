@@ -1,6 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page session="false"%>
-<!-- Le sessioni sono gestite tramite filtri e servlets --->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +14,7 @@
 </head>
 
 <body>
-<%@ include file="static/header.html" %>
+<%@ include file="static/header.jsp" %>
 
 <!--- form brutto per provare, poi prendiamo qualche design da codepen --->
 
