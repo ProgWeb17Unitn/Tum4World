@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/layouts/base.css">
     <script src="scripts/base.js"></script>
     <!--- posizione file js sbagliata TODO creare cartella dedicata --->
-    <script type="text/javascript" src="./scripts/validateSignUpForm.js"></script>
+    <script type="text/javascript" src="scripts/validateSignUpForm.js"></script>
 
 
 </head>

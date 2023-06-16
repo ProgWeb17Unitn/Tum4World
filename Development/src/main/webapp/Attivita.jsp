@@ -27,12 +27,13 @@
             volanti! Grazie a segnalazioni dei locali identifichiamo gli esemplari che hanno bisogno di aiuto
             li portiamo nel nostro rifugio pià vicino dove riceveranno le cure mediche adeguate.</p>
         </div>
-        <img class="images" src="assets/images/Attivita/Attivita1.jpg" alt="Salvataggio e Riabilitazione" id="Attivita-img1">
-
+        <div class="fotoAttivita">
+            <a class="fotoTAG" href="<%= response.encodeURL("./Attivita1") %>"><img class="images" src="assets/images/Attivita/Attivita1.jpg" alt="Salvataggio e Riabilitazione" id="Attivita-img1"></a>
+        </div>
     </div>
 
     <div class="attivita" id="attivita2">
-        <img class="images" src="assets/images/Attivita/Attivita2.jpg" alt="Educazione e Sensibilizzazione" id="Attivita-img2">
+        <a class="fotoAttivita" href="<%= response.encodeURL("./Attivita2") %>"><img class="images" src="assets/images/Attivita/Attivita2.jpg" alt="Educazione e Sensibilizzazione" id="Attivita-img2"></a>
         <div class="Rectangle" id="Rectangle2">
             <div class="title-attivita" id="title-attivita2">Educazione e Sensibilizzazione</div>
             <p> Negli anni abbiamo capito che non è possibile salvare il mondo da soli, abbiamo bisogno di aiuto!
@@ -50,7 +51,7 @@
                 della specie, per questo motivo molti dei nostri volontari, aiutati da abitanti ed associazioni amiche si impegnano
                 nella cura dell'ambiente.</p>
         </div>
-        <img class="images" src="assets/images/Attivita/Attivita3.jpg" alt="Prevenzione e Salvaguardia" id="Attivita-img3">
+        <a class="fotoAttivita" href="<%= response.encodeURL("./Attivita3") %>"><img class="images" src="assets/images/Attivita/Attivita3.jpg" alt="Prevenzione e Salvaguardia" id="Attivita-img3"></a>
 
     </div>
 

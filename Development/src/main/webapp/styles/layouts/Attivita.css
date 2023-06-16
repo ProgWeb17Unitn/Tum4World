@@ -54,16 +54,35 @@
     background-color:rgb(208,105,58);
 }
 
-
-.images{
-    width: 50%;
-    height: auto;
+.fotoAttivita{
+    min-width: 50%;
+    max-width: 50%;
+    height: 100%;
     cursor: pointer;
     transition: box-shadow 0.3s;
+    padding: 0;
+    border: 0;
 }
 
-.images:hover{
+.fotoAttivita:hover{
     z-index: 9998; /* Il bordo andrebbe ingrandendosi "sotto" gli altri elmenti, quindi aumento lo z-index
         ma non al max perchè deve essere sotto la nav-bar che ha 9999*/
     box-shadow: 0 0 0 4px white;
 }
+
+.fotoTAG{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display:block; /* ALtrimenti l'immagine non occuperebbe tutto lo spazio dell'anchor*/
+}
+.images{
+    display:block;
+    padding: 0;
+    margin: 0;
+    min-width:100%;
+    max-width: 100%;
+    height: auto;
+}
+

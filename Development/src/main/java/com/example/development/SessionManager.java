@@ -4,7 +4,6 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.Objects;
 
 @WebServlet(name = "SessionManager", value = "/SessionManager")
 public class SessionManager extends HttpServlet {
@@ -49,14 +48,17 @@ public class SessionManager extends HttpServlet {
 
         if (scelta.equals("Disattivati")) {
             /* CASO 2:
-               La soluzione è un work-around del problema poichè non vi è modo di
-               creare la sessione senza aggiungere il cookies, così come non è possibile
-               utilizzare la encodeURL poiché se i cookies sono attivati non inserisce il jsessionid nell'URL.
-               Quindi in questo caso:
-               -Rimuovo i cookies creati di default settando il l'expire a -1
-               -Aggiungo il session ID "manualmente" all'URL
+               Questa cosa non è direttamente implementabile poiché se i cookies sono attivati
+               l'encodeURL() non inserisce il jsessionid "automaticamente" tra le richieste nell'URL.
+               Questo è un problema "intrinseco" del framework in quanto è possibile nel web.xml decidere
+               la modalità di session tracking (URL o cookies) ma non è modificabile dinamicamente.
+
+               Un possibile work-around della soluzione sarebbe creare normalmente la session, salvarsi il
+               JsessionID ciclare sui cookies creati e settare il maxAge a 0 per eliminarli. Una volta fatto questo si potrebbe
+               utilizzare l'input type hidden per passare il jsessionid tra le richieste
              */
 
+            String JSESSIONID=session.getId();
             Cookie [] cookies= request.getCookies();
             if(cookies !=null) {
                 for (Cookie i : cookies) {
@@ -65,14 +67,6 @@ public class SessionManager extends HttpServlet {
                     response.addCookie(i);
                 }
             }
-
-            // controllo che la rescrizione dell'URL non sia già avvenuta per il CASO 1
-            if(!encodedURL.contains("jsessionid")){;
-                String JSESSIONID=session.getId();
-                encodedURL =encodedURL +";jsessionid="+JSESSIONID;
-            }
-
-
 
         } else if (scelta.equals("Tecnici")) {
             //JSESSION ID salvato automaticamente dal browser
@@ -88,21 +82,3 @@ public class SessionManager extends HttpServlet {
     }
 }
 
-
-/*
-    OLD notes:
-     Per capire meglio questa sezione guardare prima SessionManager.
-                Con i cookies disattivati vi è il problema dell'avere il jsessionid nell'URL. A lezione
-                abbiamo visto la soluzione per le servlet in cui utilizzavamo encodeURL e poi tramite il meccanismo di include/forward
-                il jsession id "rimaneva" parte dell'URL. Se però il passaggio avviene "direttamente" come nella maggior parte dei casi
-                cliccando su un anchor per raggiungere su un altra pagina allora il jsession id verrebbe perso.
-                Perciò quando è necessario il filtro lo aggiunge "manualmente"
-
-
-        //String origin = httpRequest.getHeader("referer");
-        String origin = request.getHeader("referer");
-        String encodedURL = origin;
-        // Gestisco CASO 1--> URL rewriting
-        encodedURL = response.encodeURL(origin);
-        System.out.println("origin: " + origin+ "  encoded: " + encodedURL);
- */

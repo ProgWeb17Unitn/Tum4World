@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="styles/layouts/base.css">
         <script src="scripts/base.js"></script>
         <script src="https://smtpjs.com/v3/smtp.js"></script>   <!-- Library for SMTP protocol --->
-        <script type="text/javascript" src="./scripts/validateContattiForm.js"></script>
+        <script type="text/javascript" src="scripts/validateContattiForm.js"></script>
     </head>
 
     <body>
