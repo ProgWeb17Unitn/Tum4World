@@ -1,9 +1,11 @@
 package com.example.development;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "SessionManager", value = "/SessionManager")
 public class SessionManager extends HttpServlet {
@@ -54,19 +56,9 @@ public class SessionManager extends HttpServlet {
                la modalità di session tracking (URL o cookies) ma non è modificabile dinamicamente.
 
                Un possibile work-around della soluzione sarebbe creare normalmente la session, salvarsi il
-               JsessionID ciclare sui cookies creati e settare il maxAge a 0 per eliminarli. Una volta fatto questo si potrebbe
+               JsessionID, ciclare sui cookies creati e settare il maxAge a 0 per eliminarli. Una volta fatto questo si potrebbe
                utilizzare l'input type hidden per passare il jsessionid tra le richieste
              */
-
-            String JSESSIONID=session.getId();
-            Cookie [] cookies= request.getCookies();
-            if(cookies !=null) {
-                for (Cookie i : cookies) {
-                    System.out.println(i.toString());
-                    i.setMaxAge(0);
-                    response.addCookie(i);
-                }
-            }
 
         } else if (scelta.equals("Tecnici")) {
             //JSESSION ID salvato automaticamente dal browser
