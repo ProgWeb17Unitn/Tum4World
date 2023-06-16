@@ -20,9 +20,9 @@ public class SessionManager extends HttpServlet {
         Il Banner è stato inviato, ho 4 opzioni:
 
         1)Scelta qualsiasi ma cookies disattivati dal browser
-        2)Disattivati ma cookies abilitati nel browser
-        3)Tecnici
-        4)Tutti (JSESSION ID salvato automaticamente dal browser)
+        2)Tecnici
+        3)Tutti (JSESSION ID salvato automaticamente dal browser)
+        4)Disattivati ma cookies abilitati nel browser
 
         */
 
@@ -48,27 +48,42 @@ public class SessionManager extends HttpServlet {
         // (motivo per cui rimuovere l'attributo formNeeded è superfluo)
 
 
-        if (scelta.equals("Disattivati")) {
-            /* CASO 2:
-               Questa cosa non è direttamente implementabile poiché se i cookies sono attivati
+        if (scelta.equals("Tecnici")) {
+            //JSESSION ID salvato automaticamente dal browser
+            //Aggiungo alla session il parametro tecnici, se sono stati selezionati Tutti
+            //questo parametro non sarà presente
+            session.setAttribute("Tecnici", "true");
+        }
+
+        else if(scelta.equals("Tutti")){
+            session.setAttribute("Tutti", "true");
+        }
+
+        else if(scelta.equals("Disattivati")){
+              /* CASO 4:
+               Questa opzione non è direttamente implementabile poiché se i cookies sono attivati
                l'encodeURL() non inserisce il jsessionid "automaticamente" tra le richieste nell'URL.
                Questo è un problema "intrinseco" del framework in quanto è possibile nel web.xml decidere
                la modalità di session tracking (URL o cookies) ma non è modificabile dinamicamente.
 
                Un possibile work-around della soluzione sarebbe creare normalmente la session, salvarsi il
                JsessionID, ciclare sui cookies creati e settare il maxAge a 0 per eliminarli. Una volta fatto questo si potrebbe
-               utilizzare l'input type hidden per passare il jsessionid tra le richieste
-             */
+               utilizzare l'input type hidden per passare il jsessionid tra le richieste.
 
-        } else if (scelta.equals("Tecnici")) {
-            //JSESSION ID salvato automaticamente dal browser
-            //Aggiungo alla session il parametro tecnici, se sono stati selezionati Tutti
-            //questo parametro non sarà presente
-            session.setAttribute("Tecnici", "true");
+               La richiesta del progetto chiedeva di gestire i cookies ed i cookies disattivati da browser cosa che è stata
+               gestita da i casi 1,3,4 per cui se si seleziona Cookie Disattivati il cookie Banner rimane se si hanno
+               i Cookies attivati nel browser però non verranno utilizzati effettivamente
+
+               (Questo approccio ha anche un riscontro reale, difatti nella maggior parte dei siti quando
+                si seleziona l'opzione "rifiuta totti" vengono difatti bloccati i cookies di terze parti, non quelli tecnici)
+             */
         }
-        else if(scelta.equals("Tutti")){
-            session.setAttribute("Tutti", "true");
-        }
+
+        /*
+            In automatico il Container aggiunge il JSESSIONID nella pagina in cui il cookie viene accettato (mentre correttamente
+            nelle successive poi no);
+            ovvero encodeURL modifica l'origin URL solo nella prima pagina (nel caso in cui i cookies siano attivi).
+        */
 
         response.sendRedirect(encodedURL);
     }
