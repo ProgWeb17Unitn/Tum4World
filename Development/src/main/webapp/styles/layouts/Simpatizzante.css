@@ -1,0 +1,61 @@
+/*
+   TODO: Spostare simpatizzante-palette
+ */
+
+.flexbox-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%
+}
+.Title{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #FFEAD2 ;
+    background-color: #8294C4;
+    width:100%;
+    padding: 3%;
+    margin-bottom: 5%;
+    box-sizing: border-box;
+    /* E' l'unico modo per poter utilizzare una % come padding, in questo modo il padding fa parte della width*/
+    border: 2px solid #8294C4;
+    border-radius: 4px;
+    box-shadow: 3px 3px 2px rgb(172, 177, 214);
+
+}
+
+.Attivita-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Attivita{
+    width: 30%;
+    padding: 3%;
+    height: auto;
+    background-color: #ACB1D6;
+    border: 2px solid #ACB1D6;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* E' l'unico modo per poter utilizzare una % come padding, in questo modo il padding fa parte della width*/
+    box-shadow: 3px 3px 2px rgb(219, 223, 234);
+
+}
+img{
+    max-width:100%;
+    height:auto;
+    border-radius: 2px;
+}
+
+.Attivita-title{
+    color: #ffffff;
+    font-size: larger;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    padding-bottom: 10%;
+}
