@@ -5,19 +5,27 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.time.LocalDate;
 
 import com.example.development.model.AlreadyExistsException;
+import com.example.development.model.GenericDAO;
 import com.example.development.model.Utente;
 import com.example.development.model.UtenteDAO;
 
 @WebServlet(name = "elaboraSignUp", value = "/elaboraSignUp")
 public class elaboraSignUp extends HttpServlet {
+
+    Connection conn;
     UtenteDAO userDAO;
 
     @Override
     public void init(){
-        userDAO = new UtenteDAO();
+        // genera nuova connessione
+        conn = GenericDAO.getConnection();
+
+        // crea DAO con la Connection
+        userDAO = new UtenteDAO(conn);
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -34,15 +42,11 @@ public class elaboraSignUp extends HttpServlet {
             userDAO.save(nuovo);
 
             // redirect alla pagina di conferma
-            response.sendRedirect("registrazioneConfermata.jsp");
-
-            /*
-            inoltro fatto con .forward se fosse necessario inviare parametri alla JSP registrazioneConfermata
             RequestDispatcher rd = request.getRequestDispatcher("registrazioneConfermata.jsp");
-            // inoltra il nome dell'utente alla jsp così da poterlo visualizzare
+            // inoltra il nome utente alla jsp così da poterlo visualizzare
             request.setAttribute("username", nuovo.getUsername());
             rd.forward(request, response);
-            */
+
 
         }
         catch(AlreadyExistsException e) {

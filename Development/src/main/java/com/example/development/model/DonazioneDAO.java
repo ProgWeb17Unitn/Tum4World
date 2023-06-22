@@ -5,20 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 
-public class DonazioneDAO implements DAO<Donazione> {
-    private static String saveDonazione = "INSERT INTO donazioni (username, importo, data) VALUES (?, ?, ?)";
-    private static String getDonazioniMensili = "SELECT YEAR(data) as anno, MONTH(data) as mese, SUM(importo) as importo FROM donazioni GROUP BY YEAR(data), MONTH(data) ORDER BY YEAR(data) ASC";
+public class DonazioneDAO extends GenericDAO {
+    private static final String saveDonazione = "INSERT INTO donazioni (username, importo, data) VALUES (?, ?, ?)";
+    private static final String getDonazioniMensili = "SELECT YEAR(data) as anno, MONTH(data) as mese, SUM(importo) as importo FROM donazioni GROUP BY YEAR(data), MONTH(data) ORDER BY YEAR(data) ASC";
 
-    Connection conn;
-
-    public DonazioneDAO() {
-        try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/testDB");
-
-        } catch(Exception sqle){
-            System.out.println("Connessione al database fallita: " + sqle);
-        }
+    public DonazioneDAO(Connection conn){
+        this.conn = conn;
     }
 
     public void save(Donazione d){

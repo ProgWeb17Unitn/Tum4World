@@ -5,17 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class MessaggioDAO implements DAO<Messaggio>{
-    private static String saveMessaggio = "INSERT INTO messaggi (nomeCognome, email, motivo, testo) VALUES (?, ?, ?, ?)";
-    Connection conn;
-    public MessaggioDAO(){
-        try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/testDB");
+public class MessaggioDAO extends GenericDAO{
+    private static final String saveMessaggio = "INSERT INTO messaggi (nomeCognome, email, motivo, testo) VALUES (?, ?, ?, ?)";
 
-        } catch(Exception sqle){
-            System.out.println("Connessione al database fallita: " + sqle);
-        }
+    public MessaggioDAO(Connection conn){
+        super.conn = conn;
     }
 
     public void save(Messaggio m){

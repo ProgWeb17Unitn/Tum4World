@@ -2,23 +2,12 @@ package com.example.development.model;
 
 import java.sql.*;
 
-public class FraseDAO {
-    Connection conn;
+public class FraseDAO extends GenericDAO {
 
-    private static String getRandomFrase = "SELECT * FROM frasi ORDER BY random() OFFSET 0 ROWS FETCH NEXT 1 ROW ONLY";
-    public FraseDAO(){
-        try{
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            conn = DriverManager.getConnection("jdbc:derby:/opt/Apache/db-derby/lib/testDB");
-        }
-        catch(Exception e){
-            System.out.println("errore: " + e + "\n");
-            e.printStackTrace();
-        }
-    }
+    private static final String getRandomFrase = "SELECT * FROM frasi ORDER BY random() OFFSET 0 ROWS FETCH NEXT 1 ROW ONLY";
 
     public FraseDAO(Connection conn){
-        this.conn = conn;
+        super.conn = conn;
     }
 
     public Frase getRandomFrase(){

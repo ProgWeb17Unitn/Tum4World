@@ -2,19 +2,30 @@ package com.example.development;
 
 import com.example.development.model.Frase;
 import com.example.development.model.FraseDAO;
+import com.example.development.model.GenericDAO;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 
 @WebServlet(name = "fraseRandom", value = "/fraseRandom")
 public class fraseRandom extends HttpServlet {
+
+    // connessione al db
+    Connection conn;
     FraseDAO fraseDAO;
     @Override
     public void init(){
-        fraseDAO = new FraseDAO();
+        // genera una nuova connessione
+        conn = GenericDAO.getConnection();
+
+        // crea un DAO con questa Connection
+        // la stessa connection può essere riutilizzata da più DAO, cosi segue la filosofia 'una connection per servlet'
+        // !!! ricordarsi poi di chiudere questa connection (con il metodo di GenericDAO) nel destroy() della servlet !!!
+        fraseDAO = new FraseDAO(conn);
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,8 +53,7 @@ public class fraseRandom extends HttpServlet {
 
     @Override
     public void destroy(){
-        // TODO fare un metodo dedicato per chiudere la connessione
-        fraseDAO = null;
+        GenericDAO.closeConnection(conn);
     }
 }
 
