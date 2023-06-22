@@ -1,5 +1,11 @@
 package com.example.development.model;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -54,6 +60,33 @@ public class VisiteDAO extends GenericDAO {
         }
 
         return visite;
+    }
+
+    public String getAllVisiteJSON(){
+        // prende dal db tutte le visite
+        List<Visite> visite = getAllVisite();
+
+        // converte la List in json String. Il risultato sarà un array di oggetti JSON, ad esempio
+        /*
+          [
+             {
+                "pagina": "homepage",
+                "visite": 84355
+             },
+             {
+                "pagina": "login",
+                "visite": 12845
+             }
+           ]
+         */
+
+        Gson gson = new Gson();
+        String visiteJSON = gson.toJson(visite);
+
+        return visiteJSON;
+
+        // in alternativa si poteva usare questo metodo per convertire a JsonObject
+        // JsonElement visiteJSON = gson.toJsonTree(visite, new TypeToken<List<Visite>>(){}.getType());
     }
 
     public int getVisiteTotali(){
