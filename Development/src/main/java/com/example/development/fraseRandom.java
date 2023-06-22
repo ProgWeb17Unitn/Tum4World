@@ -40,7 +40,8 @@ public class fraseRandom extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // il tipo di risposta è text/plain cioè ritorna una normale stringa
         // invece di una pagina html
-        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
 
         // legge la frase random dal database e la salva nel Bean Frase
         Frase frase = fraseDAO.getRandomFrase();
