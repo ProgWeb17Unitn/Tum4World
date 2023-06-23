@@ -16,18 +16,20 @@
 <%@ include file="static/header.jsp" %>
 
 <div class="flexbox-container" id="index">
-  <div class="Title">
-    <p class="BigTitle">Dashboard</p>
-    <div class="dashboard">
-    <p class="Explanation">  E' bello rivederti! Qui trovi la tua area privata
-      da qui puoi modificare il tuo profilo. Puoi cliccare sulle attivita'
-      per iscriverti ad esse. Inoltre in basso puoi visualizzare i dati del tuo profilo e cancellarlo in
-      caso tu lo voglia...
-    </p>
-    <img src="assets/images/S/settingsicon.svg" id="dashboardimg" alt="settings">
+  <div class="Dashboard">
+    <div class="Dashboard-text">
+      <p class="Dashboard-title">Dashboard</p>
+      <p class="Dashboard-description"><span class="highlight">E' bello rivederti!</span>
+        Qui trovi la tua area privata tramite la quale puoi compiere diverse azioni:
+        <br>
+        <br>- Puoi cliccare sulle attivita' per iscriverti ad esse;
+        <br>- Puoi visualizzare i dati del tuo profilo;
+        <br>- Puoi cancellare il tuo profilo. Solo in caso tu lo voglia davvero...</p>
+    </div>
+    <div class="Dashboard-image">
+      <img src="assets/images/S/settingsicon.svg" id="dashboardimg" alt="settings">
     </div>
   </div>
-
 
 
   <div class="Attivita-container">
