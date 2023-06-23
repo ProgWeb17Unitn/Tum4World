@@ -7,10 +7,7 @@
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
     <link rel="stylesheet" href="styles/layouts/base.css">
     <script src="scripts/base.js"></script>
-    <!--- posizione file js sbagliata TODO creare cartella dedicata --->
     <script type="text/javascript" src="scripts/validateSignUpForm.js"></script>
-
-
 </head>
 
 <body>
@@ -24,7 +21,7 @@
     <p>cognome</p>
     <input type="text" name="cognome">
     <p>data di nascita</p>
-    <input type="date" name="dataNascita">
+    <input type="date" name="dataNascita"> <!--- TODO data dovrebbe essere nel formato GG/MM/AAAA, allora bisogna usare un campo text e validarlo? --->
     <p>email</p>
     <input type="text" name="email">
     <p>numero di telefono</p>
@@ -38,12 +35,14 @@
     <input type="text" name="username">
     <p>password</p>
     <input type="text" name="password">
-    <input type="text" name="passwordConferma"><br><br>
+    <p>conferma password</p>
+    <input type="text" name="passwordConferma">
+    <br><br>
     <input type="button" value="registrati" onclick="validateData()">
+    <br><br>
+    <input type="button" value="reset" onclick="resetForm()">
+    <br><br>
 </form>
-
-
-
 
 
 <!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSATIO-->

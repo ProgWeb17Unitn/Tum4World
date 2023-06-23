@@ -26,10 +26,10 @@ public class UtenteDAO extends GenericDAO{
             ps.setString(7, nuovoUtente.getTelefono());
             ps.setString(8, nuovoUtente.getTipo());
 
-            int numNuoveRighe = ps.executeUpdate(); // executeUpdate ritorna il numero di nuove righe inserite nella tabella
+            int nuoveRighe = ps.executeUpdate(); // se fallisce perchè l'utente è gia presente nel db lancia una SQLException
 
-            if(numNuoveRighe == 0){
-                System.out.println("errore: 0 nuove righe, utente non inserito");
+            if(nuoveRighe == 0){
+                throw new SQLException();
             }
 
         }catch(SQLException sqle){
@@ -37,6 +37,8 @@ public class UtenteDAO extends GenericDAO{
             if(sqle.getSQLState().equals("23505")){
                 throw new AlreadyExistsException("Utente con questa email gia presente nel database");
             }
+
+            sqle.printStackTrace();
 
         }
 
@@ -56,10 +58,11 @@ public class UtenteDAO extends GenericDAO{
             int numRigheCancellate = ps.executeUpdate();
 
             if(numRigheCancellate == 0){
-                System.out.println("errore 0 rows deleted: utente non cancellato");
+                System.out.println("Errore 0 rows deleted: utente non cancellato");
             }
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore cancellando Utente: " + sqle);
+            sqle.printStackTrace();
         }
     }
 
@@ -83,7 +86,8 @@ public class UtenteDAO extends GenericDAO{
             }
 
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore prendendo Utente: " + sqle);
+            sqle.printStackTrace();
         }
 
         return utente;
@@ -104,7 +108,8 @@ public class UtenteDAO extends GenericDAO{
             }
 
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore prendendo utente: " + sqle);
+            sqle.printStackTrace();
         }
 
         return list;
@@ -123,7 +128,8 @@ public class UtenteDAO extends GenericDAO{
             }
 
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore prendendo tutti gli utenti: " + sqle);
+            sqle.printStackTrace();
         }
 
         return list;
