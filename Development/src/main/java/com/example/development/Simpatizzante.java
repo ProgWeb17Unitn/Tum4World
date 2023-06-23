@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name="Simpatizzante", value="/SImpatizzante")
+@WebServlet(name="Simpatizzante", value="/Simpatizzante")
 public class Simpatizzante extends HttpServlet {
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("Simpatizzante.jsp");
