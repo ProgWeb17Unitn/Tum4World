@@ -50,7 +50,7 @@ public class UtenteDAO extends GenericDAO{
         this.delete(utente);
     }
 
-    public void delete(Utente u){
+    private void delete(Utente u){
         try(PreparedStatement ps = conn.prepareStatement(deleteUtenteByUsername)){
             // inserisce nella query l'username dell'utente da eliminare
             ps.setString(1, u.getUsername());

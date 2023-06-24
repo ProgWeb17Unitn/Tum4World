@@ -15,7 +15,7 @@
 
 <!--- form brutto per provare, poi prendiamo qualche design da codepen --->
 
-<form method="GET" name="formSignUp">
+<form method="POST" name="formSignUp">
     <p>nome</p>
     <input type="text" name="nome">
     <p>cognome</p>
