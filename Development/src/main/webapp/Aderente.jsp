@@ -61,7 +61,7 @@
             <img src="assets/images/S/bin.svg" id="bin"> <p>Cancella Iscrizione</p>
         </div>
         <div class="donazione">
-        <form method="POST" id="form-donazione" action="./AderenteDonation">
+        <form method="POST" id="form-donazione" action="<%= response.encodeURL("./AderenteDonazione") %>">
             <label for="quantita" id="donazione-label">Valore Donazione:</label>
             <input type="text" id="quantita" name="quantita" placeholder="100.76"><br>
             <input type="submit" value="Submit" id="submit-donation" onclick="handleDonation()">

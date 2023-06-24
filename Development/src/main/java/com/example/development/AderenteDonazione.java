@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name="AderenteDonation", value="/AderenteDonation")
-public class AderenteDonation extends HttpServlet {
+@WebServlet(name="AderenteDonazione", value="/AderenteDonazione")
+public class AderenteDonazione extends HttpServlet {
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //System.out.println("Donazione ricevuta");
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Aderente");
@@ -23,7 +23,8 @@ public class AderenteDonation extends HttpServlet {
 
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // La form è di tipo POST, non serve la GET
+        // La form è di tipo POST, non serve la GET (questo comporta che l'url non
+        // è accessibile direttamente tramite URL, cosa importante per garantire la consistenza)
         processRequest(request, response);
     }
 }

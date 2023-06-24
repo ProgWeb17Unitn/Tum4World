@@ -21,8 +21,10 @@ function handleDonation() {
             event.preventDefault(); // Non passo alla servlet
             segnalaErrore();
         }
-
-        // Form valido, permetto l'azione di default
+        else{
+            // Form valido, permetto l'azione di default e "mostro che è stata effettuata"
+            donazioneEffettuata();
+        }
     });
 
     function isValidInput(valore) {
@@ -39,4 +41,24 @@ function handleDonation() {
 
 function segnalaErrore(){
     //console.log("Inserito valore errato");
+    var submit = document.getElementById('submit-donation');
+    submit.style.backgroundColor = '#A23327FF';
+    submit.style.animation='donazioneInvalida 0.5s linear';
+    /*
+        NB: Quando un animazione è applicata ad un elemento è azionata
+        una volta, quindi per poterla ri-utilizzare devo eliminarla dopo averla eseguita
+
+     */
+    setTimeout(function() {
+        submit.style.animation = '';
+        submit.style.backgroundColor = '#1D1C1A'; // reset colore precedente
+    }, 800);
+}
+
+function donazioneEffettuata(){
+    var submit = document.getElementById('submit-donation');
+    submit.style.backgroundColor = '#6da752';
+    setTimeout(function() {
+        submit.style.backgroundColor = '#1D1C1A'; // reset colore precedente
+    }, 500);
 }

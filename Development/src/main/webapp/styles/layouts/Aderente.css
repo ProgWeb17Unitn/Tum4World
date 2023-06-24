@@ -90,3 +90,14 @@
     cursor: pointer;
     transform: scale(105%);
 }
+
+/* Data una quantita di solidi invalida il JS usa questa animazione
+   per "mostrare" l'errore", le percentuali sono la quantità di tempo dopo
+   la quale viene eseguita quella operazione*/
+@keyframes donazioneInvalida {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(10px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
