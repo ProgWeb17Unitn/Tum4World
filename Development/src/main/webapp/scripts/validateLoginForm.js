@@ -14,7 +14,12 @@ function validateData(){
         // TODO serve fare anche qui i controlli della password?
     }
 
-    makeQuery();
+    if(errori === ""){
+        makeQuery();
+    } else{
+        alert(errori);
+    }
+
 
 }
 
@@ -34,14 +39,15 @@ function makeQuery(){
         "username=" + codifica(form["username"].value) + "&" +
         "password=" + codifica(form["password"].value);
 
-    console.log(url + "?" + params);
+    let query = url + "?" + params;
 
-    xhttp.open("GET", url + "?" + params, true);
+    // console.log(query);
 
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4){
             if(this.status == 200){ // login successful
-                // redirect alla pagina privata
+                // TODO redirect alla pagina privata (vanno create)
+                console.log("Login successful")
             }
             else if(this.status == 401){ // 401 Error code: non autorizzato, credenziali errate
                 /*
@@ -49,10 +55,14 @@ function makeQuery(){
                     In caso di errore viene ripresentata la pagina Login con un messaggio addizionale di errore (il
                     messaggio inizia con l’id del vostro gruppo, seguito da : e dal messaggio di errore)
                 */
+                console.log("Credenziali errate")
             }
 
         }
     }
+
+    // invia richiesta
+    xhttp.open("GET", query, true);
 
     xhttp.send();
 }

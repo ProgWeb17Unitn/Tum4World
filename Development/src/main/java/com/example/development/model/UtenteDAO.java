@@ -10,6 +10,7 @@ public class UtenteDAO extends GenericDAO{
     private static final String getAllUtenti = "SELECT * FROM utenti";
     private static final String deleteUtenteByUsername = "DELETE FROM utenti WHERE username=?";
     private static final String saveUtente = "INSERT INTO utenti (username, password, nome, cognome, data_nascita, email, telefono, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String checkLogin = "SELECT * FROM utenti WHERE username=? AND password=?";
 
     public UtenteDAO(Connection conn){
         super.conn = conn;
@@ -37,9 +38,9 @@ public class UtenteDAO extends GenericDAO{
             if(sqle.getSQLState().equals("23505")){
                 throw new AlreadyExistsException("Utente con questa email gia presente nel database");
             }
-
-            sqle.printStackTrace();
-
+            else{
+                sqle.printStackTrace();
+            }
         }
 
     }
@@ -66,7 +67,7 @@ public class UtenteDAO extends GenericDAO{
         }
     }
 
-    public Utente getUtente(String username){
+    public Utente getUtente(String username) throws RecordNotFoundException{
         Utente utente = null; // user returned
 
         try(PreparedStatement ps = conn.prepareStatement(getUtenteByUsername)){
@@ -91,6 +92,31 @@ public class UtenteDAO extends GenericDAO{
         }
 
         return utente;
+    }
+
+    public boolean checkLogin(String username, String password){
+        boolean isValid = false
+                ;
+        try(PreparedStatement ps = conn.prepareStatement(checkLogin)){
+            // inserisce nella query le credenziali dell'utente da cercare nel database
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            try(ResultSet rs = ps.executeQuery()){
+                if(rs.next()){ // controlla se la query ha ritornato un record, cioè se esiste un utente con queste credenziali
+                    isValid = true;
+                }
+                else{
+                    isValid = false;
+                }
+            }
+
+        }catch(SQLException sqle){
+            System.out.println("Errore controllando credenziali utente: " + sqle);
+            sqle.printStackTrace();
+        }
+
+        return isValid;
     }
 
     private List<Utente> getUtentiByTipo(String tipo){
