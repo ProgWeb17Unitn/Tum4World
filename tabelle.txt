@@ -38,3 +38,17 @@ CREATE TABLE frasi(
     frase VARCHAR(10000) NOT NULL
 );
 
+CREATE TABLE attivita(
+    codice VARCHAR(50) NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    PRIMARY KEY (codice)
+);
+
+CREATE TABLE iscrizioni(
+    username VARCHAR(50) NOT NULL,
+    codice_attivita VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_iscrizioni PRIMARY KEY (username, codice_attivita),
+    CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES utenti(username) ON DELETE CASCADE,
+    CONSTRAINT fk_attivita FOREIGN KEY (codice_attivita) REFERENCES attivita(codice)
+);
+
