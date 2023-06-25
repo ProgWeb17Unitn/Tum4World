@@ -17,7 +17,7 @@
 
 
 
-<h1>Registrazione confermata, <%= request.getAttribute("username") %> </h1>
+<h1>Registrazione confermata</h1>
 <h2>Ora puoi andare nella sezione login ed effettuare l'accesso</h2>
 
 

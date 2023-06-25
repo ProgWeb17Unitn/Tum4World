@@ -23,6 +23,8 @@ function validateData(){
 
 }
 
+
+
 function makeQuery(){
     let form = document.forms.namedItem("formLogin");
 
@@ -41,12 +43,18 @@ function makeQuery(){
 
     let query = url + "?" + params;
 
-    // console.log(query);
-
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4){
             if(this.status == 200){ // login successful
-                // TODO redirect alla pagina privata (vanno create)
+                // bisogna fare qui (lato client) il redirect dalla pagina di conferma perchè facendo una richiesta XHR il browser non la 'intercetta' e processa
+                //  come farebbe con una richiesta normale. Il browser quando vede che la richiesta XHR ha ricevuto come risposta un redirect, effettua un'altra
+                // richiesta XHR (in background) alla destinazione del redirect. Praticamente è la richiesta XHR che 'subisce' il redirect, non la pagina del browser.
+                // Quindi per fare il redirect il client ottiene il link della destinazione dal server, e poi effettua con il redirect con javascript
+                // https://github.com/axios/axios/issues/396 qui trovate una spiegazione migliore, anche se riferita a node.js
+
+                let url = this.responseText; // legge l'url a cui fare redirect
+                window.location.replace(url); // simula un redirect
+
                 console.log("Login successful")
             }
             else if(this.status == 401){ // 401 Error code: non autorizzato, credenziali errate
@@ -58,6 +66,11 @@ function makeQuery(){
                 console.log("Credenziali errate")
             }
 
+
+        }
+
+        if(this.status == 302){
+            console.log("intercept redirect whaaat?")
         }
     }
 

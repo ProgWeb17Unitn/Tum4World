@@ -28,10 +28,12 @@ public class elaboraSignUp extends HttpServlet {
         userDAO = new UtenteDAO(conn);
     }
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        try{
-            System.out.println("process request iniziato");
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // imposta tipo risposta a text. Questa servlet ritorna l'url (registrazioneConfermata.jsp) a cui il client farà redirect in caso di successo
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
 
+        try{
             Utente nuovo = new Utente();
             nuovo.setUsername(request.getParameter("username"));
             nuovo.setPassword(request.getParameter("password"));
@@ -53,21 +55,18 @@ public class elaboraSignUp extends HttpServlet {
 
             userDAO.save(nuovo);
 
-            // redirect alla pagina di conferma
-            RequestDispatcher rd = request.getRequestDispatcher("registrazioneConfermata.jsp");
-            // inoltra il nome utente alla jsp così da poterlo visualizzare
-            request.setAttribute("username", nuovo.getUsername());
-            rd.include(request, response);
+            // invia al client l'url della pagina di conferma
+            PrintWriter writer = response.getWriter();
+            writer.print(request.getContextPath() + "/registrazioneConfermata.jsp");
+            writer.close();
 
-            System.out.println("forwardato");
 
         }
         catch(AlreadyExistsException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
 
             // provato a creare un utente con username gia esistente, invia risposta di errore
             response.setStatus(HttpServletResponse.SC_CONFLICT); // status code 409
-            response.setContentType("text/plain");
 
             PrintWriter out = response.getWriter();
             out.print("Errore: esiste già un utente con questo username!");

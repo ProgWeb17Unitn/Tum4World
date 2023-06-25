@@ -30,6 +30,10 @@ public class IscrizioneDAO extends GenericDAO {
         }
     }
 
+    public void nuovaIscrizione(Utente utente, Attivita attivita){
+        nuovaIscrizione(utente.getUsername(), attivita.getCodice());
+    }
+
     public void rimuoviIscrizione(String username, String codiceAttivita){
         try(PreparedStatement ps = conn.prepareStatement(disiscriviUtenteAttivita)){
             ps.setString(1, username);
@@ -45,6 +49,10 @@ public class IscrizioneDAO extends GenericDAO {
             System.out.println("Errore rimozione iscrizione di " + username + " ad " + codiceAttivita + ". Disiscrizione non effettuata");
             sqle.printStackTrace();
         }
+    }
+
+    public void rimuoviIscrizione(Utente utente, Attivita attivita){
+        rimuoviIscrizione(utente.getUsername(), attivita.getCodice());
     }
 
     public List<Iscrizione> getIscrizioniUtente(String username){
