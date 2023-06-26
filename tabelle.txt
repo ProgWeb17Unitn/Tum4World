@@ -8,7 +8,7 @@ CREATE TABLE utenti (
     telefono VARCHAR(20) NOT NULL,
     tipo VARCHAR(20) NOT NULL,
     CONSTRAINT pk_user PRIMARY KEY (username),
-    CONSTRAINT tipo_valido CHECK(tipo IN('aderente', 'simpatizzante'))
+    CONSTRAINT tipo_valido CHECK(tipo IN('aderente', 'simpatizzante', 'admin'))
 );
 
 CREATE TABLE donazioni (
@@ -25,5 +25,16 @@ CREATE TABLE messaggi(
     email VARCHAR(50) NOT NULL,
     motivo VARCHAR(50) NOT NULL,
     testo VARCHAR(5000) NOT NULL
+);
+
+CREATE TABLE visite(
+    pagina VARCHAR(255) NOT NULL,
+    visite INT NOT NULL,
+    PRIMARY KEY (pagina)
+);
+
+CREATE TABLE frasi(
+    id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1),
+    frase VARCHAR(10000) NOT NULL
 );
 

@@ -4,25 +4,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UtenteDAO implements DAO<Utente> {
-    Connection conn;
-    private static String getUtentiByTipo = "SELECT * FROM utenti WHERE tipo=?";
-    private static String getUtenteByUsername = "SELECT * FROM utenti WHERE username=?";
-    private static String getAllUtenti = "SELECT * FROM utenti";
-    private static String deleteUtenteByUsername = "DELETE FROM utenti WHERE username=?";
-    private static String saveUtente = "INSERT INTO utenti (username, password, nome, cognome, data_nascita, email, telefono, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+public class UtenteDAO extends GenericDAO{
+    private static final String getUtentiByTipo = "SELECT * FROM utenti WHERE tipo=?";
+    private static final String getUtenteByUsername = "SELECT * FROM utenti WHERE username=?";
+    private static final String getAllUtenti = "SELECT * FROM utenti";
+    private static final String deleteUtenteByUsername = "DELETE FROM utenti WHERE username=?";
+    private static final String saveUtente = "INSERT INTO utenti (username, password, nome, cognome, data_nascita, email, telefono, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String checkLogin = "SELECT * FROM utenti WHERE username=? AND password=?";
 
-    // solo per testing e dev : adesso crea una connessione per ogni istanza di questa classe.
-    // per ottimizzare si potrebbe utilizzare una connection pool
-    public UtenteDAO(){
-        try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/testDB");
-
-        } catch(Exception sqle){
-            System.out.println("Connessione al database fallita: " + sqle + "\n" + sqle.getStackTrace());
-        }
-
+    public UtenteDAO(Connection conn){
+        super.conn = conn;
     }
     public void save(Utente nuovoUtente) throws AlreadyExistsException {
         try(PreparedStatement ps = conn.prepareStatement(saveUtente)){
@@ -36,10 +27,10 @@ public class UtenteDAO implements DAO<Utente> {
             ps.setString(7, nuovoUtente.getTelefono());
             ps.setString(8, nuovoUtente.getTipo());
 
-            int numNuoveRighe = ps.executeUpdate(); // executeUpdate ritorna il numero di nuove righe inserite nella tabella
+            int nuoveRighe = ps.executeUpdate(); // se fallisce perchè l'utente è gia presente nel db lancia una SQLException
 
-            if(numNuoveRighe == 0){
-                System.out.println("errore: 0 nuove righe, utente non inserito");
+            if(nuoveRighe == 0){
+                throw new SQLException();
             }
 
         }catch(SQLException sqle){
@@ -47,7 +38,9 @@ public class UtenteDAO implements DAO<Utente> {
             if(sqle.getSQLState().equals("23505")){
                 throw new AlreadyExistsException("Utente con questa email gia presente nel database");
             }
-
+            else{
+                sqle.printStackTrace();
+            }
         }
 
     }
@@ -58,7 +51,7 @@ public class UtenteDAO implements DAO<Utente> {
         this.delete(utente);
     }
 
-    public void delete(Utente u){
+    private void delete(Utente u){
         try(PreparedStatement ps = conn.prepareStatement(deleteUtenteByUsername)){
             // inserisce nella query l'username dell'utente da eliminare
             ps.setString(1, u.getUsername());
@@ -66,14 +59,15 @@ public class UtenteDAO implements DAO<Utente> {
             int numRigheCancellate = ps.executeUpdate();
 
             if(numRigheCancellate == 0){
-                System.out.println("errore 0 rows deleted: utente non cancellato");
+                System.out.println("Errore 0 rows deleted: utente non cancellato");
             }
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore cancellando Utente: " + sqle);
+            sqle.printStackTrace();
         }
     }
 
-    public Utente getUtente(String username){
+    public Utente getUtente(String username) throws RecordNotFoundException{
         Utente utente = null; // user returned
 
         try(PreparedStatement ps = conn.prepareStatement(getUtenteByUsername)){
@@ -93,10 +87,36 @@ public class UtenteDAO implements DAO<Utente> {
             }
 
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore prendendo Utente: " + sqle);
+            sqle.printStackTrace();
         }
 
         return utente;
+    }
+
+    public boolean checkLogin(String username, String password){
+        boolean isValid = false
+                ;
+        try(PreparedStatement ps = conn.prepareStatement(checkLogin)){
+            // inserisce nella query le credenziali dell'utente da cercare nel database
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            try(ResultSet rs = ps.executeQuery()){
+                if(rs.next()){ // controlla se la query ha ritornato un record, cioè se esiste un utente con queste credenziali
+                    isValid = true;
+                }
+                else{
+                    isValid = false;
+                }
+            }
+
+        }catch(SQLException sqle){
+            System.out.println("Errore controllando credenziali utente: " + sqle);
+            sqle.printStackTrace();
+        }
+
+        return isValid;
     }
 
     private List<Utente> getUtentiByTipo(String tipo){
@@ -114,7 +134,8 @@ public class UtenteDAO implements DAO<Utente> {
             }
 
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore prendendo utente: " + sqle);
+            sqle.printStackTrace();
         }
 
         return list;
@@ -133,7 +154,8 @@ public class UtenteDAO implements DAO<Utente> {
             }
 
         }catch(SQLException sqle){
-            System.out.println(sqle);
+            System.out.println("Errore prendendo tutti gli utenti: " + sqle);
+            sqle.printStackTrace();
         }
 
         return list;
@@ -156,17 +178,6 @@ public class UtenteDAO implements DAO<Utente> {
         utente.setEmail(rs.getString("email"));
         utente.setTelefono(rs.getString("telefono"));
         utente.setTipo(rs.getString("tipo"));
-    }
-
-    @Override
-    protected void finalize(){
-        try{
-            if(conn != null && !conn.isClosed()){
-                conn.close();
-            }
-        }catch(SQLException sqle){
-            System.out.println(sqle);
-        }
     }
 
 }
