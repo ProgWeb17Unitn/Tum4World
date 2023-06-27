@@ -1,4 +1,9 @@
+var value=0;
 function handleScroll() {
+    if(value===0){
+        theme.switch("Aderente");
+        value++;
+    }
     baseOnscroll();
 }
 window.addEventListener("scroll", handleScroll);
