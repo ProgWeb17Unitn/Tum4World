@@ -37,9 +37,10 @@ public class elaboraLogin extends HttpServlet {
         // imposta tipo risposta a text. Questa servlet invia al client l'url a cui fare il redirect (in caso di successo)
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
-
+        HttpSession session = request.getSession(false);
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
+
 
         boolean credenzialiValide = utenteDAO.checkLogin(username, password);
 
@@ -54,6 +55,9 @@ public class elaboraLogin extends HttpServlet {
 
                 // imposta i cookie di login
                 Cookie usernameCookie = new Cookie("username", username);
+                if(session!=null) {
+                    session.setAttribute("username", username);
+                }
                 Cookie tipoCookie = new Cookie("tipo", username);
                 response.addCookie(usernameCookie);
                 response.addCookie(tipoCookie);
@@ -64,12 +68,21 @@ public class elaboraLogin extends HttpServlet {
                 switch (tipo) {
                     case "aderente":
                         writer.print(request.getContextPath() + "/aderente.jsp");
+                        if(session!=null) {
+                            session.setAttribute("tipo", "aderente");
+                        }
                         break;
                     case "simpatizzante":
                         writer.print(request.getContextPath() + "/simpatizzante.jsp");
+                        if (session != null) {
+                            session.setAttribute("tipo","simpatizzante");
+                        }
                         break;
                     case "admin":
                         writer.print(request.getContextPath() + "/admin.jsp");
+                        if (session != null) {
+                            session.setAttribute("tipo","admin");
+                        }
                         break;
                     default:
                         // impossibile arrivare qui per i constraint del database (il tipo DEVE essere aderente, simpatizzante o admin)

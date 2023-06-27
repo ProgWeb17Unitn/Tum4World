@@ -1,30 +1,63 @@
 package com.example.development;
 
+import com.example.development.model.*;
+import com.example.development.model.GenericDAO;
+import com.example.development.model.Donazione;
+
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.time.LocalDate;
+
+import com.example.development.model.DonazioneDAO;
 
 @WebServlet(name="AderenteDonazione", value="/AderenteDonazione")
 public class AderenteDonazione extends HttpServlet {
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //System.out.println("Donazione ricevuta");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Aderente");
-        dispatcher.forward(request, response);
 
-        // Aggiunta del cookie Banner se necessario
-        if((request.getAttribute("formNeeded") != null)&& (request.getAttribute("updated")==null)){
-            RequestDispatcher dispatcher2= request.getRequestDispatcher("static/cookieBanner.html");
-            dispatcher2.include(request, response);
+    Connection conn;
+    DonazioneDAO donazioneDAO;
+    Donazione donazione;
+    @Override
+    public void init(){
+        conn = GenericDAO.getConnection();
+        donazioneDAO = new DonazioneDAO(conn);
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+        // La richiesta è di tipo Post
+    }
+
+    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+
+        String quantita = (String) request.getParameter("quantita");
+        int number = Integer.parseInt(quantita);
+
+        HttpSession session = request.getSession(false);
+
+        String name= "unknown";
+        if(session !=null){
+            name = (String) session.getAttribute("username");
         }
 
+        donazione.setImporto(number);
+        donazione.setUsername(name);
+        donazione.setData(LocalDate.now());
+        donazioneDAO.save(donazione);
+        response.setStatus(200);
+
     }
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // La form è di tipo POST, non serve la GET (questo comporta che l'url non
-        // è accessibile direttamente tramite URL, cosa importante per garantire la consistenza)
-        processRequest(request, response);
+
+    @Override
+    public void destroy() {
+        GenericDAO.closeConnection(conn);
     }
 }
