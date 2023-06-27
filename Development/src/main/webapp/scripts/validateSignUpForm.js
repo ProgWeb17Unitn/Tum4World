@@ -147,7 +147,8 @@ function makeQuery(){
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4){
             if(this.status == 200){
-                // TODO il redirect non funziona
+                let url = this.responseText; // legge l'url a cui fare redirect
+                window.location.replace(url); // simula un redirect
             }
             else if(this.status == 409){ // 409 = Already Exist cioè esiste già un utente con lo stesso username
                 /*

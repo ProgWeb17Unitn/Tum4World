@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles/layouts/base.css">
   <link rel="stylesheet" href="styles/layouts/Simpatizzante.css">
   <script src="scripts/base.js"></script>
+  <script src="scripts/Simpatizzante.js"></script>
 
 
 </head>

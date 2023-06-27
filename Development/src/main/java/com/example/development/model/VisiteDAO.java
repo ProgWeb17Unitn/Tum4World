@@ -18,6 +18,7 @@ public class VisiteDAO extends GenericDAO {
     private static final String incrementViste = "UPDATE visite SET visite=visite+1 WHERE pagina=?";
     private static final String getAllVisite = "SELECT * FROM visite";
     private static final String getVisiteTotali = "SELECT SUM(visite) AS totale FROM visite";
+    private static final String resetVisite = "UPDATE visite SET visite=0";
 
     public VisiteDAO(Connection conn){
         super.conn = conn;
@@ -38,6 +39,21 @@ public class VisiteDAO extends GenericDAO {
 
         }catch(SQLException e){
             System.out.println("Errore incrementando visite pagina: " + pagina);
+            e.printStackTrace();
+        }
+    }
+
+    public void resetVisite(){
+        try(PreparedStatement ps = conn.prepareStatement(resetVisite)){
+
+            int numReset = ps.executeUpdate(); // numero di pagine i cui contatori visite sono stati azzerati
+
+            if(numReset == 0){ // nessun contatore azzerato: errore del database oppure la tabella viste è vuota
+                System.out.println("Errore reset contatori visite: nessun azzeramento (tabella vuota)");
+            }
+
+        }catch(SQLException e){
+            System.out.println("Errore azzeramento visite");
             e.printStackTrace();
         }
     }

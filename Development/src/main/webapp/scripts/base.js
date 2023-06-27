@@ -13,7 +13,6 @@ page = {};
 //});
 
 theme.switch = function (n) {
-
     // scrolla in cima alla pagina per evitare problemi con la trasparenza dell'header
     window.scrollTo(0, 0);
 
@@ -21,6 +20,10 @@ theme.switch = function (n) {
     theme.active = n;
     if (n === 'light')
         theme.backgroundColor = '#F49E4C';
+    else if (n === 'Simpatizzante')
+        theme.backgroundColor = '#5f6b8d';
+    else if (n === 'Aderente')
+        theme.backgroundColor = '#4da2a2';
     else if (n === 'dark')
         theme.backgroundColor = '#2D728F';
     else
