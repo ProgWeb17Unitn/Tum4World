@@ -11,7 +11,7 @@
         <a href="<%= response.encodeURL("./Attivita") %>">Attivita'</a>
         <a href="<%= response.encodeURL("./contatti") %>">Contatti</a>
         <a href="<%= response.encodeURL("./signUp") %>">SignUp</a>
-        <a href="<%= response.encodeURL("./login") %>">Log-in</a>
+        <a href="<%= response.encodeURL("./login") %>">LogIn</a>
     </nav>
 
     <img src="assets/themes/dark/hamburger.svg" alt="☰" id="hamburger">

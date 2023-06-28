@@ -65,7 +65,7 @@ public class popolaDB extends HttpServlet {
 
     }
 
-    public void popolaUtenti() throws AlreadyExistsException {
+    public void popolaUtenti() throws UserAlreadyExistsException {
         // crea 100 utenti
         for(int i=0; i<100; i++){
             Utente u = new Utente();
