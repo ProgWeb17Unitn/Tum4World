@@ -1,9 +1,0 @@
-header {
-    background-color: transparent;
-    z-index: 9999;
-}
-
-nav a:hover {
-    z-index: 9999;
-    color: #F49E4C;
-}
