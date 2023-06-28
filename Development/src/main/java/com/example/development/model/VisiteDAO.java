@@ -19,6 +19,7 @@ public class VisiteDAO extends GenericDAO {
     private static final String getAllVisite = "SELECT * FROM visite";
     private static final String getVisiteTotali = "SELECT SUM(visite) AS totale FROM visite";
     private static final String resetVisite = "UPDATE visite SET visite=0";
+    private static final String save = "INSERT INTO visite (pagina, visite) VALUES (?, ?)";
 
     public VisiteDAO(Connection conn){
         super.conn = conn;
@@ -123,6 +124,22 @@ public class VisiteDAO extends GenericDAO {
         }
 
         return visiteTotali;
+    }
+
+    public void save(Visite v){
+        try(PreparedStatement ps = conn.prepareStatement(save)){
+            ps.setString(1, v.getPagina());
+            ps.setInt(2, v.getVisite());
+
+            int nuoveRighe = ps.executeUpdate();
+
+            if(nuoveRighe == 0){
+                System.out.println("Errore vista non salvata nel database");
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
     }
 
 
