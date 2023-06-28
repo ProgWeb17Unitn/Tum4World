@@ -1,0 +1,87 @@
+.RectangularBanner h2{
+    font-size: 200%;
+    color: #F5EE9E;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.RectangularBanner p, a{
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 150%;
+    color: #F5EE9E;
+}
+
+.CookieBanner img {
+    position: relative;
+    width:8%;
+    height:auto;
+    margin-top: 10px;
+    /*Creo un animazione chiamata spin dalla durata di 2 secondi ripetuta due volte*/
+    animation-name: spin;
+    animation-duration: 3000ms;
+    animation-iteration-count: 5;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.CookieBanner{
+    /* Uso grid per allineare il rettangolo, il triangolo e l'immagine su un unica colonna*/
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: end;
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+    font-size: 60%;
+    width: 30vw;
+    z-index: 9999;
+}
+/* Siamo il gruppo 17-> dispari --> in basso a destra*/
+.RectangularBanner {
+    position: relative;
+    width: auto;
+    height: auto;
+    background-color: #39728F;
+    border-radius: 10px 10px 0 10px;
+    padding: 1% 0 1% 1%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 1%;
+}
+.RectangularBanner form{
+    margin-top:2%;
+    display: flex;
+    padding-bottom: 1%;
+}
+
+.RectangularBanner form button{
+    margin-right: 2%;
+    font-size: 150%;
+    color: #F5EE9E;
+    background-color: #AB3428;
+    width: 100%;
+    height: 300%;
+    border: 0.1em solid #B3463C;
+    border-radius: 3%;
+}
+.RectangularBanner form button:hover{
+    background-color: #B3463C;
+    cursor: pointer;
+}
+
+
+.triangle {
+    padding: 0;
+    margin: 0;
+    width: 0;
+    height: 0;
+    position: relative;
+    border-left: 1.5em solid transparent;
+    border-top: 1.5em solid #39728F;
+    border-right: 1.5em solid transparent;
+}
