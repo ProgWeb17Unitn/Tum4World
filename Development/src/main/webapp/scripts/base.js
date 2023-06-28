@@ -4,14 +4,6 @@ menu = {};
 menu.status = 'closed';
 page = {};
 
-// controlla se viene aggiornato il tema predefinito del browser
-// e cambia il tema di conseguenza
-// a meno che non sia in modalità admin
-//window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-//if (theme.active !== 'admin')
-//theme.switch(event.matches ? 'dark' : 'light');
-//});
-
 theme.switch = function (n) {
     // scrolla in cima alla pagina per evitare problemi con la trasparenza dell'header
     window.scrollTo(0, 0);
@@ -29,17 +21,16 @@ theme.switch = function (n) {
     else
         theme.backgroundColor = '#2D728F'; //todo admin colors
 
-    //document.getElementById('theme').setAttribute('href', `styles/themes/${theme.active}/homepage.css`);
-
-    // elementi da modificare
+    // elementi da modificare in base al tema
+    // todo aggiungere helper, textbox dell'helper e scritte sia in header che footer
+    const footer = document.getElementsByTagName('footer')[0];
     const hamburger = document.getElementById('hamburger');
-    const themeSwitcher = document.getElementById('themeSwitcher');
 
     // cambia logo, icone ed immagine di sfondo
     if (hamburger)
         hamburger.setAttribute('src', `assets/themes/${theme.active}/hamburger.svg`);
-    if (themeSwitcher)
-        themeSwitcher.setAttribute('src', `assets/themes/${theme.active}/themeSwitcher.svg`);
+    if (footer)
+        footer.style.backgroundColor = theme.backgroundColor;
 }
 
 
@@ -53,12 +44,6 @@ page.load = function () {
     else
         page.toggleView('portrait');
 
-    // aggiunge funzionalità al pulsante per cambiare tema
-    const themeSwitcher = document.getElementById('themeSwitcher');
-    if (themeSwitcher) {
-        console.log('theme switcher found')
-        themeSwitcher.addEventListener('click', page.toggleTheme);
-    }
     // aggiunge funzionalità al pulsante hamburger in modalità portrait
     const hamburger = document.getElementById('hamburger');
     if (hamburger) {
@@ -108,13 +93,6 @@ page.toggleView = function (mode) {
         nav.style.display = 'none';
     }
     page.status = mode;
-}
-
-page.toggleTheme = function () {
-    if (theme.active === 'admin')
-        return;
-    // cambia tra il tema corrente e quello rimanente
-    theme.switch(theme.active === 'dark' ? 'light' : 'dark');
 }
 
 menu.open = function () {
