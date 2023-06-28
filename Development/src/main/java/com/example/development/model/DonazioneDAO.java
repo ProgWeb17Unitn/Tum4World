@@ -26,11 +26,12 @@ public class DonazioneDAO extends GenericDAO {
             int numNuoveDonazioni = ps.executeUpdate();
 
             if(numNuoveDonazioni == 0){
-                System.out.println("Errore donazione non inserita");
+                throw new SQLException();
             }
 
-        }catch(SQLException sqle){
-            System.out.println(sqle);
+        }catch(SQLException e){
+            System.out.println("Errore salvando donazione di " + d.getUsername() + " di euro " + d.getImporto() + ". Causa: " + e);
+            e.printStackTrace();
         }
     }
 
@@ -73,8 +74,9 @@ public class DonazioneDAO extends GenericDAO {
                 donazioniJSON = gson.toJson(donazioni);
 
             }
-        }catch(SQLException sqle){
-            System.out.println(sqle);
+        }catch(SQLException e){
+            System.out.println("Errore DB: " + e);
+            e.printStackTrace();
         }
 
         return donazioniJSON;

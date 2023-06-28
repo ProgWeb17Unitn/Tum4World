@@ -15,7 +15,7 @@ public class UtenteDAO extends GenericDAO{
     public UtenteDAO(Connection conn){
         super.conn = conn;
     }
-    public void save(Utente nuovoUtente) throws AlreadyExistsException {
+    public void save(Utente nuovoUtente) throws UserAlreadyExistsException {
         try(PreparedStatement ps = conn.prepareStatement(saveUtente)){
             // riempie la query con i dati nell'utente da salvare nel database
             ps.setString(1, nuovoUtente.getUsername());
@@ -33,13 +33,13 @@ public class UtenteDAO extends GenericDAO{
                 throw new SQLException();
             }
 
-        }catch(SQLException sqle){
+        }catch(SQLException e){
             // 23505 status code di violazione Primary Key: provato ad inserire un record con PK gia' presente nella tabella
-            if(sqle.getSQLState().equals("23505")){
-                throw new AlreadyExistsException("Utente con questa email gia presente nel database");
+            if(e.getSQLState().equals("23505")){
+                throw new UserAlreadyExistsException("Utente con questa email gia presente nel database");
             }
             else{
-                sqle.printStackTrace();
+                e.printStackTrace();
             }
         }
 
@@ -57,17 +57,17 @@ public class UtenteDAO extends GenericDAO{
             ps.setString(1, u.getUsername());
 
             int numRigheCancellate = ps.executeUpdate();
-
             if(numRigheCancellate == 0){
-                System.out.println("Errore 0 rows deleted: utente non cancellato");
+                throw new SQLException();
             }
-        }catch(SQLException sqle){
-            System.out.println("Errore cancellando Utente: " + sqle);
-            sqle.printStackTrace();
+        }catch(SQLException e){
+            System.out.println("Errore cancellando Utente: " + u.getUsername() + ". Causa: " + e);
+            e.printStackTrace();
         }
     }
 
-    public Utente getUtente(String username) throws RecordNotFoundException{
+    // se non trova un utente fa una UserNotFoundException
+    public Utente getUtente(String username) throws UserNotFoundException {
         Utente utente = null; // user returned
 
         try(PreparedStatement ps = conn.prepareStatement(getUtenteByUsername)){
@@ -76,9 +76,8 @@ public class UtenteDAO extends GenericDAO{
 
             try(ResultSet rs = ps.executeQuery()){
                 if(!rs.next()){ // controlla se il ResultSet è vuoto
-                    System.out.println("errore 0 rows found: utente non esiste");
-
-                    utente = null;
+                    System.out.println("Errore non esiste utente con username: " + username);
+                    throw new UserNotFoundException();
                 }
                 else{
                     utente = new Utente();
@@ -86,9 +85,9 @@ public class UtenteDAO extends GenericDAO{
                 }
             }
 
-        }catch(SQLException sqle){
-            System.out.println("Errore prendendo Utente: " + sqle);
-            sqle.printStackTrace();
+        }catch(SQLException e){
+            System.out.println("Errore DB prendendo Utente: " + e);
+            e.printStackTrace();
         }
 
         return utente;

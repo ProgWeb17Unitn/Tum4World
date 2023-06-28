@@ -20,12 +20,12 @@ public class MessaggioDAO extends GenericDAO{
             ps.setString(4, m.getTesto());
 
             int nuoveRighe = ps.executeUpdate();
-
             if(nuoveRighe == 0){
-                System.out.println("Errore messaggio non salvato nel database");
+                throw new SQLException("messaggio non salvato nel database");
             }
         }catch(SQLException e){
-            System.out.println(e);
+            System.out.println("Errore DB: " + e);
+            e.printStackTrace();
         }
     }
 }

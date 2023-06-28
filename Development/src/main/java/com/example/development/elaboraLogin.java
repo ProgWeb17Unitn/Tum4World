@@ -1,7 +1,7 @@
 package com.example.development;
 
 import com.example.development.model.GenericDAO;
-import com.example.development.model.RecordNotFoundException;
+import com.example.development.model.UserNotFoundException;
 import com.example.development.model.Utente;
 import com.example.development.model.UtenteDAO;
 
@@ -58,7 +58,7 @@ public class elaboraLogin extends HttpServlet {
                 if(session!=null) {
                     session.setAttribute("username", username);
                 }
-                Cookie tipoCookie = new Cookie("tipo", username);
+                Cookie tipoCookie = new Cookie("tipo", utente.getTipo());
                 response.addCookie(usernameCookie);
                 response.addCookie(tipoCookie);
 
@@ -92,11 +92,10 @@ public class elaboraLogin extends HttpServlet {
                 writer.close();
 
 
-            }catch(RecordNotFoundException e){ // impossibile arrivare in questa exception perchè le credenziali sono valide
-                System.out.println("Errore: utente con credenziali valide non trovato nel database");
+            }catch(UserNotFoundException e){ // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
+                System.out.println("Errore DB: utente con credenziali valide non trovato nel database");
                 e.printStackTrace();
             }
-
 
         }
 

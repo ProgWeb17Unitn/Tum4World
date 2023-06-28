@@ -21,11 +21,12 @@ public class FraseDAO extends GenericDAO {
                     ret.setFrase(rs.getString("frase")); // salva la frase random nel Bean Frase
                 }
                 else{
-                    System.out.println("frase random non trovata");
+                    System.out.println("Frase random non trovata: probabilmente la tabella e' vuota");
                 }
             }
         }catch(SQLException e){
-            System.out.println("request al database fallita");
+            System.out.println("Errore DB: " + e);
+            e.printStackTrace();
         }
 
         return ret;

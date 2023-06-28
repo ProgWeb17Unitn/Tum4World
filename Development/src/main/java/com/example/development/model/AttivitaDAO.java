@@ -28,9 +28,9 @@ public class AttivitaDAO extends GenericDAO {
                 }
             }
 
-        }catch(SQLException sqle){
-            System.out.println("Errore prendendo tutte le attivita: " + sqle);
-            sqle.printStackTrace();
+        }catch(SQLException e){
+            System.out.println("Errore prendendo tutte le attivita: " + e);
+            e.printStackTrace();
         }
 
         return list;

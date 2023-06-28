@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.time.LocalDate;
 
-import com.example.development.model.AlreadyExistsException;
+import com.example.development.model.UserAlreadyExistsException;
 import com.example.development.model.GenericDAO;
 import com.example.development.model.Utente;
 import com.example.development.model.UtenteDAO;
@@ -62,7 +62,7 @@ public class elaboraSignUp extends HttpServlet {
 
 
         }
-        catch(AlreadyExistsException e) {
+        catch(UserAlreadyExistsException e) {
             // e.printStackTrace();
 
             // provato a creare un utente con username gia esistente, invia risposta di errore

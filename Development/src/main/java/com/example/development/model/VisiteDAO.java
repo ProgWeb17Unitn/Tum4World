@@ -54,7 +54,7 @@ public class VisiteDAO extends GenericDAO {
             }
 
         }catch(SQLException e){
-            System.out.println("Errore azzeramento visite");
+            System.out.println("Errore azzeramento visite: " + e);
             e.printStackTrace();
         }
     }
@@ -72,7 +72,7 @@ public class VisiteDAO extends GenericDAO {
                 }
             }
         }catch(SQLException e){
-            System.out.println("Errore query elenca visite");
+            System.out.println("Errore query elenca visite: " + e);
             e.printStackTrace();
         }
 
@@ -115,11 +115,11 @@ public class VisiteDAO extends GenericDAO {
                     visiteTotali = rs.getInt("totale");
                 }
                 else{
-                    System.out.println("Errore calcolo visite totali");
+                    throw new SQLException("Errore calcolo visite totali");
                 }
             }
         }catch(SQLException e){
-            System.out.println("Errore preparazione query visite totali");
+            System.out.println("Errore DB: " + e);
             e.printStackTrace();
         }
 

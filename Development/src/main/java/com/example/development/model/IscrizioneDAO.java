@@ -24,9 +24,9 @@ public class IscrizioneDAO extends GenericDAO {
                 throw new SQLException();
             }
 
-        }catch(SQLException sqle){
+        }catch(SQLException e){
             System.out.println("Errore iscrizione di " + username + " ad " + codiceAttivita + " non effettuata");
-            sqle.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -40,14 +40,13 @@ public class IscrizioneDAO extends GenericDAO {
             ps.setString(2, codiceAttivita);
 
             int rimossa = ps.executeUpdate(); // ritorna il numero di righe cancellate
-
             if(rimossa == 0){
                 throw new SQLException();
             }
 
-        }catch(SQLException sqle){
+        }catch(SQLException e){
             System.out.println("Errore rimozione iscrizione di " + username + " ad " + codiceAttivita + ". Disiscrizione non effettuata");
-            sqle.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -74,7 +73,7 @@ public class IscrizioneDAO extends GenericDAO {
                 }
             }
         }catch(SQLException e){
-            System.out.println("Errore ricerca iscrizioni utente");
+            System.out.println("Errore DB: " + e);
             e.printStackTrace();
         }
 
