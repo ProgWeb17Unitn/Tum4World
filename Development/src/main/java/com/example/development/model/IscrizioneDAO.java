@@ -19,14 +19,19 @@ public class IscrizioneDAO extends GenericDAO {
             ps.setString(2, codiceAttivita);
 
             int nuovaIscrizione = ps.executeUpdate(); // ritorna il numero di nuove righe (success = 1 nuova riga, fail = 0 );
-
             if(nuovaIscrizione == 0){
                 throw new SQLException();
             }
 
         }catch(SQLException e){
-            System.out.println("Errore iscrizione di " + username + " ad " + codiceAttivita + " non effettuata");
-            e.printStackTrace();
+            if(e.getSQLState() == "23505"){ // Primary Key duplicata: utente è gia iscritto a questa attivita
+                System.out.println("Errore iscrizione: utente " + username + " già iscritto ad " + codiceAttivita);
+            }
+            else{
+                System.out.println("Errore iscrizione di " + username + " ad " + codiceAttivita + " non effettuata");
+                e.printStackTrace();
+            }
+
         }
     }
 

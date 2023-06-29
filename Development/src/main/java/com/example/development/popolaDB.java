@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -48,20 +49,98 @@ public class popolaDB extends HttpServlet {
     }
 
     public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // !! e' necessario creare manualmente le tabelle, sono nel file tabelle.txt
-        /*
+         creaTabelle();
+
+
         try{ popolaUtenti(); }
         catch (UserAlreadyExistsException e)
         { e.printStackTrace(); }
-        */
 
 
-        // popolaDonazioni();
-        // popolaVisite();
-        // popolaFrasi();
+         popolaDonazioni();popolaAttivita();
+        popolaVisite();
+        popolaFrasi();
+         popolaIscrizioni();
 
-        // per popolare le attività ho eseguito da ij
-        // INSERT INTO attivita (codice, nome) VALUES ('attivita1', 'qui il nome attività');
+    }
+
+    public void creaTabelle(){
+        try{
+            Statement s = conn.createStatement();
+            try {
+                s.executeUpdate("CREATE TABLE utenti ( " +
+                        "username VARCHAR(255) NOT NULL, " +
+                        "password VARCHAR(255) NOT NULL, " +
+                        "nome VARCHAR(255) NOT NULL, " +
+                        "cognome VARCHAR(255) NOT NULL, " +
+                        "data_nascita DATE NOT NULL, " +
+                        "email VARCHAR(255) NOT NULL, " +
+                        "telefono VARCHAR(20) NOT NULL, " +
+                        "tipo VARCHAR(20) NOT NULL, " +
+                        "CONSTRAINT pk_user PRIMARY KEY (username), " +
+                        "CONSTRAINT tipo_valido CHECK(tipo IN('aderente', 'simpatizzante', 'admin'))" +
+                        ")");
+            } catch(SQLException e) { e.printStackTrace(); }
+
+            try{
+                s.executeUpdate("CREATE TABLE donazioni ( " +
+                        "id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1), " +
+                        "username VARCHAR(255), " +
+                        "importo INT NOT NULL, " +
+                        "data DATE NOT NULL, " +
+                        "PRIMARY KEY (id), " +
+                        "CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES utenti(username)\n" +
+                        ")");
+            } catch(SQLException e) { e.printStackTrace(); }
+
+            try{
+                s.executeUpdate("CREATE TABLE messaggi( " +
+                        "id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1), " +
+                        "nomeCognome VARCHAR(255) NOT NULL, " +
+                        "email VARCHAR(255) NOT NULL, " +
+                        "motivo VARCHAR(255) NOT NULL, " +
+                        "testo VARCHAR(5000) NOT NULL" +
+                        ")");
+            } catch(SQLException e) { e.printStackTrace(); }
+
+            try{
+                s.executeUpdate("CREATE TABLE visite( " +
+                        "pagina VARCHAR(255) NOT NULL, " +
+                        "visite INT NOT NULL, " +
+                        "PRIMARY KEY (pagina)" +
+                        ")");
+            } catch(SQLException e) { e.printStackTrace(); }
+
+            try{
+                s.executeUpdate("CREATE TABLE frasi( " +
+                        "id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1), " +
+                        "frase VARCHAR(10000) NOT NULL" +
+                        ")");
+            } catch(SQLException e) { e.printStackTrace(); }
+
+            try{
+                s.executeUpdate("CREATE TABLE attivita( " +
+                        "codice VARCHAR(255) NOT NULL, " +
+                        "nome VARCHAR(255) NOT NULL, " +
+                        "PRIMARY KEY (codice)" +
+                        ")");
+            } catch(SQLException e) { e.printStackTrace(); }
+
+            try{
+                s.executeUpdate("CREATE TABLE iscrizioni( " +
+                        "username VARCHAR(255) NOT NULL, " +
+                        "codice_attivita VARCHAR(255) NOT NULL, " +
+                        "CONSTRAINT pk_iscrizioni PRIMARY KEY (username, codice_attivita), " +
+                        "CONSTRAINT fk_iscritto FOREIGN KEY (username) REFERENCES utenti(username) ON DELETE CASCADE, " +
+                        "CONSTRAINT fk_attivita FOREIGN KEY (codice_attivita) REFERENCES attivita(codice)" +
+                        ")");
+            } catch(SQLException e) { e.printStackTrace(); }
+
+
+        }catch(SQLException e){
+            System.out.println("Errore DB creando tabelle: " + e);
+            e.printStackTrace();
+        }
 
     }
 
@@ -117,6 +196,12 @@ public class popolaDB extends HttpServlet {
 
     }
 
+    public void popolaAttivita(){
+        attivitaDAO.save("attivita1", "Salvataggio e Riabilitazione");
+        attivitaDAO.save("attivita2", "Educazione e Sensibilizzazione");
+        attivitaDAO.save("attivita3", "Prevenzione e Salvaguardia");
+    }
+
     public void popolaFrasi(){
         // frasi prese da internet, sentitevi liberi di modificare, aggiungere o cancellare tutte quelle che volete
         String[] frasi = {
@@ -159,6 +244,19 @@ public class popolaDB extends HttpServlet {
             fraseDAO.save(frase);
         }
 
+    }
+
+    public void popolaIscrizioni(){
+        // iscrive utenti a caso presi da quelli generati in popolaUtenti()
+        // alle attivita con codici scelti nel metodo popolaAttivita()
+        String[] attivita = {"attivita1", "attivita2", "attivita3" };
+        for(int i=0; i<100; i++){
+            iscrizioneDAO.nuovaIscrizione(
+                    "utente" + rand.nextInt(100),
+                    attivita[rand.nextInt(3)]
+            );
+        }
+        System.out.println("Il metodo popolaIscrizioni genera Exception perchè utilizza valori casuali per iscrivere gli utenti, e può creare duplicati");
     }
 
 
