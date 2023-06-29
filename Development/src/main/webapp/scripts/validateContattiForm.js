@@ -28,20 +28,33 @@ function validateData(){
     }
 
     if(valido){
-        //Invio email con protocollo SMTP
-        //L'oggetto della mail è il motivo ed il contenuto sono i dettagli
-        Email.send({
-            Host: "smtp.gmail.com",
-            Username : "tum4world@nessunonoluogonoesiste.com",
-            Password : "12345678",  //Password della mail tum4world
-            To : 'form[\"email\"].value',
-            From : "tum4world@nessunonoluogonoesiste.com",
-            Subject : "form[\"motivo\"].value",
-            Body : "form[\"dettagli\"].value",
-        });
+        let xhttp = new XMLHttpRequest();
+        let url = "EmailSending";
 
-        //Reindirizzamento a pagina Invio Confermato
-        window.location.replace("./invioConfermato.jsp");
+        function codifica(param){
+            return encodeURIComponent(param).replace("%20", "+");
+        }
+
+        let params =
+            "nome=" + codifica(form["nome"].value) + "&" +
+            "email=" + codifica(form["email"].value) + "&" +
+            "motivo=" + codifica(form["motivo"].value) + "&" +
+            "dettagli=" + codifica(form["dettagli"].value);
+
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4){
+                if(this.status == 200){
+                    let url = this.responseText; // legge l'url a cui fare redirect
+                    window.location.replace(url); // simula un redirect
+                }
+            }
+        }
+
+        // invia POST
+        xhttp.send(params);
     }else{
         alert(stringaRitorno);
     }
