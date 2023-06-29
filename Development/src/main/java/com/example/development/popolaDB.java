@@ -217,11 +217,6 @@ public class popolaDB extends HttpServlet {
 
     }
 
-    public void popolaAttivita(){
-        attivitaDAO.save("attivita1", "Salvataggio e Riabilitazione");
-        attivitaDAO.save("attivita2", "Educazione e Sensibilizzazione");
-        attivitaDAO.save("attivita3", "Prevenzione e Salvaguardia");
-    }
 
     public void popolaFrasi(){
         // frasi prese da internet, sentitevi liberi di modificare, aggiungere o cancellare tutte quelle che volete
@@ -265,19 +260,6 @@ public class popolaDB extends HttpServlet {
             fraseDAO.save(frase);
         }
 
-    }
-
-    public void popolaIscrizioni(){
-        // iscrive utenti a caso presi da quelli generati in popolaUtenti()
-        // alle attivita con codici scelti nel metodo popolaAttivita()
-        String[] attivita = {"attivita1", "attivita2", "attivita3" };
-        for(int i=0; i<100; i++){
-            iscrizioneDAO.nuovaIscrizione(
-                    "utente" + rand.nextInt(100),
-                    attivita[rand.nextInt(3)]
-            );
-        }
-        System.out.println("Il metodo popolaIscrizioni genera Exception perchè utilizza valori casuali per iscrivere gli utenti, e può creare duplicati");
     }
 
 
