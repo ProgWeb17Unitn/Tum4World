@@ -8,7 +8,11 @@ public class Donazione implements Serializable {
     private int importo;
     private LocalDate data;
 
-    public Donazione() {}
+    public Donazione() {
+        this.username="utente0";
+        this.importo=0;
+        data=LocalDate.now();
+    }
 
     public String getUsername() {
         return username;

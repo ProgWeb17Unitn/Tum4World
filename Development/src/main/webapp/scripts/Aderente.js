@@ -18,7 +18,7 @@ function handleDonation() {
     var valoreInserito = form.elements.quantita.value;
 
     // verifico se non è valido
-    if (!isValidInput(valoreInserito)) {
+    if (!isValidInput(valoreInserito)) {;
         segnalaErrore();
     } else {
         // Form valido, salvo nel db la donazione e "mostro che è stata effettuata"
@@ -67,14 +67,14 @@ function saveDonation(){
     let quantita = document.getElementById("quantita").value;
     let url = "AderenteDonazione?quantita=" + quantita;
     let xhttp = new XMLHttpRequest();
-    xhttp.open("POSR", url, true);
+    xhttp.open("POST", url, true);
     xhttp.responseType = "json";
 
     // Callback
     xhttp.onreadystatechange = function () {
         let done = 4, ok = 200;
         if (xhttp.readyState === done && xhttp.status === ok) {
-            donazioneEffettuata()
+            donazioneEffettuata();
         }
         else {
             segnalaErrore();

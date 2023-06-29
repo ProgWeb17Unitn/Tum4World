@@ -24,13 +24,9 @@ public class AderenteDonazione extends HttpServlet {
     Donazione donazione;
     @Override
     public void init(){
+        donazione=new Donazione();
         conn = GenericDAO.getConnection();
         donazioneDAO = new DonazioneDAO(conn);
-    }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-        // La richiesta è di tipo Post
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,11 +39,10 @@ public class AderenteDonazione extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
-        String name= "unknown";
+        String name= "utente0";
         if(session !=null){
             name = (String) session.getAttribute("username");
         }
-
         donazione.setImporto(number);
         donazione.setUsername(name);
         donazione.setData(LocalDate.now());
@@ -55,6 +50,17 @@ public class AderenteDonazione extends HttpServlet {
         response.setStatus(200);
 
     }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+
 
     @Override
     public void destroy() {
