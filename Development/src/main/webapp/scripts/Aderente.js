@@ -1,13 +1,17 @@
 var value=0;
+var attivita1=0;
+var attivita2=0;
+var attivita3=0;
+
 function handleScroll() {
     if(value===0){
         theme.switch("Aderente");
-        value++;
+        value++; // cambio il tema solo una volta
     }
     baseOnscroll();
 }
 window.addEventListener("scroll", handleScroll);
-
+window.addEventListener("load", findActivities);
 function handleDonation() {
     /*
         Esefuo due operazioni:
@@ -67,6 +71,27 @@ function saveDonation(){
 
     //NB: per ricevere effettivamente il feedback di ricezione impiega qualche istante
     let quantita = document.getElementById("quantita").value;
+    let url = "AderenteDonazione?quantita=" + quantita;
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", url, true);
+    xhttp.responseType = "json";
+
+    // Callback
+    xhttp.onreadystatechange = function () {
+        let done = 4, ok = 200;
+        if (xhttp.readyState === done && xhttp.status === ok) {
+            donazioneEffettuata();
+        }
+        else {
+            segnalaErrore();
+        }
+    }
+    // Sending request
+    xhttp.send();
+}
+
+function findActivities() {
+    // questa funzione cerca nel database a quali attivita l'utente loggato è iscritto
     let url = "AderenteDonazione?quantita=" + quantita;
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, true);

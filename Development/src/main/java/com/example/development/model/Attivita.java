@@ -6,6 +6,10 @@ public class Attivita implements Serializable {
     private String codice;
     private String nome;
 
+    public Attivita(){
+        setCodice("none");
+        setNome("none");
+    }
     public String getCodice() {
         return codice;
     }

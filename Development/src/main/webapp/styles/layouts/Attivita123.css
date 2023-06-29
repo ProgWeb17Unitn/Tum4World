@@ -63,6 +63,7 @@
 .descrizione{
     display: flex;
     align-items: center;
+    font-size: larger;
     width: 100%;
 }
 
@@ -73,7 +74,7 @@
 
 .titoletto{
     text-align: center;
-    font-size: larger;
+    font-size: x-large;
     font-weight: bold;
     width: 20%;
     text-shadow: 1px 2px 1px rgba(255, 255, 255, 0.3);
