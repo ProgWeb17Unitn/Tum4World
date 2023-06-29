@@ -11,13 +11,14 @@ function handleScroll() {
     baseOnscroll();
 }
 window.addEventListener("scroll", handleScroll);
-window.addEventListener("load", findActivities);
+window.addEventListener("load", trovaAttivita);
 
 
-function findActivities(){
+function trovaAttivita(){
+
 
     // STESSA FUNZIONE DI aderente.js, per maggiori info vedere quella pagina
-
+    check();
     let url = "TrovaAttivita";
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, true);
@@ -44,7 +45,7 @@ function findActivities(){
                         attivita1=1; // Segno le attivitò a cui l'utente è iscritto per evitare di
                         // doverle ricontrollare in caso volesse cliccare per iscriversi
                     }else if(current_value === "Att2"){
-                        //console.log("Isritto ad Attività2");
+                        console.log("Isritto ad Attività2");
                         rettangoliAttiva2.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
                         attivita2=1;
                     }else if(current_value === "Att3") {
@@ -60,4 +61,23 @@ function findActivities(){
     }
     // Sending request
     xhttp.send();
+}
+
+
+function check(){
+
+    // La funzione trovaAttivita setta a 1 le attivita a cui l'utente è iscritto
+    // e cambia la sfumatura del rettangolo  quando la pagina viene caricata,
+    // se poi per qualche motivo si ricarica la pagina questa indormazione tornerebbe "momentaneamente" come l'originale
+    // finchè non recuperata, tramite questa dfunzione si imposta subito il cambio di stile per le informazioni già presenti
+    let rettangoliAttiva1 = document.getElementById("Attivita1");
+    let rettangoliAttiva2 = document.getElementById("Attivita2");
+    let rettangoliAttiva3 = document.getElementById("Attivita3");
+    if (attivita1 === 1) {
+        rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
+    }else if(attivita2 === 1){
+        rettangoliAttiva2.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
+    }else if(attivita3 === 1) {
+        rettangoliAttiva3.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
+    }
 }
