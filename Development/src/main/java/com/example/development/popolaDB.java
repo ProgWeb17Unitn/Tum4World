@@ -51,7 +51,7 @@ public class popolaDB extends HttpServlet {
         // !! e' necessario creare manualmente le tabelle, sono nel file tabelle.txt
         /*
         try{ popolaUtenti(); }
-        catch (AlreadyExistsException e)
+        catch (UserAlreadyExistsException e)
         { e.printStackTrace(); }
         */
 
