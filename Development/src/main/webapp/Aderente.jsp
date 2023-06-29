@@ -24,7 +24,7 @@
             <p class="Dashboard-description"><span class="highlight">E' bello rivederti!</span>
                 Qui trovi la tua area privata tramite la quale puoi compiere diverse azioni:
                 <br>
-                <br>- Puoi cliccare sulle attivita' per iscriverti ad esse;
+                <br>- Puoi cliccare sulle attivita' per iscriverti ad esse (in verde quelle a cui sei iscritto);
                 <br>- Puoi visualizzare i dati del tuo profilo;
                 <br>- Puoi effetuare una donazione per sostenere la nostra missione;
                 <br>- Puoi cancellare il tuo profilo. Solo in caso tu lo voglia davvero...</p>
@@ -36,17 +36,17 @@
 
 
     <div class="Attivita-container">
-        <div class="Attivita">
+        <div class="Attivita" id="Attivita1">
             <div class="Attivita-title">Salvataggio e Riabilitazione</div>
             <img src="assets/images/Attivita/Attivita1.jpg" alt="Salvataggio e Riabilitazione">
         </div>
 
-        <div class="Attivita">
+        <div class="Attivita" id="Attivita2">
             <div class="Attivita-title">Educazione e Sensibilizzazione</div>
             <img src="assets/images/Attivita/Attivita2.jpg" alt="Educazione e Sensibilizzazione">
         </div>
 
-        <div class="Attivita">
+        <div class="Attivita" id="Attivita3">
             <div class="Attivita-title">Prevenzione e Salvaguardia</div>
             <img src="assets/images/Attivita/Attivita3.jpg" alt="Prevenzione e Salvaguardia">
         </div>

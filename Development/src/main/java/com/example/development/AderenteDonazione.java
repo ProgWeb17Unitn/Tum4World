@@ -31,6 +31,7 @@ public class AderenteDonazione extends HttpServlet {
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // utilizzo la classe Donazione (Bean) ed il suo Dao per salvare la risposta
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 

@@ -17,14 +17,15 @@
 
 .Attivita{
 
-    background-color: #ACB1D6;
-    border: 2px solid #ACB1D6;
+    background-color: #a2a7cb;
+    border: 2px solid #a2a7cb;
     box-shadow: 3px 3px 2px rgb(219, 223, 234);
 
 }
 
 .Attivita-title{
     color: #ffffff;
+    font-size: larger;
 }
 
 .bottone-elemento{

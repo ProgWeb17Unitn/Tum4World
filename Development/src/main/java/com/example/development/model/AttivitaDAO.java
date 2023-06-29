@@ -9,6 +9,7 @@ import java.util.List;
 
 public class AttivitaDAO extends GenericDAO {
 
+    private static final String saveAttivita= "INSERT INTO attivita (codice, nome) VALUES (?,?)";
     private static final String getAllAttivita = "SELECT * FROM attivita";
 
     public AttivitaDAO(Connection conn){
@@ -35,4 +36,25 @@ public class AttivitaDAO extends GenericDAO {
 
         return list;
     }
+
+    public boolean save(Attivita a){
+
+        try(PreparedStatement ps = conn.prepareStatement(saveAttivita)){
+            ps.setString(1, a.getCodice());
+            ps.setString(2, a.getNome());
+
+            int inserzioni = ps.executeUpdate();
+
+            if(inserzioni == 0){
+                throw new SQLException();
+            }
+
+        }catch(SQLException e){
+            System.out.println("Errore salvando l'arrivita"+ a.getNome()+ " con codice " + a.getNome() + ". Causa: " + e);
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }
