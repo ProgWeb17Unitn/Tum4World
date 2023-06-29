@@ -64,6 +64,8 @@ function donazioneEffettuata(){
 
 function saveDonation(){
     // Making request
+
+    //NB: per ricevere effettivamente il feedback di ricezione impiega qualche istante
     let quantita = document.getElementById("quantita").value;
     let url = "AderenteDonazione?quantita=" + quantita;
     let xhttp = new XMLHttpRequest();

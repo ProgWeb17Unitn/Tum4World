@@ -40,14 +40,23 @@ public class AderenteDonazione extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         String name= "utente0";
+
         if(session !=null){
             name = (String) session.getAttribute("username");
         }
         donazione.setImporto(number);
         donazione.setUsername(name);
         donazione.setData(LocalDate.now());
-        donazioneDAO.save(donazione);
-        response.setStatus(200);
+
+        if(donazioneDAO.save(donazione)){
+            // se il salvataggio va a buon termine
+            response.setStatus(200);
+        }
+        else {
+            // se il salvataggio va male ritorno un codice 500
+            // così che in js viene mostrato l'error
+            response.setStatus(500);
+        }
 
     }
     @Override

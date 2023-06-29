@@ -16,7 +16,7 @@ public class DonazioneDAO extends GenericDAO {
         this.conn = conn;
     }
 
-    public void save(Donazione d){
+    public boolean save(Donazione d){
 
         try(PreparedStatement ps = conn.prepareStatement(saveDonazione)){
             ps.setString(1, d.getUsername());
@@ -32,7 +32,9 @@ public class DonazioneDAO extends GenericDAO {
         }catch(SQLException e){
             System.out.println("Errore salvando donazione di " + d.getUsername() + " di euro " + d.getImporto() + ". Causa: " + e);
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     public String getDonazioniCurrentYearJSON(){
