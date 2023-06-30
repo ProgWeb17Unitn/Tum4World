@@ -55,17 +55,19 @@
 
     <div class="Bottoni">
         <div class="bottone-elemento" id="btn1">
-            <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon"><p>Visualizza Dati</p>
+            <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon">
+            <p>Visualizza Dati</p>
         </div>
         <div class="bottone-elemento" id="btn2">
-            <img src="assets/images/S/bin.svg" id="bin"> <p>Cancella Iscrizione</p>
+            <img src="assets/images/S/bin.svg" id="bin">
+            <p>Cancella Iscrizione</p>
         </div>
         <div class="donazione">
-        <form id="form-donazione" method="get">
-            <label for="quantita" id="donazione-label">Valore Donazione:</label>
-            <input type="text" id="quantita" name="quantita" placeholder="100"><br>
-            <input type="button" value="Submit" id="submit-donation" onclick="handleDonation()">
-        </form>
+            <form id="form-donazione" method="get">
+                <label for="quantita" id="donazione-label">Valore Donazione:</label>
+                <input type="text" id="quantita" name="quantita" placeholder="100"><br>
+                <input type="button" value="Submit" id="submit-donation" onclick="handleDonation()">
+            </form>
         </div>
     </div>
 

@@ -19,10 +19,11 @@ public class elaboraLogin extends HttpServlet {
     UtenteDAO utenteDAO;
 
     @Override
-    public void init(){
+    public void init() {
         conn = GenericDAO.getConnection();
         utenteDAO = new UtenteDAO(conn);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -44,18 +45,17 @@ public class elaboraLogin extends HttpServlet {
 
         boolean credenzialiValide = utenteDAO.checkLogin(username, password);
 
-        if(!credenzialiValide){
+        if (!credenzialiValide) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // status code 401 Unauthorized (ovvero credenziali sbagliate)
             return;
-        }
-        else{
+        } else {
 
-            try{
+            try {
                 Utente utente = utenteDAO.getUtente(username);
 
                 // imposta i cookie di login
                 Cookie usernameCookie = new Cookie("username", username);
-                if(session!=null) {
+                if (session != null) {
                     session.setAttribute("username", username);
                 }
                 Cookie tipoCookie = new Cookie("tipo", utente.getTipo());
@@ -68,20 +68,20 @@ public class elaboraLogin extends HttpServlet {
                 switch (tipo) {
                     case "aderente":
                         writer.print(request.getContextPath() + "/aderente.jsp");
-                        if(session!=null) {
+                        if (session != null) {
                             session.setAttribute("tipo", "aderente");
                         }
                         break;
                     case "simpatizzante":
                         writer.print(request.getContextPath() + "/simpatizzante.jsp");
                         if (session != null) {
-                            session.setAttribute("tipo","simpatizzante");
+                            session.setAttribute("tipo", "simpatizzante");
                         }
                         break;
                     case "admin":
                         writer.print(request.getContextPath() + "/admin.jsp");
                         if (session != null) {
-                            session.setAttribute("tipo","admin");
+                            session.setAttribute("tipo", "admin");
                         }
                         break;
                     default:
@@ -92,7 +92,8 @@ public class elaboraLogin extends HttpServlet {
                 writer.close();
 
 
-            }catch(UserNotFoundException e){ // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
+            } catch (
+                    UserNotFoundException e) { // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
                 System.out.println("Errore DB: utente con credenziali valide non trovato nel database");
                 e.printStackTrace();
             }
@@ -102,7 +103,7 @@ public class elaboraLogin extends HttpServlet {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         GenericDAO.closeConnection(conn);
     }
 }

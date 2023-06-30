@@ -1,37 +1,37 @@
-function validateData(){
+function validateData() {
 
     let form = document.forms.namedItem("formContatti");
     let valido = true;
     let stringaRitorno = "";
 
-    if(form["nome"].value === ""){
+    if (form["nome"].value === "") {
         stringaRitorno += "Specificare nome e cognome\n";
         valido = false;
     }
 
-    if(form["email"].value === ""){
+    if (form["email"].value === "") {
         stringaRitorno += "Specificare indirizzo email\n";
         valido = false;
-    }else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form["email"].value))){
+    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form["email"].value))) {
         stringaRitorno += "Indirizzo email non valido\n";
         valido = false;
     }
 
-    if(form["motivo"].value === ""){
+    if (form["motivo"].value === "") {
         stringaRitorno += "Specificare motivazione\n";
         valido = false;
     }
 
-    if(form["dettagli"].value === ""){
+    if (form["dettagli"].value === "") {
         stringaRitorno += "Specificare ulteriori dettagli\n";
         valido = false;
     }
 
-    if(valido){
+    if (valido) {
         let xhttp = new XMLHttpRequest();
         let url = "EmailSending";
 
-        function codifica(param){
+        function codifica(param) {
             return encodeURIComponent(param).replace("%20", "+");
         }
 
@@ -44,9 +44,9 @@ function validateData(){
         xhttp.open("POST", url, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4){
-                if(this.status == 200){
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                if (this.status == 200) {
                     let url = this.responseText; // legge l'url a cui fare redirect
                     window.location.replace(url); // simula un redirect
                 }
@@ -55,13 +55,13 @@ function validateData(){
 
         // invia POST
         xhttp.send(params);
-    }else{
+    } else {
         alert(stringaRitorno);
     }
 
 }
 
 
-function resetData(){
+function resetData() {
     document.getElementById("formContatti").reset();
 }

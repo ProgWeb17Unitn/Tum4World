@@ -15,10 +15,11 @@ function handleScroll() {
     circle.style.border = "4px solid #AB3428";
 
     clearTimeout(scrollingTimer);
-    scrollingTimer = setTimeout(function() {
+    scrollingTimer = setTimeout(function () {
         circle.style.border = "2px solid #F5EE9E";
     }, 200);
     var scrollPosition = window.scrollY;
     circle.style.transform = "translate(-50%, calc(50% + " + scrollPosition + "px))";
 }
+
 window.addEventListener("scroll", handleScroll);

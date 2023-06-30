@@ -6,22 +6,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name="Attivita2", value="/Attivita2")
+@WebServlet(name = "Attivita2", value = "/Attivita2")
 public class Attivita2 extends HttpServlet {
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("Attivita2.jsp");
         dispatcher.include(request, response);
 
         // Aggiunta del cookie Banner se necessario
-        if((request.getAttribute("formNeeded") != null)&& (request.getAttribute("updated")==null)){
-            RequestDispatcher dispatcher2= request.getRequestDispatcher("static/cookieBanner.html");
+        if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) {
+            RequestDispatcher dispatcher2 = request.getRequestDispatcher("static/cookieBanner.html");
             dispatcher2.include(request, response);
         }
 
     }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }

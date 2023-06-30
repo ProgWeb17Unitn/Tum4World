@@ -47,7 +47,6 @@ page.load = function () {
     // aggiunge funzionalità al pulsante hamburger in modalità portrait
     const hamburger = document.getElementById('hamburger');
     if (hamburger) {
-        console.log('hamburger found')
         hamburger.addEventListener('click', function () {
             // quando viene cliccato, viene aperto il menu se chiuso
             // e viene chiuso se aperto

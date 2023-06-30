@@ -20,7 +20,7 @@ public class elaboraSignUp extends HttpServlet {
     UtenteDAO userDAO;
 
     @Override
-    public void init(){
+    public void init() {
         // genera nuova connessione
         conn = GenericDAO.getConnection();
 
@@ -33,7 +33,7 @@ public class elaboraSignUp extends HttpServlet {
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 
-        try{
+        try {
             Utente nuovo = new Utente();
             nuovo.setUsername(request.getParameter("username"));
             nuovo.setPassword(request.getParameter("password"));
@@ -61,8 +61,7 @@ public class elaboraSignUp extends HttpServlet {
             writer.close();
 
 
-        }
-        catch(UserAlreadyExistsException e) {
+        } catch (UserAlreadyExistsException e) {
             // e.printStackTrace();
 
             // provato a creare un utente con username gia esistente, invia risposta di errore
@@ -71,11 +70,9 @@ public class elaboraSignUp extends HttpServlet {
             PrintWriter out = response.getWriter();
             out.print("Errore: esiste già un utente con questo username!");
             out.close();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
     }
@@ -91,7 +88,7 @@ public class elaboraSignUp extends HttpServlet {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         userDAO = null;
     }
 }

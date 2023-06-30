@@ -1,22 +1,21 @@
-function validateData(){
+function validateData() {
     let form = document.forms.namedItem("formLogin");
 
     let errori = ""
 
-    if(form["username"].value === ""){
+    if (form["username"].value === "") {
         errori += "Specificare un username";
     }
 
-    if(form["password"].value === ""){
+    if (form["password"].value === "") {
         errori += "Specificare una password";
-    }
-    else{
+    } else {
         // TODO serve fare anche qui i controlli della password?
     }
 
-    if(errori === ""){
+    if (errori === "") {
         makeQuery();
-    } else{
+    } else {
         alert(errori);
     }
 
@@ -24,8 +23,7 @@ function validateData(){
 }
 
 
-
-function makeQuery(){
+function makeQuery() {
     let form = document.forms.namedItem("formLogin");
 
     let xhttp = new XMLHttpRequest();
@@ -33,7 +31,7 @@ function makeQuery(){
 
     // funzione per codificare i parametri, la stessa di validateSignUp form (dove trovate una spiegazione più dettagliata)
     // il replace serve per codificare gli spazi con '+'
-    function codifica(param){
+    function codifica(param) {
         return encodeURIComponent(param).replace("%20", "+");
     }
 
@@ -43,9 +41,9 @@ function makeQuery(){
 
     let query = url + "?" + params;
 
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4){
-            if(this.status == 200){ // login successful
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) { // login successful
                 // bisogna fare qui (lato client) il redirect dalla pagina di conferma perchè facendo una richiesta XHR il browser non la 'intercetta' e processa
                 //  come farebbe con una richiesta normale. Il browser quando vede che la richiesta XHR ha ricevuto come risposta un redirect, effettua un'altra
                 // richiesta XHR (in background) alla destinazione del redirect. Praticamente è la richiesta XHR che 'subisce' il redirect, non la pagina del browser.
@@ -56,8 +54,7 @@ function makeQuery(){
                 window.location.replace(url); // simula un redirect
 
                 console.log("Login successful")
-            }
-            else if(this.status == 401){ // 401 Error code: non autorizzato, credenziali errate
+            } else if (this.status == 401) { // 401 Error code: non autorizzato, credenziali errate
                 /*
                 TODO quando c'è il form bello
                     In caso di errore viene ripresentata la pagina Login con un messaggio addizionale di errore (il
@@ -69,7 +66,7 @@ function makeQuery(){
 
         }
 
-        if(this.status == 302){
+        if (this.status == 302) {
             console.log("intercept redirect whaaat?")
         }
     }

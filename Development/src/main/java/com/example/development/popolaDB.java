@@ -23,12 +23,11 @@ public class popolaDB extends HttpServlet {
     FraseDAO fraseDAO;
     AttivitaDAO attivitaDAO;
     IscrizioneDAO iscrizioneDAO;
-    Random rand  = new Random();
-
+    Random rand = new Random();
 
 
     @Override
-    public void init(){
+    public void init() {
         conn = GenericDAO.getConnection();
         utenteDAO = new UtenteDAO(conn);
         donazioneDAO = new DonazioneDAO(conn);
@@ -50,23 +49,26 @@ public class popolaDB extends HttpServlet {
     }
 
     public void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         creaTabelle();
+        creaTabelle();
 
 
-        try{ popolaUtenti(); }
-        catch (UserAlreadyExistsException e)
-        { e.printStackTrace(); }
+        try {
+            popolaUtenti();
+        } catch (UserAlreadyExistsException e) {
+            e.printStackTrace();
+        }
 
 
-         popolaDonazioni();popolaAttivita();
+        popolaDonazioni();
+        popolaAttivita();
         popolaVisite();
         popolaFrasi();
-         popolaIscrizioni();
+        popolaIscrizioni();
 
     }
 
-    public void creaTabelle(){
-        try{
+    public void creaTabelle() {
+        try {
             Statement s = conn.createStatement();
             try {
                 s.executeUpdate("CREATE TABLE utenti ( " +
@@ -81,9 +83,11 @@ public class popolaDB extends HttpServlet {
                         "CONSTRAINT pk_user PRIMARY KEY (username), " +
                         "CONSTRAINT tipo_valido CHECK(tipo IN('aderente', 'simpatizzante', 'admin'))" +
                         ")");
-            } catch(SQLException e) { e.printStackTrace(); }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-            try{
+            try {
                 s.executeUpdate("CREATE TABLE donazioni ( " +
                         "id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1), " +
                         "username VARCHAR(255), " +
@@ -92,9 +96,11 @@ public class popolaDB extends HttpServlet {
                         "PRIMARY KEY (id), " +
                         "CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES utenti(username)\n" +
                         ")");
-            } catch(SQLException e) { e.printStackTrace(); }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-            try{
+            try {
                 s.executeUpdate("CREATE TABLE messaggi( " +
                         "id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1), " +
                         "nomeCognome VARCHAR(255) NOT NULL, " +
@@ -102,32 +108,40 @@ public class popolaDB extends HttpServlet {
                         "motivo VARCHAR(255) NOT NULL, " +
                         "testo VARCHAR(5000) NOT NULL" +
                         ")");
-            } catch(SQLException e) { e.printStackTrace(); }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-            try{
+            try {
                 s.executeUpdate("CREATE TABLE visite( " +
                         "pagina VARCHAR(255) NOT NULL, " +
                         "visite INT NOT NULL, " +
                         "PRIMARY KEY (pagina)" +
                         ")");
-            } catch(SQLException e) { e.printStackTrace(); }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-            try{
+            try {
                 s.executeUpdate("CREATE TABLE frasi( " +
                         "id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1), " +
                         "frase VARCHAR(10000) NOT NULL" +
                         ")");
-            } catch(SQLException e) { e.printStackTrace(); }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-            try{
+            try {
                 s.executeUpdate("CREATE TABLE attivita( " +
                         "codice VARCHAR(255) NOT NULL, " +
                         "nome VARCHAR(255) NOT NULL, " +
                         "PRIMARY KEY (codice)" +
                         ")");
-            } catch(SQLException e) { e.printStackTrace(); }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-            try{
+            try {
                 s.executeUpdate("CREATE TABLE iscrizioni( " +
                         "username VARCHAR(255) NOT NULL, " +
                         "codice_attivita VARCHAR(255) NOT NULL, " +
@@ -135,10 +149,12 @@ public class popolaDB extends HttpServlet {
                         "CONSTRAINT fk_iscritto FOREIGN KEY (username) REFERENCES utenti(username) ON DELETE CASCADE, " +
                         "CONSTRAINT fk_attivita FOREIGN KEY (codice_attivita) REFERENCES attivita(codice)" +
                         ")");
-            } catch(SQLException e) { e.printStackTrace(); }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Errore DB creando tabelle: " + e);
             e.printStackTrace();
         }
@@ -147,7 +163,7 @@ public class popolaDB extends HttpServlet {
 
     public void popolaUtenti() throws UserAlreadyExistsException {
         // crea 100 utenti
-        for(int i=0; i<100; i++){
+        for (int i = 0; i < 100; i++) {
             Utente u = new Utente();
             u.setNome("nome");
             u.setCognome("cognome");
@@ -173,9 +189,9 @@ public class popolaDB extends HttpServlet {
         utenteDAO.save(a);
     }
 
-    public void popolaDonazioni(){
+    public void popolaDonazioni() {
         // assumendo di avere nel db gli utenti generati da popolaUtenti:
-        for(int i=0; i<1000; i++){
+        for (int i = 0; i < 1000; i++) {
             Donazione d = new Donazione();
             d.setUsername("utente" + rand.nextInt(100)); // donazione di un utente casuale
             d.setImporto(rand.nextInt(10001 - 100) + 100); // importo da 100 euro a 10000
@@ -183,14 +199,15 @@ public class popolaDB extends HttpServlet {
             donazioneDAO.save(d);
         }
     }
-    public void popolaAttivita(){
-        Attivita attivita1=new Attivita();
+
+    public void popolaAttivita() {
+        Attivita attivita1 = new Attivita();
         attivita1.setNome("Salvataggio");
         attivita1.setCodice("Att1");
-        Attivita attivita2=new Attivita();
+        Attivita attivita2 = new Attivita();
         attivita1.setNome("Educazione");
         attivita1.setCodice("Att2");
-        Attivita attivita3=new Attivita();
+        Attivita attivita3 = new Attivita();
         attivita3.setNome("Educazione");
         attivita3.setCodice("Att3");
         attivitaDAO.save(attivita1);
@@ -198,17 +215,17 @@ public class popolaDB extends HttpServlet {
         attivitaDAO.save(attivita3);
     }
 
-    public void popolaIscrizioni(){
-        iscrizioneDAO.nuovaIscrizione("Att2","utente0");
-        iscrizioneDAO.nuovaIscrizione("Att1","utente2");
+    public void popolaIscrizioni() {
+        iscrizioneDAO.nuovaIscrizione("Att2", "utente0");
+        iscrizioneDAO.nuovaIscrizione("Att1", "utente2");
         iscrizioneDAO.nuovaIscrizione("Att3", "utente2");
     }
 
-    public void popolaVisite(){
+    public void popolaVisite() {
         // viste sono dei valori fittizi
         // il nome delle pagine è del tutto arbitrario: conviene scegliere un nome 'comodo' quando si implementa nei Filters
-        String[] pagine = {"Aderente", "Simpatizzante",  "Admin", "Attivita1", "Attivita2", "Attivita3", "ChiSiamo", "contatti", "invioConfermato", "homepage", "signUp", "login", "registrazioneConfermata"};
-        for(String pag : pagine){
+        String[] pagine = {"Aderente", "Simpatizzante", "Admin", "Attivita1", "Attivita2", "Attivita3", "ChiSiamo", "contatti", "invioConfermato", "homepage", "signUp", "login", "registrazioneConfermata"};
+        for (String pag : pagine) {
             Visite v = new Visite();
             v.setPagina(pag);
             v.setVisite(rand.nextInt(10001 - 100) + 100); // pagina ha da 100 a 10000 visite
@@ -218,7 +235,7 @@ public class popolaDB extends HttpServlet {
     }
 
 
-    public void popolaFrasi(){
+    public void popolaFrasi() {
         // frasi prese da internet, sentitevi liberi di modificare, aggiungere o cancellare tutte quelle che volete
         String[] frasi = {
                 "Se non crei il tuo piano di vita, cadrai nel piano di qualcun altro",
@@ -254,7 +271,7 @@ public class popolaDB extends HttpServlet {
                 "Anche un orologio fermo ha ragione due volte al giorno"
         };
 
-        for(String text : frasi){
+        for (String text : frasi) {
             Frase frase = new Frase();
             frase.setFrase(text);
             fraseDAO.save(frase);
@@ -263,9 +280,8 @@ public class popolaDB extends HttpServlet {
     }
 
 
-
     @Override
-    public void destroy(){
+    public void destroy() {
         GenericDAO.closeConnection(conn);
     }
 }

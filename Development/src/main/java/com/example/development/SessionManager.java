@@ -53,13 +53,9 @@ public class SessionManager extends HttpServlet {
             //Aggiungo alla session il parametro tecnici, se sono stati selezionati Tutti
             //questo parametro non sarà presente
             session.setAttribute("Tecnici", "true");
-        }
-
-        else if(scelta.equals("Tutti")){
+        } else if (scelta.equals("Tutti")) {
             session.setAttribute("Tutti", "true");
-        }
-
-        else if(scelta.equals("Disattivati")){
+        } else if (scelta.equals("Disattivati")) {
               /* CASO 4:
                Questa opzione non è direttamente implementabile poiché se i cookies sono attivati
                l'encodeURL() non inserisce il jsessionid "automaticamente" tra le richieste nell'URL.

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(name="EmailSending", value="/EmailSending")
+@WebServlet(name = "EmailSending", value = "/EmailSending")
 public class EmailSending extends HttpServlet {
 
     // Configurazione server SMTP fittizia

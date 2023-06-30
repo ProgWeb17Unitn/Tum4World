@@ -16,10 +16,11 @@ public class visiteJSON extends HttpServlet {
     VisiteDAO visiteDAO;
 
     @Override
-    public void init(){
+    public void init() {
         conn = GenericDAO.getConnection();
         visiteDAO = new VisiteDAO(conn);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -45,7 +46,7 @@ public class visiteJSON extends HttpServlet {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         GenericDAO.closeConnection(conn);
     }
 }

@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.List;
 
-@WebServlet(name="TrovaAttivita", value="/TrovaAttivita")
+@WebServlet(name = "TrovaAttivita", value = "/TrovaAttivita")
 public class TrovaAttivita extends HttpServlet {
     Connection conn;
 
@@ -24,25 +24,25 @@ public class TrovaAttivita extends HttpServlet {
     IscrizioneDAO iscrizioneDAO;
 
     @Override
-    public void init(){
+    public void init() {
 
         conn = GenericDAO.getConnection();
         iscrizioneDAO = new IscrizioneDAO(conn);
     }
 
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
         request.getSession(false);
 
         HttpSession session = request.getSession(false);
 
-        String name= "utente0";
+        String name = "utente0";
 
-        if(session !=null){
+        if (session != null) {
             name = (String) session.getAttribute("username");
         }
 
-        List<Iscrizione> iscrizioni=iscrizioneDAO.getIscrizioniUtente(name);
+        List<Iscrizione> iscrizioni = iscrizioneDAO.getIscrizioniUtente(name);
 
         // Utilizzo il Dao per ricevere la lista delle iscrizioni effettuate dato l'username
         // Scrivo la risposta come array Json
@@ -50,20 +50,19 @@ public class TrovaAttivita extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         try (PrintWriter out = response.getWriter()) {
             JsonArray array = new JsonArray();
-            for(Iscrizione c : iscrizioni) {
+            for (Iscrizione c : iscrizioni) {
                 Gson gson = new Gson();
                 array.add(gson.toJson(c.getCodiceAttivita()));
             }
             out.println(array);
             out.flush();
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             response.setStatus(600);
         }
 
 
-
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -73,7 +72,6 @@ public class TrovaAttivita extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
-
 
 
     @Override

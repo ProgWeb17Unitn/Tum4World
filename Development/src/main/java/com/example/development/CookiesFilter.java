@@ -24,7 +24,7 @@ public class CookiesFilter implements Filter {
         // l'attributo false impedisce di creare la session se non esiste
         //System.out.println("Filtering");
         if (session == null) {
-            request.setAttribute("formNeeded",true);
+            request.setAttribute("formNeeded", true);
             // il parametro formNeeded fa si che venga inclusa nella risposta anche il CookieBanner
         }
 

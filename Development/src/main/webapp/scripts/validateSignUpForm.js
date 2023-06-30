@@ -1,20 +1,19 @@
-function validateData(){
+function validateData() {
     let form = document.forms.namedItem("formSignUp");
 
     let errori = "";
 
-    if(form["nome"].value === ""){
+    if (form["nome"].value === "") {
         errori += "Specificare un nome\n";
     }
 
-    if(form["cognome"].value === ""){
+    if (form["cognome"].value === "") {
         errori += "Specificare un cognome\n";
     }
 
-    if(form["dataNascita"].value === ""){
+    if (form["dataNascita"].value === "") {
         errori += "Specificare una data di nascita\n";
-    }
-    else{
+    } else {
         // sottrae 18 anni alla data di oggi
         let dataMaggiorenne = new Date();
         dataMaggiorenne.setFullYear(dataMaggiorenne.getFullYear() - 18);
@@ -23,37 +22,35 @@ function validateData(){
 
         let minorenne = (dataNascita > dataMaggiorenne); // è minorenne dataNascità e almeno 18 anni piu grande
 
-        if(minorenne){
+        if (minorenne) {
             errori += "Impossibile creare account per utenti minorenni\n";
         }
     }
 
-    if(form["email"].value === ""){
+    if (form["email"].value === "") {
         errori += "Specificare una e-mail\n";
-    }else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form["email"].value))){
+    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form["email"].value))) {
         errori += "Indirizzo email non valido\n";
     }
 
-    if(form["telefono"].value === ""){
+    if (form["telefono"].value === "") {
         errori += "Specificare un numero di telefono\n";
     }
 
-    if(form["tipo"].value === ""){
+    if (form["tipo"].value === "") {
         errori += "Selezionare un tipo utente: aderente o simpatizzante\n"
     }
 
-    if(form["username"].value === ""){
+    if (form["username"].value === "") {
         errori += "Specificare un username (nome utente)\n"
     }
 
 
-    if(form["password"].value === ""){
+    if (form["password"].value === "") {
         errori += "Specificare una password\n"
-    }
-    else if(form["passwordConferma"].value === ""){
+    } else if (form["passwordConferma"].value === "") {
         errori += "Confermare la password\n"
-    }
-    else{ // i campi password e passwordConferma sono fillati
+    } else { // i campi password e passwordConferma sono fillati
 
         // requisiti pasword
         // lunga 8 caratteri, deve contenere la prima lettera dei nomi propri di ciascuno di noi, almeno
@@ -66,9 +63,9 @@ function validateData(){
         let speciali = "$!?";
 
         // funzione che controlla se la password soddisfa un requisito, cioè contiene almeno 1 carattere del parametro requisito
-        let passContiene = function(requisito){
+        let passContiene = function (requisito) {
             let success = false;
-            for(let i=0; !success && i<requisito.length; i++) {
+            for (let i = 0; !success && i < requisito.length; i++) {
                 // controlla se requisito[i] è contenuto nella password:
                 // se è contenuto esce dal ciclo, altrimenti controlla il prossimo char
                 let curr = requisito.charAt(i);
@@ -79,42 +76,41 @@ function validateData(){
             return success;
         }
 
-        if(!passContiene(nomeMatteo)){
+        if (!passContiene(nomeMatteo)) {
             errori += "La password non contiene la lettera: m / M\n"
         }
-        if(!passContiene(nomeRiccardo)){
+        if (!passContiene(nomeRiccardo)) {
             errori += "La password non contiene la lettera: r / R\n"
         }
-        if(!passContiene(numeri)){
-           errori += "La password deve contenere almeno un numero\n"
+        if (!passContiene(numeri)) {
+            errori += "La password deve contenere almeno un numero\n"
         }
-        if(!passContiene(maiuscole)){
+        if (!passContiene(maiuscole)) {
             errori += "La password deve contenere una lettera maiuscola\n"
         }
-        if(!passContiene(speciali)){
+        if (!passContiene(speciali)) {
             errori += "La password deve contenere un carattere speciale tra !, ?, $\n"
         }
         // controlla che la password sia lunga almeno 8 caratteri
-        if(password.length < 8){
+        if (password.length < 8) {
             errori += "La password deve essere lunga almeno 8 caratteri\n"
         }
 
         // controlla se password e password conferma sono diverse
-        if(form["password"].value !== form["passwordConferma"].value){
+        if (form["password"].value !== form["passwordConferma"].value) {
             errori += "Le due password non corrispondono\n"
         }
 
     }
 
-    if(errori === ""){
+    if (errori === "") {
         makeQuery();
-    }
-    else{
+    } else {
         alert(errori);
     }
 }
 
-function makeQuery(){
+function makeQuery() {
     let form = document.forms.namedItem("formSignUp");
 
     let xhttp = new XMLHttpRequest();
@@ -125,7 +121,7 @@ function makeQuery(){
     // Gli spazi vengono codificati con %20, ma nelle richieste con Content-type: application/x-www-form-urlencoded gli spazi
     // dovrebbero essere codificati con dei +, e quindi viene fatto il .replace(...) come spiegato al link
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
-    function codifica(param){
+    function codifica(param) {
         return encodeURIComponent(param).replace("%20", "+");
     }
 
@@ -144,13 +140,12 @@ function makeQuery(){
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4){
-            if(this.status == 200){
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            if (this.status == 200) {
                 let url = this.responseText; // legge l'url a cui fare redirect
                 window.location.replace(url); // simula un redirect
-            }
-            else if(this.status == 409){ // 409 = Already Exist cioè esiste già un utente con lo stesso username
+            } else if (this.status == 409) { // 409 = Already Exist cioè esiste già un utente con lo stesso username
                 /*
                 TODO
                     Se esiste un utente con lo stesso username, viene
@@ -170,7 +165,7 @@ function makeQuery(){
 }
 
 // funzione per resettare tutti i campi del form
-function resetForm(){
+function resetForm() {
     let form = document.forms.namedItem("formSignUp");
     form.reset();
 }

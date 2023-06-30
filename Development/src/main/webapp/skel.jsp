@@ -18,11 +18,6 @@
       NOTA BEME: il div esterno deve avere un id="index"--->
 
 
-
-
-
-
-
 <%@ include file="static/footer.html" %>
 </body>
 

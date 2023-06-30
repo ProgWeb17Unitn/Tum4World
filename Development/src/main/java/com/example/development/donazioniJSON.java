@@ -24,10 +24,11 @@ public class donazioniJSON extends HttpServlet {
     DonazioneDAO donazioneDAO;
 
     @Override
-    public void init(){
+    public void init() {
         conn = GenericDAO.getConnection();
         donazioneDAO = new DonazioneDAO(conn);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -54,7 +55,7 @@ public class donazioniJSON extends HttpServlet {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         GenericDAO.closeConnection(conn);
     }
 }

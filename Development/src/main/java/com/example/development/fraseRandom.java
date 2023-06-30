@@ -17,8 +17,9 @@ public class fraseRandom extends HttpServlet {
     // connessione al db
     Connection conn;
     FraseDAO fraseDAO;
+
     @Override
-    public void init(){
+    public void init() {
         // genera una nuova connessione
         conn = GenericDAO.getConnection();
 
@@ -27,6 +28,7 @@ public class fraseRandom extends HttpServlet {
         // !!! ricordarsi poi di chiudere questa connection (con il metodo di GenericDAO) nel destroy() della servlet !!!
         fraseDAO = new FraseDAO(conn);
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -53,7 +55,7 @@ public class fraseRandom extends HttpServlet {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         GenericDAO.closeConnection(conn);
     }
 }
