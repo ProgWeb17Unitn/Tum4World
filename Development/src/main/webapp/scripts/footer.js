@@ -50,7 +50,3 @@ quotes.generate = function () {
     xhttp.open('GET', 'fraseRandom');
     xhttp.send();
 };
-document.addEventListener("DOMContentLoaded", function () {
-    quotes.init();
-    quotes.onClick();
-});
