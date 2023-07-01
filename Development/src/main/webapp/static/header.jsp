@@ -8,10 +8,11 @@
     <h1 class="coloredText">Tum4World</h1>
     <nav class="coloredText">
         <a href="<%= response.encodeURL("./homepage") %>">Home</a>
+        <a href="<%= response.encodeURL("./ChiSiamo") %>">Chi Siamo</a>
         <a href="<%= response.encodeURL("./Attivita") %>">Attività</a>
-        <a href="<%= response.encodeURL("./contatti") %>">Contatti</a>
+        <a href="<%= response.encodeURL("./Contatti") %>">Contatti</a>
         <a href="<%= response.encodeURL("./signUp") %>">SignUp</a>
-        <a href="<%= response.encodeURL("./login") %>">LogIn</a>
+        <a href="<%= response.encodeURL("./logIn") %>">LogIn</a>
     </nav>
 
     <img src="assets/themes/dark/hamburger.svg" alt="☰" id="hamburger">

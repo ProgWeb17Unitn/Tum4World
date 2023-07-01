@@ -43,4 +43,5 @@ footer>p {
     flex-grow: 10;
     margin-bottom: 1vh;
     transition: ease-in-out margin-bottom 1000ms;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }

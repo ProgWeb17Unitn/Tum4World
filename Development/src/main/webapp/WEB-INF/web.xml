@@ -29,6 +29,96 @@
         <url-pattern>/homepage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Aderente</servlet-name>
+        <jsp-file>/Aderente.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Aderente</servlet-name>
+        <url-pattern>/Aderente</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Attivita</servlet-name>
+        <jsp-file>/Attivita.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita</servlet-name>
+        <url-pattern>/Attivita</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Attivita1</servlet-name>
+        <jsp-file>/Attivita1.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita1</servlet-name>
+        <url-pattern>/Attivita1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Attivita2</servlet-name>
+        <jsp-file>/Attivita2.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita2</servlet-name>
+        <url-pattern>/Attivita2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Attivita3</servlet-name>
+        <jsp-file>/Attivita3.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita3</servlet-name>
+        <url-pattern>/Attivita3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChiSiamo</servlet-name>
+        <jsp-file>/ChiSiamo.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChiSiamo</servlet-name>
+        <url-pattern>/ChiSiamo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Contatti</servlet-name>
+        <jsp-file>/contatti.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Contatti</servlet-name>
+        <url-pattern>/Contatti</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logIn</servlet-name>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logIn</servlet-name>
+        <url-pattern>/logIn</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>signUp</servlet-name>
+        <jsp-file>/signUp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signUp</servlet-name>
+        <url-pattern>/signUp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Simpatizzante</servlet-name>
+        <jsp-file>/Simpatizzante.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Simpatizzante</servlet-name>
+        <url-pattern>/Simpatizzante</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>homepage</welcome-file>
     </welcome-file-list>

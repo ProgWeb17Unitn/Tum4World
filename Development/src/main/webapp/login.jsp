@@ -27,6 +27,10 @@
     <input type="button" value="Log In" onclick="validateData()"><br><br>
 </form>
 
+<% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
+<%@ include file="static/cookieBanner.html" %>
+<% } %>
+
 <%@ include file="static/footer.html" %>
 </body>
 
