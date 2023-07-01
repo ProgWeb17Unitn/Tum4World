@@ -107,11 +107,10 @@
     transform: translate(-50%, 0); /* Centro rispetto alla su dimensione*/
     height: 30px;
     width: 30px;
-    background-color: #2D728F;
+    background-color: #F5C675;
     border: 2px solid #F5EE9E;
     border-radius: 50%;
-    box-shadow: 0 -3px 3px #376683; /*box-shadow: h-offset v-offset blur  color *//
-    transition: all 0.5s ease-in-out;
+    transition: all 50ms ease-out;
 }
 
 

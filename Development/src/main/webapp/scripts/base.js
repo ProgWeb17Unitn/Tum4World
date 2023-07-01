@@ -10,14 +10,10 @@ theme.switch = function (n) {
 
     // in base alla palette scelta, ottiene il path degli asset necessari
     theme.active = n;
-    if (n === 'light')
-        theme.backgroundColor = '#F49E4C';
-    else if (n === 'Simpatizzante')
+    if (n === 'Simpatizzante')
         theme.backgroundColor = '#1c4664';
     else if (n === 'Aderente')
         theme.backgroundColor = '#5f6b8d';
-    else if (n === 'dark')
-        theme.backgroundColor = '#2D728F';
     else
         theme.backgroundColor = '#2D728F'; //todo admin colors
 

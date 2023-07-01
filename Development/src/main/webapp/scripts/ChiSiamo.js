@@ -12,11 +12,12 @@ function handleScroll() {
                 - utilizzo il valore in Y per cambiare la sua posizione;
     */
     var circle = document.getElementsByClassName("cerchio")[0];
-    circle.style.border = "4px solid #AB3428";
+    circle.style.backgroundColor = "#F49E4C";
+
 
     clearTimeout(scrollingTimer);
     scrollingTimer = setTimeout(function () {
-        circle.style.border = "2px solid #F5EE9E";
+        circle.style.backgroundColor = "#F5C675";
     }, 200);
     var scrollPosition = window.scrollY;
     circle.style.transform = "translate(-50%, calc(50% + " + scrollPosition + "px))";

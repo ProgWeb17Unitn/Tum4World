@@ -9,14 +9,13 @@
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
     <link rel="stylesheet" href="styles/layouts/base.css">
     <script src="scripts/base.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>   <!-- Library for SMTP protocol --->
     <script type="text/javascript" src="scripts/validateContattiForm.js"></script>
 </head>
 
 <body>
 <%@ include file="static/header.jsp" %>
 
-<h3>I nostri contatti:</h3>
+<h3 id="index">I nostri contatti:</h3>
 <p><b>Indirizzo:</b> Via temporanea 156, Trento (17000), Italia<br>
     <b>Numero di telefono:</b> (+39) 300 300 9999<br>
     <b>Email: </b>tum4world@nessunonoluogonoesiste.com</p><br>
@@ -55,6 +54,7 @@
 
 <script>
     page.load();
+    window.onscroll = baseOnscroll;
 </script>
 
 </html>

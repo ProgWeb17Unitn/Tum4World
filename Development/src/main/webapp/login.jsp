@@ -7,7 +7,6 @@
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
     <link rel="stylesheet" href="styles/layouts/base.css">
     <script src="scripts/base.js"></script>
-    <script src="scripts/skel.js"></script> <!-- usa questo format per il tuo js-->
     <script src="scripts/validateLoginForm.js"></script>
     <!--- Inserisci qui i tuoi file css--->
 
@@ -19,11 +18,11 @@
       NOTA BEME: il div esterno deve avere un id="index"--->
 
 
-<form action="GET" name="formLogin">
+<form action="GET" name="formLogin" id="index">
     <p>username</p>
     <input type="text" name="username">
     <p>password</p>
-    <input type="text" name="password"><br><br>
+    <input type="password" name="password"><br><br>
     <input type="button" value="Log In" onclick="validateData()"><br><br>
 </form>
 
@@ -36,5 +35,6 @@
 
 <script>
     page.load();
+    window.onscroll = baseOnscroll;
 </script>
 </html>

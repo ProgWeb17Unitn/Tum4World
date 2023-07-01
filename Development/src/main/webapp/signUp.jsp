@@ -15,7 +15,7 @@
 
 <!--- form brutto per provare, poi prendiamo qualche design da codepen --->
 
-<form method="POST" name="formSignUp">
+<form method="POST" name="formSignUp" id="index">
     <p>nome</p>
     <input type="text" name="nome">
     <p>cognome</p>
@@ -57,5 +57,6 @@
 
 <script>
     page.load();
+    window.onscroll = baseOnscroll;
 </script>
 </html>
