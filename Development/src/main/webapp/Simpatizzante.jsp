@@ -32,17 +32,17 @@
 
 
     <div class="Attivita-container">
-        <div class="Attivita" id="Attivita1">
+        <div class="Attivita" id="Attivita1" onclick="iscriviAttivita(1)">
             <div class="Attivita-title">Salvataggio e Riabilitazione</div>
             <img src="assets/images/Attivita/Attivita1.jpg" alt="Salvataggio e Riabilitazione">
         </div>
 
-        <div class="Attivita" id="Attivita2">
+        <div class="Attivita" id="Attivita2" onclick="iscriviAttivita(2)">
             <div class="Attivita-title">Educazione e Sensibilizzazione</div>
             <img src="assets/images/Attivita/Attivita2.jpg" alt="Educazione e Sensibilizzazione">
         </div>
 
-        <div class="Attivita" id="Attivita3">
+        <div class="Attivita" id="Attivita3" onclick="iscriviAttivita(3)">
             <div class="Attivita-title">Prevenzione e Salvaguardia</div>
             <img src="assets/images/Attivita/Attivita3.jpg" alt="Prevenzione e Salvaguardia">
         </div>

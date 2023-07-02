@@ -13,7 +13,8 @@ public class IscrizioneDAO extends GenericDAO {
         super.conn = conn;
     }
 
-    public void nuovaIscrizione(String username, String codiceAttivita){
+    public boolean nuovaIscrizione(String username, String codiceAttivita){
+        boolean ret_value=false;
         try(PreparedStatement ps = conn.prepareStatement(iscriviUtenteAttivita)){
             ps.setString(1, username);
             ps.setString(2, codiceAttivita);
@@ -21,6 +22,8 @@ public class IscrizioneDAO extends GenericDAO {
             int nuovaIscrizione = ps.executeUpdate(); // ritorna il numero di nuove righe (success = 1 nuova riga, fail = 0 );
             if(nuovaIscrizione == 0){
                 throw new SQLException();
+            }else{
+                ret_value=true;
             }
 
         }catch(SQLException e){
@@ -33,6 +36,7 @@ public class IscrizioneDAO extends GenericDAO {
             }
 
         }
+        return ret_value;
     }
 
     public void nuovaIscrizione(Utente utente, Attivita attivita){

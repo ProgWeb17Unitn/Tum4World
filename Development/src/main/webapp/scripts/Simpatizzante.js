@@ -75,3 +75,73 @@ function check() {
         rettangoliAttiva3.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
     }
 }
+
+
+function iscriviAttivita(attivita){
+    if(attivita === 1 && attivita1 === 1) {
+        // si vuole iscrivere a 1 ma è già iscritto
+        giaIscritto(attivita);
+        return;
+    }
+    else if(attivita === 2 && attivita2 === 1){
+        giaIscritto(attivita);
+        return;
+    }
+    else if(attivita === 3 && attivita3 === 1){
+        giaIscritto(attivita);
+        return
+    }
+    let url = "IscriviAttivita?attivita="+attivita;
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", url, true);
+    xhttp.responseType = "json";
+
+    // Callback
+    xhttp.onreadystatechange = function () {
+        let done = 4, ok = 200;
+        if (xhttp.readyState === done && xhttp.status === ok) {
+            iscrizioneAvvenuta(attivita);
+        } else {
+            iscrizioneFail(attivita);
+            //console.log("Iscrizione Fallita");
+        }
+    }
+    // Sending request
+    xhttp.send();
+
+}
+
+function iscrizioneAvvenuta(attivita){
+    if(attivita===1){
+        attivita1=1; // aggiorno il fatto che sia  iscritto
+    }
+    else if(attivita===2){
+        attivita2=1;
+    }
+    else{
+        attivita3=1;
+    }
+    let rettangoliAttiva1 = document.getElementById("Attivita"+attivita);
+    rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)"
+
+}
+
+function iscrizioneFail(attivita){
+    function iscrizioneAvvenuta(attivita){
+        if(attivita===1){
+            attivita1=1; // aggiorno il fatto che sia iscritto
+        }
+        else if(attivita===2){
+            attivita2=1;
+        }
+        else{
+            attivita3=1;
+        }
+        let rettangoliAttiva1 = document.getElementById("Attivita"+attivita);
+        rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(255, 0, 0)"
+    }
+}
+
+function giaIscritto(attivita) {
+    window.alert("Sei gia' iscritto all'attivita" + attivita + "!");
+}
