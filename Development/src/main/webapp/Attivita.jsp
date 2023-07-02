@@ -26,12 +26,10 @@
                 volanti! Grazie a segnalazioni dei locali identifichiamo gli esemplari che hanno bisogno di aiuto
                 li portiamo nel nostro rifugio pià vicino dove riceveranno le cure mediche adeguate.</p>
         </div>
-        <div class="fotoAttivita">
-            <a class="fotoTAG" href="<%= response.encodeURL("./Attivita1") %>"><img class="images"
+        <a class="fotoAttivita" href="<%= response.encodeURL("./Attivita1") %>"><img class="images"
                                                                                     src="assets/images/Attivita/Attivita1.jpg"
                                                                                     alt="Salvataggio e Riabilitazione"
                                                                                     id="Attivita-img1"></a>
-        </div>
     </div>
 
     <div class="attivita" id="attivita2">
