@@ -1,6 +1,7 @@
 body {
     background-image: url("../assets/images/background.jpg");
     margin: 20vh 0 0;
+    min-height: 90vh;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -23,3 +24,14 @@ body {
     display: none; /* For Chrome and Safari */
 }
 
+#backToTop {
+    position: fixed;
+    bottom: -10%;
+    left: auto;
+    width: 30px;
+    transition: bottom 200ms ease-in-out;
+}
+
+#backToTop:hover {
+    cursor: pointer;
+}

@@ -139,6 +139,10 @@ page.load = function () {
         });
     }
 
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop)
+        backToTop.addEventListener('click', () => window.scrollTo(0, 0));
+
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -152,6 +156,7 @@ page.load = function () {
 page.onscroll = function () {
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
+    const backToTop = document.getElementById('backToTop');
 
     // quando il menu è aperto, l'header è sempre opaco
     // quindi ritorna senza fare niente
@@ -174,6 +179,13 @@ page.onscroll = function () {
         hamburger.style.top = '10px';
         header.style.backgroundColor = theme.backgroundColor;
         header.style.height = '4vh';
+    }
+
+    if (backToTop) {
+        if (pos > ref * 5)
+            backToTop.style.bottom = '15%';
+        else
+            backToTop.style.bottom = '-10%';
     }
 }
 

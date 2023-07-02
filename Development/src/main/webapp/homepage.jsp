@@ -64,6 +64,7 @@
 <%@ include file="cookieBanner.html" %>
 <% } %>
 
+<%@ include file="backToTop.html" %>
 <%@ include file="footer.html" %>
 
 </body>
