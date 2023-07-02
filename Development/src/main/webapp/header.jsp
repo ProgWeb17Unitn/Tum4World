@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="false" %>
 <!-- Le sessioni sono gestite tramite filtri e servlets --->
-<link rel="stylesheet" href="styles/layouts/header.css">
-<link rel="stylesheet" href="styles/themes/dark/header.css">
+<link rel="stylesheet" href="styles/header.css">
 <script src="scripts/base.js"></script>
 <header>
     <h1 class="coloredText">Tum4World</h1>
@@ -20,19 +19,19 @@
                 type = "none";
 
             if (type.equals("aderente")) { %>
-        <a href="<%= response.encodeURL("./Aderente") %>">SignUp</a>
-        <a href="<%= response.encodeURL("./logOut") %>">LogIn</a>
+        <a href="<%= response.encodeURL("./Aderente") %>">Dashboard</a>
+        <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else if (type.equals("simpatizzante")) { %>
-        <a href="<%= response.encodeURL("./Simpatizzante") %>">SignUp</a>
-        <a href="<%= response.encodeURL("./logOut") %>">LogIn</a>
+        <a href="<%= response.encodeURL("./Simpatizzante") %>">Dashboard</a>
+        <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else if (type.equals("admin")) { %>
-        <a href="<%= response.encodeURL("./Admin") %>">SignUp</a>
-        <a href="<%= response.encodeURL("./logOut") %>">LogIn</a>
+        <a href="<%= response.encodeURL("./Admin") %>">Dashboard</a>
+        <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else { %>
         <a href="<%= response.encodeURL("./signUp") %>">SignUp</a>
         <a href="<%= response.encodeURL("./logIn") %>">LogIn</a>
         <% } %>
     </nav>
 
-    <img src="assets/themes/dark/hamburger.svg" alt="☰" id="hamburger">
+    <img src="assets/images/hamburger.svg" alt="☰" id="hamburger">
 </header>

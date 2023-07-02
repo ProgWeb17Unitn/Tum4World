@@ -1,8 +1,9 @@
-function handleScroll() {
-    baseOnscroll();
-}
+window.addEventListener("load", () => {
+    scrollGalleriaLoader();
+// Devo chiamare la funzione quando la pagina è caricata altrimenti non "trovo" gli elementi
 
-window.addEventListener("scroll", handleScroll); // Funzione solita di scroll implementata in base JS
+    page.load();
+});
 
 function scrollGalleriaLoader() {
     const galleria = document.getElementsByClassName('galleria')[0];
@@ -55,8 +56,4 @@ function scrollGalleriaLoader() {
     }
 
     setInterval(scrollGalleria, 6000);
-
 }
-
-window.addEventListener("load", scrollGalleriaLoader);
-// Devo chiamare la funzione quando la pagina è caricata altrimenti non "trovo" gli elementi

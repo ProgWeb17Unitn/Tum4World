@@ -1,8 +1,10 @@
 theme = {};
 theme.backgroundColor = '#2D728F';
+theme.active = 'none';
 menu = {};
 menu.status = 'closed';
 page = {};
+page.status = 'landscape';
 
 theme.switch = function (n) {
     // scrolla in cima alla pagina per evitare problemi con la trasparenza dell'header
@@ -10,84 +12,20 @@ theme.switch = function (n) {
 
     // in base alla palette scelta, ottiene il path degli asset necessari
     theme.active = n;
-    if (n === 'Simpatizzante')
+    if (n === 'simpatizzante')
         theme.backgroundColor = '#1c4664';
-    else if (n === 'Aderente')
+    else if (n === 'aderente')
         theme.backgroundColor = '#5f6b8d';
-    else
+    else if (n === 'admin')
         theme.backgroundColor = '#2D728F'; //todo admin colors
+    else
+        theme.backgroundColor = '#2D728F';
 
     // elementi da modificare in base al tema
     // todo aggiungere helper, textbox dell'helper e scritte sia in header che footer
     const footer = document.getElementsByTagName('footer')[0];
-    const hamburger = document.getElementById('hamburger');
-
-    // cambia logo, icone ed immagine di sfondo
-    if (hamburger)
-        hamburger.setAttribute('src', `assets/themes/${theme.active}/hamburger.svg`);
     if (footer)
         footer.style.backgroundColor = theme.backgroundColor;
-}
-
-
-page.load = function () {
-    page.status = 'landscape';
-
-    // controlla se devo andare in modalità landscape o portrait in base a
-    // quanto è larga inizialmente la finestra
-    if (window.innerWidth > 1000)
-        page.toggleView('landscape');
-    else
-        page.toggleView('portrait');
-
-    // aggiunge funzionalità al pulsante hamburger in modalità portrait
-    const hamburger = document.getElementById('hamburger');
-    if (hamburger) {
-        hamburger.addEventListener('click', function () {
-            // quando viene cliccato, viene aperto il menu se chiuso
-            // e viene chiuso se aperto
-            if (menu.status === 'closed')
-                menu.open();
-            else
-                menu.close();
-        });
-    }
-
-    // utilizzo lo stile predefinito dal browser
-//    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
-//        theme.switch(2);
-//    else
-    theme.switch('dark');
-}
-
-window.onresize = function () {
-    // chiamata ogni volta che la pagina viene resizata
-    // chiudo il menu, per evitare comportamenti strani
-    menu.close();
-
-    // controlla se devo andare in modalità landscape o portrait in base a
-    // quanto l'utente ha resizato la finestra
-    if (window.innerWidth > 1000)
-        page.toggleView('landscape');
-    else
-        page.toggleView('portrait');
-}
-
-page.toggleView = function (mode) {
-
-    // elementi da modificare
-    const nav = document.getElementsByTagName('nav')[0];
-    const hamburger = document.getElementById('hamburger');
-
-    // abilito la navbar o il pulsante hamburger in base alla modalità
-    if (mode === 'landscape') {
-        hamburger.style.display = 'none';
-        nav.style.display = 'block';
-    } else {
-        hamburger.style.display = 'block';
-        nav.style.display = 'none';
-    }
-    page.status = mode;
 }
 
 menu.open = function () {
@@ -148,7 +86,70 @@ menu.close = function () {
     menu.status = 'closed';
 }
 
-baseOnscroll = function () {
+page.toggleView = function (mode) {
+
+    // elementi da modificare
+    const nav = document.getElementsByTagName('nav')[0];
+    const hamburger = document.getElementById('hamburger');
+
+    // abilito la navbar o il pulsante hamburger in base alla modalità
+    if (mode === 'landscape') {
+        hamburger.style.display = 'none';
+        nav.style.display = 'block';
+    } else {
+        hamburger.style.display = 'block';
+        nav.style.display = 'none';
+    }
+    page.status = mode;
+}
+
+page.onresize = function () {
+    // chiamata ogni volta che la pagina viene resizata
+    // chiudo il menu, per evitare comportamenti strani
+    menu.close();
+
+    // controlla se devo andare in modalità landscape o portrait in base a
+    // quanto l'utente ha resizato la finestra
+    if (window.innerWidth > 1000)
+        page.toggleView('landscape');
+    else
+        page.toggleView('portrait');
+}
+
+page.load = function () {
+    // eseguita ogni volta che si carica una pagina
+
+    // controlla se devo andare in modalità landscape o portrait in base a
+    // quanto è larga inizialmente la finestra
+    if (window.innerWidth > 1000)
+        page.toggleView('landscape');
+    else
+        page.toggleView('portrait');
+
+    // aggiunge funzionalità al pulsante hamburger in modalità portrait
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+        hamburger.addEventListener('click', function () {
+            // quando viene cliccato, viene aperto il menu se chiuso
+            // e viene chiuso se aperto
+            if (menu.status === 'closed')
+                menu.open();
+            else
+                menu.close();
+        });
+    }
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            theme.switch(this.responseText);
+        }
+    }
+    xhttp.open('GET', 'determineStyle');
+    xhttp.send();
+}
+
+page.onscroll = function () {
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
 
@@ -163,7 +164,7 @@ baseOnscroll = function () {
     // per fare ciò, utilizzo anche la posizione attuale nella pagina
     let pos = window.scrollY;
 
-    // scalo ed imposto la  trasparenza dell'header in base alla posizione dello scroll
+    // scalo e imposto la trasparenza dell'header in base alla posizione dello scroll
     // rispetto a ref1
     if (pos < ref) {
         hamburger.style.top = '16px';
@@ -175,3 +176,9 @@ baseOnscroll = function () {
         header.style.height = '4vh';
     }
 }
+
+// new: possiamo definire più handler per i diversi eventi in questo modo
+// se avete bisogno di aggiungere handler alle altre pagine, seguite lo stesso format
+window.addEventListener('load', page.load);
+window.addEventListener('resize', page.onresize);
+window.addEventListener('scroll', page.onscroll);

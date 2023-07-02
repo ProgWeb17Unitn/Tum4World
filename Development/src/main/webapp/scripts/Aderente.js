@@ -1,18 +1,12 @@
-var value = 0;
 var attivita1 = 0;
 var attivita2 = 0;
 var attivita3 = 0;
 
-function handleScroll() {
-    if (value === 0) {
-        theme.switch("Aderente");
-        value++; // cambio il tema solo una volta
-    }
-    baseOnscroll();
-}
-
-window.addEventListener("scroll", handleScroll);
-window.addEventListener("load", trovaAttivita);
+window.addEventListener("load", () => {
+    trovaAttivita();
+    page.load();
+    theme.switch("aderente");
+});
 
 function handleDonation() {
     /*
@@ -25,7 +19,6 @@ function handleDonation() {
 
     // verifico se non è valido
     if (!isValidInput(valoreInserito)) {
-        ;
         segnalaErrore();
     } else {
         // Form valido, salvo nel db la donazione e "mostro che è stata effettuata"

@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tum4World</title>
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
-    <link rel="stylesheet" href="styles/layouts/base.css">
+    <link rel="stylesheet" href="styles/base.css">
     <script src="scripts/base.js"></script>
     <script type="text/javascript" src="scripts/validateContattiForm.js"></script>
 </head>
 
 <body>
-<%@ include file="static/header.jsp" %>
+<%@ include file="header.jsp" %>
 
 <h3 id="index">I nostri contatti:</h3>
 <p><b>Indirizzo:</b> Via temporanea 156, Trento (17000), Italia<br>
@@ -46,15 +46,9 @@
 </form>
 
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
-<%@ include file="static/cookieBanner.html" %>
+<%@ include file="cookieBanner.html" %>
 <% } %>
 
-<%@ include file="static/footer.html" %>
+<%@ include file="footer.html" %>
 </body>
-
-<script>
-    page.load();
-    window.onscroll = baseOnscroll;
-</script>
-
 </html>

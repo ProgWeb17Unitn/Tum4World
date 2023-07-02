@@ -1,7 +1,6 @@
 var scrollingTimer;
 
-function handleScroll() {
-    baseOnscroll();
+window.addEventListener("scroll", function handleScroll() {
     /*
         Durante lo scroll eseguo 2 operazioni:
             1) Cambio lo stile:
@@ -21,6 +20,6 @@ function handleScroll() {
     }, 200);
     var scrollPosition = window.scrollY;
     circle.style.transform = "translate(-50%, calc(50% + " + scrollPosition + "px))";
-}
 
-window.addEventListener("scroll", handleScroll);
+    page.onscroll();
+});

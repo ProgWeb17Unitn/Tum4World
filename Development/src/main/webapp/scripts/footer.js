@@ -1,4 +1,4 @@
-quotes = [];
+quotes = {};
 quotes.interval = 0;
 //DEBUG console.log("footer.js called");
 // aggiunge funzionalità al pappagallo in basso a sinistra
@@ -38,7 +38,7 @@ quotes.generate = function () {
 
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             box.innerText = this.responseText;
             box.style.marginBottom = '2vh';
             setTimeout(function () {

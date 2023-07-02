@@ -1,20 +1,12 @@
-var value = 0;
-
 var attivita1 = 0;
 var attivita2 = 0;
 var attivita3 = 0;
 
-function handleScroll() {
-    if (value === 0) {
-        theme.switch("Simpatizzante");
-        value++;
-    }
-    baseOnscroll();
-}
-
-window.addEventListener("scroll", handleScroll);
-window.addEventListener("load", trovaAttivita);
-
+window.addEventListener("load", () => {
+    trovaAttivita();
+    page.load();
+    theme.switch("simpatizzante");
+});
 
 function trovaAttivita() {
 

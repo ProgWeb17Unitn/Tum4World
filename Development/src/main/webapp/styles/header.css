@@ -10,6 +10,7 @@ header {
     flex-wrap: nowrap;
     top: 0;
     left: 0;
+    z-index: 9999;
 }
 
 header>nav {
@@ -43,4 +44,9 @@ nav a {
 
 #hamburger:hover {
     cursor: pointer;
+}
+
+nav a:hover {
+    z-index: 9999;
+    color: #F49E4C;
 }
