@@ -12,8 +12,8 @@ var email="none";
 var telefono="none";
 var password="none";
 
-var opened=0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
-
+var openedDati=0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
+var openedIscrizione=0;
 // colori visualizzaDati
 var color1='#000000';
 var color2='#DBDFEA';
@@ -223,7 +223,13 @@ function giaIscritto(attivita) {
 }
 
 function visualizzaDati() {
-    if(opened===0) {
+    if(openedDati===0) {
+        if(openedIscrizione===1){
+            // se si è cliccato anche il pulsante di cancella iscrizione allora lo chiudo
+            const conferma=document.getElementsByClassName("conferma")[0];
+            conferma.remove();
+            openedIscrizione=0;
+        }
         let url = "VisualizzaDati";
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url, true);
@@ -259,12 +265,12 @@ function visualizzaDati() {
         const datidiv =document.getElementsByClassName("datidiv")[0];
         //container.removeChild(datidiv);
         datidiv.remove();
-        opened=0;
+        openedDati=0;
     }
 }
 
 function mostra(){
-    opened=1;
+    openedDati=1;
     // dopo aver recuperato i dati grazie a visualizza attività devo mostrarli sulla pagina
     const container=document.getElementsByClassName("flexbox-container")[0];
     const datidiv = document.createElement('div');
@@ -322,4 +328,57 @@ function mostra(){
     datidiv.appendChild(passworddiv);
 
     container.appendChild(datidiv);
+}
+
+function cancellaIscrizione(){
+    // aggiungo un bottone di conferma, cliccando quello si cancella effettivamente l'iscrizione
+    // anche per esso utilizzo la modalita "aperto-chiuso" di visualizza dati
+    if(openedIscrizione===0) {
+        if(openedDati===1){
+            // se il menu dati è aperto lo chiudo
+            const dati=document.getElementsByClassName('datidiv')[0];
+            dati.remove()
+            openedDati=0;
+        }
+        const container = document.getElementsByClassName("flexbox-container")[0];
+        const conferma = document.createElement('div');
+        conferma.classList.add("conferma");
+        conferma.textContent = 'Conferma';
+        conferma.style.fontSize = 'x-large';
+        conferma.style.textAlign = 'center';
+        conferma.style.margin = '5%';
+        conferma.style.color = 'white';
+        conferma.style.backgroundColor = 'red';
+        conferma.style.border = '2px solid red';
+        conferma.style.borderRadius = '6px';
+        conferma.style.cursor = 'pointer';
+        conferma.addEventListener('click', cancella);
+        container.appendChild(conferma);
+        openedIscrizione=1;
+    }
+    else{
+        const conferma=document.getElementsByClassName("conferma")[0];
+        conferma.remove();
+        openedIscrizione=0;
+    }
+}
+function cancella() {
+
+    let url = "cancellaIscrizione";
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", url, true);
+    xhttp.responseType = "json";
+
+    // Callback
+    xhttp.onreadystatechange = function () {
+        let done = 4, ok = 200;
+        if (xhttp.readyState === done && xhttp.status === ok) {
+            // se avviene correttamente viene effettuatu un redirect sulla homepage
+        }
+        else {
+            //console.log("Iscrizione Fallita");
+        }
+    }
+    // Sending request
+    xhttp.send();
 }
