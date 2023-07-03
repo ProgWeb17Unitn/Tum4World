@@ -2,6 +2,22 @@ var attivita1 = 0;
 var attivita2 = 0;
 var attivita3 = 0;
 
+// variabili utilizzate per "Visualizza Dati"
+var username="none";
+var tipo="none";
+var nome="none";
+var cognome="none";
+var nascita="none";
+var email="none";
+var telefono="none";
+var password="none";
+
+var opened=0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
+
+// colori visualizzaDati
+var color1='#000000';
+var color2='#DBDFEA';
+var color3='#ffffff';
 window.addEventListener("load", () => {
     trovaAttivita();
     page.load();
@@ -151,21 +167,19 @@ function check() {
     }
 }
 
-function iscriviAttivita(attivita){
-    if(attivita === 1 && attivita1 === 1) {
+function iscriviAttivita(attivita) {
+    if (attivita === 1 && attivita1 === 1) {
         // si vuole iscrivere a 1 ma è già iscritto
         giaIscritto(attivita);
         return;
-    }
-    else if(attivita === 2 && attivita2 === 1){
+    } else if (attivita === 2 && attivita2 === 1) {
         giaIscritto(attivita);
         return;
-    }
-    else if(attivita === 3 && attivita3 === 1){
+    } else if (attivita === 3 && attivita3 === 1) {
         giaIscritto(attivita);
         return
     }
-    let url = "IscriviAttivita?attivita="+attivita;
+    let url = "IscriviAttivita?attivita=" + attivita;
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, true);
     xhttp.responseType = "json";
@@ -185,37 +199,127 @@ function iscriviAttivita(attivita){
 
 }
 
-function iscrizioneAvvenuta(attivita){
-    if(attivita===1){
-        attivita1=1; // aggiorno il fatto che sia  iscritto
+function iscrizioneAvvenuta(attivita) {
+    if (attivita === 1) {
+        attivita1 = 1; // aggiorno il fatto che sia  iscritto
+    } else if (attivita === 2) {
+        attivita2 = 1;
+    } else {
+        attivita3 = 1;
     }
-    else if(attivita===2){
-        attivita2=1;
-    }
-    else{
-        attivita3=1;
-    }
-    let rettangoliAttiva1 = document.getElementById("Attivita"+attivita);
+    let rettangoliAttiva1 = document.getElementById("Attivita" + attivita);
     rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)"
 
 }
 
-function iscrizioneFail(attivita){
-    function iscrizioneAvvenuta(attivita){
-        if(attivita===1){
-            attivita1=1; // aggiorno il fatto che sia iscritto
+function iscrizioneFail(attivita) {
+
+    let rettangoliAttiva1 = document.getElementById("Attivita" + attivita);
+    rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(255, 0, 0)"
+}
+
+function giaIscritto(attivita) {
+    window.alert("Sei gia' iscritto all'attivita " + attivita + "!");
+}
+
+function visualizzaDati() {
+    if(opened===0) {
+        let url = "VisualizzaDati";
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("POST", url, true);
+        xhttp.responseType = "json";
+
+        // Callback
+        xhttp.onreadystatechange = function () {
+            let done = 4, ok = 200;
+            if (xhttp.readyState === done && xhttp.status === ok) {
+                let my_JSON_array = this.response;
+                if (my_JSON_array.length > 0) {
+
+                    username = JSON.parse(my_JSON_array[0]);
+                    tipo = JSON.parse(my_JSON_array[1]);
+                    nome = JSON.parse(my_JSON_array[2]);
+                    cognome = JSON.parse(my_JSON_array[3]);
+                    email = JSON.parse(my_JSON_array[4]);
+                    nascita = JSON.parse(my_JSON_array[5]);
+                    telefono = JSON.parse(my_JSON_array[6]);
+                    password = JSON.parse(my_JSON_array[7]);
+
+                    mostra();
+
+                } else {
+                    // console.log("Non sono riuscito a recuperare l'utente err1");
+                }
+            }
         }
-        else if(attivita===2){
-            attivita2=1;
-        }
-        else{
-            attivita3=1;
-        }
-        let rettangoliAttiva1 = document.getElementById("Attivita"+attivita);
-        rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(255, 0, 0)"
+        // Sending request
+        xhttp.send();
+    }else{
+        //const container=document.getElementsByClassName("flexbox-container")[0];
+        const datidiv =document.getElementsByClassName("datidiv")[0];
+        //container.removeChild(datidiv);
+        datidiv.remove();
+        opened=0;
     }
 }
 
-function giaIscritto(attivita){
-    window.alert("Sei gia' iscritto all'attivita"+attivita+" !");
+function mostra(){
+    opened=1;
+    // dopo aver recuperato i dati grazie a visualizza attività devo mostrarli sulla pagina
+    const container=document.getElementsByClassName("flexbox-container")[0];
+    const datidiv = document.createElement('div');
+    datidiv.classList.add("datidiv"); //assegno un nome a questo div per poterlo rimuovere nella funzione visualizzaDati();
+    // Div stile:
+    datidiv.style.color=color1;
+    datidiv.style.fontSize='x-large';
+    datidiv.style.textAlign='center';
+    datidiv.style.display= 'flex';
+    datidiv.style.flexDirection='column';
+    datidiv.style.justifyContent= 'center';
+    datidiv.style.alignItems= 'center';
+    datidiv.style.margin='5%';
+    datidiv.style.padding='1%';
+    datidiv.style.backgroundColor=color2;
+    datidiv.style.border="2px solid"+color2;
+    datidiv.style.boxShadow="2px 2px 2px"+color3;
+
+    const title= document.createElement('span');
+    title.textContent="Dati Profilo:";
+    title.style.color=color1;
+    title.style.fontSize='xx-large';
+    datidiv.appendChild(title); //aggiungo il titolo al div
+
+    const usernamediv = document.createElement('div');
+    usernamediv.textContent="Username: " +username;
+    datidiv.appendChild(usernamediv);
+
+    const tipodiv = document.createElement('div');
+    tipodiv.textContent="Tipo: " +tipo;
+    datidiv.appendChild(tipodiv);
+
+    const nomediv = document.createElement('div');
+    nomediv.textContent="Nome: " +nome;
+    datidiv.appendChild(nomediv);
+
+    const cognomediv = document.createElement('div');
+    cognomediv.textContent="Cognome: " +cognome;
+    datidiv.appendChild(cognomediv);
+
+    const nascitadiv = document.createElement('div');
+    nascitadiv.textContent="Nascita: " +nascita;
+    datidiv.appendChild(nascitadiv);
+
+    const emaildiv = document.createElement('div');
+    emaildiv.textContent="Email: " + email;
+    datidiv.appendChild(emaildiv);
+
+    const telefonodiv = document.createElement('div');
+    telefonodiv.textContent="Telefono: " + telefono;
+    datidiv.appendChild(telefonodiv);
+
+    const passworddiv = document.createElement('div');
+    passworddiv.textContent="Password: " + password;
+    datidiv.appendChild(passworddiv);
+
+    container.appendChild(datidiv);
 }

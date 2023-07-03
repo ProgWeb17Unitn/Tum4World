@@ -126,20 +126,10 @@ function iscrizioneAvvenuta(attivita){
 
 }
 
-function iscrizioneFail(attivita){
-    function iscrizioneAvvenuta(attivita){
-        if(attivita===1){
-            attivita1=1; // aggiorno il fatto che sia iscritto
-        }
-        else if(attivita===2){
-            attivita2=1;
-        }
-        else{
-            attivita3=1;
-        }
-        let rettangoliAttiva1 = document.getElementById("Attivita"+attivita);
-        rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(255, 0, 0)"
-    }
+function iscrizioneFail(attivita) {
+
+    let rettangoliAttiva1 = document.getElementById("Attivita" + attivita);
+    rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(255, 0, 0)"
 }
 
 function giaIscritto(attivita) {

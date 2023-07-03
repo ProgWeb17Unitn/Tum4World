@@ -52,7 +52,7 @@
     </div>
 
     <div class="Bottoni">
-        <div class="bottone-elemento" id="btn1">
+        <div class="bottone-elemento" id="btn1" onclick="visualizzaDati()">
             <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon">
             <p>Visualizza Dati</p>
         </div>
@@ -67,6 +67,7 @@
                 <input type="button" value="Submit" id="submit-donation" onclick="handleDonation()">
             </form>
         </div>
+
     </div>
 
 </div>
