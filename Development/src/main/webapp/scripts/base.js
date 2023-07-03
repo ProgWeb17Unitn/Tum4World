@@ -86,7 +86,16 @@ menu.close = function () {
     menu.status = 'closed';
 }
 
-page.toggleView = function (mode) {
+menu.toggle = function () {
+    // viene aperto il menu se chiuso
+    // e viene chiuso se aperto
+    if (menu.status === 'closed')
+        menu.open();
+    else
+        menu.close();
+}
+
+page.toggle = function (mode) {
 
     // elementi da modificare
     const nav = document.getElementsByTagName('nav')[0];
@@ -111,33 +120,25 @@ page.onresize = function () {
     // controlla se devo andare in modalità landscape o portrait in base a
     // quanto l'utente ha resizato la finestra
     if (window.innerWidth > 1000)
-        page.toggleView('landscape');
+        page.toggle('landscape');
     else
-        page.toggleView('portrait');
+        page.toggle('portrait');
 }
 
 page.load = function () {
-    // eseguita ogni volta che si carica una pagina
+    // eseguita ogni volta che si carica una pagina qualsiasi
 
     // controlla se devo andare in modalità landscape o portrait in base a
     // quanto è larga inizialmente la finestra
     if (window.innerWidth > 1000)
-        page.toggleView('landscape');
+        page.toggle('landscape');
     else
-        page.toggleView('portrait');
+        page.toggle('portrait');
 
     // aggiunge funzionalità al pulsante hamburger in modalità portrait
     const hamburger = document.getElementById('hamburger');
-    if (hamburger) {
-        hamburger.addEventListener('click', function () {
-            // quando viene cliccato, viene aperto il menu se chiuso
-            // e viene chiuso se aperto
-            if (menu.status === 'closed')
-                menu.open();
-            else
-                menu.close();
-        });
-    }
+    if (hamburger)
+        hamburger.addEventListener('click', menu.toggle);
 
     const backToTop = document.getElementById('backToTop');
     if (backToTop)
@@ -145,9 +146,8 @@ page.load = function () {
 
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
+        if (this.readyState === 4 && this.status === 200)
             theme.switch(this.responseText);
-        }
     }
     xhttp.open('GET', 'determineStyle');
     xhttp.send();

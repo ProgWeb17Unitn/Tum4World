@@ -1,7 +1,6 @@
 body {
     background-image: url("../assets/images/background.jpg");
     margin: 20vh 0 0;
-    min-height: 90vh;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
