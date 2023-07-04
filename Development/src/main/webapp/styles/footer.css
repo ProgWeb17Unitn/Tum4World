@@ -14,7 +14,7 @@ footer>p {
 }
 
 #quotes {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: start;
     width: 20vh;
@@ -36,6 +36,7 @@ footer>p {
 }
 
 #quotes>p {
+    visibility: hidden;
     background-color: #2D728F;
     color: #F5EE9E;
     border-radius: 10px;

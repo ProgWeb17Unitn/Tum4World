@@ -39,6 +39,7 @@ quotes.generate = function () {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
+            box.style.visibility = 'visible';
             box.innerText = this.responseText;
             box.style.marginBottom = '2vh';
             setTimeout(function () {

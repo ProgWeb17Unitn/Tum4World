@@ -17,15 +17,25 @@ theme.switch = function (n) {
     else if (n === 'aderente')
         theme.backgroundColor = '#5f6b8d';
     else if (n === 'admin')
-        theme.backgroundColor = '#2D728F'; //todo admin colors
+        theme.backgroundColor = '#502477';
     else
         theme.backgroundColor = '#2D728F';
 
     // elementi da modificare in base al tema
-    // todo aggiungere helper, textbox dell'helper e scritte sia in header che footer
     const footer = document.getElementsByTagName('footer')[0];
-    if (footer)
+    if (footer) {
         footer.style.backgroundColor = theme.backgroundColor;
+
+        const helperBox = document.getElementById('quotes').getElementsByTagName('p')[0];
+        if (helperBox)
+            helperBox.style.backgroundColor = theme.backgroundColor;
+    }
+
+    const cookieBanner = document.getElementsByClassName('CookieBanner')[0];
+    if (cookieBanner) {
+        cookieBanner.getElementsByClassName('RectangularBanner')[0].style.backgroundColor = theme.backgroundColor;
+        cookieBanner.getElementsByClassName('triangle')[0].style.borderTop = `1.5em solid ${theme.backgroundColor}`;
+    }
 }
 
 menu.open = function () {
@@ -144,10 +154,25 @@ page.load = function () {
     if (backToTop)
         backToTop.addEventListener('click', () => window.scrollTo(0, 0));
 
+
+    const cookieBanner = document.getElementsByClassName('CookieBanner')[0];
+    const quotesBanner = document.getElementById('quotes');
+
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200)
+        if (this.readyState === 2 && this.status === 200) {
+            if (cookieBanner)
+                cookieBanner.style.display = 'none';
+            if (quotesBanner)
+                quotesBanner.style.display = 'none';
+        }
+        else if (this.readyState === 4 && this.status === 200) {
             theme.switch(this.responseText);
+            if (cookieBanner)
+                cookieBanner.style.display = 'grid';
+            if (quotesBanner)
+                quotesBanner.style.display = 'flex';
+        }
     }
     xhttp.open('GET', 'determineStyle');
     xhttp.send();

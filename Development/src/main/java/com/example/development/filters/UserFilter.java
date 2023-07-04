@@ -22,16 +22,15 @@ public class UserFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
-        String resource = httpRequest.getServletPath();
 
-        if (session == null || session.getAttribute("tipo") == null)
-            httpResponse.sendRedirect("../notAuthorized");
-        else if (resource.equals("/Admin") && !session.getAttribute("tipo").equals("admin"))
-            httpResponse.sendRedirect("../notAuthorized");
-        else if (resource.equals("/Aderente") && !session.getAttribute("tipo").equals("aderente"))
-            httpResponse.sendRedirect("../notAuthorized");
-        else if (resource.equals("/Simpatizzante") && !session.getAttribute("tipo").equals("simpatizzante"))
-            httpResponse.sendRedirect("../notAuthorized");
+        String resource = httpRequest.getServletPath();
+        String tipo = session == null || session.getAttribute("tipo") == null ? "none" : (String) session.getAttribute("tipo");
+
+        if (tipo.compareTo("none") == 0
+                || (resource.compareTo("/user/Admin") == 0 && !tipo.equals("admin"))
+                || (resource.compareTo("/user/Aderente") == 0 && !tipo.equals("aderente"))
+                || (resource.compareTo("/user/Simpatizzante") == 0 && !tipo.equals("simpatizzante")))
+            httpResponse.sendRedirect((httpResponse.encodeRedirectURL("../notAuthorized")));
 
         chain.doFilter(request, response);
     }
