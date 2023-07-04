@@ -14,7 +14,15 @@ public class Utente implements Serializable {
     private String telefono;
     private String tipo;
 
-    public Utente() {}
+    public Utente() {
+        setUsername("Usertest");
+        setNome("Mario");
+        setCognome("Rossi");
+        setPassword("M1234?s");
+        setDataNascita(LocalDate.now());
+        setTelefono("3495344221");
+        setTipo("Simpatizzante");
+    }
 
     public String getUsername() {
         return username;

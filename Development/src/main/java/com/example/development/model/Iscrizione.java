@@ -6,6 +6,10 @@ public class Iscrizione implements Serializable {
     private String username;
     private String codiceAttivita;
 
+    public Iscrizione(){
+        setUsername("utente0");
+        setCodiceAttivita("Att1");
+    }
     public String getUsername() {
         return username;
     }

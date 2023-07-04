@@ -6,6 +6,12 @@ public class Messaggio {
     private String motivo;
     private String testo;
 
+    public  Messaggio(){
+        setNomeCognome("Alfredo Rossi");
+        setEmail("test@tum4world.it");
+        setMotivo("Informazioni");
+        setTesto("Vorrei avere informazioni in merito a..");
+    }
     public String getNomeCognome() {
         return nomeCognome;
     }

@@ -6,6 +6,10 @@ public class Visite implements Serializable {
     private String pagina;
     private int visite;
 
+    public Visite(){
+        setPagina("p1");
+        setVisite(1);
+    }
     public String getPagina() {
         return pagina;
     }
