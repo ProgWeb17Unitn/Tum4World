@@ -17,7 +17,7 @@ CREATE TABLE donazioni (
     importo INT NOT NULL,
     data DATE NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES utenti(username)
+    CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES utenti(username) ON DELETE SET NULL
 );
 
 /* probabilmente non serve: si invia una email con questi dati, non ha senso salvarli nel db */

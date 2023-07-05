@@ -94,7 +94,7 @@ public class popolaDB extends HttpServlet {
                         "importo INT NOT NULL, " +
                         "data DATE NOT NULL, " +
                         "PRIMARY KEY (id), " +
-                        "CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES utenti(username)\n" +
+                        "CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES utenti(username)  ON DELETE SET NULL" +
                         ")");
             } catch (SQLException e) {
                 e.printStackTrace();

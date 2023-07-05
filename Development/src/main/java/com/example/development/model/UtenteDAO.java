@@ -58,7 +58,7 @@ public class UtenteDAO extends GenericDAO{
 
             int numRigheCancellate = ps.executeUpdate();
             if(numRigheCancellate == 0){
-                throw new SQLException();
+                throw new SQLException("0 righe cancellate");
             }
         }catch(SQLException e){
             System.out.println("Errore cancellando Utente: " + u.getUsername() + ". Causa: " + e);
