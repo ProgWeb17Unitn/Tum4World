@@ -53,14 +53,17 @@ public class elaboraLogin extends HttpServlet {
             try {
                 Utente utente = utenteDAO.getUtente(username);
 
-                // imposta i cookie di login
+                // imposta i cookie e aggiunge alla sessione gli attributi di login
                 Cookie usernameCookie = new Cookie("username", username);
-                if (session != null) {
-                    session.setAttribute("username", username);
-                }
                 Cookie tipoCookie = new Cookie("tipo", utente.getTipo());
                 response.addCookie(usernameCookie);
                 response.addCookie(tipoCookie);
+
+                if(session != null) {
+                    session.setAttribute("username", username);
+                    session.setAttribute("tipo", utente.getTipo());
+                }
+
 
                 // in base al tipo di utente invia al client un link per la sua pagina privata
                 String tipo = utente.getTipo();
@@ -68,21 +71,12 @@ public class elaboraLogin extends HttpServlet {
                 switch (tipo) {
                     case "aderente":
                         writer.print(request.getContextPath() + "/aderente.jsp");
-                        if (session != null) {
-                            session.setAttribute("tipo", "aderente");
-                        }
                         break;
                     case "simpatizzante":
                         writer.print(request.getContextPath() + "/simpatizzante.jsp");
-                        if (session != null) {
-                            session.setAttribute("tipo", "simpatizzante");
-                        }
                         break;
                     case "admin":
                         writer.print(request.getContextPath() + "/admin.jsp");
-                        if (session != null) {
-                            session.setAttribute("tipo", "admin");
-                        }
                         break;
                     default:
                         // impossibile arrivare qui per i constraint del database (il tipo DEVE essere aderente, simpatizzante o admin)
@@ -92,8 +86,7 @@ public class elaboraLogin extends HttpServlet {
                 writer.close();
 
 
-            } catch (
-                    UserNotFoundException e) { // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
+            } catch (UserNotFoundException e) { // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
                 System.out.println("Errore DB: utente con credenziali valide non trovato nel database");
                 e.printStackTrace();
             }
