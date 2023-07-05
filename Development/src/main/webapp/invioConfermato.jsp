@@ -11,11 +11,11 @@
 
 <body>
 <%@ include file="header.jsp" %>
+<main>
+    <h3>Grazie di averci contatto!<br>
+        Riceverà il prima possibile una risposta al suo indirizzo email</h3>
 
-<h3>Grazie di averci contatto!<br>
-    Riceverà il prima possibile una risposta al suo indirizzo email</h3>
-
-
+</main>
 <%@ include file="footer.html" %>
 </body>
 

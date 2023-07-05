@@ -53,13 +53,8 @@ public class elaboraLogin extends HttpServlet {
             try {
                 Utente utente = utenteDAO.getUtente(username);
 
-                // imposta i cookie e aggiunge alla sessione gli attributi di login
-                Cookie usernameCookie = new Cookie("username", username);
-                Cookie tipoCookie = new Cookie("tipo", utente.getTipo());
-                response.addCookie(usernameCookie);
-                response.addCookie(tipoCookie);
-
-                if(session != null) {
+                // aggiunge alla sessione gli attributi di login
+                if (session != null) {
                     session.setAttribute("username", username);
                     session.setAttribute("tipo", utente.getTipo());
                 }
@@ -70,13 +65,13 @@ public class elaboraLogin extends HttpServlet {
                 PrintWriter writer = response.getWriter();
                 switch (tipo) {
                     case "aderente":
-                        writer.print(request.getContextPath() + "/aderente.jsp");
+                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/user/Aderente"));
                         break;
                     case "simpatizzante":
-                        writer.print(request.getContextPath() + "/simpatizzante.jsp");
+                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/user/Simpatizzante"));
                         break;
                     case "admin":
-                        writer.print(request.getContextPath() + "/admin.jsp");
+                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/user/Admin"));
                         break;
                     default:
                         // impossibile arrivare qui per i constraint del database (il tipo DEVE essere aderente, simpatizzante o admin)
@@ -86,7 +81,8 @@ public class elaboraLogin extends HttpServlet {
                 writer.close();
 
 
-            } catch (UserNotFoundException e) { // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
+            } catch (
+                    UserNotFoundException e) { // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
                 System.out.println("Errore DB: utente con credenziali valide non trovato nel database");
                 e.printStackTrace();
             }

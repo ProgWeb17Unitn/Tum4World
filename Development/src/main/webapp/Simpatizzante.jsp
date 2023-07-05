@@ -14,23 +14,23 @@
 
 <body>
 <%@ include file="header.jsp" %>
+<main>
+    <div class="flexbox-container" id="index">
+        <%@ include file="SimpatizzanteAderente.html" %>
 
-<div class="flexbox-container" id="index">
-    <%@ include file="SimpatizzanteAderente.html" %>
+        <div class="Bottoni">
+            <div class="bottone-elemento" id="btn1" onclick="visualizzaDati()">
+                <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon">
+                <p>Visualizza Dati</p>
+            </div>
+            <div class="bottone-elemento" id="btn2" onclick="cancellaIscrizione()">
+                <img src="assets/images/S/bin.svg" id="bin">
+                <p>Cancella Iscrizione</p>
+            </div>
+        </div>
 
-    <div class="Bottoni">
-        <div class="bottone-elemento" id="btn1"  onclick="visualizzaDati()">
-            <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon">
-            <p>Visualizza Dati</p>
-        </div>
-        <div class="bottone-elemento" id="btn2"  onclick="cancellaIscrizione()">
-            <img src="assets/images/S/bin.svg" id="bin">
-            <p>Cancella Iscrizione</p>
-        </div>
     </div>
-
-</div>
-
+</main>
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>
 <% } %>

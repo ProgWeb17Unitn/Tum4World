@@ -14,7 +14,7 @@
 
 <body>
 <%@ include file="header.jsp" %>
-
+<main>
 <h3 id="index">I nostri contatti:</h3>
 <p><b>Indirizzo:</b> Via temporanea 156, Trento (17000), Italia<br>
     <b>Numero di telefono:</b> (+39) 300 300 9999<br>
@@ -44,7 +44,7 @@
     <input type="button" value="RESET" onclick="resetData()">
 
 </form>
-
+</main>
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>
 <% } %>

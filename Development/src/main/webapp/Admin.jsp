@@ -13,9 +13,11 @@
 
 <body>
 <%@ include file="header.jsp" %>
-<!--- Inserisci qui il tuo codice HTML
-      NOTA BEME: il div esterno deve avere un id="index"--->
 
+<main>
+    <!--- Inserisci qui il tuo codice HTML
+          NOTA BEME: il div esterno deve avere un id="index"--->
+</main>
 
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>

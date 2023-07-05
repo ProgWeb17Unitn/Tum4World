@@ -12,10 +12,10 @@
 
 <body>
 <%@ include file="header.jsp" %>
-
-<img src="assets/images/error.svg" alt="error">
-<h2>You do not have access to this page!</h2>
-
+<main>
+    <img src="assets/images/error.svg" alt="error" id="index">
+    <h2>You do not have access to this page!</h2>
+</main>
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>
 <% } %>

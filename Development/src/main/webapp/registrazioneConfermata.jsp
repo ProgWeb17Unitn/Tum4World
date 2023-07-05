@@ -11,11 +11,11 @@
 
 <body>
 <%@ include file="header.jsp" %>
+<main>
+    <h1>Registrazione confermata</h1>
+    <h2>Ora puoi andare nella sezione login ed effettuare l'accesso</h2>
 
-<h1>Registrazione confermata</h1>
-<h2>Ora puoi andare nella sezione login ed effettuare l'accesso</h2>
-
-
+</main>
 <!-- Aggiunta condizionale del Cookie Banner VA SPOSTATO DA QUI-->
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>

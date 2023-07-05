@@ -12,16 +12,16 @@
 
 <body>
 <%@ include file="header.jsp" %>
+<main>
 
-
-<form action="GET" name="formLogin" id="index">
-    <p>username</p>
-    <input type="text" name="username">
-    <p>password</p>
-    <input type="password" name="password"><br><br>
-    <input type="button" value="Log In" onclick="validateData()"><br><br>
-</form>
-
+    <form action="GET" name="formLogin" id="index">
+        <p>username</p>
+        <input type="text" name="username">
+        <p>password</p>
+        <input type="password" name="password"><br><br>
+        <input type="button" value="Log In" onclick="validateData()"><br><br>
+    </form>
+</main>
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>
 <% } %>
