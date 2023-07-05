@@ -46,11 +46,11 @@ public class IscriviAttivita extends HttpServlet {
         String codiceattivita ="";
 
         if(number==1){
-            codiceattivita="Att1";
+            codiceattivita="attivita1";
         } else if (number==2) {
-            codiceattivita="Att2";
+            codiceattivita="attivita2";
         }else{
-            codiceattivita="Att3";
+            codiceattivita="attivita3";
         }
 
 

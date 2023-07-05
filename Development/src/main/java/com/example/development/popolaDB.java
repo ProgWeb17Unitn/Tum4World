@@ -203,22 +203,25 @@ public class popolaDB extends HttpServlet {
     public void popolaAttivita() {
         Attivita attivita1 = new Attivita();
         attivita1.setNome("Salvataggio");
-        attivita1.setCodice("Att1");
+        attivita1.setCodice("attivita1");
+
         Attivita attivita2 = new Attivita();
-        attivita1.setNome("Educazione");
-        attivita1.setCodice("Att2");
+        attivita2.setNome("Educazione");
+        attivita2.setCodice("attivita2");
+
         Attivita attivita3 = new Attivita();
-        attivita3.setNome("Educazione");
-        attivita3.setCodice("Att3");
+        attivita3.setNome("Prevenzione");
+        attivita3.setCodice("attivita3");
+
         attivitaDAO.save(attivita1);
         attivitaDAO.save(attivita2);
         attivitaDAO.save(attivita3);
     }
 
     public void popolaIscrizioni() {
-        iscrizioneDAO.nuovaIscrizione("Att2", "utente0");
-        iscrizioneDAO.nuovaIscrizione("Att1", "utente2");
-        iscrizioneDAO.nuovaIscrizione("Att3", "utente2");
+        iscrizioneDAO.nuovaIscrizione("utente0", "attivita2");
+        iscrizioneDAO.nuovaIscrizione("utente1", "attivita1");
+        iscrizioneDAO.nuovaIscrizione("utente1", "attivita3");
     }
 
     public void popolaVisite() {
