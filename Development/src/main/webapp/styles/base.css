@@ -16,6 +16,10 @@ body {
 
 main {
     margin-top: 10vh;
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: inherit;
+    align-items: inherit;
 }
 
 .coloredText {
