@@ -1,4 +1,4 @@
-form#index {
+#login {
     background: #fff;
     padding: 4em 4em 2em;
     max-width: 400px;
@@ -9,7 +9,7 @@ form#index {
     min-width: 65vw;
 }
 
-form p {
+#login p {
     margin: 0 0 3em 0;
     position: relative;
     font-size: 10px;
@@ -33,7 +33,7 @@ form p {
     padding-bottom: 0.5vw;
 }
 
-label {
+#login label {
     display: block;
     font-size: 1.6em;
     margin: 0 0 .5em;
@@ -64,7 +64,7 @@ select {
     width: 45%;
 }
 
-input[type="button"]{
+input[type="button"] {
     cursor: pointer;
     display: block;
     outline: none;

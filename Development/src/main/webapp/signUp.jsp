@@ -16,7 +16,7 @@
 <%@ include file="header.jsp" %>
 <main>
     <h1 id="index">Crea un account</h1>
-    <form method="POST" name="formSignUp">
+    <form method="POST" name="formSignUp" id="login">
 
         <div class="form-row">
             <div class="form-element">
