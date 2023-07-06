@@ -1,5 +1,6 @@
 footer {
     background-color: #2D728F;
+    color: inherit;
     height: 15vh;
     width: 100%;
     text-align: center;
@@ -9,6 +10,7 @@ footer {
 }
 
 footer>p {
+    color: inherit;
     margin: 2vh;
     font-size: smaller;
 }

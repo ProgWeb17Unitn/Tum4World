@@ -23,6 +23,11 @@ main p {
     margin-bottom: 20vh;
 }
 
+
+.coloredText {
+    color: #F49E4C;
+}
+
 #logo {
     opacity: 0;
     width: 40%;
@@ -41,6 +46,7 @@ main p {
 
 #download {
     background-color: #AB3428;
+    color: inherit;
     font-weight: bold;
     font-size: 20px;
     text-align: center;

@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="styles/header.css">
 <script src="scripts/base.js"></script>
 <header>
-    <h1 class="coloredText">Tum4World</h1>
-    <nav class="coloredText">
+    <h1>Tum4World</h1>
+    <nav>
         <a href="<%= response.encodeURL("./homepage") %>">Home</a>
         <a href="<%= response.encodeURL("./ChiSiamo") %>">Chi Siamo</a>
         <a href="<%= response.encodeURL("./Attivita") %>">Attività</a>

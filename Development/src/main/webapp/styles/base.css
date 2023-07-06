@@ -22,8 +22,9 @@ main {
     align-items: inherit;
 }
 
-.coloredText {
-    color: #F5EE9E;
+main a {
+    text-decoration: none;
+    font-size: 1em;
 }
 
 /* Nascondo the scrollbar */
