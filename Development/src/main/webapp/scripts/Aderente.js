@@ -18,6 +18,7 @@ var openedIscrizione=0;
 var color1='#000000';
 var color2='#DBDFEA';
 var color3='#ffffff';
+var eyecolor =""; // aderente ha occhio nero mentre simpatizzante bianco
 window.addEventListener("load", () => {
     trovaAttivita();
     page.load();
@@ -266,6 +267,10 @@ function visualizzaDati() {
         //container.removeChild(datidiv);
         datidiv.remove();
         openedDati=0;
+
+        var occhio = document.getElementById("eyeicon") //cambio icona con L'occhio chiuso
+        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+
     }
 }
 
@@ -328,6 +333,9 @@ function mostra(){
     datidiv.appendChild(passworddiv);
 
     container.appendChild(datidiv);
+
+    var occhio = document.getElementById("eyeicon") //cambio icona con L'occhio Aperto
+    occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
 }
 
 function cancellaIscrizione(){
@@ -347,6 +355,7 @@ function cancellaIscrizione(){
         conferma.style.fontSize = 'x-large';
         conferma.style.textAlign = 'center';
         conferma.style.margin = '5%';
+        conferma.style.padding = '1%';
         conferma.style.color = 'white';
         conferma.style.backgroundColor = 'red';
         conferma.style.border = '2px solid red';
@@ -374,6 +383,8 @@ function cancella() {
         let done = 4, ok = 200;
         if (xhttp.readyState === done && xhttp.status === ok) {
             // se avviene correttamente viene effettuatu un redirect sulla homepage
+            // posso farlo direttamente da js poichè una volta cancellata l'iscrizione invalido la session
+            window.location.href = "homepage";
         }
         else {
             //console.log("Iscrizione Fallita");

@@ -26,6 +26,7 @@ var color1='#000000';
 var color2='#DBDFEA';
 var color3='#ffffff';
 
+var eyecolor ="WHITE"; // aderente ha occhio nero mentre simpatizzante bianco
 window.addEventListener("load", () => {
     trovaAttivita();
     page.load();

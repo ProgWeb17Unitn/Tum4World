@@ -109,10 +109,10 @@ img{
     align-items: center;
     margin-top:5%;
     font-size:larger;
-    color: black;
+    color: white;
     box-sizing: border-box;
-    background-color: #38bdc1;
-    border: 2px solid #38bdc1;
+    background-color: #34b0b4;
+    border: 2px solid #34b0b4;
     border-radius: 6px;
     box-shadow: 2px 2px 2px #14dee7;
 }

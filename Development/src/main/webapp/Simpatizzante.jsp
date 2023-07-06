@@ -20,11 +20,11 @@
 
         <div class="Bottoni">
             <div class="bottone-elemento" id="btn1" onclick="visualizzaDati()">
-                <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon">
+                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon">
                 <p>Visualizza Dati</p>
             </div>
             <div class="bottone-elemento" id="btn2" onclick="cancellaIscrizione()">
-                <img src="assets/images/S/bin.svg" id="bin">
+                <img src="assets/images/S/binWHITE.svg" id="bin">
                 <p>Cancella Iscrizione</p>
             </div>
         </div>

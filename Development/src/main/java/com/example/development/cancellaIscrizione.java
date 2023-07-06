@@ -42,9 +42,6 @@ public class cancellaIscrizione extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         response.setStatus(200);
         utenteDAO.deleteByUsername(name); // cancello l'username
-
-        response.sendRedirect("homepage"); // redirecto utente sulla homepage
-
     }
 
     @Override
