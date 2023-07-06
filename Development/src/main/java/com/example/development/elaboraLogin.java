@@ -65,13 +65,13 @@ public class elaboraLogin extends HttpServlet {
                 PrintWriter writer = response.getWriter();
                 switch (tipo) {
                     case "aderente":
-                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/user/Aderente"));
+                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/Aderente"));
                         break;
                     case "simpatizzante":
-                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/user/Simpatizzante"));
+                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/Simpatizzante"));
                         break;
                     case "admin":
-                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/user/Admin"));
+                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/Admin"));
                         break;
                     default:
                         // impossibile arrivare qui per i constraint del database (il tipo DEVE essere aderente, simpatizzante o admin)

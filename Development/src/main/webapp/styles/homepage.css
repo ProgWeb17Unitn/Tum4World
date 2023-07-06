@@ -16,12 +16,11 @@ main h2 {
     font-size: xx-large;
     font-weight: bolder;
     align-self: start;
-    margin-top: 10vh;
 }
 
 main p {
     font-size: large;
-    margin-bottom: 10vh;
+    margin-bottom: 20vh;
 }
 
 #logo {

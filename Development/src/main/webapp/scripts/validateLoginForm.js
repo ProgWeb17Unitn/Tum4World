@@ -1,14 +1,24 @@
 function validateData() {
     let form = document.forms.namedItem("formLogin");
 
-    let errori = ""
+    let errori = "";
+
+    /* todo: sostituire con un altro metodo per notificare l'utente che deve compiere una scelta sui cookies
+        possibilità:
+            - quando l'utente clicca login, reindirizzare su un'altra pagina quando non ha compiuto la scelta
+            - quando l'utente clicca login, includere in login.jsp un cookiebanner più grosso che copra il login finché non si compie una scelta
+            - attuale: fallimento login e allerta se non si è compiuta la scelta (un po' brutto)
+*/
+    const cookiesCheck = document.getElementsByClassName('CookieBanner')[0];
+    if(cookiesCheck)
+        errori += 'Compiere una scelta per i cookies\n';
 
     if (form["username"].value === "") {
-        errori += "Specificare un username";
+        errori += "Specificare un username\n";
     }
 
     if (form["password"].value === "") {
-        errori += "Specificare una password";
+        errori += "Specificare una password\n";
     } else {
         // TODO serve fare anche qui i controlli della password?
     }

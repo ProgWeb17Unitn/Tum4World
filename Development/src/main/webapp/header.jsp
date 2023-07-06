@@ -19,13 +19,13 @@
                 type = "none";
 
             if (type.equals("aderente")) { %>
-        <a href="<%= response.encodeURL("./user/Aderente") %>">Dashboard</a>
+        <a href="<%= response.encodeURL("./Aderente") %>">Dashboard</a>
         <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else if (type.equals("simpatizzante")) { %>
-        <a href="<%= response.encodeURL("./user/Simpatizzante") %>">Dashboard</a>
+        <a href="<%= response.encodeURL("./Simpatizzante") %>">Dashboard</a>
         <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else if (type.equals("admin")) { %>
-        <a href="<%= response.encodeURL("./user/Admin") %>">Dashboard</a>
+        <a href="<%= response.encodeURL("./Admin") %>">Dashboard</a>
         <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else { %>
         <a href="<%= response.encodeURL("./signUp") %>">SignUp</a>

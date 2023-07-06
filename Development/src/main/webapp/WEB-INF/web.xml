@@ -26,7 +26,9 @@
     </filter>
     <filter-mapping>
         <filter-name>userFilter</filter-name>
-        <url-pattern>/user/*</url-pattern>
+        <url-pattern>/Admin</url-pattern>
+        <url-pattern>/Aderente</url-pattern>
+        <url-pattern>/Simpatizzante</url-pattern>
     </filter-mapping>
 
     <servlet>
@@ -44,7 +46,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Aderente</servlet-name>
-        <url-pattern>/user/Aderente</url-pattern>
+        <url-pattern>/Aderente</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -53,7 +55,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Admin</servlet-name>
-        <url-pattern>/user/Admin</url-pattern>
+        <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -143,7 +145,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Simpatizzante</servlet-name>
-        <url-pattern>/user/Simpatizzante</url-pattern>
+        <url-pattern>/Simpatizzante</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
