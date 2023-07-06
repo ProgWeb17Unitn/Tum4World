@@ -77,8 +77,8 @@
             </div>
 
             <div class="buttons">
-                <input type="button" value="REGISTRATI" class="submit" onclick="validateData()">
-                <input type="button" value="reset" class="reset" onclick="resetForm()">
+                <input type="button" value="Registrati!" class="submit" onclick="validateData()">
+                <input type="button" value="🗑️" class="reset" onclick="resetForm()">
             </div>
         </div>
     </form>
