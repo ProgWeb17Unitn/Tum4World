@@ -15,9 +15,8 @@
 <body>
 <%@ include file="header.jsp" %>
 <main>
-    <!--- form brutto per provare, poi prendiamo qualche design da codepen --->
-    <h1>Crea un account</h1>
-    <form method="POST" name="formSignUp" id="index">
+    <h1 id="index">Crea un account</h1>
+    <form method="POST" name="formSignUp">
 
         <div class="form-row">
             <div class="form-element">
