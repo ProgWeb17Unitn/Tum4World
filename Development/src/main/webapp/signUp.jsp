@@ -6,6 +6,8 @@
     <title>Tum4World</title>
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
     <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/formSignUp.css">
+
     <script src="scripts/base.js"></script>
     <script type="text/javascript" src="scripts/validateSignUpForm.js"></script>
 </head>
@@ -14,35 +16,72 @@
 <%@ include file="header.jsp" %>
 <main>
     <!--- form brutto per provare, poi prendiamo qualche design da codepen --->
-
+    <h1>Crea un account</h1>
     <form method="POST" name="formSignUp" id="index">
-        <p>nome</p>
-        <input type="text" name="nome">
-        <p>cognome</p>
-        <input type="text" name="cognome">
-        <p>data di nascita</p>
-        <input type="date" name="dataNascita">
-        <!--- TODO data dovrebbe essere nel formato GG/MM/AAAA, allora bisogna usare un campo text e validarlo? --->
-        <p>email</p>
-        <input type="text" name="email">
-        <p>numero di telefono</p>
-        <input type="text" name="telefono">
-        <p>tipo</p>
-        <select name="tipo">
-            <option value="aderente">Aderente</option>
-            <option value="simpatizzante">Simpatizzante</option>
-        </select>
-        <p>username</p>
-        <input type="text" name="username">
-        <p>password</p>
-        <input type="text" name="password">
-        <p>conferma password</p>
-        <input type="text" name="passwordConferma">
-        <br><br>
-        <input type="button" value="registrati" onclick="validateData()">
-        <br><br>
-        <input type="button" value="reset" onclick="resetForm()">
-        <br><br>
+
+        <div class="form-row">
+            <div class="form-element">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+            </div>
+            <div class="form-element">
+                <label for="cognome">Cognome</label>
+                <input type="text" name="cognome" id="cognome">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-element">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+            </div>
+
+            <div class="form-element">
+                <label for="telefono">Numero di telefono</label>
+                <input type="text" name="telefono" id="telefono">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-element">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+
+            <div class="form-element">
+                <!--- TODO data dovrebbe essere nel formato GG/MM/AAAA, allora bisogna usare un campo text e validarlo? --->
+                <label for="dataNascita">Data di nascita</label>
+                <input type="date" name="dataNascita" id="dataNascita">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-element">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+
+            <div class="form-element">
+                <label for="passwordConferma">Conferma password</label>
+                <input type="password" name="passwordConferma" id="passwordConferma">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-element">
+                <label for="tipo">Tipo utente</label>
+                <select name="tipo" id="tipo">
+                    <option value="">-- selezionare --</option>
+                    <option value="aderente">Aderente</option>
+                    <option value="simpatizzante">Simpatizzante</option>
+                </select>
+            </div>
+
+            <div class="buttons">
+                <input type="button" value="REGISTRATI" class="submit" onclick="validateData()">
+                <input type="button" value="reset" class="reset" onclick="resetForm()">
+            </div>
+        </div>
     </form>
 </main>
 <!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSATIO-->
