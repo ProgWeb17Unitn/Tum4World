@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public abstract class GenericDAO {
 
     // path della cartella con il database
-    protected static String databasePath = "/opt/Apache/db-derby/lib/testDB;create=true";
+    protected static String databasePath = "/home/matteo/derby/porjectDB;create=true";
     protected Connection conn;
 
     public static void closeConnection(Connection connection){
