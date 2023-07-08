@@ -1,0 +1,61 @@
+.flexbox-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+.logOutRectangle{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #2d728e;
+    background-color: #2d728e;
+    border-radius: 6px;
+    box-shadow: 2px 3px 2px #3B8EA5;
+    padding: 2%;
+}
+.title{
+    text-align: center;
+    font-size: xx-large;
+    margin: 2%;
+}
+.scelta{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 4%;
+}
+
+.scelta button {
+    font-size: x-large;
+    border-radius: 6px;
+    color: #f4ed9d;
+    cursor:pointer;
+    padding: 2%;
+}
+#Si{
+    font-size: x-large;
+    background-color: #5ca44f;
+    border: 1px solid #5ca44f;
+    box-shadow: 0 1px 1px #4d8642;
+}
+#No{
+    font-size: x-large;
+    background-color: #f62349;
+    border: 1px solid #f62349;
+    box-shadow: 0 1px 1px #aa3428;
+}
+
+#Si:hover{
+    background-color: #4d8642;
+}
+
+#No:hover{
+    background-color: #aa3428;
+}
