@@ -13,17 +13,20 @@
 
 <body>
 <%@ include file="header.jsp" %>
+<main>
 
-<div class="flexbox-container" id="index">
-  <div class="logOutRectangle">
-    <div class="title"> Vuoi eseguire il LogOut?</div>
-    <form class="scelta">
-      <button type="submit" name="opzione"  value="Si" id="Si">Si</button>
-      <button type="submit" name="opzione" value="No" id="No">No</button>
-    </form>
+  <div class="flexbox-container" id="index">
+
+    <div class="logOutRectangle">
+      <div class="title"> Vuoi eseguire il LogOut?</div>
+      <form class="scelta">
+        <button type="submit" name="opzione"  value="Si" id="Si">Si</button>
+        <button type="submit" name="opzione" value="No" id="No">No</button>
+      </form>
+    </div>
+
   </div>
-</div>
-
+</main>
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>
 <% } %>

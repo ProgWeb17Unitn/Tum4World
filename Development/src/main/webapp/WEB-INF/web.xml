@@ -148,6 +148,15 @@
         <url-pattern>/Simpatizzante</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>logOut</servlet-name>
+        <jsp-file>/logOut.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logOut</servlet-name>
+        <url-pattern>/logOut</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>homepage</welcome-file>
     </welcome-file-list>

@@ -5,6 +5,7 @@ menu = {};
 menu.status = 'closed';
 page = {};
 page.status = 'landscape';
+var spostato=0;
 
 theme.switch = function (n) {
     // scrolla in cima alla pagina per evitare problemi con la trasparenza dell'header
@@ -137,7 +138,10 @@ page.onresize = function () {
 
 page.load = function () {
     // eseguita ogni volta che si carica una pagina qualsiasi
-
+    if(spostato===0){
+        spostaFooter();
+        spostato=1;
+    }
     // controlla se devo andare in modalità landscape o portrait in base a
     // quanto è larga inizialmente la finestra
     if (window.innerWidth > 1000)
@@ -219,3 +223,11 @@ page.onscroll = function () {
 window.addEventListener('load', page.load);
 window.addEventListener('resize', page.onresize);
 window.addEventListener('scroll', page.onscroll);
+
+function spostaFooter() {
+    var foot = document.getElementsByTagName("footer")[0];
+    var rettangolo = foot.getBoundingClientRect();
+    var distanceFromBottom = window.innerHeight - rettangolo.bottom;
+    console.log("Distance: " + distanceFromBottom);
+    foot.style.transform = "translateY(" + distanceFromBottom + "px)";
+}
