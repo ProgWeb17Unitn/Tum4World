@@ -1,15 +1,13 @@
-#login {
+#signup .form-content {
     background: linear-gradient(to bottom right, #F49E4C, #AB3428);
-    padding: 4em 4em 2em;
-    width: 50vw;
-    margin-top: 10vh;
-    margin-left: auto;
+    padding: 3em 1em 1em 1em;
     box-shadow: 0 0 1em #222;
     border-radius: 10px;
     align-self: center;
+    width: 60vw
 }
 
-#login p {
+#signup p {
     color: #F5EE9E;
     margin: 0 0 3em 0;
     position: relative;
@@ -22,19 +20,20 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2em;
+    /*gap: 3em;*/
 }
 
 .form-element {
     display: block;
     flex: none;
-    width: 50%;
+    width: 43%;
     justify-content: left;
-    padding-right: 2vw;
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
 }
 
-#login label {
+
+#signup label {
     display: block;
     font-size: 1.6em;
     margin: 0 0 .5em;
@@ -43,26 +42,51 @@
 
 input[type="text"],
 input[type="password"],
-input[type="date"],
-select {
+input[type="tel"]{
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: 3vh;
     outline: none;
-
+    height: 1.7em;
     background: #f5f5f5;
     border: 1px solid #e5e5e5;
     font-size: 1.6em;
-    padding: .8em .5em;
+    padding-left: 0.3em;
     border-radius: 5px;
 }
+
+input[type="date"]
+{
+    width: 100%;
+    display:block;
+    outline: none;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    font-size: 2.1em;
+    padding: 0.15em 0 0.15em 0;
+    border-radius: 5px;
+
+}
+
+select {
+    display: block;
+
+    width: 100%;
+    outline: none;
+    height: 1.7em;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    font-size: 1.6em;
+
+    border-radius: 5px;
+}
+
 
 .buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 input[type="button"] {

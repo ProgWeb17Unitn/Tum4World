@@ -16,8 +16,8 @@
 <%@ include file="header.jsp" %>
 <main>
     <h1 id="index">Crea un account</h1>
-    <form method="POST" name="formSignUp" id="login">
-
+    <form method="POST" name="formSignUp" id="signup">
+        <div class="form-content">
         <div class="form-row">
             <div class="form-element">
                 <label for="nome">Nome</label>
@@ -37,7 +37,7 @@
 
             <div class="form-element">
                 <label for="telefono">Numero di telefono</label>
-                <input type="text" name="telefono" id="telefono">
+                <input type="tel" name="telefono" id="telefono">
             </div>
         </div>
 
@@ -48,7 +48,6 @@
             </div>
 
             <div class="form-element">
-                <!--- TODO data dovrebbe essere nel formato GG/MM/AAAA, allora bisogna usare un campo text e validarlo? --->
                 <label for="dataNascita">Data di nascita</label>
                 <input type="date" name="dataNascita" id="dataNascita">
             </div>
@@ -76,10 +75,11 @@
                 </select>
             </div>
 
-            <div class="buttons">
+            <div class="form-element buttons">
                 <input type="button" value="Registrati!" class="submit" onclick="validateData()">
                 <input type="button" value="🗑️" class="reset" onclick="resetForm()">
             </div>
+        </div>
         </div>
     </form>
 </main>
