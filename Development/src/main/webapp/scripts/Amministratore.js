@@ -1,6 +1,7 @@
-//variabili usate per visualizzare utenti
+//variabili usate per visualizzare
 var username="none";
 var openedDati=0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
+var my_JSON_array;
 
 var color1='#000000';
 var color2='#DBDFEA';
@@ -211,6 +212,19 @@ function resetContatori(){
     alert("Hai schiacciato!");
 }
 
+var openedDonazioni=0;
 function visualizzaDonazioni(){
-    alert("Hai schiacciato!");
+    if(openedDonazioni===0) {
+        document.getElementById("container").style.display = "block";
+        openedDonazioni=1;
+        var occhio = document.getElementById("eyeicon3") //cambio icona con L'occhio Aperto
+        occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+    }else{
+        document.getElementById("container").style.display = "none";
+        openedDonazioni=0;
+        var occhio = document.getElementById("eyeicon6") //cambio icona con L'occhio chiuso
+        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+    }
 }
+
+

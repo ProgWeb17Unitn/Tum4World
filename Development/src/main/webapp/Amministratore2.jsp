@@ -21,9 +21,10 @@
 <main>
 
     <script>
-        var my_JSON_array;
+        var categories;
+        var data;
 
-        let url = "visualizzaDonazioni";
+        let url = "visualizzaVisite";
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url, true);
         xhttp.responseType = "json";
@@ -32,68 +33,76 @@
         xhttp.onreadystatechange = function () {
             let done = 4, ok = 200;
             if (xhttp.readyState === done && xhttp.status === ok) {
-                my_JSON_array = this.response;
-                const chart = Highcharts.chart('container', {
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: 'Donazioni nell ultimo anno'
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    xAxis: {
-                        categories: [
-                            'Jan',
-                            'Feb',
-                            'Mar',
-                            'Apr',
-                            'May',
-                            'Jun',
-                            'Jul',
-                            'Aug',
-                            'Sep',
-                            'Oct',
-                            'Nov',
-                            'Dec'
-                        ],
-                        crosshair: true,
-                        title: {
-                            text: 'Mese'
-                        }
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Valore in €'
-                        }
-                    },
-                    tooltip: {
-                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                        footerFormat: '</table>',
-                        shared: true,
-                        useHTML: true
-                    },
-                    plotOptions: {
-                        column: {
-                            pointPadding: 0,
-                            borderWidth: 0,
-                            groupPadding: 0,
-                            shadow: false
-                        }
-                    },
-                    series: [{
-                        name: 'Mese',
-                        data: my_JSON_array
-                    }]
-                });
+                let my_JSON_array = this.response;
+                if (my_JSON_array.length > 0) {
 
+                    const pagine = [];
+                    const visite = [];
+                    var pagina=0;
+                    for (let i = 0; i < my_JSON_array.length; i++){
+                        if(i%2==0){
+                            pagine[pagina]=my_JSON_array[i];
+                        }
+                        if(i%2!=0){
+                            visite[pagina]=my_JSON_array[i];
+                            pagina++;
+                        }
+                    }
+                    categories = JSON.stringify(pagine);
+                    data = JSON.stringify(visite);
+
+                } else {
+
+                }
             }
         }
+        // Sending request
         xhttp.send();
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const chart = Highcharts.chart('container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Visite per pagina'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: ''
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0,
+                        borderWidth: 0,
+                        groupPadding: 0,
+                        shadow: false
+                    }
+                },
+                series: [{
+                    name: 'Pagina',
+                    data
+
+                }]
+            });
+        });
     </script>
 
     <div class="flexbox-container" id="index">
@@ -145,7 +154,7 @@
     </div>
 
     <figure class="highcharts-figure">
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto; display: none"></div>
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
     </figure>
 
 </main>
