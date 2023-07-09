@@ -221,7 +221,25 @@ function visualizzaVisite(){
 }
 
 function resetContatori(){
-    alert("Hai schiacciato!");
+    let conferma = confirm("Sei veramente sicuto di voler resettare i contatori delle visite di ogni pagina?");
+    if(conferma){
+        let url = "resetContatori";
+        let xhttp = new XMLHttpRequest();
+        xhttp.open("POST", url, true);
+        xhttp.responseType = "json";
+
+        // Callback
+        xhttp.onreadystatechange = function () {
+            let done = 4, ok = 200;
+            if (xhttp.readyState === done && xhttp.status === ok) {
+
+            } else {
+
+            }
+        }
+        // Sending request
+        xhttp.send();
+    }
 }
 
 function visualizzaDonazioni(){
