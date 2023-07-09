@@ -149,6 +149,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Amministratore</servlet-name>
+        <jsp-file>/Amministratore.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Amministratore</servlet-name>
+        <url-pattern>/Amministratore</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>logOut</servlet-name>
         <jsp-file>/logOut.jsp</jsp-file>
     </servlet>

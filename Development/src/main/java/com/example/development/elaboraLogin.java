@@ -71,7 +71,7 @@ public class elaboraLogin extends HttpServlet {
                         writer.print(response.encodeRedirectURL(request.getContextPath() + "/Simpatizzante"));
                         break;
                     case "admin":
-                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/Amministratore.jsp"));
+                        writer.print(response.encodeRedirectURL(request.getContextPath() + "/Amministratore"));
                         break;
                     default:
                         // impossibile arrivare qui per i constraint del database (il tipo DEVE essere aderente, simpatizzante o admin)

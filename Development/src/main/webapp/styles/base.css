@@ -12,6 +12,7 @@ body {
     color: #F5EE9E;
     scrollbar-width: none;
     scrollbar-color: transparent transparent;
+    overflow-x: hidden; /*Impedisco a firefox di aggiungere scroller orizzonatel*/
 }
 
 main {
