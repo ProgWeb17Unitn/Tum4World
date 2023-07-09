@@ -86,7 +86,7 @@
                         }
                     },
                     series: [{
-                        name: 'Mese',
+                        name: 'Donazioni',
                         data: my_JSON_array
                     }]
                 });
@@ -94,6 +94,85 @@
             }
         }
         xhttp.send();
+
+
+
+        url = "visualizzaVisite";
+        xhttp = new XMLHttpRequest();
+        xhttp.open("POST", url, true);
+        xhttp.responseType = "json";
+
+        // Callback
+        xhttp.onreadystatechange = function () {
+            let done = 4, ok = 200;
+            if (xhttp.readyState === done && xhttp.status === ok) {
+                let my_JSON_array = this.response;
+                if (my_JSON_array.length > 0) {
+
+                    const pagine = [];
+                    const visite = [];
+                    var pagina=0;
+                    for (let i = 0; i < my_JSON_array.length; i+=2){
+                        pagine[pagina]=my_JSON_array[i];
+                        pagine[pagina].replace(/"/g, "'");
+                        visite[pagina]=parseInt(my_JSON_array[i+1]);
+                        pagina++;
+                    }
+
+                    const chart = Highcharts.chart('container1', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Visite per pagina'
+                        },
+                        subtitle: {
+                            text: ''
+                        },
+                        xAxis: {
+                            categories: pagine,
+                            crosshair: true,
+                            title: {
+                                text: 'Pagina'
+                            }
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Numero di visite'
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                            footerFormat: '</table>',
+                            shared: true,
+                            useHTML: true
+                        },
+                        plotOptions: {
+                            column: {
+                                pointPadding: 0,
+                                borderWidth: 0,
+                                groupPadding: 0,
+                                shadow: false
+                            }
+                        },
+                        series: [{
+                            name: 'Visite',
+                            data: visite
+
+                        }]
+                    });
+
+                } else {
+
+                }
+            }
+        }
+        // Sending request
+        xhttp.send();
+
     </script>
 
     <div class="flexbox-container" id="index">
@@ -145,7 +224,8 @@
     </div>
 
     <figure class="highcharts-figure">
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto; display: none"></div>
+        <div id="container" style="min-width: 1000px; height: 600px; margin: 0 auto; display: none"></div>
+        <div id="container1" style="min-width: 1000px; height: 600px; margin: 0 auto; display: none"></div>
     </figure>
 
 </main>

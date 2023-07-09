@@ -1,6 +1,8 @@
 //variabili usate per visualizzare
 var username="none";
 var openedDati=0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
+var openedDonazioni=0;  // stessa cosa ma per i grafici
+var openedVisite=0;
 var my_JSON_array;
 
 var color1='#000000';
@@ -205,14 +207,23 @@ function visualizzaAderenti(){
 }
 
 function visualizzaVisite(){
-    alert("Hai schiacciato!");
+    if(openedVisite===0) {
+        document.getElementById("container1").style.display = "block";
+        openedVisite=1;
+        var occhio = document.getElementById("eyeicon4") //cambio icona con L'occhio Aperto
+        occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+    }else{
+        document.getElementById("container1").style.display = "none";
+        openedVisite=0;
+        var occhio = document.getElementById("eyeicon4") //cambio icona con L'occhio chiuso
+        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+    }
 }
 
 function resetContatori(){
     alert("Hai schiacciato!");
 }
 
-var openedDonazioni=0;
 function visualizzaDonazioni(){
     if(openedDonazioni===0) {
         document.getElementById("container").style.display = "block";
