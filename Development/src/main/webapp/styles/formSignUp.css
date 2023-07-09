@@ -116,3 +116,19 @@ input[type="text"]:focus,
 input[type="password"]:focus {
     background: #fff
 }
+
+.error-box {
+    display: none;
+    width: calc(60vw + 2em);
+    background-color: #AB3428;
+    border-radius: 10px;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    text-align: center;
+    align-self: center;
+}
+
+#errorText {
+    padding: 1em 3em 1em 3em;
+    color: #F5EE9E;
+}

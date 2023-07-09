@@ -68,7 +68,7 @@ public class elaboraSignUp extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_CONFLICT); // status code 409
 
             PrintWriter out = response.getWriter();
-            out.print("Errore: esiste già un utente con questo username!");
+            out.print("17: errore, esiste già un utente con questo username!");
             out.close();
         } catch (Exception e) {
             e.printStackTrace();

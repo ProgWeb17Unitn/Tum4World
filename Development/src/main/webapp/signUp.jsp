@@ -15,7 +15,12 @@
 <body>
 <%@ include file="header.jsp" %>
 <main>
+
     <h1 id="index">Crea un account</h1>
+
+    <div class="error-box" id="error">
+        <h1 id="errorText"></h1>
+    </div>
     <form method="POST" name="formSignUp" id="signup">
         <div class="form-content">
         <div class="form-row">
@@ -82,6 +87,7 @@
         </div>
         </div>
     </form>
+
 </main>
 <!-- Aggiunta condizionale del Cookie Banner RIMUOVERE SOLO SE NECESSATIO-->
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>

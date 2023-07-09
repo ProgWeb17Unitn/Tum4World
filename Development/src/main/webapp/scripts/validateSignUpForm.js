@@ -147,13 +147,13 @@ function makeQuery() {
                 window.location.replace(url); // simula un redirect
             } else if (this.status == 409) { // 409 = Already Exist cioè esiste già un utente con lo stesso username
                 /*
-                TODO
                     Se esiste un utente con lo stesso username, viene
                     ripresentata la pagina Sign-in con un messaggio addizionale di errore (il messaggio inizia con
                     l’id del vostro gruppo, seguito da : e dal messaggio di errore
-                    questo conviene farlo quando abbiamo il form bello
                 */
-                alert("17: utente con questo username gia esistente!");
+                document.getElementById('errorText').innerText = this.responseText;
+                document.getElementById('error').style.display = "block";
+
             }
 
         }
