@@ -20,8 +20,8 @@
     <div class="logOutRectangle">
       <div class="title"> Vuoi eseguire il LogOut?</div>
       <form class="scelta">
-        <button type="submit" name="opzione"  value="Si" id="Si">Si</button>
-        <button type="submit" name="opzione" value="No" id="No">No</button>
+        <button type="button" name="opzione"  value="Si" id="Si" onclick="esci()">Si</button>
+        <button type="button" name="opzione" value="No" id="No">No</button>
       </form>
     </div>
 
