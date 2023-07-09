@@ -25,7 +25,7 @@
         <a href="<%= response.encodeURL("./Simpatizzante") %>">Dashboard</a>
         <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else if (type.equals("admin")) { %>
-        <a href="<%= response.encodeURL("./Admin") %>">Dashboard</a>
+        <a href="<%= response.encodeURL("./Amministratore") %>">Dashboard</a>
         <a href="<%= response.encodeURL("./logOut") %>">LogOut</a>
         <% } else { %>
         <a href="<%= response.encodeURL("./signUp") %>">SignUp</a>
