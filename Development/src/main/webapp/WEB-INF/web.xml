@@ -29,6 +29,9 @@
         <url-pattern>/Amministratore</url-pattern>
         <url-pattern>/Aderente</url-pattern>
         <url-pattern>/Simpatizzante</url-pattern>
+        <url-pattern>/Amministratore.jsp</url-pattern>
+        <url-pattern>/Aderente.jsp</url-pattern>
+        <url-pattern>/Simpatizzante.jsp</url-pattern>
     </filter-mapping>
 
     <servlet>

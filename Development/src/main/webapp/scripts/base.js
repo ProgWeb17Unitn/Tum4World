@@ -161,27 +161,28 @@ page.load = function () {
     if (backToTop)
         backToTop.addEventListener('click', () => window.scrollTo(0, 0));
 
-
-    const cookieBanner = document.getElementsByClassName('CookieBanner')[0];
     const quotesBanner = document.getElementById('quotes');
 
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 2 && this.status === 200) {
-            if (cookieBanner)
-                cookieBanner.style.display = 'none';
             if (quotesBanner)
                 quotesBanner.style.display = 'none';
         }
         else if (this.readyState === 4 && this.status === 200) {
             theme.switch(this.responseText);
-            if (cookieBanner)
-                cookieBanner.style.display = 'grid';
             if (quotesBanner)
                 quotesBanner.style.display = 'flex';
         }
     }
-    xhttp.open('GET', 'determineStyle');
+    var jsessionid="";
+    if(window.location.href.includes("jsessionid")){
+        // 'jsessionid=' sono 11 char. Il jsessionid è lungo 32 char, quindi 11 + 32 = 43
+        // il ; serve perchè è il separatore utilizzato quando viene fatto URL rewriting
+        jsessionid = ";" + window.location.href.split(';')[1].substring(0, 43);
+    }
+
+    xhttp.open('GET', "determineStyle"+jsessionid, true);
     xhttp.send();
 }
 
@@ -189,7 +190,6 @@ page.onscroll = function () {
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
     const backToTop = document.getElementById('backToTop');
-
     // quando il menu è aperto, l'header è sempre opaco
     // quindi ritorna senza fare niente
     if (menu.status === 'open')

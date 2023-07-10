@@ -37,7 +37,7 @@ function handleDonation() {
     // verifico se non è valido
     if (!isValidInput(valoreInserito)) {
         segnalaErrore(1);
-        console.log("Input Donazione inserito non valido");
+        //console.log("Input Donazione inserito non valido");
     } else {
         // Form valido, salvo nel db la donazione e "mostro che è stata effettuata"
         saveDonation();
@@ -95,7 +95,7 @@ function saveDonation() {
         let done = 4, ok = 200;
         if (xhttp.readyState === done && xhttp.status === ok) {
             donazioneEffettuata();
-            console.log("Donazione effettuata");
+            //console.log("Donazione effettuata");
         } else {
                 //console.log("SaveDonation Fail: Donazione non salvata");
                 segnalaErrore();
@@ -156,7 +156,7 @@ function trovaAttivita() {
 function check() {
 
     // La funzione trovaAttivita setta a 1 le attivita a cui l'utente è iscritto
-    // e cambia la sfumatura del rettangolo  quando la pagina viene caricata,
+    // e cambia la sfumatura del rettangolo quando la pagina viene caricata,
     // se poi per qualche motivo si ricarica la pagina questa indormazione tornerebbe "momentaneamente" come l'originale
     // finchè non recuperata, tramite questa dfunzione si imposta subito il cambio di stile per le informazioni già presenti
     let rettangoliAttiva1 = document.getElementById("Attivita1");

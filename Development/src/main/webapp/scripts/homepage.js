@@ -33,7 +33,6 @@ window.addEventListener('scroll', function () {
             image.style.marginTop = '10vh';
             image.style.marginBottom = '20vh';
         }
-        page.onscroll();
     }
 )
 ;

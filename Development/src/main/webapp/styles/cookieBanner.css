@@ -32,7 +32,7 @@
 }
 .CookieBanner{
     /* Uso grid per allineare il rettangolo, il triangolo e l'immagine su un unica colonna*/
-    display: none;
+    display: grid;
     grid-template-columns: 1fr;
     justify-items: end;
     position: fixed;

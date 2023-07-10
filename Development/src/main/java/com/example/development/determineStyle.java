@@ -31,7 +31,7 @@ public class determineStyle extends HttpServlet {
         HttpSession session = request.getSession(false);
         String theme;
 
-        if (session != null && session.getAttribute("tipo") != null)
+        if(session != null && session.getAttribute("tipo") != null)
             theme = (String) session.getAttribute("tipo");
         else
             theme = "none";
