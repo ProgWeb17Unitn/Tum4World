@@ -30,11 +30,21 @@ public class resetContatori extends HttpServlet {
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
-        request.getSession(false);
+        try {
+            request.getSession(false);
 
-        HttpSession session = request.getSession(false);
+            HttpSession session = request.getSession(false);
 
-        visiteDAO.resetVisite(); //azzero i contatori
+            visiteDAO.resetVisite(); //azzero i contatori
+
+            PrintWriter writer = response.getWriter();
+            writer.print(response.encodeRedirectURL(request.getContextPath() + "/Amministratore"));
+            writer.close();
+            response.setStatus(200);
+
+        } catch (IOException e) {
+            response.setStatus(500);
+        }
 
     }
 

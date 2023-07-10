@@ -243,7 +243,9 @@ function resetContatori(){
         xhttp.onreadystatechange = function () {
             let done = 4, ok = 200;
             if (xhttp.readyState === done && xhttp.status === ok) {
-
+                /*let url = this.responseText; // legge l'url a cui fare redirect
+                window.location.replace(url); // simula un redirect*/
+                location.reload();
             } else {
 
             }
