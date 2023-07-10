@@ -150,7 +150,7 @@ function visualizzaSimpatizzanti(){
 
 function visualizzaAderenti(){
     if(openedDati===0) {
-        let url = "visualizzaSimpatizzanti";
+        let url = "visualizzaAderenti";
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url, true);
         xhttp.responseType = "json";
