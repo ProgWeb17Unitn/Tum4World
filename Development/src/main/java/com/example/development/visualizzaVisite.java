@@ -41,6 +41,7 @@ public class visualizzaVisite extends HttpServlet {
         }
 
         List<Visite> visite = visiteDAO.getAllVisite();
+        int visiteTot = visiteDAO.getVisiteTotali();
 
         // Utilizzo il Dao per ottenete la lista delle visite per ogni pagine
         // Scrivo la risposta come array Json
@@ -48,7 +49,9 @@ public class visualizzaVisite extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         try (PrintWriter out = response.getWriter()) {
             JsonArray array = new JsonArray();
-            Gson gson = new Gson(); // invece di creare un nuovo oggetto ad ogni iterazione è più efficiente
+            Gson gson = new Gson();
+            array.add(gson.toJson(visiteTot));
+            // invece di creare un nuovo oggetto ad ogni iterazione è più efficiente
             // crearne uno solo e riutilizzarlo, il risultato è lo stesso
             for (Visite c : visite) {
                 array.add(gson.toJson(c.getPagina()));

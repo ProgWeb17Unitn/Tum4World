@@ -109,10 +109,11 @@
                 let my_JSON_array = this.response;
                 if (my_JSON_array.length > 0) {
 
+                    var visiteTot="Visite totali: "+my_JSON_array[0];
                     const pagine = [];
                     const visite = [];
                     var pagina=0;
-                    for (let i = 0; i < my_JSON_array.length; i+=2){
+                    for (let i = 1; i < my_JSON_array.length; i+=2){
                         pagine[pagina]=my_JSON_array[i];
                         pagine[pagina].replace(/"/g, "'");
                         visite[pagina]=parseInt(my_JSON_array[i+1]);
@@ -127,7 +128,7 @@
                             text: 'Visite per pagina'
                         },
                         subtitle: {
-                            text: ''
+                            text: visiteTot
                         },
                         xAxis: {
                             categories: pagine,
