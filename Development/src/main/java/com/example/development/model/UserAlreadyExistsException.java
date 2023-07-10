@@ -2,7 +2,7 @@ package com.example.development.model;
 
 import java.sql.SQLException;
 
-public class UserAlreadyExistsException extends SQLException {
+public class UserAlreadyExistsException extends Exception {
     public UserAlreadyExistsException(){
 
     }

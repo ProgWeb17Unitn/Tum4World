@@ -93,6 +93,7 @@ public class UtenteDAO extends GenericDAO{
         return utente;
     }
 
+    /*
     public boolean checkLogin(String username, String password){
         boolean isValid = false
                 ;
@@ -117,6 +118,8 @@ public class UtenteDAO extends GenericDAO{
 
         return isValid;
     }
+    */
+
 
     private List<Utente> getUtentiByTipo(String tipo){
         List<Utente> list = new ArrayList<Utente>();

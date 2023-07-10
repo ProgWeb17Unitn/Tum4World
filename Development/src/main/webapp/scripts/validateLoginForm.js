@@ -49,6 +49,7 @@ function makeQuery() {
         "username=" + codifica(form["username"].value) + "&" +
         "password=" + codifica(form["password"].value);
 
+
     let query = url + "?" + params;
 
     xhttp.onreadystatechange = function () {
@@ -61,24 +62,20 @@ function makeQuery() {
                 // https://github.com/axios/axios/issues/396 qui trovate una spiegazione migliore, anche se riferita a node.js
 
                 let url = this.responseText; // legge l'url a cui fare redirect
+                console.log("URL redirect: " + url);
                 window.location.replace(url); // simula un redirect
-
                 console.log("Login successful")
             } else if (this.status == 401) { // 401 Error code: non autorizzato, credenziali errate
                 /*
-                TODO quando c'è il form bello
                     In caso di errore viene ripresentata la pagina Login con un messaggio addizionale di errore (il
                     messaggio inizia con l’id del vostro gruppo, seguito da : e dal messaggio di errore)
                 */
-                console.log("Credenziali errate")
+                document.getElementById('errorText').innerText = this.responseText;
+                document.getElementById('error').style.display = "block";
             }
 
-
         }
 
-        if (this.status == 302) {
-            console.log("intercept redirect whaaat?")
-        }
     }
 
     // invia richiesta

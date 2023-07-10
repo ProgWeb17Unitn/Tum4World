@@ -42,27 +42,31 @@ public class elaboraLogin extends HttpServlet {
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
+        PrintWriter writer = response.getWriter();
 
-        boolean credenzialiValide = utenteDAO.checkLogin(username, password);
+        try{
+            // cerca l'utente nel db. Se non esiste lancia una UserNotFoundException
+            Utente utente = utenteDAO.getUtente(username);
 
-        if (!credenzialiValide) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // status code 401 Unauthorized (ovvero credenziali sbagliate)
-            return;
-        } else {
-
-            try {
-                Utente utente = utenteDAO.getUtente(username);
-
+            if(!password.equals(utente.getPassword())){
+                // password errata
+                writer.print("17: errore, password errata");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // status code 401 Unauthorized
+            }
+            else{
+                // password corretta
                 // aggiunge alla sessione gli attributi di login
                 if (session != null) {
                     session.setAttribute("username", username);
                     session.setAttribute("tipo", utente.getTipo());
+                    System.out.println("impostati username e tipo al login");
                 }
-
+                else{
+                    System.out.println("ERRORE elaboraLogin: session e' null");
+                }
 
                 // in base al tipo di utente invia al client un link per la sua pagina privata
                 String tipo = utente.getTipo();
-                PrintWriter writer = response.getWriter();
                 switch (tipo) {
                     case "aderente":
                         writer.print(response.encodeRedirectURL(request.getContextPath() + "/Aderente"));
@@ -76,18 +80,16 @@ public class elaboraLogin extends HttpServlet {
                     default:
                         // impossibile arrivare qui per i constraint del database (il tipo DEVE essere aderente, simpatizzante o admin)
                         System.out.println("Errore tipo non riconosciuto: utente " + username + " di tipo " + tipo);
-                        return;
                 }
-                writer.close();
 
-
-            } catch (
-                    UserNotFoundException e) { // impossibile arrivare in questa exception perchè le credenziali sono sempre valide
-                System.out.println("Errore DB: utente con credenziali valide non trovato nel database");
-                e.printStackTrace();
             }
-
+        } catch(UserNotFoundException e){
+            // username errato
+            writer.print("17: errore, utente '" + username + "' non esiste!");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // status code 401 Unauthorized
         }
+
+        writer.close();
 
     }
 

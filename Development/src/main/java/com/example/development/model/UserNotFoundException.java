@@ -2,7 +2,7 @@ package com.example.development.model;
 
 import java.sql.SQLException;
 
-public class UserNotFoundException extends SQLException {
+public class UserNotFoundException extends Exception {
     public UserNotFoundException(){
 
     }

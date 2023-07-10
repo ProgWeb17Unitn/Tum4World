@@ -16,6 +16,9 @@
 <%@ include file="header.jsp" %>
 <main>
 
+    <div class="error-box" id="error">
+        <h1 id="errorText"></h1>
+    </div>
     <form action="GET" name="formLogin" id="index">
         <div class="form-content">
             <div class="left-side">
@@ -34,8 +37,8 @@
                 <input type="button" value="Log In" onclick="validateData()" id="submit">
             </div>
         </div>
-
     </form>
+
 </main>
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>
