@@ -7,11 +7,16 @@ function validateData() {
         possibilità:
             - quando l'utente clicca login, reindirizzare su un'altra pagina quando non ha compiuto la scelta
             - quando l'utente clicca login, includere in login.jsp un cookiebanner più grosso che copra il login finché non si compie una scelta
-            - attuale: fallimento login e allerta se non si è compiuta la scelta (un po' brutto)
+            - attuale: fallimento login e mostra un messaggio di errore se non si è compiuta la scelta (un po' brutto)
 */
     const cookiesCheck = document.getElementsByClassName('CookieBanner')[0];
-    if(cookiesCheck)
-        errori += 'Compiere una scelta per i cookies\n';
+    if(cookiesCheck){
+        // mostra un errore chiedendo all'utente di effettuare una scelta
+        document.getElementById('errorText').innerText = "Login fallito: bisogna prima effettuare una scelta per i cookie";
+        document.getElementById('error').style.display = "block";
+        return;
+    }
+
 
     if (form["username"].value === "") {
         errori += "Specificare un username\n";
