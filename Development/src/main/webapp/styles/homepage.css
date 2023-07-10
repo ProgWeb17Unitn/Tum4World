@@ -20,8 +20,6 @@ main h2 {
 main p {
     font-size: large;
     margin-bottom: 20vh;
-    backdrop-filter: brightness(80%) blur(3px);
-    -webkit-backdrop-filter: brightness(80%) blur(3px);
 }
 
 

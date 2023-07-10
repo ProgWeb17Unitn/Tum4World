@@ -226,14 +226,3 @@ page.onscroll = function () {
 window.addEventListener('load', page.load);
 window.addEventListener('resize', page.onresize);
 window.addEventListener('scroll', page.onscroll);
-
-/*
-function spostaFooter() {
-    var foot = document.getElementsByTagName("footer")[0];
-    var rettangolo = foot.getBoundingClientRect();
-    var distanceFromBottom = window.innerHeight - rettangolo.bottom;
-    console.log("Distance: " + distanceFromBottom);
-    foot.style.transform = "translateY(" + distanceFromBottom + "px)";
-}
-
- */
