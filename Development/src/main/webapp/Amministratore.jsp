@@ -196,27 +196,27 @@
 
         <div class="Bottoni">
             <div class="bottone-elemento" id="btn1" onclick="visualizzaRegistrati()">
-                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon1">
+                <img src="assets/images/S/user-minus-svgrepo-com.svg" id="user1">
                 <p>Visualizza Utenti Registrati</p>
             </div>
             <div class="bottone-elemento" id="btn2" onclick="visualizzaSimpatizzanti()">
-                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon2">
+                <img src="assets/images/S/user-minus-svgrepo-com.svg" id="user2">
                 <p>Visualizza Simpatizzanti</p>
             </div>
             <div class="bottone-elemento" id="btn3" onclick="visualizzaAderenti()">
-                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon3">
+                <img src="assets/images/S/user-minus-svgrepo-com.svg" id="user3">
                 <p>Visualizza Aderenti</p>
             </div>
             <div class="bottone-elemento" id="btn4" onclick="visualizzaVisite()">
-                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon4">
+                <img src="assets/images/S/bar-chart-diagram-2-svgrepo-com.svg" id="graphicon">
                 <p>Visualizza Visite</p>
             </div>
             <div class="bottone-elemento" id="btn5" onclick="resetContatori()">
-                <img src="assets/images/S/binWHITE.svg" id="bin">
+                <img src="assets/images/S/reset-svgrepo-com.svg" id="reset">
                 <p>Reset Contatori</p>
             </div>
             <div class="bottone-elemento" id="btn6" onclick="visualizzaDonazioni()">
-                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon6">
+                <img src="assets/images/S/money-sign-money-dollar-sign-svgrepo-com.svg" id="moneyicon">
                 <p>Visualizza Donazioni</p>
             </div>
         </div>

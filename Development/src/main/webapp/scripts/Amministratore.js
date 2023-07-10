@@ -8,7 +8,6 @@ var my_JSON_array;
 var color1='#000000';
 var color2='#DBDFEA';
 var color3='#ffffff';
-var eyecolor ="";
 
 
 function visualizzaRegistrati(){
@@ -57,8 +56,8 @@ function visualizzaRegistrati(){
 
                     container.appendChild(datidiv);
 
-                    var occhio = document.getElementById("eyeicon1") //cambio icona con L'occhio Aperto
-                    occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
+                    var user = document.getElementById("user1")
+                    user.src='./assets/images/S/user-check-svgrepo-com.svg';
 
                 } else {
 
@@ -71,8 +70,12 @@ function visualizzaRegistrati(){
         const datidiv =document.getElementsByClassName("datidiv")[0];
         datidiv.remove();
         openedDati=0;
-        var occhio = document.getElementById("eyeicon1") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
+        var user = document.getElementById("user1")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
+        user = document.getElementById("user2")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
+        user = document.getElementById("user3")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
     }
 }
 
@@ -122,8 +125,8 @@ function visualizzaSimpatizzanti(){
 
                     container.appendChild(datidiv);
 
-                    var occhio = document.getElementById("eyeicon2") //cambio icona con L'occhio Aperto
-                    occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
+                    var user = document.getElementById("user2")
+                    user.src='./assets/images/S/user-check-svgrepo-com.svg';
 
                 } else {
 
@@ -136,8 +139,12 @@ function visualizzaSimpatizzanti(){
         const datidiv =document.getElementsByClassName("datidiv")[0];
         datidiv.remove();
         openedDati=0;
-        var occhio = document.getElementById("eyeicon2") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
+        var user = document.getElementById("user1")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
+        user = document.getElementById("user2")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
+        user = document.getElementById("user3")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
     }
 }
 
@@ -187,8 +194,8 @@ function visualizzaAderenti(){
 
                     container.appendChild(datidiv);
 
-                    var occhio = document.getElementById("eyeicon3") //cambio icona con L'occhio Aperto
-                    occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
+                    var user = document.getElementById("user3")
+                    user.src='./assets/images/S/user-check-svgrepo-com.svg';
 
                 } else {
 
@@ -201,22 +208,26 @@ function visualizzaAderenti(){
         const datidiv =document.getElementsByClassName("datidiv")[0];
         datidiv.remove();
         openedDati=0;
-        var occhio = document.getElementById("eyeicon3") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
+        var user = document.getElementById("user1")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
+        user = document.getElementById("user2")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
+        user = document.getElementById("user3")
+        user.src='./assets/images/S/user-minus-svgrepo-com.svg';
     }
 }
 
 function visualizzaVisite(){
     if(openedVisite===0) {
+        if(openedDonazioni===1) {
+            document.getElementById("container").style.display = "none";
+            openedDonazioni = 0;
+        }
         document.getElementById("container1").style.display = "block";
         openedVisite=1;
-        var occhio = document.getElementById("eyeicon4") //cambio icona con L'occhio Aperto
-        occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
     }else{
         document.getElementById("container1").style.display = "none";
         openedVisite=0;
-        var occhio = document.getElementById("eyeicon4") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
     }
 }
 
@@ -244,15 +255,15 @@ function resetContatori(){
 
 function visualizzaDonazioni(){
     if(openedDonazioni===0) {
+        if(openedVisite===1) {
+            document.getElementById("container1").style.display = "none";
+            openedVisite = 0;
+        }
         document.getElementById("container").style.display = "block";
         openedDonazioni=1;
-        var occhio = document.getElementById("eyeicon3") //cambio icona con L'occhio Aperto
-        occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
     }else{
         document.getElementById("container").style.display = "none";
         openedDonazioni=0;
-        var occhio = document.getElementById("eyeicon6") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
     }
 }
 

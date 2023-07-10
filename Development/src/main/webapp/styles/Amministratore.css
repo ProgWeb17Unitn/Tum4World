@@ -67,7 +67,7 @@ img{
     justify-content: flex-start;
     align-items: stretch;
 }
-#eyeicon1,#eyeicon2,#eyeicon3,#eyeicon4,#eyeicon6,#bin{
+#user1,#user2,#user3,#graphicon,#moneyicon,#reset{
     width:30%;
     height:auto;
 }
