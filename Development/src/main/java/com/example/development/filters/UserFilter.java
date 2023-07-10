@@ -24,13 +24,13 @@ public class UserFilter implements Filter {
         HttpSession session = httpRequest.getSession(false);
 
         String resource = httpRequest.getServletPath();
-        String tipo = session == null || session.getAttribute("tipo") == null ? "none" : (String) session.getAttribute("tipo");
+        String tipo = (session == null || session.getAttribute("tipo") == null) ? "none" : (String) session.getAttribute("tipo");
 
         if (tipo.compareTo("none") == 0
-                || (resource.compareTo("/user/Admin") == 0 && !tipo.equals("admin"))
-                || (resource.compareTo("/user/Aderente") == 0 && !tipo.equals("aderente"))
-                || (resource.compareTo("/user/Simpatizzante") == 0 && !tipo.equals("simpatizzante")))
-            httpResponse.sendRedirect((httpResponse.encodeRedirectURL("../notAuthorized")));
+                || (resource.compareTo("/Admin") == 0 && tipo.compareTo("admin") != 0)
+                || (resource.compareTo("/Aderente") == 0 && tipo.compareTo("aderente") != 0)
+                || (resource.compareTo("/Simpatizzante") == 0 && tipo.compareTo("simpatizzante") != 0))
+            httpResponse.sendRedirect((httpResponse.encodeRedirectURL(httpRequest.getContextPath()+"/notAuthorized")));
 
         chain.doFilter(request, response);
     }
