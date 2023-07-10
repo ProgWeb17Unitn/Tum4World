@@ -1,0 +1,94 @@
+.container{
+    align-self: center;
+    text-align: center;
+    background: linear-gradient(to bottom right, #F49E4C, #AB3428);
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    padding: 1%;
+}
+
+.contatti{
+    font-weight: bold;
+    color: #F5EE9E;
+}
+form{
+    font-size: large;
+}
+
+label{
+    font-size: x-large;
+    color: #F5EE9E;
+}
+
+.NomeCognomeLabel{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 1%;
+}
+.NomeCognomeLabel>label{
+    width: 50%;
+}
+.NomeCognomeArea{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 8%;
+}
+
+.NomeCognomeArea>input{
+    width: 45%;
+}
+
+.Motivi{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8%;
+}
+
+.MotivoElement{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+.MotivoLabel{
+    font-size: large;
+    color: white;
+}
+.MotivoLabel:hover{
+    cursor: pointer;
+}
+
+
+input[type=radio]{
+    accent-color: #F49E4C;
+    width: 30px;
+}
+
+#dettagli{
+    width: 50%;
+}
+
+.rect-bottone{
+    font-size: larger;
+    background-color: #F5EE9E;
+    border-radius: 3px;
+    border: 0;
+    padding: 1%;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+.rect-bottone:hover {
+    background-color: #F49E4C;
+    transform: scale(110%);
+    cursor: pointer;
+}
+
+#form-btn1{
+    margin-right: 2%;
+}
+#form-btn2{
+    margin-left: 2%;
+}
