@@ -16,7 +16,7 @@
         Riceverà il prima possibile una risposta al suo indirizzo email</h3>
 
 </main>
-<%@ include file="footer.html" %>
+<%@ include file="footer_static.html" %>
 </body>
 
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>

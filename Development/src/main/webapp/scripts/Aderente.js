@@ -3,27 +3,23 @@ var attivita2 = 0;
 var attivita3 = 0;
 
 // variabili utilizzate per "Visualizza Dati"
-var username="none";
-var tipo="none";
-var nome="none";
-var cognome="none";
-var nascita="none";
-var email="none";
-var telefono="none";
-var password="none";
+var username = "none";
+var tipo = "none";
+var nome = "none";
+var cognome = "none";
+var nascita = "none";
+var email = "none";
+var telefono = "none";
+var password = "none";
 
-var openedDati=0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
-var openedIscrizione=0;
+var openedDati = 0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
+var openedIscrizione = 0;
 // colori visualizzaDati
-var color1='#000000';
-var color2='#DBDFEA';
-var color3='#ffffff';
-var eyecolor =""; // aderente ha occhio nero mentre simpatizzante bianco
-window.addEventListener("load", () => {
-    trovaAttivita();
-    page.load();
-    theme.switch("aderente");
-});
+var color1 = '#000000';
+var color2 = '#DBDFEA';
+var color3 = '#ffffff';
+var eyecolor = ""; // aderente ha occhio nero mentre simpatizzante bianco
+window.addEventListener("load", trovaAttivita);
 
 function handleDonation() {
     /*
@@ -97,8 +93,8 @@ function saveDonation() {
             donazioneEffettuata();
             //console.log("Donazione effettuata");
         } else {
-                //console.log("SaveDonation Fail: Donazione non salvata");
-                segnalaErrore();
+            //console.log("SaveDonation Fail: Donazione non salvata");
+            segnalaErrore();
         }
     }
     // Sending request
@@ -227,12 +223,12 @@ function giaIscritto(attivita) {
 }
 
 function visualizzaDati() {
-    if(openedDati===0) {
-        if(openedIscrizione===1){
+    if (openedDati === 0) {
+        if (openedIscrizione === 1) {
             // se si è cliccato anche il pulsante di cancella iscrizione allora lo chiudo
-            const conferma=document.getElementsByClassName("conferma")[0];
+            const conferma = document.getElementsByClassName("conferma")[0];
             conferma.remove();
-            openedIscrizione=0;
+            openedIscrizione = 0;
         }
         let url = "VisualizzaDati";
         let xhttp = new XMLHttpRequest();
@@ -264,92 +260,92 @@ function visualizzaDati() {
         }
         // Sending request
         xhttp.send();
-    }else{
+    } else {
         //const container=document.getElementsByClassName("flexbox-container")[0];
-        const datidiv =document.getElementsByClassName("datidiv")[0];
+        const datidiv = document.getElementsByClassName("datidiv")[0];
         //container.removeChild(datidiv);
         datidiv.remove();
-        openedDati=0;
+        openedDati = 0;
 
         var occhio = document.getElementById("eyeicon") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+        occhio.src = './assets/images/S/eyeCLOSED' + eyecolor + '.svg';
 
     }
 }
 
-function mostra(){
-    openedDati=1;
+function mostra() {
+    openedDati = 1;
     // dopo aver recuperato i dati grazie a visualizza attività devo mostrarli sulla pagina
-    const container=document.getElementsByClassName("flexbox-container")[0];
+    const container = document.getElementsByClassName("flexbox-container")[0];
     const datidiv = document.createElement('div');
     datidiv.classList.add("datidiv"); //assegno un nome a questo div per poterlo rimuovere nella funzione visualizzaDati();
     // Div stile:
-    datidiv.style.color=color1;
-    datidiv.style.fontSize='x-large';
-    datidiv.style.textAlign='center';
-    datidiv.style.display= 'flex';
-    datidiv.style.flexDirection='column';
-    datidiv.style.justifyContent= 'center';
-    datidiv.style.alignItems= 'center';
-    datidiv.style.margin='5%';
-    datidiv.style.padding='1%';
-    datidiv.style.backgroundColor=color2;
-    datidiv.style.border="2px solid"+color2;
-    datidiv.style.boxShadow="2px 2px 2px"+color3;
+    datidiv.style.color = color1;
+    datidiv.style.fontSize = 'x-large';
+    datidiv.style.textAlign = 'center';
+    datidiv.style.display = 'flex';
+    datidiv.style.flexDirection = 'column';
+    datidiv.style.justifyContent = 'center';
+    datidiv.style.alignItems = 'center';
+    datidiv.style.margin = '5%';
+    datidiv.style.padding = '1%';
+    datidiv.style.backgroundColor = color2;
+    datidiv.style.border = "2px solid" + color2;
+    datidiv.style.boxShadow = "2px 2px 2px" + color3;
 
-    const title= document.createElement('span');
-    title.textContent="Dati Profilo:";
-    title.style.color=color1;
-    title.style.fontSize='xx-large';
+    const title = document.createElement('span');
+    title.textContent = "Dati Profilo:";
+    title.style.color = color1;
+    title.style.fontSize = 'xx-large';
     datidiv.appendChild(title); //aggiungo il titolo al div
 
     const usernamediv = document.createElement('div');
-    usernamediv.textContent="Username: " +username;
+    usernamediv.textContent = "Username: " + username;
     datidiv.appendChild(usernamediv);
 
     const tipodiv = document.createElement('div');
-    tipodiv.textContent="Tipo: " +tipo;
+    tipodiv.textContent = "Tipo: " + tipo;
     datidiv.appendChild(tipodiv);
 
     const nomediv = document.createElement('div');
-    nomediv.textContent="Nome: " +nome;
+    nomediv.textContent = "Nome: " + nome;
     datidiv.appendChild(nomediv);
 
     const cognomediv = document.createElement('div');
-    cognomediv.textContent="Cognome: " +cognome;
+    cognomediv.textContent = "Cognome: " + cognome;
     datidiv.appendChild(cognomediv);
 
     const nascitadiv = document.createElement('div');
-    nascitadiv.textContent="Nascita: " +nascita;
+    nascitadiv.textContent = "Nascita: " + nascita;
     datidiv.appendChild(nascitadiv);
 
     const emaildiv = document.createElement('div');
-    emaildiv.textContent="Email: " + email;
+    emaildiv.textContent = "Email: " + email;
     datidiv.appendChild(emaildiv);
 
     const telefonodiv = document.createElement('div');
-    telefonodiv.textContent="Telefono: " + telefono;
+    telefonodiv.textContent = "Telefono: " + telefono;
     datidiv.appendChild(telefonodiv);
 
     const passworddiv = document.createElement('div');
-    passworddiv.textContent="Password: " + password;
+    passworddiv.textContent = "Password: " + password;
     datidiv.appendChild(passworddiv);
 
     container.appendChild(datidiv);
 
     var occhio = document.getElementById("eyeicon") //cambio icona con L'occhio Aperto
-    occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+    occhio.src = './assets/images/S/eyeOPEN' + eyecolor + '.svg';
 }
 
-function cancellaIscrizione(){
+function cancellaIscrizione() {
     // aggiungo un bottone di conferma, cliccando quello si cancella effettivamente l'iscrizione
     // anche per esso utilizzo la modalita "aperto-chiuso" di visualizza dati
-    if(openedIscrizione===0) {
-        if(openedDati===1){
+    if (openedIscrizione === 0) {
+        if (openedDati === 1) {
             // se il menu dati è aperto lo chiudo
-            const dati=document.getElementsByClassName('datidiv')[0];
+            const dati = document.getElementsByClassName('datidiv')[0];
             dati.remove()
-            openedDati=0;
+            openedDati = 0;
         }
         const container = document.getElementsByClassName("flexbox-container")[0];
         const conferma = document.createElement('div');
@@ -366,14 +362,14 @@ function cancellaIscrizione(){
         conferma.style.cursor = 'pointer';
         conferma.addEventListener('click', cancella);
         container.appendChild(conferma);
-        openedIscrizione=1;
-    }
-    else{
-        const conferma=document.getElementsByClassName("conferma")[0];
+        openedIscrizione = 1;
+    } else {
+        const conferma = document.getElementsByClassName("conferma")[0];
         conferma.remove();
-        openedIscrizione=0;
+        openedIscrizione = 0;
     }
 }
+
 function cancella() {
 
     let url = "cancellaIscrizione";
@@ -388,8 +384,7 @@ function cancella() {
             // se avviene correttamente viene effettuatu un redirect sulla homepage
             // posso farlo direttamente da js poichè una volta cancellata l'iscrizione invalido la session
             window.location.href = "homepage";
-        }
-        else {
+        } else {
             //console.log("Iscrizione Fallita");
         }
     }

@@ -5,7 +5,6 @@ menu = {};
 menu.status = 'closed';
 page = {};
 page.status = 'landscape';
-//var spostato=0;
 
 theme.switch = function (n) {
     // scrolla in cima alla pagina per evitare problemi con la trasparenza dell'header
@@ -138,12 +137,6 @@ page.onresize = function () {
 
 page.load = function () {
     // eseguita ogni volta che si carica una pagina qualsiasi
-    /*
-    if(spostato===0){
-        spostaFooter();
-        spostato=1;
-    }
-    */
 
     // controlla se devo andare in modalità landscape o portrait in base a
     // quanto è larga inizialmente la finestra
@@ -162,28 +155,30 @@ page.load = function () {
         backToTop.addEventListener('click', () => window.scrollTo(0, 0));
 
     const quotesBanner = document.getElementById('quotes');
+    if (quotesBanner) {
+        quotes.init();
 
-    const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 2 && this.status === 200) {
-            if (quotesBanner)
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 2 && this.status === 200) {
+
                 quotesBanner.style.display = 'none';
+            } else if (this.readyState === 4 && this.status === 200) {
+                theme.switch(this.responseText);
+                if (quotesBanner)
+                    quotesBanner.style.display = 'flex';
+            }
         }
-        else if (this.readyState === 4 && this.status === 200) {
-            theme.switch(this.responseText);
-            if (quotesBanner)
-                quotesBanner.style.display = 'flex';
+        var jsessionid = "";
+        if (window.location.href.includes("jsessionid")) {
+            // 'jsessionid=' sono 11 char. Il jsessionid è lungo 32 char, quindi 11 + 32 = 43
+            // il ; serve perchè è il separatore utilizzato quando viene fatto URL rewriting
+            jsessionid = ";" + window.location.href.split(';')[1].substring(0, 43);
         }
-    }
-    var jsessionid="";
-    if(window.location.href.includes("jsessionid")){
-        // 'jsessionid=' sono 11 char. Il jsessionid è lungo 32 char, quindi 11 + 32 = 43
-        // il ; serve perchè è il separatore utilizzato quando viene fatto URL rewriting
-        jsessionid = ";" + window.location.href.split(';')[1].substring(0, 43);
-    }
 
-    xhttp.open('GET', "determineStyle"+jsessionid, true);
-    xhttp.send();
+        xhttp.open('GET', "determineStyle" + jsessionid, true);
+        xhttp.send();
+    }
 }
 
 page.onscroll = function () {

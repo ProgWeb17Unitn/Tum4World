@@ -1,9 +1,17 @@
 quotes = {};
 quotes.interval = 0;
-//DEBUG console.log("footer.js called");
 // aggiunge funzionalità al pappagallo in basso a sinistra
 
-quotes.onClick = function () {
+quotes.update = function () {
+    if (quotes.interval)
+        clearInterval(quotes.interval);
+    quotes.generate();
+    quotes.interval = setInterval(quotes.generate, 20000);
+}
+
+quotes.init = function () {
+    quotes.update();
+
     const helper = document.getElementById('helper');
     helper.addEventListener('click', function () {
 
@@ -13,7 +21,7 @@ quotes.onClick = function () {
         // elimina l'intervallo per la generazione delle citazioni,
         // genera una nuova citazione on-demand e infine
         // crea nuovamente un intervallo di 20s
-        quotes.init();
+        quotes.update();
 
         // inizia la transizione definita in css
         helper.style.marginLeft = '-0.5vw';
@@ -24,13 +32,6 @@ quotes.onClick = function () {
             helper.style.marginLeft = '0';
         }, 500)
     });
-};
-
-quotes.init = function () {
-    if (quotes.interval)
-        clearInterval(quotes.interval);
-    quotes.generate();
-    quotes.interval = setInterval(quotes.generate, 20000);
 }
 
 quotes.generate = function () {
@@ -51,3 +52,4 @@ quotes.generate = function () {
     xhttp.open('GET', 'fraseRandom');
     xhttp.send();
 };
+

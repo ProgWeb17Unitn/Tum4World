@@ -30,6 +30,6 @@
 <% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
 <%@ include file="cookieBanner.html" %>
 <% } %>
-<%@ include file="footer.html" %>
+<%@ include file="footer_static.html" %>
 </body>
 </html>

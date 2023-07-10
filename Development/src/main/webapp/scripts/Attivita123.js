@@ -1,9 +1,5 @@
-window.addEventListener("load", () => {
-    scrollGalleriaLoader();
-// Devo chiamare la funzione quando la pagina è caricata altrimenti non "trovo" gli elementi
-
-    page.load();
-});
+window.addEventListener("load",
+    scrollGalleriaLoader);
 
 function scrollGalleriaLoader() {
     const galleria = document.getElementsByClassName('galleria')[0];

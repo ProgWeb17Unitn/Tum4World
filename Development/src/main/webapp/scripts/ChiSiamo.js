@@ -20,6 +20,4 @@ window.addEventListener("scroll", function handleScroll() {
     }, 200);
     var scrollPosition = window.scrollY;
     circle.style.transform = "translate(-50%, calc(50% + " + scrollPosition + "px))";
-
-    page.onscroll();
 });

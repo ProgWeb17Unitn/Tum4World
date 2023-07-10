@@ -1,6 +1,4 @@
 window.addEventListener('load', changecolor);
-window.addEventListener('load', spostaFooter);
-window.addEventListener('resize',spostaFooter);
 function changecolor(){
     // dato che base.js si occupa di cambiare il colore di header e footer in base al tipo di utente, sfrutto
     // il valore di colore "recuperato" da essa, aggiungo un piccolo delay per far in modo che il background color
@@ -47,16 +45,5 @@ function esci(){
     }
     // Sending request
     xhttp.send();
-}
-
-
-function spostaFooter() {
-    setTimeout(() => {
-        var foot = document.getElementsByTagName("footer")[0];
-        var rettangolo = foot.getBoundingClientRect();
-        var distanceFromBottom = window.innerHeight - rettangolo.bottom;
-        //console.log("Distance: " + distanceFromBottom);
-        foot.style.transform = "translateY(" + distanceFromBottom + "px)";
-    }, 200);
 }
 
