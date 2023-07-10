@@ -26,7 +26,7 @@
     </filter>
     <filter-mapping>
         <filter-name>userFilter</filter-name>
-        <url-pattern>/Admin</url-pattern>
+        <url-pattern>/Amministratore</url-pattern>
         <url-pattern>/Aderente</url-pattern>
         <url-pattern>/Simpatizzante</url-pattern>
     </filter-mapping>
@@ -47,15 +47,6 @@
     <servlet-mapping>
         <servlet-name>Aderente</servlet-name>
         <url-pattern>/Aderente</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>Admin</servlet-name>
-        <jsp-file>/Admin.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Admin</servlet-name>
-        <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
 
     <servlet>
