@@ -101,18 +101,6 @@ public class popolaDB extends HttpServlet {
             }
 
             try {
-                s.executeUpdate("CREATE TABLE messaggi( " +
-                        "id INT GENERATED ALWAYS AS IDENTITY(start with 1, increment by 1), " +
-                        "nomeCognome VARCHAR(255) NOT NULL, " +
-                        "email VARCHAR(255) NOT NULL, " +
-                        "motivo VARCHAR(255) NOT NULL, " +
-                        "testo VARCHAR(5000) NOT NULL" +
-                        ")");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            try {
                 s.executeUpdate("CREATE TABLE visite( " +
                         "pagina VARCHAR(255) NOT NULL, " +
                         "visite INT NOT NULL, " +
@@ -200,7 +188,7 @@ public class popolaDB extends HttpServlet {
             Donazione d = new Donazione();
             d.setUsername("utente" + rand.nextInt(100)); // donazione di un utente casuale
             d.setImporto(rand.nextInt(10001 - 100) + 100); // importo da 100 euro a 10000
-            d.setData(LocalDate.ofYearDay(2023, rand.nextInt(363) + 1)); // giorno dell'anno 2023 a caso
+            d.setData(LocalDate.ofYearDay(2023, rand.nextInt(LocalDate.now().getDayOfYear()) + 1)); // giorno dell'anno 2023 fino a oggi
             donazioneDAO.save(d);
         }
     }
@@ -224,6 +212,7 @@ public class popolaDB extends HttpServlet {
     }
 
     public void popolaIscrizioni() {
+        // effettua qualche iscrizione per testing
         iscrizioneDAO.nuovaIscrizione("utente0", "attivita2");
         iscrizioneDAO.nuovaIscrizione("utente1", "attivita1");
         iscrizioneDAO.nuovaIscrizione("utente1", "attivita3");
@@ -236,7 +225,8 @@ public class popolaDB extends HttpServlet {
         for (String pag : pagine) {
             Visite v = new Visite();
             v.setPagina(pag);
-            v.setVisite(rand.nextInt(10001 - 100) + 100); // pagina ha da 100 a 10000 visite
+            // v.setVisite(rand.nextInt(10001 - 100) + 100); // pagina ha da 100 a 10000 visite
+            v.setVisite(0); // inizializza a 0 le visite di ogni pagina
             visiteDAO.save(v);
         }
 
