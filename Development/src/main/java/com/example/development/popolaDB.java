@@ -252,7 +252,7 @@ public class popolaDB extends HttpServlet {
                 "Lascia questo mondo un po’ meglio di come l’hai trovato",
                 "Le cose belle arrivano a coloro che aspettano",
                 "Se devi pensare, tanto vale pensare in grande",
-                "Essere buoni è una bella cosa, ma fare del bene è molto di pi",
+                "Essere buoni è una bella cosa, ma fare del bene è molto di più",
                 "La vita ti offre sempre una seconda possibilità, si chiama \"domani\"",
                 "Nessun insegnamento vale quanto l’esempio",
                 "La fortuna è ciò che ti rimane dopo aver dato il 100%",

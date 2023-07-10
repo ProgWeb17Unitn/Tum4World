@@ -46,6 +46,9 @@ public class AderenteDonazione extends HttpServlet {
         if (session != null) {
             name = (String) session.getAttribute("username");
         }
+        else{
+            response.setStatus(500);
+        }
         donazione.setImporto(number);
         donazione.setUsername(name);
         donazione.setData(LocalDate.now());

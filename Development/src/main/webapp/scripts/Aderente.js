@@ -36,7 +36,8 @@ function handleDonation() {
 
     // verifico se non è valido
     if (!isValidInput(valoreInserito)) {
-        segnalaErrore();
+        segnalaErrore(1);
+        console.log("Input Donazione inserito non valido");
     } else {
         // Form valido, salvo nel db la donazione e "mostro che è stata effettuata"
         saveDonation();
@@ -63,8 +64,8 @@ function segnalaErrore() {
     /*
         NB: Quando un animazione è applicata ad un elemento è azionata
         una volta, quindi per poterla ri-utilizzare devo eliminarla dopo averla eseguita
-
      */
+
     setTimeout(function () {
         submit.style.animation = '';
         submit.style.backgroundColor = '#1D1C1A'; // reset colore precedente
@@ -94,8 +95,10 @@ function saveDonation() {
         let done = 4, ok = 200;
         if (xhttp.readyState === done && xhttp.status === ok) {
             donazioneEffettuata();
+            console.log("Donazione effettuata");
         } else {
-            segnalaErrore();
+                //console.log("SaveDonation Fail: Donazione non salvata");
+                segnalaErrore();
         }
     }
     // Sending request
