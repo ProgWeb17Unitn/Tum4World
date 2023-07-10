@@ -37,13 +37,9 @@ public class VisiteFilter implements Filter {
             if(cookiePolicy != null && cookiePolicy.equals("tutti")){
 
                 String thisPage = httpRequest.getServletPath().substring(1); // URI pagina es: /homepage, substring rimuove lo slash /
-                System.out.println("this page: " + thisPage);
                 visiteDAO.incrementVisite(thisPage);
             }
 
-        }
-        else{
-            System.out.println("VISITE FILTER: session e' null");
         }
 
         chain.doFilter(request, response);
