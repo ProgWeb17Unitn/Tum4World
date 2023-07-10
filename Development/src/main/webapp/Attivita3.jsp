@@ -32,13 +32,13 @@
         <div class="descrizione" id="salvataggio">
             <span class="titoletto">L'Inquinamento:</span>
             <p>
-                Uno dei problemi più importanti per i pappagalli è l'inquinamento dei loro Habitat, molto spesso le
+                Uno dei problemi più importanti per i pappagalli è l'inquinamento dei loro habitat, molto spesso le
                 foreste
                 in cui vivono sono vere e proprie
-                <span class="evidenziato">discariche a celo aperto</span>.
+                <span class="evidenziato">discariche a cielo aperto</span>.
                 Ciò danneggia la qualità dell'
                 <span class="evidenziato">aria</span>
-                che respirano,dell'
+                che respirano, dell'
                 <span class="evidenziato">acqua</span>
                 che bevono e ciò che
                 <span class="evidenziato"> mangiano</span>
@@ -67,10 +67,9 @@
                 Un altra sfida impegnativa è legata al cambio climatico e la deforestazione. I pappagalli sono poco
                 resistenti ai cambi di temperatura.
                 Inoltre in molte zone in cui vivono i governi stanno applicando politiche di
-                <span class="evidenziato">deforestazione intensiva</span>. Così come per la lotta all'inquinamento ci
-                uniamo
-                alle associazioni che cercano di tutelare
-                la natura ed inoltre abbiamo capito durante gli anni che la cosa più utile per i nostri pappagalli è
+                <span class="evidenziato">deforestazione intensiva</span>. Così come per la lotta all'inquinamento, ci
+                uniamo alle associazioni che cercano di tutelare
+                la natura ed. Abbiamo capito durante gli anni che la cosa più utile per i nostri pappagalli è
                 <span class="evidenziato">creare delle aree protette</span>.
                 Parchi nazionali e riserve ci permettono di avere il pieno controllo di cosa accade all'interno del loro
                 ambiente e riusciamo ad
@@ -81,20 +80,19 @@
         <div class="descrizione" id="liberazione">
             <span class="titoletto">Bracconaggio e Tecnologia:</span>
             <p>
-                Uno dei problemi storici che siamo quasi riusciti ad estirpare è il bracconaggio. Negli anni 2000 il
+                Uno dei problemi storici sul quale abbiamo fatto più progressi è il bracconaggio. Negli anni 2000 il
                 <span class="evidenziato">10% degli esemplari</span>
                 <span class="evidenziato">moriva</span> o
                 <span class="evidenziato">veniva ferito</span>
                 a causa di
                 <span class="evidenziato">cacciatori</span>
                 che cercavano di catturare i pappagalli per poi rivenderli nei mercati di animali
-                esotici. Collaborando con le autorità locali stiamo riuscendo ad eliminare il problema alla radice:
+                esotici. Collaborando con le autorità locali, stiamo riuscendo ad eliminare il problema alla radice:
                 <span class="evidenziato">bloccare e sanzionare con pene ingenti la vendita</span>.
                 Inoltre applichiamo ad i pappagalli in cura un
                 <span class="evidenziato">chip </span>
-                il quale ci permette di raccogliere dati importanti sulla loro salute, su quella dell'habitat e
-                scoraggia i
-                bracconieri.
+                che ci permette di raccogliere dati importanti sulla loro salute, su quella dell'habitat e
+                scoraggia i bracconieri.
             </p>
         </div>
 

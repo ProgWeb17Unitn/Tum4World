@@ -66,12 +66,15 @@ public class SessionManager extends HttpServlet {
                JsessionID, ciclare sui cookies creati e settare il maxAge a 0 per eliminarli. Una volta fatto questo si potrebbe
                utilizzare l'input type hidden per passare il jsessionid tra le richieste.
 
-               La richiesta del progetto chiedeva di gestire i cookies ed i cookies disattivati da browser cosa che è stata
-               gestita da i casi 1,3,4 per cui se si seleziona Cookie Disattivati il cookie Banner rimane se si hanno
-               i Cookies attivati nel browser però non verranno utilizzati effettivamente
+               La richiesta del progetto chiedeva di gestire i cookies disattivati da browser cosa che è stata
+               realizzati nei casi 1,3,4. Per quanto riguarda la scelta di disattivarli quindi si è deciso di lasciare il cookies
+               formato durante la creazione della session non salvando però dati dell'utente in questo abbia preso questa scelta.
+               Se avessimo cancellato il cookies o non creato la sessione, questo avrebbe comportato che ad ogni pagina il cookie banner sarebbe ricomparso (nel
+               caso in cui i cookies erano attivati nel browser).
 
-               (Questo approccio ha anche un riscontro reale, difatti nella maggior parte dei siti quando
-                si seleziona l'opzione "rifiuta totti" vengono difatti bloccati i cookies di terze parti, non quelli tecnici)
+               Un approccio più "reale" ed in linea con la regolamentazione europea sarebbe stato quello di creare
+               all'accesso dell'utente ad una pagina la sessione e fornire solo due  possibilità: accettare i cookies tecnici
+               (già creati all'accesso) oppure tutti.
              */
         }
 

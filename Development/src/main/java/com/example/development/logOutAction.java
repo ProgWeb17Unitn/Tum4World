@@ -20,13 +20,8 @@ public class logOutAction extends HttpServlet {
         if (session != null) {
             session.removeAttribute("tipo");
             session.removeAttribute("username");
-            response.setStatus(200);
-
         }
-        else{
-            response.setStatus(500);
-        }
-
+        response.setStatus(200);
     }
 
     @Override

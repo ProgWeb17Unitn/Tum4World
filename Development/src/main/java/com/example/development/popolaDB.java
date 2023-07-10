@@ -170,7 +170,12 @@ public class popolaDB extends HttpServlet {
             u.setEmail("email@email.com");
             u.setTelefono("0123456789");
             u.setTipo(new String[]{"simpatizzante", "aderente"}[rand.nextInt(2)]); // sceglie a caso aderente o simpatizzante
-            u.setDataNascita(LocalDate.of(1111, 1, 1)); // 1 gennaio 1111
+            int minYear=1900;
+            int maxYear=2022;
+            int year= rand.nextInt(maxYear-minYear+1)+minYear;
+            int month=rand.nextInt(12)+1;
+            int day=rand.nextInt(28)+1;
+            u.setDataNascita(LocalDate.of(year, month, day));
             u.setUsername("utente" + i);
             u.setPassword("testRM1!");
             utenteDAO.save(u);
@@ -241,37 +246,25 @@ public class popolaDB extends HttpServlet {
     public void popolaFrasi() {
         // frasi prese da internet, sentitevi liberi di modificare, aggiungere o cancellare tutte quelle che volete
         String[] frasi = {
-                "Se non crei il tuo piano di vita, cadrai nel piano di qualcun altro",
-                "Non rimandare a domani quello che può essere fatto dopodomani altrettanto bene",
+                "Il modo migliore per superare le difficoltà è attaccarle con un magnifico sorriso",
+                "Non sbagliamo mai quando proviamo a fare il nostro dovere, sbagliamo sempre quando trascuriamo di farlo",
                 "Se provi a fallire e hai successo, che cosa hai fatto?",
-                "Un giorno senza sole è come la notte",
+                "Lascia questo mondo un po’ meglio di come l’hai trovato",
                 "Le cose belle arrivano a coloro che aspettano",
                 "Se devi pensare, tanto vale pensare in grande",
-                "Intendo vivere per sempre. Finora tutto bene",
+                "Essere buoni è una bella cosa, ma fare del bene è molto di pi",
                 "La vita ti offre sempre una seconda possibilità, si chiama \"domani\"",
-                "Se non sai dove stai andando, potresti finire in un altro posto",
+                "Nessun insegnamento vale quanto l’esempio",
                 "La fortuna è ciò che ti rimane dopo aver dato il 100%",
                 "Fare o non fare. Non c’è un tentativo",
                 "Va bene guardare il passato e il futuro. Ma non fissarlo",
-                "Chiunque abbia detto: \"Non conta se si vince o si perde\", probabilmente ha perso",
+                "Chi è cieco davanti alla bellezza della natura, ha perso la metà del piacere di vivere",
                 "Se il piano non funziona, cambia il piano",
-                "Anche se sei sulla strada giusta, verrai investito se rimani seduto",
-                "Se non puoi riparare i tuoi freni, rendi più rumoroso il clacson",
-                "Mi hanno buttato in mezzo ai lupi. Ne sono uscito capobranco",
-                "La vita dura fino a quando non finisce",
-                "Quando vinci, non perdi",
-                "La strada per il successo è costellata da molti parcheggi allettanti",
-                "Quando sei triste, smetti di esserlo",
-                "Le decisioni sbagliate creano belle storie",
-                "Non puoi avere tutto. Dove lo metteresti?",
-                "Vola come una farfalla, pungi come un'ape",
-                "Quando la vita chiude una porta... riaprila",
+                "Guardare la bellezza della natura è il primo passo per purificare la mente",
+                "La natura non è un posto da visitare. E' casa nostra.",
                 "Non smettere mai di imparare, perché la vita non smette mai di insegnare",
-                "Ricorda che oggi è il domani di cui ti sei preoccupato ieri",
-                "Non fare nulla è molto difficile, non sai mai quando hai finito",
-                "Gli haters sono solo ammiratori confusi",
                 "L’uomo che sposta una montagna inizia portando via piccole pietre",
-                "Anche un orologio fermo ha ragione due volte al giorno"
+                "In tutte le cose della natura esiste qualcosa di meraviglioso"
         };
 
         for (String text : frasi) {

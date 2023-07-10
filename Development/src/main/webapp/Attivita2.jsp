@@ -35,7 +35,7 @@
                 La nostra fondatrice
                 <span class="evidenziato"> Betty amava </span>
                 solo una cosa più degli animali: i suoi
-                <span class="evidenziato">nipoti</span>
+                <span class="evidenziato">nipoti!</span>
                 Cominciò sin da subito a capire come la
                 <span class="evidenziato">vicinanza</span> tra
                 <span class="evidenziato">pappagalli </span>e <span class="evidenziato">bambini</span>
@@ -85,7 +85,7 @@
                 splendidi animali.
                 Quando scolaresche, gruppi parrocchiali o
                 <span class="evidenziato">scout </span> arrivano, partecipano con divere attività: tra chi
-                <span class="evidenziato">pulisce il rifugio </span>,
+                <span class="evidenziato">pulisce il rifugio</span>,
                 chi <span class="evidenziato">prepara il mangiare </span>
                 e chi
                 <span class="evidenziato">assiste i veterinari</span>

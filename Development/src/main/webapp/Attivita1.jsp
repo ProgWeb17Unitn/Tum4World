@@ -41,7 +41,7 @@
                 Equipaggiati con furgoni e gabbie, ci dirigiamo tempestivamente verso le
                 <span class="evidenziato"> zone </span>
                 segnalate per salvare i pappagalli bisognosi. Muniti di
-                <span class="evidenziato">retini appositi</span> e prestando attenzione estrema,
+                <span class="evidenziato">retini appositi</span> e prestando la massima attenzione,
                 li prendiamo con noi e li
                 <span class="evidenziato"> portiamo al sicuro </span>
                 nel rifugio più vicino.
@@ -64,7 +64,7 @@
                 <span class="evidenziato"> cure veterinarie specializzate </span>
                 e
                 <span class="evidenziato">vaccinazioni preventive </span>
-                ai pappagalli appena arrivati. Ogni paziente riceve un
+                ai nuovi arrivati. Ogni paziente riceve un
                 <span class="evidenziato"> microchip </span>
                 per monitorare i loro progressi e garantire il loro benessere.
                 Inoltre, promuoviamo la convivenza tra diverse specie, creando un
@@ -77,8 +77,8 @@
             <span class="titoletto">Liberazione:</span>
             <p>
                 Quando i pappagalli sono
-                <span class="evidenziato">pronti per affrontare nuovamente il volo</span>
-                , sperimentiamo la gioia più intensa:
+                <span class="evidenziato">pronti per affrontare nuovamente il volo</span>,
+                 sperimentiamo la gioia più intensa:
                 <span class="evidenziato">la liberazione!</span>
                 Grazie alla loro incredibile intelligenza e al forte senso dell'orientamento, se li rilasciamo
                 nel loro habitat originale, sono in grado di riconoscerlo e

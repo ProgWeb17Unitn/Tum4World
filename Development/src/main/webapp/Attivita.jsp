@@ -23,7 +23,7 @@
                 <div class="title-attivita" id="title-attivita1">Salvataggio e Riabilitazione</div>
                 <p> Il nostro principale obiettivo e quello da cui la nostra associazione è nata è quello di salvare i
                     nostri amici
-                    volanti! Grazie a segnalazioni dei locali identifichiamo gli esemplari che hanno bisogno di aiuto
+                    volanti! Grazie a segnalazioni dei locali identifichiamo gli esemplari che hanno bisogno di aiuto e
                     li portiamo nel nostro rifugio pià vicino dove riceveranno le cure mediche adeguate.</p>
             </div>
             <a class="fotoAttivita" href="<%= response.encodeURL("./Attivita1") %>"><img class="images"
@@ -58,7 +58,7 @@
                     la
                     proliferazione
                     della specie, per questo motivo molti dei nostri volontari, aiutati da abitanti ed associazioni
-                    amiche
+                    amiche,
                     si impegnano
                     nella cura dell'ambiente.</p>
             </div>

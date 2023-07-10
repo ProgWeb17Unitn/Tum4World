@@ -58,7 +58,7 @@ function visualizzaRegistrati(){
                     container.appendChild(datidiv);
 
                     var occhio = document.getElementById("eyeicon1") //cambio icona con L'occhio Aperto
-                    occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+                    occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
 
                 } else {
 
@@ -72,7 +72,7 @@ function visualizzaRegistrati(){
         datidiv.remove();
         openedDati=0;
         var occhio = document.getElementById("eyeicon1") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
     }
 }
 
@@ -123,7 +123,7 @@ function visualizzaSimpatizzanti(){
                     container.appendChild(datidiv);
 
                     var occhio = document.getElementById("eyeicon2") //cambio icona con L'occhio Aperto
-                    occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+                    occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
 
                 } else {
 
@@ -137,7 +137,7 @@ function visualizzaSimpatizzanti(){
         datidiv.remove();
         openedDati=0;
         var occhio = document.getElementById("eyeicon2") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
     }
 }
 
@@ -188,7 +188,7 @@ function visualizzaAderenti(){
                     container.appendChild(datidiv);
 
                     var occhio = document.getElementById("eyeicon3") //cambio icona con L'occhio Aperto
-                    occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+                    occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
 
                 } else {
 
@@ -202,7 +202,7 @@ function visualizzaAderenti(){
         datidiv.remove();
         openedDati=0;
         var occhio = document.getElementById("eyeicon3") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
     }
 }
 
@@ -211,12 +211,12 @@ function visualizzaVisite(){
         document.getElementById("container1").style.display = "block";
         openedVisite=1;
         var occhio = document.getElementById("eyeicon4") //cambio icona con L'occhio Aperto
-        occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+        occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
     }else{
         document.getElementById("container1").style.display = "none";
         openedVisite=0;
         var occhio = document.getElementById("eyeicon4") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
     }
 }
 
@@ -247,12 +247,12 @@ function visualizzaDonazioni(){
         document.getElementById("container").style.display = "block";
         openedDonazioni=1;
         var occhio = document.getElementById("eyeicon3") //cambio icona con L'occhio Aperto
-        occhio.src='./assets/images/S/eyeOPEN'+eyecolor+'.svg';
+        occhio.src='./assets/images/S/eyeOPENWHITE'+eyecolor+'.svg';
     }else{
         document.getElementById("container").style.display = "none";
         openedDonazioni=0;
         var occhio = document.getElementById("eyeicon6") //cambio icona con L'occhio chiuso
-        occhio.src='./assets/images/S/eyeCLOSED'+eyecolor+'.svg';
+        occhio.src='./assets/images/S/eyeCLOSEDWHITE'+eyecolor+'.svg';
     }
 }
 

@@ -196,27 +196,27 @@
 
         <div class="Bottoni">
             <div class="bottone-elemento" id="btn1" onclick="visualizzaRegistrati()">
-                <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon1">
+                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon1">
                 <p>Visualizza Utenti Registrati</p>
             </div>
             <div class="bottone-elemento" id="btn2" onclick="visualizzaSimpatizzanti()">
-                <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon2">
+                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon2">
                 <p>Visualizza Simpatizzanti</p>
             </div>
             <div class="bottone-elemento" id="btn3" onclick="visualizzaAderenti()">
-                <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon3">
+                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon3">
                 <p>Visualizza Aderenti</p>
             </div>
             <div class="bottone-elemento" id="btn4" onclick="visualizzaVisite()">
-                <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon4">
+                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon4">
                 <p>Visualizza Visite</p>
             </div>
             <div class="bottone-elemento" id="btn5" onclick="resetContatori()">
-                <img src="assets/images/S/bin.svg" id="bin">
+                <img src="assets/images/S/binWHITE.svg" id="bin">
                 <p>Reset Contatori</p>
             </div>
             <div class="bottone-elemento" id="btn6" onclick="visualizzaDonazioni()">
-                <img src="assets/images/S/eyeCLOSED.svg" id="eyeicon6">
+                <img src="assets/images/S/eyeCLOSEDWHITE.svg" id="eyeicon6">
                 <p>Visualizza Donazioni</p>
             </div>
         </div>

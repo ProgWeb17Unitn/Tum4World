@@ -30,8 +30,8 @@
                     <div class="TriangleSX"></div>
                     <div class="Rectangle">
                         <p>La nostra storia prende vita nel
-                            <span class="anni"> 2001 </span>
-                            , con due protagonisti ed una città:
+                            <span class="anni"> 2001</span>,
+                            con due protagonisti ed una città:
                             <span class="personaggi"> Betty Powell</span>,
                             <span class="personaggi"> John </span>e
                             <span class="personaggi"> Manaus</span>.
@@ -70,7 +70,7 @@
                             l'incredibile team di volontari, si è ampliato
                             fino a raggiungere la strabiliante cifra di
                             <span class="parole">30 persone</span>.
-                            Insieme, hanno reso possibile la cura e l'amore per
+                            Insieme, hanno reso possibile la cura di
                             <span class="parole"> 100 straordinari esemplari di specie diverse</span>.
                             Inoltre sono stati costruiti grazie a generose donazioni
                             <span class="parole"> due nuovi rifugi </span>
@@ -105,7 +105,7 @@
                             <span class="parole">enti internazionali </span>
                             hanno riconosciuto il nostro obiettivo come meritevole e hanno deciso di darci una mano.
                             <span class="personaggi">L'Human Society International</span>
-                            si è unito a noi come nostro principale partner, aprendo
+                            si è unito a noi come principale partner, aprendo
                             <span class="parole"> nuove porte</span>
                             e prospettive.
                             Abbiamo capito che per avere veramente cura dei nostri pappagalli, dovevamo focalizzarci
@@ -154,7 +154,7 @@
                             È un progresso straordinario che ci riempie di orgoglio e ci spinge a fare ancora
                             di più per garantire un
                             <span class="parole">futuro radioso</span>
-                            per questi magnifici uccelli.</p></div>
+                            a questi magnifici uccelli.</p></div>
                     <div class="TriangleDX"></div>
                 </div>
             </div>
