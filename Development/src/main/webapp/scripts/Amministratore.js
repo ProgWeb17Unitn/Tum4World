@@ -232,7 +232,7 @@ function visualizzaVisite(){
 }
 
 function resetContatori(){
-    let conferma = confirm("Sei veramente sicuto di voler resettare i contatori delle visite di ogni pagina?");
+    let conferma = confirm("Sei veramente sicuro di voler resettare i contatori delle visite di ogni pagina?");
     if(conferma){
         let url = "resetContatori";
         let xhttp = new XMLHttpRequest();
