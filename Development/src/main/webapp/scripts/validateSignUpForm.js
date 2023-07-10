@@ -20,7 +20,7 @@ function validateData() {
 
         let dataNascita = Date.parse(form["dataNascita"].value);
 
-        let minorenne = (dataNascita > dataMaggiorenne); // è minorenne dataNascità e almeno 18 anni piu grande
+        let minorenne = (dataNascita > dataMaggiorenne); // è minorenne se dataNascità e almeno 18 anni piu grande
 
         if (minorenne) {
             errori += "Impossibile creare account per utenti minorenni\n";
@@ -35,6 +35,9 @@ function validateData() {
 
     if (form["telefono"].value === "") {
         errori += "Specificare un numero di telefono\n";
+    }
+    else if(!(/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(form["telefono"].value))) {
+        errori += "Numero di telefono non valido\n";
     }
 
     if (form["tipo"].value === "") {
