@@ -42,6 +42,7 @@ function makeQuery() {
     let form = document.forms.namedItem("formLogin");
 
     let xhttp = new XMLHttpRequest();
+    xhttp.withCredentials = true;
     let url = "elaboraLogin";
 
     // funzione per codificare i parametri, la stessa di validateSignUp form (dove trovate una spiegazione più dettagliata)
@@ -54,8 +55,14 @@ function makeQuery() {
         "username=" + codifica(form["username"].value) + "&" +
         "password=" + codifica(form["password"].value);
 
-
-    let query = url + "?" + params;
+    // se i cookie sono disattivati, aggiunge manualmente il jsessionid alla richiesta XHR
+    let jsessionid = "";
+    if(window.location.href.includes("jsessionid")){
+        // 'jsessionid=' sono 11 char. Il jsessionid è lungo 32 char, quindi 11 + 32 = 43
+        // il ; serve perchè è il separatore utilizzato quando viene fatto URL rewriting
+        jsessionid = ";" + window.location.href.split(';')[1].substring(0, 43);
+    }
+    let query = url + jsessionid + "?" + params;
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4) {
@@ -70,6 +77,7 @@ function makeQuery() {
                 console.log("URL redirect: " + url);
                 window.location.replace(url); // simula un redirect
                 console.log("Login successful")
+
             } else if (this.status == 401) { // 401 Error code: non autorizzato, credenziali errate
                 /*
                     In caso di errore viene ripresentata la pagina Login con un messaggio addizionale di errore (il

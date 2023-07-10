@@ -59,7 +59,7 @@ public class elaboraLogin extends HttpServlet {
                 if (session != null) {
                     session.setAttribute("username", username);
                     session.setAttribute("tipo", utente.getTipo());
-                    System.out.println("impostati username e tipo al login");
+                    System.out.println("LOGIN: impostato username: " + username + ", tipo: " + utente.getTipo());
                 }
                 else{
                     System.out.println("ERRORE elaboraLogin: session e' null");

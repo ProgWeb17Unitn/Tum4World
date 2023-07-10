@@ -128,6 +128,15 @@ function makeQuery() {
         return encodeURIComponent(param).replace("%20", "+");
     }
 
+    // aggiunge il jsessionid per fare URL rewriting (se necessario)
+    let jsessionid = "";
+    if(window.location.href.includes("jsessionid")){
+        // 'jsessionid=' sono 11 char. Il jsessionid è lungo 32 char, quindi 11 + 32 = 43
+        // il ; serve perchè è il separatore utilizzato quando viene fatto URL rewriting
+        jsessionid = ";" + window.location.href.split(';')[1].substring(0, 43);
+
+    }
+
     let params =
         "nome=" + codifica(form["nome"].value) + "&" +
         "cognome=" + codifica(form["cognome"].value) + "&" +
@@ -140,7 +149,7 @@ function makeQuery() {
 
     // console.log(url + "?" + params);
 
-    xhttp.open("POST", url, true);
+    xhttp.open("POST", url + jsessionid, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     xhttp.onreadystatechange = function () {
