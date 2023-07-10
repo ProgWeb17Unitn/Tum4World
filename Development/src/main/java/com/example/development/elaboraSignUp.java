@@ -57,7 +57,7 @@ public class elaboraSignUp extends HttpServlet {
 
             // invia al client l'url della pagina di conferma
             PrintWriter writer = response.getWriter();
-            writer.print(response.encodeRedirectURL(request.getContextPath() + "/registrazioneConfermata.jsp"));
+            writer.print(response.encodeRedirectURL(request.getContextPath() + "/RegistrazioneConfermata"));
             writer.close();
 
 

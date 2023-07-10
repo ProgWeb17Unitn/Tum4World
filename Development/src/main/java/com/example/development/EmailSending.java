@@ -43,7 +43,7 @@ public class EmailSending extends HttpServlet {
             request.setAttribute("Message", resultMessage);
             // invia al client l'url della pagina di conferma (anche in caso di invio fallito in quanto l'invio è simulato)
             PrintWriter writer = response.getWriter();
-            writer.print(request.getContextPath() + "/invioConfermato.jsp");
+            writer.print(response.encodeRedirectURL(request.getContextPath() + "/InvioConfermato"));
             writer.close();
         }
     }

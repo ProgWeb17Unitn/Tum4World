@@ -34,6 +34,31 @@
         <url-pattern>/Simpatizzante.jsp</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>VisiteFilter</filter-name>
+        <filter-class>com.example.development.filters.VisiteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>VisiteFilter</filter-name>
+
+        <url-pattern>/homepage</url-pattern>
+        <url-pattern>/Aderente</url-pattern>
+        <url-pattern>/Simpatizzante</url-pattern>
+        <url-pattern>/Amministratore</url-pattern>
+        <url-pattern>/ChiSiamo</url-pattern>
+        <url-pattern>/Contatti</url-pattern>
+        <url-pattern>/logIn</url-pattern>
+        <url-pattern>/notAuthorized</url-pattern>
+        <url-pattern>/signUp</url-pattern>
+        <url-pattern>/logOut</url-pattern>
+        <url-pattern>/Attivita</url-pattern>
+        <url-pattern>/Attivita1</url-pattern>
+        <url-pattern>/Attivita2</url-pattern>
+        <url-pattern>/Attivita3</url-pattern>
+        <url-pattern>/InvioConfermato</url-pattern>
+        <url-pattern>/RegistrazioneConfermata</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>homepage</servlet-name>
         <jsp-file>/homepage.jsp</jsp-file>
@@ -51,7 +76,7 @@
         <servlet-name>Aderente</servlet-name>
         <url-pattern>/Aderente</url-pattern>
     </servlet-mapping>
-
+    
     <servlet>
         <servlet-name>Attivita</servlet-name>
         <jsp-file>/Attivita.jsp</jsp-file>
@@ -151,7 +176,6 @@
         <url-pattern>/Amministratore</url-pattern>
     </servlet-mapping>
 
-
     <servlet>
         <servlet-name>logOut</servlet-name>
         <jsp-file>/logOut.jsp</jsp-file>
@@ -159,6 +183,24 @@
     <servlet-mapping>
         <servlet-name>logOut</servlet-name>
         <url-pattern>/logOut</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegistrazioneConfermata</servlet-name>
+        <jsp-file>/registrazioneConfermata.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrazioneConfermata</servlet-name>
+        <url-pattern>/RegistrazioneConfermata</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InvioConfermato</servlet-name>
+        <jsp-file>/invioConfermato.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InvioConfermato</servlet-name>
+        <url-pattern>/InvioConfermato</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

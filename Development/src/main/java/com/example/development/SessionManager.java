@@ -50,12 +50,12 @@ public class SessionManager extends HttpServlet {
 
         if (scelta.equals("Tecnici")) {
             //JSESSION ID salvato automaticamente dal browser
-            //Aggiungo alla session il parametro tecnici, se sono stati selezionati Tutti
-            //questo parametro non sarà presente
-            session.setAttribute("Tecnici", "true");
+            // imposto cookiePolicy solo cookie tecnici (no statistiche quindi non incrementa le visite)
+            session.setAttribute("cookiePolicy", "tecnici");
         } else if (scelta.equals("Tutti")) {
-            session.setAttribute("Tutti", "true");
+            session.setAttribute("cookiePolicy", "tutti");
         } else if (scelta.equals("Disattivati")) {
+
               /* CASO 4:
                Questa opzione non è direttamente implementabile poiché se i cookies sono attivati
                l'encodeURL() non inserisce il jsessionid "automaticamente" tra le richieste nell'URL.
@@ -76,6 +76,8 @@ public class SessionManager extends HttpServlet {
                all'accesso dell'utente ad una pagina la sessione e fornire solo due  possibilità: accettare i cookies tecnici
                (già creati all'accesso) oppure tutti.
              */
+
+            session.setAttribute("cookiePolicy", "disattivati");
         }
 
         /*

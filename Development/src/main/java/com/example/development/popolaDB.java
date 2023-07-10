@@ -219,9 +219,24 @@ public class popolaDB extends HttpServlet {
     }
 
     public void popolaVisite() {
-        // viste sono dei valori fittizi
-        // il nome delle pagine è del tutto arbitrario: conviene scegliere un nome 'comodo' quando si implementa nei Filters
-        String[] pagine = {"Aderente", "Simpatizzante", "Admin", "Attivita1", "Attivita2", "Attivita3", "ChiSiamo", "contatti", "invioConfermato", "homepage", "signUp", "login", "registrazioneConfermata"};
+        // queste pagine devono corrispondere con la mappatura servlet nel file web.xml
+        String[] pagine = {
+                "homepage",
+                "Aderente",
+                "Simpatizzante",
+                "Amministratore",
+                "Attivita",
+                "Attivita1",
+                "Attivita2",
+                "Attivita3",
+                "ChiSiamo",
+                "Contatti",
+                "InvioConfermato",
+                "RegistrazioneConfermata",
+                "signUp",
+                "logIn",
+                "logOut"
+        };
         for (String pag : pagine) {
             Visite v = new Visite();
             v.setPagina(pag);
