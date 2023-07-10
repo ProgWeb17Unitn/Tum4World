@@ -33,9 +33,17 @@
             let done = 4, ok = 200;
             if (xhttp.readyState === done && xhttp.status === ok) {
                 my_JSON_array = this.response;
+
+                // sostituisce gli 0 con null, per non farli vedere nel grafico
+                my_JSON_array.forEach((element, index) => {
+                    if (element === 0) {
+                        my_JSON_array[index] = null;
+                    }
+                })
+
                 const chart = Highcharts.chart('container', {
                     chart: {
-                        type: 'column'
+                        type: 'line'
                     },
                     title: {
                         text: 'Donazioni nell ultimo anno'
@@ -72,7 +80,7 @@
                     tooltip: {
                         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                         pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                            '<td style="padding:0"><b>{point.y:.1f} €</b></td></tr>',
+                            '<td style="padding:0"><b>{point.y} €</b></td></tr>',
                         footerFormat: '</table>',
                         shared: true,
                         useHTML: true
@@ -84,6 +92,7 @@
                             groupPadding: 0,
                             shadow: false
                         }
+
                     },
                     series: [{
                         name: 'Donazioni',
