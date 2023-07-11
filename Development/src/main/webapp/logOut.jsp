@@ -18,10 +18,9 @@
   <div class="flexbox-container" id="index">
 
     <div class="logOutRectangle">
-      <div class="title"> Vuoi eseguire il LogOut?</div>
+      <div class="title">Confermi di voler uscire dal sito?</div>
       <form class="scelta">
-        <button type="button" name="opzione"  value="Si" id="Si" onclick="esci()">Si</button>
-        <button type="button" name="opzione" value="No" id="No">No</button>
+        <button type="button" name="opzione"  value="Si" id="Si" onclick="esci()">Conferma</button>
       </form>
     </div>
 
