@@ -80,7 +80,7 @@
                 <span class="evidenziato">pronti per affrontare nuovamente il volo</span>,
                  sperimentiamo la gioia più intensa:
                 <span class="evidenziato">la liberazione!</span>
-                Grazie alla loro incredibile intelligenza e al forte senso dell'orientamento, se li rilasciamo
+                Grazie alla loro incredibile intelligenza ed al forte senso dell'orientamento, se li rilasciamo
                 nel loro habitat originale, sono in grado di riconoscerlo e
                 <span class="evidenziato">reintegrarsi rapidamente nella natura</span>.
             </p>

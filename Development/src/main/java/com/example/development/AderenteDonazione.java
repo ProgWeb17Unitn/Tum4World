@@ -32,7 +32,15 @@ public class AderenteDonazione extends HttpServlet {
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // utilizzo la classe Donazione (Bean) ed il suo Dao per salvare la risposta
+        /*
+            Da Js è stata effettuata una richiesta con il parametro quantita già convalidato,
+            lo recupero dalla richiesta ed effettuo il parsing. Successivamente controllo dalla
+            sessione qual'è l'utente che sta effettuando la donazione. In teoria se l'utente è nella pagina Aderente
+            ciò significa che la sessione è presente e contiene il suo numero, può comunque succedere che la sessione scada,
+            in quel caso l'else esterno ritorna uno status 500. Se la sessione è presente recupero il nome
+            dell'utente ed utilizzo la classe Donazione (Bean) ed il suo Dao per salvare la donazione. Se per qualche motivo
+            uno dei tre parametri dovesse essere errato o nullo il metodo save fallisce ed anche in questo caso ritorno 500.
+         */
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 
@@ -42,26 +50,28 @@ public class AderenteDonazione extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         String name = "utente0";
+        /* Nome di un utente presente nel database, può essere anche inizializzato ad una
+           stringa vuota ma così è più facile effettuare debugging
+         */
 
         if (session != null) {
             name = (String) session.getAttribute("username");
+            donazione.setImporto(number);
+            donazione.setUsername(name);
+            donazione.setData(LocalDate.now());
+
+            if (donazioneDAO.save(donazione)) {
+                // se il salvataggio va a buon termine
+                response.setStatus(200);
+            } else {
+                // se il salvataggio va male ritorno un codice 500
+                // così che in js viene mostrato l'errore
+                response.setStatus(500);
+            }
         }
         else{
             response.setStatus(500);
         }
-        donazione.setImporto(number);
-        donazione.setUsername(name);
-        donazione.setData(LocalDate.now());
-
-        if (donazioneDAO.save(donazione)) {
-            // se il salvataggio va a buon termine
-            response.setStatus(200);
-        } else {
-            // se il salvataggio va male ritorno un codice 500
-            // così che in js viene mostrato l'error
-            response.setStatus(500);
-        }
-
     }
 
     @Override
