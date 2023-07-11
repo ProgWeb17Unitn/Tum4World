@@ -7,7 +7,7 @@ function handleScroll() {
     /*
         Durante lo scroll eseguo 2 operazioni:
             1) Cambio lo stile:
-                -Ciò viene eseguito in 2 passaggi, quanto avviene lo scroll, viene cambiato immediatamente il colore
+                -Ciò viene eseguito in 2 passaggi, quando avviene lo scroll viene cambiato immediatamente il colore
                  del bordo a rosso e viene eliminato il timeout precedente, viene impostato poi un timeout che lo
                  fa tornare al colore normale dopo 0.2 secondi
             2) Cambio la posizione:

@@ -29,14 +29,15 @@ function esci() {
     xhttp.onreadystatechange = function () {
         let done = 4, ok = 200;
         if (xhttp.readyState === done && xhttp.status === ok) {
-            // se avviene correttamente viene effettuatu un redirect sulla homepage
-            // posso farlo direttamente da js poichè una volta cancellata l'iscrizione invalido la session
+            // se avviene correttamente viene effettuato un redirect sulla homepage
             window.location.href = "homepage";
         } else {
-            console.log("Logout Fail");
+            if(xhttp.readyState === done && xhttp.status !== ok) {
+                // Ho ricevuto una risposta ma con risultato negativo
+                console.log("Logout Fail");
+            }
         }
     }
-    // Sending request
     xhttp.send();
 }
 
