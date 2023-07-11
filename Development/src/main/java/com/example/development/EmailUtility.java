@@ -20,14 +20,14 @@ public class EmailUtility {
                                  String subject, String message) throws AddressException,
             MessagingException {
 
-        // sets SMTP server properties
+        // Configurazione del server SMTP
         Properties properties = new Properties();
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
-        // creates a new session with an authenticator
+        // Creazione di una nuova sessione tramite authenticator
         Authenticator auth = new Authenticator() {
             public PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(userName, password);
@@ -36,9 +36,8 @@ public class EmailUtility {
 
         Session session = Session.getInstance(properties, auth);
 
-        // creates a new e-mail message
+        // Creazione di un nuovo messaggio di tipo email
         Message msg = new MimeMessage(session);
-
         msg.setFrom(new InternetAddress(userName));
         InternetAddress[] toAddresses = {new InternetAddress(toAddress)};
         msg.setRecipients(Message.RecipientType.TO, toAddresses);
@@ -46,7 +45,7 @@ public class EmailUtility {
         msg.setSentDate(new Date());
         msg.setText(message);
 
-        // sends the e-mail
+        // Invio della mail
         Transport.send(msg);
 
     }

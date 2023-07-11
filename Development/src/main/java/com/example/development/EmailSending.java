@@ -17,15 +17,15 @@ public class EmailSending extends HttpServlet {
     // Configurazione server SMTP fittizia
     private String host = "smtp.gmail.com";
     private String port = "587";
-    private String user = "tum4world@nessunonoluogonoesiste.com";
+    private String user = "tum4world@nessunonoluogonoesiste.com";   // user e pass sono le credenziali per accedere al server SMTP
     private String pass = "12345678";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // imposta tipo risposta a text. Questa servlet ritorna l'url (invioConfermato.jsp) a cui il client farà redirect in caso di successo
+        // Imposta tipo risposta a text. Questa servlet ritorna l'url (invioConfermato.jsp) a cui il client farà redirect in caso di successo
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
 
-        // legge i dettagli della mail da inviare ( rispettivamente: destinatario, oggetto, contenuto)
+        // Legge i dettagli della mail da inviare ( rispettivamente: destinatario, oggetto, contenuto)
         String recipient = request.getParameter("email");
         String subject = request.getParameter("motivo");
         String content = request.getParameter("dettagli");
@@ -41,7 +41,7 @@ public class EmailSending extends HttpServlet {
             resultMessage = "There were an error: " + ex.getMessage();
         } finally {
             request.setAttribute("Message", resultMessage);
-            // invia al client l'url della pagina di conferma (anche in caso di invio fallito in quanto l'invio è simulato)
+            // Invia al client l'url della pagina di conferma (anche in caso di invio fallito in quanto l'invio è simulato)
             PrintWriter writer = response.getWriter();
             writer.print(response.encodeRedirectURL(request.getContextPath() + "/InvioConfermato"));
             writer.close();

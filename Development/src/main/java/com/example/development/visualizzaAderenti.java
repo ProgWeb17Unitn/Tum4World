@@ -42,7 +42,7 @@ public class visualizzaAderenti extends HttpServlet {
 
         List<Utente> utenti = utenteDAO.getAllAderenti();
 
-        // Utilizzo il Dao per ottenete la lista degli utenti registrati
+        // Utilizzo il Dao per ottenete la lista degli aderenti
         // Scrivo la risposta come array Json
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");

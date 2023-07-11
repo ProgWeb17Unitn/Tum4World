@@ -21,6 +21,9 @@
 <main>
 
     <script>
+
+        //GRAFICO DONAZIONI
+
         var my_JSON_array;
 
         let url = "visualizzaDonazioni";
@@ -32,15 +35,17 @@
         xhttp.onreadystatechange = function () {
             let done = 4, ok = 200;
             if (xhttp.readyState === done && xhttp.status === ok) {
+                // La risposta è un array di dimensione 12 contenente le donazioni di ogni mese dell'anno in corso
                 my_JSON_array = this.response;
 
-                // sostituisce gli 0 con null, per non farli vedere nel grafico
+                // Sostituisce gli 0 con null, per non farli vedere nel grafico
                 my_JSON_array.forEach((element, index) => {
                     if (element === 0) {
                         my_JSON_array[index] = null;
                     }
                 })
 
+                // Creazione del grafico
                 const chart = Highcharts.chart('container', {
                     chart: {
                         type: 'line'
@@ -105,6 +110,7 @@
         xhttp.send();
 
 
+        // GRAFICO VISITE
 
         url = "visualizzaVisite";
         xhttp = new XMLHttpRequest();
@@ -118,17 +124,21 @@
                 let my_JSON_array = this.response;
                 if (my_JSON_array.length > 0) {
 
-                    var visiteTot="Visite totali: "+my_JSON_array[0];
+                    // Nella posizione 0 dell'array sono presenti le visite totali
+                    var visiteTot = "Visite totali: " + my_JSON_array[0];
+                    // Nelle successive posizioni sono presenti in modo alternato "nome della pagina" e "numero di visite"
+                    // Vanno quindi salvate in due array distinti per poter creare il grafico (essendo una l'asse X e l'altra l'asse Y)
                     const pagine = [];
                     const visite = [];
-                    var pagina=0;
-                    for (let i = 1; i < my_JSON_array.length; i+=2){
-                        pagine[pagina]=my_JSON_array[i];
-                        pagine[pagina].replace(/"/g, "'");
-                        visite[pagina]=parseInt(my_JSON_array[i+1]);
+                    var pagina = 0;
+                    for (let i = 1; i < my_JSON_array.length; i += 2) {
+                        pagine[pagina] = my_JSON_array[i];
+                        pagine[pagina].replace(/"/g, "'");  // Sostituisce " con ' per poter essere inserite nel grafico
+                        visite[pagina] = parseInt(my_JSON_array[i + 1]);
                         pagina++;
                     }
 
+                    // Creazione del grafico
                     const chart = Highcharts.chart('container1', {
                         chart: {
                             type: 'column'
@@ -174,7 +184,6 @@
 
                         }]
                     });
-
                 } else {
 
                 }
@@ -195,7 +204,8 @@
                     <br>- Elencare tutti gli utenti registrati;
                     <br>- Elencare tutti i simpatizzanti;
                     <br>- Elencare tutti gli aderenti;
-                    <br>- Visualizzare il numero di visite che il sito ha ricevuto e l’istogramma delle visite per ogni pagina;
+                    <br>- Visualizzare il numero di visite che il sito ha ricevuto e l’istogramma delle visite per ogni
+                    pagina;
                     <br>- Resettare i contatori riguardo il numero di visite;
                     <br>- Visualizzare le donazioni ricevute mese per mese.</p>
             </div>

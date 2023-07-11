@@ -40,10 +40,10 @@ public class visualizzaVisite extends HttpServlet {
             name = (String) session.getAttribute("username");
         }
 
+        // Utilizzo il Dao per ottenete la lista delle visite per ogni pagina e le visite totali
         List<Visite> visite = visiteDAO.getAllVisite();
         int visiteTot = visiteDAO.getVisiteTotali();
 
-        // Utilizzo il Dao per ottenete la lista delle visite per ogni pagine
         // Scrivo la risposta come array Json
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
@@ -54,6 +54,8 @@ public class visualizzaVisite extends HttpServlet {
             // invece di creare un nuovo oggetto ad ogni iterazione è più efficiente
             // crearne uno solo e riutilizzarlo, il risultato è lo stesso
             for (Visite c : visite) {
+                // nelle posizioni dispari dell'array ci sarà il nome della pagina
+                // nelle posizioni pari dell'array ci sarà il numero di visite della pagina
                 array.add(gson.toJson(c.getPagina()));
                 array.add(gson.toJson(c.getVisite()));
             }

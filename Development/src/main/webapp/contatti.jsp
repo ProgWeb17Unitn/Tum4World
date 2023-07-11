@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <label for="dettagli" >Ulteriori dettagli:</label><br><br>
+            <label for="dettagli">Ulteriori dettagli:</label><br><br>
             <textarea id="dettagli" name="dettagli" rows="6" cols="30"></textarea><br><br>
 
             <input type="button" class="rect-bottone" id="form-btn1" value="INVIO" onclick="validateData()">
