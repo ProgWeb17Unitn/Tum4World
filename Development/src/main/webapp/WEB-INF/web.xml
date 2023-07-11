@@ -13,7 +13,7 @@
 
     <filter>
         <filter-name>cookiesFilter</filter-name>
-        <filter-class>com.example.development.filters.CookiesFilter</filter-class>
+        <filter-class>filters.CookiesFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>cookiesFilter</filter-name>
@@ -22,7 +22,7 @@
 
     <filter>
         <filter-name>userFilter</filter-name>
-        <filter-class>com.example.development.filters.UserFilter</filter-class>
+        <filter-class>filters.UserFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>userFilter</filter-name>
@@ -36,7 +36,7 @@
 
     <filter>
         <filter-name>VisiteFilter</filter-name>
-        <filter-class>com.example.development.filters.VisiteFilter</filter-class>
+        <filter-class>filters.VisiteFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>VisiteFilter</filter-name>
