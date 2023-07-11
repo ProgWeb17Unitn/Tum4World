@@ -22,10 +22,9 @@ public class CookiesFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
         // l'attributo false impedisce di creare la session se non esiste
-        //System.out.println("Filtering");
         if (session == null) {
             request.setAttribute("formNeeded", true);
-            // il parametro formNeeded fa si che venga inclusa nella risposta anche il CookieBanner
+            // il parametro formNeeded fa si che venga incluso nella risposta il CookieBanner
         }
 
         chain.doFilter(request, response);

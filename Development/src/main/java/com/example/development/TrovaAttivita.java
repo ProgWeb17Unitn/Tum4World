@@ -32,35 +32,49 @@ public class TrovaAttivita extends HttpServlet {
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
-        request.getSession(false);
+        /*
+            Controllo dalla sessione qual è l'utente che sta effettuando la richiesta. In teoria se l'utente è nella pagina Aderente/Simpatizzante
+            ciò significa che la sessione è presente e contiene il suo nome, può comunque succedere che la sessione scada o vengano
+            cancellate dal browser le informazioni per recuperarla, in quel caso l'else "esterno" ritorna uno status 500. Se la sessione è presente recupero il nome
+            dell'utente ed utilizzo la classe Iscrizione (Bean) ed il suo Dao per recuperare l'array che contiene i codici delle attività a cui è iscritto.
+            Converto successivamente l'array in un Json Array.
+            Se per qualche motivo l'iscrizione fallisce ritorna 500.
+         */
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
 
         HttpSession session = request.getSession(false);
 
         String name = "utente0";
+         /* Nome di un utente presente nel database, può essere anche inizializzato ad una
+           stringa vuota ma così è più facile effettuare debugging
+         */
 
         if (session != null) {
             name = (String) session.getAttribute("username");
-        }
+            List<Iscrizione> iscrizioni = iscrizioneDAO.getIscrizioniUtente(name);
 
-        List<Iscrizione> iscrizioni = iscrizioneDAO.getIscrizioniUtente(name);
-
-        // Utilizzo il Dao per ricevere la lista delle iscrizioni effettuate dato l'username
-        // Scrivo la risposta come array Json
-        response.setContentType("application/json");
-        response.setCharacterEncoding("utf-8");
-        try (PrintWriter out = response.getWriter()) {
-            JsonArray array = new JsonArray();
-            Gson gson = new Gson(); // invece di creare un nuovo oggetto ad ogni iterazione è più efficiente
-            // crearne uno solo e riutilizzarlo, il risultato è lo stesso
-            for (Iscrizione c : iscrizioni) {
-                array.add(gson.toJson(c.getCodiceAttivita()));
+            // Utilizzo il Dao per ricevere la lista delle iscrizioni effettuate dato l'username
+            // Scrivo la risposta come array Json
+            try (PrintWriter out = response.getWriter()) {
+                JsonArray array = new JsonArray();
+                Gson gson = new Gson(); // invece di creare un nuovo oggetto ad ogni iterazione è più efficiente
+                // crearne uno solo e riutilizzarlo, il risultato è lo stesso
+                for (Iscrizione c : iscrizioni) {
+                    array.add(gson.toJson(c.getCodiceAttivita()));
+                }
+                out.println(array);
+                out.flush();
+                response.setStatus(200);
+            } catch (IOException e) {
+                response.setStatus(500);
             }
-            out.println(array);
-            out.flush();
-            response.setStatus(200);
-        } catch (IOException e) {
+        }
+        else{
             response.setStatus(500);
         }
+
 
 
     }

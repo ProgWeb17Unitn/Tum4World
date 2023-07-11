@@ -33,13 +33,13 @@ public class AderenteDonazione extends HttpServlet {
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         /*
-            Da Js è stata effettuata una richiesta con il parametro quantita già convalidato,
+            Da Js è stata effettuata una richiesta con il parametro quantità già convalidato,
             lo recupero dalla richiesta ed effettuo il parsing. Successivamente controllo dalla
-            sessione qual'è l'utente che sta effettuando la donazione. In teoria se l'utente è nella pagina Aderente
-            ciò significa che la sessione è presente e contiene il suo numero, può comunque succedere che la sessione scada,
-            in quel caso l'else esterno ritorna uno status 500. Se la sessione è presente recupero il nome
+            sessione qual è l'utente che sta effettuando la donazione. In teoria se l'utente è nella pagina Aderente
+            ciò significa che la sessione è presente e contiene il suo nome, può comunque succedere che la sessione scada o vengano
+            cancellate dal browser le informazioni per recuperarla, in quel caso l'else "esterno" ritorna uno status 500. Se la sessione è presente recupero il nome
             dell'utente ed utilizzo la classe Donazione (Bean) ed il suo Dao per salvare la donazione. Se per qualche motivo
-            uno dei tre parametri dovesse essere errato o nullo il metodo save fallisce ed anche in questo caso ritorno 500.
+            uno dei tre parametri dovesse essere errato o nullo il metodo save fallisce ed anche in questo caso ritorna 500.
          */
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");

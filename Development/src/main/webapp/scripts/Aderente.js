@@ -13,8 +13,9 @@ var telefono = "none";
 var password = "none";
 
 var openedDati = 0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
-var openedIscrizione = 0;
-// colori visualizzaDati
+var openedIscrizione = 0; // variabile utilizzata per capire se serve aprire o chiudere il div di visualizza dati
+// colori visualizzaDati, perchè per evitare di duplicare il codice per aderente e simpatizzante ho realizzato un codice
+// "modulare", cosi in simpatizzante basta cambiare le variabili seguenti
 var color1 = '#000000';
 var color2 = '#DBDFEA';
 var color3 = '#ffffff';
@@ -23,17 +24,16 @@ window.addEventListener("load", trovaAttivita);
 
 function handleDonation() {
     /*
-        Esefuo due operazioni:
+        Eseguo due operazioni:
             -Controllo che il valore inserito sia corretto, se è corretto aggiungo la donazione nel DB
             -Se è scorretto "mostro" l'errore
      */
-    var form = document.getElementById('form-donazione');
-    var valoreInserito = form.elements.quantita.value;
+
+    var valoreInserito=document.getElementById("quantita").value;
 
     // verifico se non è valido
     if (!isValidInput(valoreInserito)) {
         segnalaErrore(1);
-        //console.log("Input Donazione inserito non valido");
     } else {
         // Form valido, salvo nel db la donazione e "mostro che è stata effettuata"
         saveDonation();
@@ -53,7 +53,6 @@ function isValidInput(valore) {
 
 
 function segnalaErrore() {
-    //console.log("Inserito valore errato");
     var submit = document.getElementById('submit-donation');
     submit.style.backgroundColor = '#A23327FF';
     submit.style.animation = 'donazioneInvalida 0.5s linear';
@@ -77,7 +76,6 @@ function donazioneEffettuata() {
 }
 
 function saveDonation() {
-    // Making request
 
     //NB: per ricevere effettivamente il feedback di ricezione impiega qualche istante
     let quantita = document.getElementById("quantita").value;
@@ -86,31 +84,30 @@ function saveDonation() {
     xhttp.open("POST", url, true);
     xhttp.responseType = "json";
 
-    // Callback
     xhttp.onreadystatechange = function () {
         let done = 4, ok = 200;
         if (xhttp.readyState === done && xhttp.status === ok) {
             donazioneEffettuata();
-            //console.log("Donazione effettuata");
         } else {
-            //console.log("SaveDonation Fail: Donazione non salvata");
-            segnalaErrore();
+            if(xhttp.readyState === done && xhttp.status !== ok) {
+                // Ho ricevuto una risposta ma con risultato negativo
+                console.log("SaveDonation Fail: Donazione non salvata");
+                segnalaErrore();
+            }
         }
     }
-    // Sending request
     xhttp.send();
 }
 
-function trovaAttivita() {
+function trovaAttivita(){
     check();
-    // questa funzione cerca nel database a quali attivita l'utente loggato è iscritto
+    // questa funzione cerca nel database a quali attività l'utente loggato è iscritto
     // Così come quella della donazione ci mette un po' di tempo prima di recuperare il valore
     let url = "TrovaAttivita";
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, true);
     xhttp.responseType = "json";
 
-    // Callback
     xhttp.onreadystatechange = function () {
         let done = 4, ok = 200;
         if (xhttp.readyState === done && xhttp.status === ok) {
@@ -142,7 +139,11 @@ function trovaAttivita() {
                 }
             }
         } else {
-            //console.log("Le attività a cui l'utente è iscritto non sono stare recuperate");
+            if(xhttp.readyState === done && xhttp.status !== ok) {
+                // Ho ricevuto una risposta ma con risultato negativo
+                console.log("Le attività a cui l'utente è iscritto non sono stare recuperate");
+
+            }
         }
     }
     // Sending request
