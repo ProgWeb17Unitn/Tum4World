@@ -11,7 +11,10 @@ public class logOutAction extends HttpServlet {
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getSession(false);
+        /*
+            Da Js è stata effettuata la richiesta di Logout. Rimuovo dalla session gli attributi tipo e username
+            per effettuare il "logout", js si occuperà di reindirizzare l'utente.
+         */
 
         HttpSession session = request.getSession(false);
 
@@ -20,8 +23,10 @@ public class logOutAction extends HttpServlet {
         if (session != null) {
             session.removeAttribute("tipo");
             session.removeAttribute("username");
+            response.setStatus(200);
+        }else{
+            response.setStatus(500);
         }
-        response.setStatus(200);
     }
 
     @Override
