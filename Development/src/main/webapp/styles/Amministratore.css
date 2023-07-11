@@ -90,9 +90,11 @@ img{
     margin-right: 3%
 }
 
-#btn1,#btn2,#btn3,#btn4,#btn6:hover{
+.bottone-elemento:hover{
     cursor: pointer;
+    background-color: #843bc5;
 }
+
 #btn5:hover{
     cursor: pointer;
     background-color: #fa5858;

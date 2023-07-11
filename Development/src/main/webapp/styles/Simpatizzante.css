@@ -1,7 +1,3 @@
-/*
-   TODO: Spostare simpatizzante-palette
- */
-
 .flexbox-container{
     flex: 1;
     display: flex;
@@ -116,6 +112,12 @@ img{
     border-radius: 6px;
     box-shadow: 2px 2px 2px #14dee7;
 }
+.bottone-elemento p {
+    overflow: hidden; /* Se restringo di molto la pagina, una parte di testo viene "nascosta" */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 #btn1{
     margin-right: 5%
 }

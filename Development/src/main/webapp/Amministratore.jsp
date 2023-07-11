@@ -200,7 +200,7 @@
                     <br>- Visualizzare le donazioni ricevute mese per mese.</p>
             </div>
             <div class="Dashboard-image">
-                <img src="assets/images/S/settingsicon2.svg" id="dashboardimg" alt="settings">
+                <img src="assets/images/S/AdminImage.svg" id="dashboardimg" alt="settings">
             </div>
         </div>
 
