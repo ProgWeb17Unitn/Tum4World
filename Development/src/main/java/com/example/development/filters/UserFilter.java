@@ -23,9 +23,16 @@ public class UserFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession session = httpRequest.getSession(false);
 
+        // pagina a cui si vuole accedere
         String resource = httpRequest.getServletPath();
+
+        // tipologia di utente salvata nella sessione,
+        // se non presente sessione o l'attributo giusto attributo in essa,
+        // viene settato il tipo 'none'
         String tipo = (session == null || session.getAttribute("tipo") == null) ? "none" : (String) session.getAttribute("tipo");
 
+        // controlla a che pagina si vuole accedere e se si hanno i permessi per farlo
+        // in base alle variabili definite sopra
         if (tipo.compareTo("none") == 0
                 || ((resource.compareTo("/Amministratore") == 0 || resource.compareTo("/Amministratore.jsp") == 0) && tipo.compareTo("admin") != 0)
                 || ((resource.compareTo("/Aderente") == 0 || resource.compareTo("/Aderente.jsp") == 0) && tipo.compareTo("aderente") != 0)

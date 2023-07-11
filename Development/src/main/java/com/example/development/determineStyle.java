@@ -31,12 +31,18 @@ public class determineStyle extends HttpServlet {
         HttpSession session = request.getSession(false);
         String theme;
 
+        // setto il tema in base al tipo di utente salvato
+        // nell'attributo 'tipo' della sessione;
+        // se la sessione o l'attributo specificato sono nulli,
+        // setto il tema a nullo
         if(session != null && session.getAttribute("tipo") != null)
             theme = (String) session.getAttribute("tipo");
         else
             theme = "none";
 
-        // scrive la frase nella risposta
+        // scrive il tipo di utente nella risposta,
+        // la richiesta è inviata da Javascript, che
+        // userà la risposta per settare il tema di header e footer
         PrintWriter writer = response.getWriter();
         writer.print(theme);
         writer.close();

@@ -1,16 +1,32 @@
+// oggetto theme
+// contiene informazioni sul tema corrente della pagina
+// e le funzioni per cambiarlo
 theme = {};
 theme.backgroundColor = '#2D728F';
 theme.active = 'none';
+
+// oggetto menu
+// contiene informazioni sullo stato del menu ad hamburger
+// e le funzioni per cambiarlo
 menu = {};
 menu.status = 'closed';
+
+// oggetto page
+// contiene informazioni sull'orientamento della pagina
+// ed alcune funzioni fondamentali per il funzionamento di ogni pagina
 page = {};
 page.status = 'landscape';
 
+
 theme.switch = function (n) {
+    // utilizzata per cambiare il tema dell'header e footer, qualora presenti
+    // in base al parametro n, che può essere una delle 3 tipologie di utente
+    // se n è invalido, setta semplicemente il colore di default
+
     // scrolla in cima alla pagina per evitare problemi con la trasparenza dell'header
     window.scrollTo(0, 0);
 
-    // in base alla palette scelta, ottiene il path degli asset necessari
+    // sceglie il colore degli oggetti in base ad n
     theme.active = n;
     if (n === 'simpatizzante')
         theme.backgroundColor = '#1c4664';
@@ -21,20 +37,15 @@ theme.switch = function (n) {
     else
         theme.backgroundColor = '#2D728F';
 
-    // elementi da modificare in base al tema
+    // modifica lo sfondo del footer, controllando che sia presente nella pagina
     const footer = document.getElementsByTagName('footer')[0];
     if (footer) {
         footer.style.backgroundColor = theme.backgroundColor;
 
+        // modifica lo sfondo delle frasi, controllando che sia presente nella pagina la sezione apposita
         const helperBox = document.getElementById('quotes').getElementsByTagName('p')[0];
         if (helperBox)
             helperBox.style.backgroundColor = theme.backgroundColor;
-    }
-
-    const cookieBanner = document.getElementsByClassName('CookieBanner')[0];
-    if (cookieBanner) {
-        cookieBanner.getElementsByClassName('RectangularBanner')[0].style.backgroundColor = theme.backgroundColor;
-        cookieBanner.getElementsByClassName('triangle')[0].style.borderTop = `1.5em solid ${theme.backgroundColor}`;
     }
 }
 
@@ -124,6 +135,7 @@ page.toggle = function (mode) {
 
 page.onresize = function () {
     // chiamata ogni volta che la pagina viene resizata
+
     // chiudo il menu, per evitare comportamenti strani
     menu.close();
 
@@ -150,41 +162,49 @@ page.load = function () {
     if (hamburger)
         hamburger.addEventListener('click', menu.toggle);
 
+    // aggiunge funzionalità al pulsante per tornare in cima alla pagina, se presente
     const backToTop = document.getElementById('backToTop');
     if (backToTop)
         backToTop.addEventListener('click', () => window.scrollTo(0, 0));
 
+    // inizializza la generazione delle citazioni
     const quotesBanner = document.getElementById('quotes');
-    if (quotesBanner) {
+    if (quotesBanner)
         quotes.init();
 
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 2 && this.status === 200) {
+    // invio una riciesta alla servlet determineStyle per
+    // ottenere il tema da mostrare nella pagina
+    const xhttp = new XMLHttpRequest();
 
-                quotesBanner.style.display = 'none';
-            } else if (this.readyState === 4 && this.status === 200) {
-                theme.switch(this.responseText);
-                if (quotesBanner)
-                    quotesBanner.style.display = 'flex';
-            }
-        }
-        var jsessionid = "";
+    // qualora non fossero abilitati i cookies, è necessario aggiungere
+    // manualmente il jsessionid contenuto nell'url corrente anche alla
+    // richiesta per il tema
+    var jsessionid = "";
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200)
+            theme.switch(this.responseText);
+
+        // aggiungo il jsessionid alla mia richiesta solo se già presente nell'URL
+        // della pagina, altrimenti la servlet otterrà la session in automatico
         if (window.location.href.includes("jsessionid")) {
             // 'jsessionid=' sono 11 char. Il jsessionid è lungo 32 char, quindi 11 + 32 = 43
             // il ; serve perchè è il separatore utilizzato quando viene fatto URL rewriting
-            jsessionid = ";" + window.location.href.split(';')[1].substring(0, 43);
+            jsessionid = window.location.href.split(';')[1].substring(0, 43);
         }
-
-        xhttp.open('GET', "determineStyle" + jsessionid, true);
-        xhttp.send();
     }
+    xhttp.open('GET', `determineStyle;${jsessionid}`, true);
+    xhttp.send();
 }
 
 page.onscroll = function () {
+    // chiamata ogni volta che una pagina qualsiasi viene scrollata
+
+    // elementi da modificare
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
     const backToTop = document.getElementById('backToTop');
+
     // quando il menu è aperto, l'header è sempre opaco
     // quindi ritorna senza fare niente
     if (menu.status === 'open')
@@ -197,7 +217,7 @@ page.onscroll = function () {
     let pos = window.scrollY;
 
     // scalo e imposto la trasparenza dell'header in base alla posizione dello scroll
-    // rispetto a ref1
+    // rispetto a ref
     if (pos < ref) {
         hamburger.style.top = '16px';
         header.style.backgroundColor = 'transparent';
