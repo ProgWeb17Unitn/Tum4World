@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/Attivita.css">
     <script src="scripts/base.js"></script>
+    <script src="scripts/Attivita.js"></script>
 </head>
 
 <body>

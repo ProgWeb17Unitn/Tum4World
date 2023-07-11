@@ -1,6 +1,9 @@
 var scrollingTimer;
 
-window.addEventListener("scroll", function handleScroll() {
+window.addEventListener('resize', handleScroll);
+window.addEventListener('scroll', handleScroll);
+
+function handleScroll() {
     /*
         Durante lo scroll eseguo 2 operazioni:
             1) Cambio lo stile:
@@ -13,11 +16,10 @@ window.addEventListener("scroll", function handleScroll() {
     var circle = document.getElementsByClassName("cerchio")[0];
     circle.style.backgroundColor = "#F49E4C";
 
-
     clearTimeout(scrollingTimer);
     scrollingTimer = setTimeout(function () {
         circle.style.backgroundColor = "#F5C675";
     }, 200);
     var scrollPosition = window.scrollY;
     circle.style.transform = "translate(-50%, calc(50% + " + scrollPosition + "px))";
-});
+}

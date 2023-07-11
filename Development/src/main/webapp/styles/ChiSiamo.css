@@ -9,7 +9,7 @@
        immagine e foto siano allineati tra di loro (asse y) e rispetto al container (asse y)
     - La vignetta è un flexbox semplice per riga composto da triangolo + rettangolo
  */
-.flexbox-container {
+.flexbox-container{
     position: relative;
     flex: 1; /* Utilizzo tutto lo spazio del body */
     display: flex; /* Uso il flex disposition così da allineare colonnaSx linea, colonnaDX. NB: di default è orizzontale */
