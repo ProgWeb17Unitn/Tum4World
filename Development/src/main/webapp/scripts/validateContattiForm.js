@@ -2,7 +2,7 @@ function validateData() {
 
     let form = document.forms.namedItem("formContatti");
     let valido = true;
-    let stringaRitorno = "";
+    let stringaRitorno = "";    //Stringa contenente gli errori da far sapere all'utente (tramite alert)
 
     if (form["nome"].value === "") {
         stringaRitorno += "Specificare nome e cognome\n";
@@ -12,7 +12,7 @@ function validateData() {
     if (form["email"].value === "") {
         stringaRitorno += "Specificare indirizzo email\n";
         valido = false;
-    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form["email"].value))) {
+    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form["email"].value))) {  //RegEx per il controllo della validità della email
         stringaRitorno += "Indirizzo email non valido\n";
         valido = false;
     }
@@ -28,6 +28,7 @@ function validateData() {
     }
 
     if (valido) {
+        //Se tutti i campi del form soono validi si procede all'invio della mail tramite protocollo SMTP
         let xhttp = new XMLHttpRequest();
         let url = "EmailSending";
 

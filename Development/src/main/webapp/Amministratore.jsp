@@ -234,8 +234,8 @@
     </div>
 
     <figure class="highcharts-figure">
-        <div id="container" style="min-width: 1000px; height: 600px; margin: 0 auto; display: none"></div>
-        <div id="container1" style="min-width: 1000px; height: 600px; margin: 0 auto; display: none"></div>
+        <div id="container" style="min-width: 48vw; height: 50vh; margin: 0 auto; display: none"></div>
+        <div id="container1" style="min-width: 48vw; height: 58vh; margin: 0 auto; display: none"></div>
     </figure>
 
 </main>
