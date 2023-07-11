@@ -51,6 +51,7 @@ public class visualizzaRegistrati extends HttpServlet {
             Gson gson = new Gson(); // invece di creare un nuovo oggetto ad ogni iterazione è più efficiente
             // crearne uno solo e riutilizzarlo, il risultato è lo stesso
             for (Utente c : utenti) {
+                // ritorno solamente l'username dell'utente
                 array.add(gson.toJson(c.getUsername()));
             }
             out.println(array);

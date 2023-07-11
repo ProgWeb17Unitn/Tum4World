@@ -42,7 +42,7 @@ public class visualizzaSimpatizzanti extends HttpServlet {
 
         List<Utente> utenti = utenteDAO.getAllSimpatizzanti();
 
-        // Utilizzo il Dao per ottenete la lista degli utenti registrati
+        // Utilizzo il Dao per ottenete la lista dei simpatizzanti
         // Scrivo la risposta come array Json
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");

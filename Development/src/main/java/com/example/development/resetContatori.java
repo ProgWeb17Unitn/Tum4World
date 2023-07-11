@@ -35,8 +35,9 @@ public class resetContatori extends HttpServlet {
 
             HttpSession session = request.getSession(false);
 
-            visiteDAO.resetVisite(); //azzero i contatori
+            visiteDAO.resetVisite(); // Azzero i contatori
 
+            // Restituisco la page per fare il refresh
             PrintWriter writer = response.getWriter();
             writer.print(response.encodeRedirectURL(request.getContextPath() + "/Amministratore"));
             writer.close();
