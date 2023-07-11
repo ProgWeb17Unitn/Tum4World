@@ -1,17 +1,20 @@
 window.addEventListener('scroll', function () {
         // chiamata ogni volta che la pagina viene scrollata
+
+        // elementi necessari
         const logo = document.getElementById('logo');
         const image = document.getElementById('mainImg');
 
-        // rende il logo visibile,
+        // ottengo le posizioni in cui è necessario:
+        // * rendere il logo visibile,
         let ref1 = logo.offsetTop - logo.clientHeight;
-        // rende l'immagine visibile
+        // * rendere l'immagine visibile
         let ref2 = image.offsetTop - image.clientHeight;
         // per fare ciò, utilizzo anche la posizione attuale nella pagina
         let pos = window.scrollY;
 
-        // rendo visibile e sposto il logo 10vh più in alto, se pos >=
-        // rispetto a ref2
+        // rendo visibile e sposto il logo 10vh più in alto, se
+        // pos >= ref2
         if (pos < ref1 && window.innerWidth > 1000) {
             logo.style.opacity = '0';
             logo.style.marginTop = '20vh';

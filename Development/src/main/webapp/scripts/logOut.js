@@ -1,6 +1,8 @@
 window.addEventListener('load', () => setTimeout(changecolor, 200));
 
 function changecolor() {
+    // cambia il colore del box di conferma in base al tema corrente
+
     const rettangolo = document.getElementsByClassName("logOutRectangle")[0];
     rettangolo.style.visibility = 'visible';
 
