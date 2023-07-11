@@ -27,9 +27,9 @@ public class UserFilter implements Filter {
         String tipo = (session == null || session.getAttribute("tipo") == null) ? "none" : (String) session.getAttribute("tipo");
 
         if (tipo.compareTo("none") == 0
-                || (resource.compareTo("/Admin") == 0 && tipo.compareTo("admin") != 0)
-                || (resource.compareTo("/Aderente") == 0 && tipo.compareTo("aderente") != 0)
-                || (resource.compareTo("/Simpatizzante") == 0 && tipo.compareTo("simpatizzante") != 0))
+                || ((resource.compareTo("/Amministratore") == 0 || resource.compareTo("/Amministratore.jsp") == 0) && tipo.compareTo("admin") != 0)
+                || ((resource.compareTo("/Aderente") == 0 || resource.compareTo("/Aderente.jsp") == 0) && tipo.compareTo("aderente") != 0)
+                || ((resource.compareTo("/Simpatizzante") == 0 || resource.compareTo("/Simpatizzante.jsp") == 0) && tipo.compareTo("simpatizzante") != 0))
             httpResponse.sendRedirect((httpResponse.encodeRedirectURL(httpRequest.getContextPath()+"/notAuthorized")));
 
         chain.doFilter(request, response);
