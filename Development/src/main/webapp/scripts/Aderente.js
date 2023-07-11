@@ -121,18 +121,14 @@ function trovaAttivita(){
 
                 for (let i = 0; i < my_JSON_array.length; i++) {
                     let current_value = JSON.parse(my_JSON_array[i]);
-                    //console.log("CUrrent value: " + current_value);
                     if (current_value === "attivita1") {
-                        // console.log("Isritto ad Attività1");
                         rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
                         attivita1 = 1; // Segno le attivitò a cui l'utente è iscritto per evitare di
                         // doverle ricontrollare in caso volesse cliccare per iscriversi
                     } else if (current_value === "attivita2") {
-                        //console.log("Isritto ad Attività2");
                         rettangoliAttiva2.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
                         attivita2 = 1;
                     } else if (current_value === "attivita3") {
-                        //console.log("Isritto ad Attività3");
                         rettangoliAttiva3.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
                         attivita3 = 1;
                     }
@@ -146,16 +142,15 @@ function trovaAttivita(){
             }
         }
     }
-    // Sending request
     xhttp.send();
 }
 
-function check() {
+function check(){
 
     // La funzione trovaAttivita setta a 1 le attivita a cui l'utente è iscritto
     // e cambia la sfumatura del rettangolo quando la pagina viene caricata,
-    // se poi per qualche motivo si ricarica la pagina questa indormazione tornerebbe "momentaneamente" come l'originale
-    // finchè non recuperata, tramite questa dfunzione si imposta subito il cambio di stile per le informazioni già presenti
+    // se poi per qualche motivo si ricarica la pagina questa informazione tornerebbe "momentaneamente" come l'originale
+    // finché non recuperata, tramite questa funzione si imposta subito il cambio di stile per le informazioni già presenti
     let rettangoliAttiva1 = document.getElementById("Attivita1");
     let rettangoliAttiva2 = document.getElementById("Attivita2");
     let rettangoliAttiva3 = document.getElementById("Attivita3");
@@ -191,32 +186,33 @@ function iscriviAttivita(attivita) {
         if (xhttp.readyState === done && xhttp.status === ok) {
             iscrizioneAvvenuta(attivita);
         } else {
-            iscrizioneFail(attivita);
-            //console.log("Iscrizione Fallita");
+            if(xhttp.readyState === done && xhttp.status !== ok) {
+                // Ho ricevuto una risposta ma con risultato negativo
+                iscrizioneFail(attivita);
+                console.log("Iscrizione Fallita");
+            }
         }
     }
-    // Sending request
     xhttp.send();
-
 }
 
-function iscrizioneAvvenuta(attivita) {
+function iscrizioneAvvenuta(attivita){
     if (attivita === 1) {
-        attivita1 = 1; // aggiorno il fatto che sia  iscritto
+        attivita1 = 1; // aggiorno il fatto che sia iscritto
     } else if (attivita === 2) {
         attivita2 = 1;
     } else {
         attivita3 = 1;
     }
     let rettangoliAttiva1 = document.getElementById("Attivita" + attivita);
-    rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)"
+    rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(124, 251, 38)";
 
 }
 
 function iscrizioneFail(attivita) {
 
     let rettangoliAttiva1 = document.getElementById("Attivita" + attivita);
-    rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(255, 0, 0)"
+    rettangoliAttiva1.style.boxShadow = "3px 3px 2px rgb(255, 0, 0)";
 }
 
 function giaIscritto(attivita) {
@@ -254,24 +250,32 @@ function visualizzaDati() {
 
                     mostra();
 
-                } else {
-                    // console.log("Non sono riuscito a recuperare l'utente err1");
+                }else{
+                    visualizzaDatiFail();
+                    console.log("Non sono riuscito a recuperare i dati dell'utente");
+                }
+            }else{
+                if(xhttp.readyState === done && xhttp.status !== ok) {
+                    // Ho ricevuto una risposta ma con risultato negativo
+                    visualizzaDatiFail();
+                    console.log("Non sono riuscito a recuperare i dati dell'utente");
                 }
             }
         }
-        // Sending request
         xhttp.send();
     } else {
-        //const container=document.getElementsByClassName("flexbox-container")[0];
         const datidiv = document.getElementsByClassName("datidiv")[0];
-        //container.removeChild(datidiv);
         datidiv.remove();
         openedDati = 0;
-
         var occhio = document.getElementById("eyeicon") //cambio icona con L'occhio chiuso
         occhio.src = './assets/images/S/eyeCLOSED' + eyecolor + '.svg';
 
     }
+}
+
+function visualizzaDatiFail(){
+    var bottone=document.getElementById("btn1");
+    bottone.style.boxShadow="3px 3px 2px rgb(255, 0, 0)";
 }
 
 function mostra() {
@@ -386,9 +390,17 @@ function cancella() {
             // posso farlo direttamente da js poichè una volta cancellata l'iscrizione invalido la session
             window.location.href = "homepage";
         } else {
-            //console.log("Iscrizione Fallita");
+            if(xhttp.readyState === done && xhttp.status !== ok) {
+                // Ho ricevuto una risposta ma con risultato negativo
+                console.log("Eliminazione Profilo Fallita");
+                cancellaIscrizioneFail();
+            }
         }
     }
-    // Sending request
     xhttp.send();
+}
+
+function cancellaIscrizioneFail(){
+    var bottone=document.getElementById("btn2");
+    bottone.style.boxShadow="3px 3px 2px rgb(255, 0, 0)";
 }

@@ -37,7 +37,7 @@ public class IscriviAttivita extends HttpServlet {
             effettuo una conversione del numero passato al corrispettivo "codice" richiesto dal database. Si poteva effettuare direttamente
             in js il passaggio del codice richiesto dal database invece del numero, ma in questo modo si ha una divisione migliore
             dei ruoli ed in caso si volesse cambiare il valore dei codici del database basterebbe modificare i valori qui invece che da js.
-            Se per qualche motivo l'iscrizione fallisce ritorna 500.
+            Se per qualche motivo l'azione fallisce ritorna 500.
          */
 
         response.setContentType("application/json");

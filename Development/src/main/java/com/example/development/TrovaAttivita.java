@@ -38,7 +38,7 @@ public class TrovaAttivita extends HttpServlet {
             cancellate dal browser le informazioni per recuperarla, in quel caso l'else "esterno" ritorna uno status 500. Se la sessione è presente recupero il nome
             dell'utente ed utilizzo la classe Iscrizione (Bean) ed il suo Dao per recuperare l'array che contiene i codici delle attività a cui è iscritto.
             Converto successivamente l'array in un Json Array.
-            Se per qualche motivo l'iscrizione fallisce ritorna 500.
+            Se per qualche motivo l'azione fallisce ritorna 500.
          */
 
         response.setContentType("application/json");

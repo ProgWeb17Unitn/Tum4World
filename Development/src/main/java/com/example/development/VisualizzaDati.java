@@ -33,46 +33,61 @@ public class VisualizzaDati extends HttpServlet {
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
-        request.getSession(false);
+        /*
+            Controllo dalla sessione qual è l'utente che sta effettuando la richiesta. In teoria se l'utente è nella pagina Aderente/Simpatizzante
+            ciò significa che la sessione è presente e contiene il suo nome, può comunque succedere che la sessione scada o vengano
+            cancellate dal browser le informazioni per recuperarla, in quel caso l'else "esterno" ritorna uno status 500. Se la sessione è presente recupero il nome
+            dell'utente ed utilizzo la classe Utente (Bean) ed il suo Dao per recuperare i suoi dati. Converto i vari dati dell'utente in un array JSON.
+            Se per qualche motivo l'azione fallisce ritorna 500.
+         */
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
 
         HttpSession session = request.getSession(false);
 
         String name = "utente0";
+        /* Nome di un utente presente nel database, può essere anche inizializzato ad una
+           stringa vuota ma così è più facile effettuare debugging
+         */
 
         if (session != null) {
             name = (String) session.getAttribute("username");
-        }
-        response.setContentType("application/json");
-        response.setCharacterEncoding("utf-8");
-        try {
-            utente= utenteDAO.getUtente(name); // utilizzo il DAO per recuperare l'utente
-            // Scrivo la risposta come array Json
+            try {
+                utente= utenteDAO.getUtente(name); // utilizzo il DAO per recuperare l'utente
+                // Scrivo la risposta come array Json
 
-            try (PrintWriter out = response.getWriter()) {
-                JsonArray array = new JsonArray();
-                Gson gson = new Gson();
-                array.add(gson.toJson(utente.getUsername()));
-                array.add(gson.toJson(utente.getTipo()));
-                array.add(gson.toJson(utente.getNome()));
-                array.add(gson.toJson(utente.getCognome()));
-                array.add(gson.toJson(utente.getEmail()));
-                LocalDate nascita=utente.getDataNascita();
-                array.add(gson.toJson(nascita.toString()));
-                array.add(gson.toJson(utente.getTelefono()));
-                array.add(gson.toJson(utente.getPassword()));
-                response.setStatus(200);
-                out.println(array);
-                out.flush();
-            } catch (IOException e) {
-                System.out.println("err1");
+                try (PrintWriter out = response.getWriter()) {
+                    JsonArray array = new JsonArray();
+                    Gson gson = new Gson();
+                    array.add(gson.toJson(utente.getUsername()));
+                    array.add(gson.toJson(utente.getTipo()));
+                    array.add(gson.toJson(utente.getNome()));
+                    array.add(gson.toJson(utente.getCognome()));
+                    array.add(gson.toJson(utente.getEmail()));
+                    LocalDate nascita=utente.getDataNascita();
+                    array.add(gson.toJson(nascita.toString()));
+                    array.add(gson.toJson(utente.getTelefono()));
+                    array.add(gson.toJson(utente.getPassword()));
+                    out.println(array);
+                    out.flush();
+                    response.setStatus(200);
+                } catch (IOException e) {
+                    System.out.println("Errore1 in Visualizza Dati");
+                    response.setStatus(500);
+                }
+
+            } catch (UserNotFoundException e) {
+                System.out.println("Errore2 in Visualizza Dati");
                 response.setStatus(500);
+                throw new RuntimeException(e);
             }
-
-        } catch (UserNotFoundException e) {
-            System.out.println("err2");
-            response.setStatus(500);
-            throw new RuntimeException(e);
         }
+        else{
+            response.setStatus(500);
+        }
+
+
     }
 
     @Override
