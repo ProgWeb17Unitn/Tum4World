@@ -20,6 +20,6 @@
 <%@ include file="cookieBanner.html" %>
 <% } %>
 
-<%@ include file="footer_static.html" %>
+<%@ include file="footer_static.jsp" %>
 </body>
 </html>

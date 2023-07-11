@@ -14,3 +14,8 @@
         </audio>
     </div>
 </footer>
+
+<script>
+    quotes.init();
+    theme.switch("<%= (session != null && session.getAttribute("tipo") != null) ? session.getAttribute("tipo") : "none"%>");
+</script>

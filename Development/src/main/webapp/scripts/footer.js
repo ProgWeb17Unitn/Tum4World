@@ -23,6 +23,7 @@ quotes.init = function () {
     // * l'intervallo di 20 secondi con cui generare le frasi
     // * il pulsante per generare frasi on-demand
 
+    quotes.generate();
     quotes.interval = setInterval(quotes.generate, 20000);
 
     const helper = document.getElementById('helper');

@@ -166,35 +166,6 @@ page.load = function () {
     const backToTop = document.getElementById('backToTop');
     if (backToTop)
         backToTop.addEventListener('click', () => window.scrollTo(0, 0));
-
-    // inizializza la generazione delle citazioni
-    const quotesBanner = document.getElementById('quotes');
-    if (quotesBanner)
-        quotes.init();
-
-    // invio una riciesta alla servlet determineStyle per
-    // ottenere il tema da mostrare nella pagina
-    const xhttp = new XMLHttpRequest();
-
-    // qualora non fossero abilitati i cookies, è necessario aggiungere
-    // manualmente il jsessionid contenuto nell'url corrente anche alla
-    // richiesta per il tema
-    var jsessionid = "";
-
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200)
-            theme.switch(this.responseText);
-
-        // aggiungo il jsessionid alla mia richiesta solo se già presente nell'URL
-        // della pagina, altrimenti la servlet otterrà la session in automatico
-        if (window.location.href.includes("jsessionid")) {
-            // 'jsessionid=' sono 11 char. Il jsessionid è lungo 32 char, quindi 11 + 32 = 43
-            // il ; serve perchè è il separatore utilizzato quando viene fatto URL rewriting
-            jsessionid = window.location.href.split(';')[1].substring(0, 43);
-        }
-    }
-    xhttp.open('GET', `determineStyle;${jsessionid}`, true);
-    xhttp.send();
 }
 
 page.onscroll = function () {

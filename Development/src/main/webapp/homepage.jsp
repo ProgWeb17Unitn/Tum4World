@@ -75,7 +75,7 @@
 <% } %>
 
 <%@ include file="backToTop.html" %>
-<%@ include file="footer.html" %>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>
