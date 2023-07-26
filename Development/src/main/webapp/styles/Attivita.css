@@ -1,0 +1,89 @@
+/*
+    il flexbox container è un semplice container che comprende le tre attività in orizzontale
+*/
+
+.flexbox-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+.title-grande{
+    align-self: stretch; /*Testo occupa tutta la lunghezza del flexbox*/
+    text-align: center;
+    background-color: #3B8EA5;
+    border-radius: 3px 3px 0 0; /*smusso solo gli angoli in alto*/
+    padding: 2%;
+    font-size: xx-large;
+    font-weight: bold;
+    text-shadow: 3px 2px 4px rgba(0,0,0,0.3);
+
+}
+.title-attivita{
+    color: white;
+    font-weight: bold;
+}
+.attivita{
+    display:flex;
+}
+
+.Rectangle{
+    padding-left: 5%;
+    padding-right: 5%;
+    flex-grow: 1; /* Occupa lo spazio occupato dalla foto */;
+    width: 40%; /*Firefox ha dei problemi con flex grow quindi lo devo fare manualmente*/
+    display: flex; /* Centro verticalmente titoletto e testo*/
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-size: x-large;
+}
+
+.Rectangle p {
+    text-align: center;
+}
+
+#Rectangle1{
+    background-color:rgb(179,60,70);
+}
+
+#Rectangle2{
+    background-color:rgb(171,52,40);
+}
+
+#Rectangle3{
+    background-color:rgb(208,105,58);
+}
+
+.fotoAttivita{
+    min-width: 50%;
+    max-width: 50%;
+    height: auto;
+    max-height: 100%;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+    padding: 0;
+    border: 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.fotoAttivita:hover{
+    z-index: 9998; /* Il bordo andrebbe ingrandendosi "sotto" gli altri elmenti, quindi aumento lo z-index
+        ma non al max perchè deve essere sotto la nav-bar che ha 9999*/
+    box-shadow: 0 0 0 4px white;
+}
+
+
+.images{
+    display:block;
+    padding: 0;
+    margin: 0;
+    min-width:100%;
+    max-width: 100%;
+    height: auto;
+}

@@ -1,120 +1,52 @@
+// oggetto theme
+// contiene informazioni sul tema corrente della pagina
+// e le funzioni per cambiarlo
 theme = {};
 theme.backgroundColor = '#2D728F';
+theme.active = 'none';
+
+// oggetto menu
+// contiene informazioni sullo stato del menu ad hamburger
+// e le funzioni per cambiarlo
 menu = {};
 menu.status = 'closed';
-page = {};
 
-// controlla se viene aggiornato il tema predefinito del browser
-// e cambia il tema di conseguenza
-// a meno che non sia in modalità admin
-//window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-//if (theme.active !== 'admin')
-//theme.switch(event.matches ? 'dark' : 'light');
-//});
+// oggetto page
+// contiene informazioni sull'orientamento della pagina
+// ed alcune funzioni fondamentali per il funzionamento di ogni pagina
+page = {};
+page.status = 'landscape';
+
 
 theme.switch = function (n) {
+    // utilizzata per cambiare il tema dell'header e footer, qualora presenti
+    // in base al parametro n, che può essere una delle 3 tipologie di utente
+    // se n è invalido, setta semplicemente il colore di default
+
     // scrolla in cima alla pagina per evitare problemi con la trasparenza dell'header
     window.scrollTo(0, 0);
 
-    // in base alla palette scelta, ottiene il path degli asset necessari
+    // sceglie il colore degli oggetti in base ad n
     theme.active = n;
-    if (n === 'light')
-        theme.backgroundColor = '#F49E4C';
-    else if (n === 'Simpatizzante')
+    if (n === 'simpatizzante')
+        theme.backgroundColor = '#1c4664';
+    else if (n === 'aderente')
         theme.backgroundColor = '#5f6b8d';
-    else if (n === 'Aderente')
-        theme.backgroundColor = '#4da2a2';
-    else if (n === 'dark')
+    else if (n === 'admin')
+        theme.backgroundColor = '#502477';
+    else
         theme.backgroundColor = '#2D728F';
-    else
-        theme.backgroundColor = '#2D728F'; //todo admin colors
 
-    //document.getElementById('theme').setAttribute('href', `styles/themes/${theme.active}/homepage.css`);
+    // modifica lo sfondo del footer, controllando che sia presente nella pagina
+    const footer = document.getElementsByTagName('footer')[0];
+    if (footer) {
+        footer.style.backgroundColor = theme.backgroundColor;
 
-    // elementi da modificare
-    const hamburger = document.getElementById('hamburger');
-    const themeSwitcher = document.getElementById('themeSwitcher');
-
-    // cambia logo, icone ed immagine di sfondo
-    if (hamburger)
-        hamburger.setAttribute('src', `assets/themes/${theme.active}/hamburger.svg`);
-    if (themeSwitcher)
-        themeSwitcher.setAttribute('src', `assets/themes/${theme.active}/themeSwitcher.svg`);
-}
-
-
-page.load = function () {
-    page.status = 'landscape';
-
-    // controlla se devo andare in modalità landscape o portrait in base a
-    // quanto è larga inizialmente la finestra
-    if (window.innerWidth > 1000)
-        page.toggleView('landscape');
-    else
-        page.toggleView('portrait');
-
-    // aggiunge funzionalità al pulsante per cambiare tema
-    const themeSwitcher = document.getElementById('themeSwitcher');
-    if (themeSwitcher) {
-        console.log('theme switcher found')
-        themeSwitcher.addEventListener('click', page.toggleTheme);
+        // modifica lo sfondo delle frasi, controllando che sia presente nella pagina la sezione apposita
+        const helperBox = document.getElementById('quotes').getElementsByTagName('p')[0];
+        if (helperBox)
+            helperBox.style.backgroundColor = theme.backgroundColor;
     }
-    // aggiunge funzionalità al pulsante hamburger in modalità portrait
-    const hamburger = document.getElementById('hamburger');
-    if (hamburger) {
-        console.log('hamburger found')
-        hamburger.addEventListener('click', function () {
-            // quando viene cliccato, viene aperto il menu se chiuso
-            // e viene chiuso se aperto
-            if (menu.status === 'closed')
-                menu.open();
-            else
-                menu.close();
-        });
-    }
-
-    // utilizzo lo stile predefinito dal browser
-//    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)
-//        theme.switch(2);
-//    else
-    theme.switch('dark');
-}
-
-window.onresize = function () {
-    // chiamata ogni volta che la pagina viene resizata
-    // chiudo il menu, per evitare comportamenti strani
-    menu.close();
-
-    // controlla se devo andare in modalità landscape o portrait in base a
-    // quanto l'utente ha resizato la finestra
-    if (window.innerWidth > 1000)
-        page.toggleView('landscape');
-    else
-        page.toggleView('portrait');
-}
-
-page.toggleView = function (mode) {
-
-    // elementi da modificare
-    const nav = document.getElementsByTagName('nav')[0];
-    const hamburger = document.getElementById('hamburger');
-
-    // abilito la navbar o il pulsante hamburger in base alla modalità
-    if (mode === 'landscape') {
-        hamburger.style.display = 'none';
-        nav.style.display = 'block';
-    } else {
-        hamburger.style.display = 'block';
-        nav.style.display = 'none';
-    }
-    page.status = mode;
-}
-
-page.toggleTheme = function () {
-    if (theme.active === 'admin')
-        return;
-    // cambia tra il tema corrente e quello rimanente
-    theme.switch(theme.active === 'dark' ? 'light' : 'dark');
 }
 
 menu.open = function () {
@@ -175,9 +107,74 @@ menu.close = function () {
     menu.status = 'closed';
 }
 
-baseOnscroll = function () {
+menu.toggle = function () {
+    // viene aperto il menu se chiuso
+    // e viene chiuso se aperto
+    if (menu.status === 'closed')
+        menu.open();
+    else
+        menu.close();
+}
+
+page.toggle = function (mode) {
+
+    // elementi da modificare
+    const nav = document.getElementsByTagName('nav')[0];
+    const hamburger = document.getElementById('hamburger');
+
+    // abilito la navbar o il pulsante hamburger in base alla modalità
+    if (mode === 'landscape') {
+        hamburger.style.display = 'none';
+        nav.style.display = 'block';
+    } else {
+        hamburger.style.display = 'block';
+        nav.style.display = 'none';
+    }
+    page.status = mode;
+}
+
+page.onresize = function () {
+    // chiamata ogni volta che la pagina viene resizata
+
+    // chiudo il menu, per evitare comportamenti strani
+    menu.close();
+
+    // controlla se devo andare in modalità landscape o portrait in base a
+    // quanto l'utente ha resizato la finestra
+    if (window.innerWidth > 1000)
+        page.toggle('landscape');
+    else
+        page.toggle('portrait');
+}
+
+page.load = function () {
+    // eseguita ogni volta che si carica una pagina qualsiasi
+
+    // controlla se devo andare in modalità landscape o portrait in base a
+    // quanto è larga inizialmente la finestra
+    if (window.innerWidth > 1000)
+        page.toggle('landscape');
+    else
+        page.toggle('portrait');
+
+    // aggiunge funzionalità al pulsante hamburger in modalità portrait
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger)
+        hamburger.addEventListener('click', menu.toggle);
+
+    // aggiunge funzionalità al pulsante per tornare in cima alla pagina, se presente
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop)
+        backToTop.addEventListener('click', () => window.scrollTo(0, 0));
+}
+
+page.onscroll = function () {
+    // chiamata ogni volta che una pagina qualsiasi viene scrollata
+
+    // elementi da modificare
     const header = document.getElementsByTagName('header')[0];
     const hamburger = document.getElementById('hamburger');
+    const backToTop = document.getElementById('backToTop');
 
     // quando il menu è aperto, l'header è sempre opaco
     // quindi ritorna senza fare niente
@@ -190,8 +187,8 @@ baseOnscroll = function () {
     // per fare ciò, utilizzo anche la posizione attuale nella pagina
     let pos = window.scrollY;
 
-    // scalo ed imposto la  trasparenza dell'header in base alla posizione dello scroll
-    // rispetto a ref1
+    // scalo e imposto la trasparenza dell'header in base alla posizione dello scroll
+    // rispetto a ref
     if (pos < ref) {
         hamburger.style.top = '16px';
         header.style.backgroundColor = 'transparent';
@@ -201,4 +198,17 @@ baseOnscroll = function () {
         header.style.backgroundColor = theme.backgroundColor;
         header.style.height = '4vh';
     }
+
+    if (backToTop) {
+        if (pos > ref * 5)
+            backToTop.style.bottom = '15%';
+        else
+            backToTop.style.bottom = '-10%';
+    }
 }
+
+// new: possiamo definire più handler per i diversi eventi in questo modo
+// se avete bisogno di aggiungere handler alle altre pagine, seguite lo stesso format
+window.addEventListener('load', page.load);
+window.addEventListener('resize', page.onresize);
+window.addEventListener('scroll', page.onscroll);

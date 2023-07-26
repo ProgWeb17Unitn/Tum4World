@@ -3,14 +3,205 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+
     <filter>
-        <filter-name>MyFilter</filter-name>
-        <filter-class>com.example.development.CookiesFilter</filter-class>
+        <filter-name>cookiesFilter</filter-name>
+        <filter-class>filters.CookiesFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>MyFilter</filter-name>
+        <filter-name>cookiesFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>userFilter</filter-name>
+        <filter-class>filters.UserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>userFilter</filter-name>
+        <url-pattern>/Amministratore</url-pattern>
+        <url-pattern>/Aderente</url-pattern>
+        <url-pattern>/Simpatizzante</url-pattern>
+        <url-pattern>/Amministratore.jsp</url-pattern>
+        <url-pattern>/Aderente.jsp</url-pattern>
+        <url-pattern>/Simpatizzante.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>VisiteFilter</filter-name>
+        <filter-class>filters.VisiteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>VisiteFilter</filter-name>
+
+        <url-pattern>/homepage</url-pattern>
+        <url-pattern>/Aderente</url-pattern>
+        <url-pattern>/Simpatizzante</url-pattern>
+        <url-pattern>/Amministratore</url-pattern>
+        <url-pattern>/ChiSiamo</url-pattern>
+        <url-pattern>/Contatti</url-pattern>
+        <url-pattern>/logIn</url-pattern>
+        <url-pattern>/notAuthorized</url-pattern>
+        <url-pattern>/signUp</url-pattern>
+        <url-pattern>/logOut</url-pattern>
+        <url-pattern>/Attivita</url-pattern>
+        <url-pattern>/Attivita1</url-pattern>
+        <url-pattern>/Attivita2</url-pattern>
+        <url-pattern>/Attivita3</url-pattern>
+        <url-pattern>/InvioConfermato</url-pattern>
+        <url-pattern>/RegistrazioneConfermata</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>homepage</servlet-name>
+        <jsp-file>/homepage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>homepage</servlet-name>
+        <url-pattern>/homepage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Aderente</servlet-name>
+        <jsp-file>/Aderente.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Aderente</servlet-name>
+        <url-pattern>/Aderente</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Attivita</servlet-name>
+        <jsp-file>/Attivita.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita</servlet-name>
+        <url-pattern>/Attivita</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Attivita1</servlet-name>
+        <jsp-file>/Attivita1.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita1</servlet-name>
+        <url-pattern>/Attivita1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Attivita2</servlet-name>
+        <jsp-file>/Attivita2.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita2</servlet-name>
+        <url-pattern>/Attivita2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Attivita3</servlet-name>
+        <jsp-file>/Attivita3.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Attivita3</servlet-name>
+        <url-pattern>/Attivita3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChiSiamo</servlet-name>
+        <jsp-file>/ChiSiamo.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChiSiamo</servlet-name>
+        <url-pattern>/ChiSiamo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Contatti</servlet-name>
+        <jsp-file>/contatti.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Contatti</servlet-name>
+        <url-pattern>/Contatti</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logIn</servlet-name>
+        <jsp-file>/login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logIn</servlet-name>
+        <url-pattern>/logIn</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>notAuthorized</servlet-name>
+        <jsp-file>/notAuthorized.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>notAuthorized</servlet-name>
+        <url-pattern>/notAuthorized</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>signUp</servlet-name>
+        <jsp-file>/signUp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signUp</servlet-name>
+        <url-pattern>/signUp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Simpatizzante</servlet-name>
+        <jsp-file>/Simpatizzante.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Simpatizzante</servlet-name>
+        <url-pattern>/Simpatizzante</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Amministratore</servlet-name>
+        <jsp-file>/Amministratore.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Amministratore</servlet-name>
+        <url-pattern>/Amministratore</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logOut</servlet-name>
+        <jsp-file>/logOut.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logOut</servlet-name>
+        <url-pattern>/logOut</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegistrazioneConfermata</servlet-name>
+        <jsp-file>/registrazioneConfermata.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrazioneConfermata</servlet-name>
+        <url-pattern>/RegistrazioneConfermata</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>InvioConfermato</servlet-name>
+        <jsp-file>/invioConfermato.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InvioConfermato</servlet-name>
+        <url-pattern>/InvioConfermato</url-pattern>
+    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>homepage</welcome-file>

@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tum4World</title>
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
-    <link rel="stylesheet" href="styles/layouts/base.css">
-    <link rel="stylesheet" href="styles/layouts/ChiSiamo.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/ChiSiamo.css">
     <script src="scripts/base.js"></script>
     <script src="scripts/ChiSiamo.js"></script>
 
 </head>
 
 <body>
-<%@ include file="static/header.jsp" %>
-
+<%@ include file="header.jsp" %>
+<main>
     <div class="flexbox-container" id="index">
         <div class="lineaVerticale"></div>
         <div class="cerchio"></div>
@@ -30,22 +30,27 @@
                     <div class="TriangleSX"></div>
                     <div class="Rectangle">
                         <p>La nostra storia prende vita nel
-                            <span class="anni"> 2001 </span>
-                            , con due protagonisti ed una città:
+                            <span class="anni"> 2001</span>,
+                            con due protagonisti ed una città:
                             <span class="personaggi"> Betty Powell</span>,
                             <span class="personaggi"> John </span>e
                             <span class="personaggi"> Manaus</span>.
-                            Betty, una vivace signora di 84 anni, decise di stabilirsi a Manaus nel 1990, un luogo incantevole
-                            ai confini della maestosa Foresta Amazzonica. Il suo amore per la natura e le escursioni l'ha portata ad incontrare
+                            Betty, una vivace signora di 84 anni, decise di stabilirsi a Manaus nel 1990, un luogo
+                            incantevole
+                            ai confini della maestosa Foresta Amazzonica. Il suo amore per la natura e le escursioni
+                            l'ha
+                            portata ad incontrare
                             John, un maestoso
                             <span class="parole"> Ara Scarlatta </span>
-                            ferito ad un'ala. Betty non poteva lasciarlo indietro così decise di portarlo a casa e costruire un
+                            ferito ad un'ala. Betty non poteva lasciarlo indietro così decise di portarlo a casa e
+                            costruire
+                            un
                             <span class="parole"> rifugio </span>
                             apposito per la sua cura. Fu da quel momento che l'ondata di
                             <span class="parole">amici</span>
                             che cercavano riparo in quel luogo iniziò a
                             <span class="parole">crescere</span>
-                            in modo incredibile... </p> </div>
+                            in modo incredibile... </p></div>
                 </div>
             </div>
 
@@ -57,20 +62,22 @@
                 <div class="cartoon">
                     <div class="Rectangle" id="RectangleSX2">
                         <p>
-                            Entusiasmanti dalla missione di Betty diverse persone si sono messe in gioco per aiutare questi fantastici animali.
+                            Entusiasmanti dalla missione di Betty diverse persone si sono messe in gioco per aiutare
+                            questi
+                            fantastici animali.
                             Nel
                             <span class="anni"> 2005 </span>
                             l'incredibile team di volontari, si è ampliato
                             fino a raggiungere la strabiliante cifra di
                             <span class="parole">30 persone</span>.
-                            Insieme, hanno reso possibile la cura e l'amore per
+                            Insieme, hanno reso possibile la cura di
                             <span class="parole"> 100 straordinari esemplari di specie diverse</span>.
                             Inoltre sono stati costruiti grazie a generose donazioni
                             <span class="parole"> due nuovi rifugi </span>
                             uno nella pittoresca
                             <span class="personaggi"> Belem </span>
                             e l'altro nell'incatevole
-                            <span class="personaggi"> Cuzco</span>, in Perù!</p> </div>
+                            <span class="personaggi"> Cuzco</span>, in Perù!</p></div>
                     <div class="TriangleDX"></div>
                 </div>
             </div>
@@ -96,12 +103,13 @@
                             <span class="anni">2010</span>,
                             quando diversi
                             <span class="parole">enti internazionali </span>
-                                hanno riconosciuto il nostro obiettivo come meritevole e hanno deciso di darci una mano.
+                            hanno riconosciuto il nostro obiettivo come meritevole e hanno deciso di darci una mano.
                             <span class="personaggi">L'Human Society International</span>
-                            si è unito a noi come nostro principale partner, aprendo
+                            si è unito a noi come principale partner, aprendo
                             <span class="parole"> nuove porte</span>
                             e prospettive.
-                            Abbiamo capito che per avere veramente cura dei nostri pappagalli,  dovevamo focalizzarci sulla
+                            Abbiamo capito che per avere veramente cura dei nostri pappagalli, dovevamo focalizzarci
+                            sulla
                             <span class="parole">sensibilizzazione</span>
                             e la
                             <span class="parole">tutela</span>
@@ -110,7 +118,7 @@
                             con l'obiettivo di prevenire situazioni in cui avrebbero bisogno del
                             nostro intervento.
 
-                        </p> </div>
+                        </p></div>
                 </div>
             </div>
 
@@ -126,7 +134,8 @@
                             Negli ultimi anni, la
                             <span class="parole">crescita</span>
                             dell' associazione è stata
-                            <span class="parole">straordinaria</span>, permettendoci di espandere la nostra presenza, ed aprire
+                            <span class="parole">straordinaria</span>, permettendoci di espandere la nostra presenza, ed
+                            aprire
                             <span class="parole">rifugi in diverse parti del mondo</span>. I dati più recenti del
                             <span class="anni">2021</span>
                             sono sorprendenti: oltre
@@ -136,7 +145,7 @@
                             nella raccolta fondi e nella tutela dell'ambiente.
                             In totale, ospitiamo ben
                             <span class="numeri">8000</span>
-                             <span class="parole">esemplari </span>
+                            <span class="parole">esemplari </span>
                             al mese in
                             <span class="numeri">20</span>
                             <span class="parole">rifugi</span>
@@ -145,7 +154,7 @@
                             È un progresso straordinario che ci riempie di orgoglio e ci spinge a fare ancora
                             di più per garantire un
                             <span class="parole">futuro radioso</span>
-                            per questi magnifici uccelli.</p> </div>
+                            a questi magnifici uccelli.</p></div>
                     <div class="TriangleDX"></div>
                 </div>
             </div>
@@ -157,16 +166,11 @@
         </div>
 
     </div>
+</main>
+<% if ((request.getAttribute("formNeeded") != null) && (request.getAttribute("updated") == null)) { %>
+<%@ include file="cookieBanner.html" %>
+<% } %>
 
-
-
-
-
-<%@ include file="static/footer.html" %>
+<%@ include file="footer.jsp" %>
 </body>
-
-
-<script>
-    page.load();
-</script>
 </html>

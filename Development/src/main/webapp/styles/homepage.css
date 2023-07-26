@@ -1,0 +1,67 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+main h2 {
+    font-size: xx-large;
+    font-weight: bolder;
+    align-self: start;
+}
+
+main p {
+    font-size: large;
+    margin-bottom: 20vh;
+}
+
+
+.coloredText {
+    color: #F49E4C;
+}
+
+#logo {
+    opacity: 0;
+    width: 40%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    transition: all 0.5s ease-out;
+}
+
+#mainImg {
+    opacity: 0;
+    width: 60%;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    transition: all 0.5s ease-out;
+}
+
+#download {
+    background-color: #AB3428;
+    color: inherit;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    border: transparent;
+    border-radius: 10px;
+    width: max-content;
+    height: max-content;
+    margin-top: 20vh;
+    padding: 6px;
+    transition: all 0.2s ease-in-out;
+}
+
+#download:hover {
+    background-color: #F49E4C;
+    cursor: pointer;
+    transform: scale(110%);
+}
+

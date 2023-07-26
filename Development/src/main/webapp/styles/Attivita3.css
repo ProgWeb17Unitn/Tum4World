@@ -1,0 +1,12 @@
+.title{
+    border: 3px solid #C76838FF;
+    background: linear-gradient(to bottom right, #C76838FF, #F49E4C);
+}
+
+.descrizione{
+    background-color: #C76838FF;
+}
+
+.titoletto{
+    color: #00ffff;
+}

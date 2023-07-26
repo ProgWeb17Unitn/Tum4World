@@ -1,0 +1,124 @@
+/* Parte del Layout è preso da Attivita.css  come il flexbox container e il title
+    Questo file contiene il css comune tra le pagine attivita1, attivita2, attivita3, ognuna poi ha un suo foglio di stile in cui
+    vengono cambiati i colori.
+
+    La struttura è la seguente: il flexbox container è orientato a colonne così da poter gestire gli elementi "per righe"
+    Ci sono quattro tipi di elementi all'interno al container:
+        -Il titolo grande
+        -Gli elementi descrizione
+        -La Galleria
+        -La freccia alal prossima attivita
+
+    La Descrizione è un flex semplice formato da due elementi che contiene il titoletto ed il testo
+    La Galleria è un flex con n elementi a cui è stata nascosta la barra di scroll poiché lo scroll avviene in automatico
+    grazie al js
+    La Freccia è un flex con due elementi allineata alla fine del flexbox container (sia lei che i suoi elementi) contenete
+    il testo e l'anchor alla prossima attività rappresentato da una freccia
+ */
+.flexbox-container{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding-bottom: 5%;
+}
+
+.galleria {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: auto; /* le immagini possono scrollare orizzontalmente ma solo per la lunghezza del flexbox */
+    /*nascondo la barra di scroll*/
+    scrollbar-width: none; /* Firefox */
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; /* Internet Explorer e Edge */
+    left: 20%;
+    width: 90%;
+}
+
+.galleria::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, e Opera */
+}
+
+.img-element{
+    padding-right: 5%;
+    width: 28.4%; /*100%-(5%*3)=85% 85/3= 28.3, arrotondo a quello superiore per evitare di avere una porzione di immagine successiva*/
+    min-width: 28.4%; /* Firefox ha bisogno delle dimensioni min e max su un flexbox */
+    max-width: 28.4%;
+    height: 40vh;
+}
+
+.title{
+    align-self: stretch; /*Testo occupa tutta la lunghezza del flexbox*/
+    text-align: center;
+    border-radius: 3px 3px 0 0; /*smusso solo gli angoli in alto*/
+    padding: 1%;
+    font-size: xx-large;
+    font-weight: bold;
+    text-shadow: 3px 2px 4px rgba(0,0,0,0.3);
+}
+
+.descrizione{
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    width: 100%;
+}
+
+.descrizione p{
+    padding-right: 10px;
+    width: 80%;
+}
+
+.titoletto{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    width: 20%;
+    text-shadow: 1px 2px 1px rgba(255, 255, 255, 0.3);
+}
+
+.prossimaAttivita{
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+    align-items: center;
+    color: #F5EE9E;
+    text-align: end;
+    border: 10px solid transparent;
+    /*Con margin end gli elementi vengono messi alla fine, poiché ho aggiunto 10px di margine, devo riallineare la freccia*/
+}
+
+.prossimaAttivita a{
+    width: 5%;
+    height:auto
+}
+.prossimaAttivita p{
+    font-size: x-large;
+}
+
+#freccia{
+    margin-left: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+#freccia:hover{
+    cursor: pointer;
+    transform: scale(110%);
+}
+
+.title p{
+    color: #F5EE9E;
+}
+
+.evidenziato{
+    font-weight: bold;
+    color: #F5EE9E;
+}
+
+.descrizione p{
+    color: white;
+}

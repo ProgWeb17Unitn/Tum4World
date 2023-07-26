@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+html {
+    font-family: "Unna", serif;
+}
+
+body {
+    background-image: url("../assets/images/background.jpg");
+    margin: 6vh 0 0;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #F5EE9E;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+    overflow-x: hidden; /*Impedisco a firefox di aggiungere scroller orizzonatel*/
+}
+
+main {
+    margin-top: 10vh;
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    width: 100vw;
+}
+
+main a {
+    text-decoration: none;
+    font-size: 1em;
+}
+
+/* Nascondo the scrollbar */
+::-webkit-scrollbar {
+    display: none; /* For Chrome and Safari */
+}
+
+#backToTop {
+    position: fixed;
+    bottom: -10%;
+    left: auto;
+    width: 30px;
+    transition: bottom 200ms ease-in-out;
+}
+
+#backToTop:hover {
+    cursor: pointer;
+}
